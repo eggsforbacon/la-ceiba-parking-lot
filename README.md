@@ -12,3 +12,5 @@ to [this GitHub repository](https://github.com/zacwastaken/la-ceiba-parking-lot)
 
 This is a Java app for managing the clients, parking spaces and income of <i>La Ceiba</i> parking
 lot.
+
+### [Functional requirements](https://docs.google.com/document/d/1m1Rxqe4Ji9pSKlcuTBBbUqldYKmaK24JnBQG-2COGmM/edit?usp=sharing)
