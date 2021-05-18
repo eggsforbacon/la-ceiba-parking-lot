@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<GridPane prefHeight="814.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.rowIndex="1" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="3" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.rowIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.rowIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.columnIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="1" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.rowIndex="3" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.rowIndex="3" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.columnIndex="3" />
+      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <Line endX="-38.5" fill="#ebd159" rotate="90.0" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="1" />
+      <Line endX="-38.5" fill="#ebd159" rotate="90.0" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Line endX="-38.5" fill="#ebd159" rotate="90.0" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Polyline fill="#ebd15900" points="50.0, -40.0, 50.0, -40.0, -2.0, -40.0, -2.0, -89.0" stroke="#ebd159" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="5.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+   </children>
+</GridPane>

@@ -14,3 +14,28 @@ This is a Java app for managing the clients, parking spaces and income of <i>La 
 lot.
 
 ### [Functional requirements](https://docs.google.com/document/d/1m1Rxqe4Ji9pSKlcuTBBbUqldYKmaK24JnBQG-2COGmM/edit?usp=sharing)
+
+---
+
+## Wireframes 
+
+![Main menu](docs/mocks/main.png "Main menu")
+
+![Login menu](docs/mocks/login.png "Login menu")
+
+![Clients](docs/mocks/clients.png "Clients view")
+
+![Vehicles](docs/mocks/vehicles.png "Vehicles view")
+
+![Map](docs/mocks/map.png "Map of the parking lot")
+
+![Users](docs/mocks/users.png "Users view")
+
+![Receipt for members](docs/mocks/receipt1.png "Membership receipt")
+
+![Daily/Hourly receipt](docs/mocks/receipt2.png "Daily/Hourly receipt")
+
+![Reports](docs/mocks/reports.png "Reports menu")
+
+---
+

@@ -1,5 +1,21 @@
 .root {
 	-fx-font-family: "Helvetica";
-	-fx-font-size: 17px;
+	-fx-font-size: 16px;
 	-fx-font-weight: bold;
+}
+
+.button {
+	-fx-pref-width: 128px;
+	-fx-background-color: #147BE2;
+	-fx-text-fill: #E5EEF8;
+	-fx-background-radius: 15px;
+}
+
+.app-title {
+	-fx-font-size: 25px;
+}
+
+.subtitle {
+	-fx-font-size: 19px;
+	-fx-font-style: italic;
 }

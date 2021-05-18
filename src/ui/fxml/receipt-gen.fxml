@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="782.0" prefWidth="413.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Generación de recibo:" />
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+         <children>
+            <CheckBox alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" selected="true" text="Recibo mensual" />
+         </children>
+      </HBox>
+      <Separator opacity="0.0" orientation="VERTICAL" prefHeight="59.0" prefWidth="0.0" />
+      <VBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="413.0" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Factura de venta numero: ####AAAA" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Ciudad de venta:" />
+                  <TextField minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Valor pagado: $###.###" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Fecha de facturación:" />
+                  <DatePicker minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="119.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Nombre del cliente:" />
+                  <TextField minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
+               </children>
+            </HBox>
+            <Label minHeight="0.0" minWidth="0.0" prefHeight="64.0" prefWidth="257.0" text="Vechiculo por el que se paga: AAAAAA" />
+            <Label minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="147.0" text="Tiempo de estadía: ##" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="413.0" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Tipo de vehículo:" />
+                  <ChoiceBox minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="121.0" visible="false" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Fecha de facturación:" />
+                  <DatePicker minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="119.0" visible="false" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Valor pagado: $###.###" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Placa del vehículo:" />
+                  <TextField minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Total de horas:" />
+                  <TextField minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>
