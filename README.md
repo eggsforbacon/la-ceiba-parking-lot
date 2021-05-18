@@ -13,7 +13,7 @@ to [this GitHub repository](https://github.com/zacwastaken/la-ceiba-parking-lot)
 This is a Java app for managing the clients, parking spaces and income of <i>La Ceiba</i> parking
 lot.
 
-### [File for the first delivery](docs/FirstDelivery.pdf)
+### [File for Milestone1](docs/FirstDelivery.pdf)
 
 ---
 
