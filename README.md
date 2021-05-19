@@ -11,7 +11,15 @@ to [this GitHub repository](https://github.com/zacwastaken/la-ceiba-parking-lot)
 ## About
 
 This is a Java app for managing the clients, parking spaces and income of <i>La Ceiba</i> parking
-lot.
+lot. The program was created in order to satisfy the need of the manager of the La Ceiba parking lot to organize and virtualize the registration of activities.
+
+## Technical conditions
+#### Programming language:
+Java
+#### Operating system:
+Windows
+#### Development environment:
+Intellij IDEA and Eclipse IDE
 
 ### [File for Milestone1](docs/FirstDelivery.pdf)
 
