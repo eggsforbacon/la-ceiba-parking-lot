@@ -34,9 +34,20 @@
 
 .button {
 	-fx-pref-width: 128px;
-	-fx-background-color: #147BE2;
-	-fx-text-fill: #E5EEF8;
+	-fx-background-color: #536DFE;
+	-fx-text-fill: #FFFFFF;
 	-fx-background-radius: 15px;
+	-fx-border-radius: 15px;
+	-fx-skin: 'ui.skins.BlueButtonSkin';
+}
+
+.button:hover {
+	-fx-text-fill: #536DFE;
+}
+
+.button:active {
+	-fx-background-color: #d7e3f5;
+	-fx-border-color: #5089de;
 }
 
 .app-title {
@@ -46,4 +57,8 @@
 .subtitle {
 	-fx-font-size: 19px;
 	-fx-font-style: italic;
+}
+
+.vbox {
+	-fx-background-color: #B3E5FC;
 }
