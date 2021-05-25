@@ -4,6 +4,34 @@
 	-fx-font-weight: bold;
 }
 
+.preloader {
+	-fx-border-color: #aed3d6;
+	-fx-border-width: 8px;
+	-fx-background-image: url("../resources/splash.png");
+	-fx-border-radius: 15;
+	-fx-background-size: 712, 414;
+	-fx-background-radius: 18;
+  	-fx-background-repeat: no-repeat;
+  	-fx-background-position: center;
+}
+
+.progress-bar > .track {
+	-fx-text-box-border: #0d2854;
+	-fx-control-inner-background: #264982;
+}
+
+.progress-bar .bar {
+	-fx-padding: 2px; 
+    -fx-background-insets: 1;
+    -fx-background-color: #aed3d6;
+}
+
+#preloader-lbl {
+	-fx-font-size: 18px;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+}
+
 .button {
 	-fx-pref-width: 128px;
 	-fx-background-color: #147BE2;

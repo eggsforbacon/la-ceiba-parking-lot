@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -40,9 +41,9 @@ public class Main extends Application {
 
     @Override
     public void init() {
-        int COUNT_LIMIT = 60000;
-        for (int i = 0; i < COUNT_LIMIT; i++) {
-            double progress = (100.0 * i) / COUNT_LIMIT;
+        int COUNT_LIMIT = 30000;
+        for (int i = 0; i <= COUNT_LIMIT; i++) {
+            double progress = (double) i/COUNT_LIMIT;
             LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
         }
     }
