@@ -1,43 +1,90 @@
 package model;
 
-public class Vehicle {
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public abstract class Vehicle {
 
     private VehicleType type;
-    private int typeIndicator;
     private String model;
     private String licensePlate;
     private String color;
     private Client owner;
+    private boolean enabled;
     private int spot;
     private String observations;
+    private double valueToPay;
+    private StayTime stay;
+    private LocalDateTime entryDate;
+    private String entryDateString;
+    private int numberOfTime;
+    private LocalDateTime supposedExitDate;
+    private String supposedExitDateString;
+    private LocalDateTime actualExitDate;
+    private String actualExitDateString;
 
-    public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,String observations){
-        this.typeIndicator = typeIndicator;
+
+    public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,String observations,int stayIndicator,int numberOfTime){
         type = VehicleType.values()[typeIndicator];
+        enabled = true;
         this.model = model;
         this.licensePlate = licensePlate;
         this.color = color;
         this.owner = owner;
         this.spot = spot;
         this.observations = observations;
+        valueToPay = 0;
+        stay = stay.values()[stayIndicator];
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        entryDate = LocalDateTime.now();
+        entryDateString = entryDate.format(formatter);
+        this.numberOfTime = numberOfTime;
     }
 
+    /**
+     Calculate the supposed date of departure of the vehicle based on what is specified previously <br>
+     <b> pre: </b> The date of entry and the type of stay must be defined<br>
+     <b> post: </b>Obtains by means of a String the date on which the vehicle should leave <br>
+     */
+    public void calculateExitDate(){
+        switch (stay.toString()){
+            case "HOUR":
+                supposedExitDate = entryDate.plusHours(numberOfTime);
+                supposedExitDateString = supposedExitDate.toString();
+                break;
+            case "DAY":
+                supposedExitDate = entryDate.plusDays(numberOfTime);
+                supposedExitDateString = supposedExitDate.toString();
+                break;
+            case "MONTH":
+                supposedExitDate = entryDate.plusMonths(numberOfTime);
+                supposedExitDateString = supposedExitDate.toString();
+                break;
 
+            case "UNDEFINED":
+                supposedExitDateString = "No se puede calcular. Indefinido";
+                break;
 
+        }
+    }
+    /**
+     Take out a vehicle from the parking lot <br>
+     <b> pre: </b> <br>
+     <b> post: </b>Take out the vehicle, disabling it and giving the departure date <br>
+     */
+    public void takeOut(){
+        enabled = false;
+        spot = 0;
+        actualExitDate = LocalDateTime.now();
+        actualExitDateString = actualExitDate.toString();
+    }
 
-
+    public abstract double calculateValueToPay();
+    public abstract void setSpot();
 
 
 
     //Getters and setters
-    public String getType() {
-        return type.toString();
-    }
-
-    public void setType(int typeIndicator) {
-        this.typeIndicator=typeIndicator;
-        type = VehicleType.values()[typeIndicator];
-    }
 
     public String getModel() {
         return model;
@@ -75,15 +122,63 @@ public class Vehicle {
         return spot;
     }
 
-    public void setSpot(int spot) {
-        this.spot = spot;
-    }
-
     public String getObservations() {
         return observations;
     }
 
     public void setObservations(String observations) {
         this.observations = observations;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setSpot(int spot) {
+        this.spot = spot;
+    }
+
+    public double getValueToPay() {
+        return valueToPay;
+    }
+
+    public void setValueToPay(double valueToPay) {
+        this.valueToPay = valueToPay;
+    }
+
+    public String getEntryDateString() {
+        return entryDateString;
+    }
+
+    public void setEntryDateString(String entryDateString) {
+        this.entryDateString = entryDateString;
+    }
+
+    public int getNumberOfTime() {
+        return numberOfTime;
+    }
+
+    public void setNumberOfTime(int numberOfTime) {
+        this.numberOfTime = numberOfTime;
+    }
+
+    public String getSupposedExitDateString() {
+        return supposedExitDateString;
+    }
+
+    public void setSupposedExitDateString(String supposedExitDateString) {
+        this.supposedExitDateString = supposedExitDateString;
+    }
+
+    public String getActualExitDateString() {
+        return actualExitDateString;
+    }
+
+    public void setActualExitDateString(String actualExitDateString) {
+        this.actualExitDateString = actualExitDateString;
     }
 }
