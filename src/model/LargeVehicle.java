@@ -16,6 +16,20 @@ public class LargeVehicle extends Vehicle {
 
     @Override
     public double calculateValueToPay() {
+        switch (stay){
+            case HOUR:
+
+                break;
+            case DAY:
+
+                break;
+            case MONTH:
+
+                break;
+            case  UNDEFINED:
+
+                break;
+        }
         return 0; //WIP
     }
 

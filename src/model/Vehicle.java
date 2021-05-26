@@ -5,23 +5,24 @@ import java.time.format.DateTimeFormatter;
 
 public abstract class Vehicle {
 
-    private VehicleType type;
-    private String model;
-    private String licensePlate;
-    private String color;
-    private Client owner;
-    private boolean enabled;
-    private int spot;
-    private String observations;
-    private double valueToPay;
-    private StayTime stay;
-    private LocalDateTime entryDate;
-    private String entryDateString;
-    private int numberOfTime;
-    private LocalDateTime supposedExitDate;
-    private String supposedExitDateString;
-    private LocalDateTime actualExitDate;
-    private String actualExitDateString;
+    protected VehicleType type;
+    protected String model;
+    protected String licensePlate;
+    protected String color;
+    protected Client owner;
+    protected boolean enabled;
+    protected int spot;
+    protected String observations;
+    protected double valueToPay;
+    protected StayTime stay;
+    protected LocalDateTime entryDate;
+    protected String entryDateString;
+    protected int numberOfTime;
+    protected LocalDateTime supposedExitDate;
+    protected String supposedExitDateString;
+    protected LocalDateTime actualExitDate;
+    protected String actualExitDateString;
+    protected boolean additionalTime;
 
 
     public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,String observations,int stayIndicator,int numberOfTime){
@@ -39,6 +40,7 @@ public abstract class Vehicle {
         entryDate = LocalDateTime.now();
         entryDateString = entryDate.format(formatter);
         this.numberOfTime = numberOfTime;
+        calculateExitDate();
     }
 
     /**
@@ -47,21 +49,21 @@ public abstract class Vehicle {
      <b> post: </b>Obtains by means of a String the date on which the vehicle should leave <br>
      */
     public void calculateExitDate(){
-        switch (stay.toString()){
-            case "HOUR":
+        switch (stay){
+            case HOUR:
                 supposedExitDate = entryDate.plusHours(numberOfTime);
                 supposedExitDateString = supposedExitDate.toString();
                 break;
-            case "DAY":
+            case DAY:
                 supposedExitDate = entryDate.plusDays(numberOfTime);
                 supposedExitDateString = supposedExitDate.toString();
                 break;
-            case "MONTH":
+            case MONTH:
                 supposedExitDate = entryDate.plusMonths(numberOfTime);
                 supposedExitDateString = supposedExitDate.toString();
                 break;
 
-            case "UNDEFINED":
+            case UNDEFINED:
                 supposedExitDateString = "No se puede calcular. Indefinido";
                 break;
 
@@ -74,9 +76,19 @@ public abstract class Vehicle {
      */
     public void takeOut(){
         enabled = false;
-        spot = 0;
         actualExitDate = LocalDateTime.now();
         actualExitDateString = actualExitDate.toString();
+    }
+
+    /**
+     Check if the vehicle exceeded the supposed exit date <br>
+     <b> pre: </b> <br>
+     <b> post: </b>Sets the boolean that indicates if the time was exceeded to true <br>
+     */
+    public void checkAdditionalTime(){
+        if(LocalDateTime.now().isAfter(supposedExitDate)){
+            additionalTime = true;
+        }
     }
 
     public abstract double calculateValueToPay();
