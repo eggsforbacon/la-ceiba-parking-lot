@@ -5,27 +5,36 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="782.0" prefWidth="352.0" spacing="10.0" styleClass="vbox" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#carClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/car-front.png" />
-         </image>
-      </ImageView>
-      <Label styleClass="app-title" text="La Ceiba" />
-      <Label styleClass="subtitle" text="Lavadero y Parqueadero" />
-      <Button mnemonicParsing="false" onAction="#loginClicked" text="Iniciar sesión" />
-      <Separator opacity="0.0" orientation="VERTICAL" prefHeight="22.0" prefWidth="5.0" />
-      <Button mnemonicParsing="false" onAction="#clientsClicked" text="Clientes" />
-      <Button mnemonicParsing="false" onAction="#vehiclesClicked" text="Vehículos" />
-      <Button mnemonicParsing="false" onAction="#mapClicked" text="Mapa" />
-      <Separator opacity="0.0" orientation="VERTICAL" prefHeight="47.0" prefWidth="8.0" />
-      <Button mnemonicParsing="false" onAction="#usersClicked" text="Usuarios" />
-      <Button mnemonicParsing="false" onAction="#receiptsClicked" text="Facturación" />
-      <Button mnemonicParsing="false" onAction="#reportsClicked" text="Reportes" />
-      <Separator opacity="0.0" orientation="VERTICAL" prefHeight="22.0" prefWidth="5.0" />
-      <Button mnemonicParsing="false" onAction="#exitClicked" text="Salir" />
-   </children>
-</VBox>
+
+<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox alignment="CENTER" prefHeight="800.0" prefWidth="352.0" spacing="10.0" styleClass="vbox" stylesheets="@../css/main.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#carClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/car-front.png" />
+               </image>
+            </ImageView>
+            <Label styleClass="app-title" text="La Ceiba" />
+            <Label styleClass="subtitle" text="Lavadero y Parqueadero" />
+            <Button mnemonicParsing="false" onAction="#loginClicked" text="Iniciar sesión" />
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="22.0" prefWidth="5.0" />
+            <Button mnemonicParsing="false" onAction="#clientsClicked" text="Clientes" />
+            <Button mnemonicParsing="false" onAction="#vehiclesClicked" text="Vehículos" />
+            <Button mnemonicParsing="false" onAction="#mapClicked" text="Mapa" />
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="47.0" prefWidth="8.0" />
+            <Button mnemonicParsing="false" onAction="#usersClicked" text="Usuarios" />
+            <Button mnemonicParsing="false" onAction="#receiptsClicked" text="Facturación" />
+            <Button mnemonicParsing="false" onAction="#reportsClicked" text="Reportes" />
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="22.0" prefWidth="5.0" />
+            <Button mnemonicParsing="false" onAction="#exitClicked" text="Salir" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <BorderPane fx:id="currentScene" minHeight="782.0" minWidth="0.0" prefHeight="782.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

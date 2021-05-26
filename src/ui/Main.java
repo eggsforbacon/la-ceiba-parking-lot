@@ -34,8 +34,9 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         scene.getStylesheets().addAll(String.valueOf(getClass().getResource("css/main.css")));
         primaryStage.setTitle("La Ceiba: Inicio");
+        primaryStage.setMinHeight(800);
+        primaryStage.setMinWidth(352);
         primaryStage.show();
-        primaryStage.setResizable(false);
     }
 
     @Override
