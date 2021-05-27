@@ -11,37 +11,37 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="reportPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="reportPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="dateTitLBL" text="Fecha" />
+                  <Label text="Fecha" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="10.0" />
                   <Label text="Desde:" />
-                  <DatePicker fx:id="startDate" prefHeight="6.0" prefWidth="218.0" promptText="mm/dd/aa" showWeekNumbers="true" />
+                  <DatePicker prefHeight="6.0" prefWidth="218.0" promptText="mm/dd/aa" showWeekNumbers="true" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="4.0" />
                   <Label text="Hasta:" />
-                  <DatePicker fx:id="endDate" prefHeight="30.0" prefWidth="218.0" promptText="mm/dd/aa" showWeekNumbers="true" />
+                  <DatePicker prefHeight="30.0" prefWidth="218.0" promptText="mm/dd/aa" showWeekNumbers="true" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="timeTitLBL" text="Hora" />
+                  <Label text="Hora" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="10.0" />
                   <Label text="Desde:" />
-                  <TextField fx:id="startTimeTB" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
+                  <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="4.0" />
                   <Label text="Hasta:" />
-                  <TextField fx:id="endDateTB" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
+                  <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
                </children>
             </VBox>
          </children>
       </HBox>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#confirmReport" text="Generar" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" text="Generar" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="15.0" />
          </BorderPane.margin>
@@ -52,12 +52,12 @@
          <children>
             <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0">
                <children>
-                  <Label fx:id="destinationLBL" text="Tipo de reporte:">
+                  <Label text="Tipo de reporte:">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <ChoiceBox fx:id="reportCBX" prefHeight="31.0" prefWidth="177.0">
+                  <ChoiceBox prefHeight="31.0" prefWidth="177.0">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
@@ -66,12 +66,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0">
                <children>
-                  <Label fx:id="destinationLBL1" text="Elegir Separador:">
+                  <Label text="Elegir Separador:">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <ChoiceBox fx:id="separatorCBX" prefHeight="31.0" prefWidth="98.0">
+                  <ChoiceBox prefHeight="31.0" prefWidth="98.0">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>

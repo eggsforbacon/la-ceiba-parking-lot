@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
@@ -41,13 +40,15 @@ public class MainGUI implements Initializable {
     @FXML
     private BorderPane currentScene = new BorderPane();
 
-    boolean sceneActive;
+    boolean sceneIsActive;
 
     SecondaryGUI secController;
 
+    double CURRENT_PREF_MIN;
+
     public MainGUI() {
         secController = new SecondaryGUI();
-        sceneActive = false;
+        sceneIsActive = false;
     }
 
     @Override
@@ -62,16 +63,20 @@ public class MainGUI implements Initializable {
      * Launches placeholder pane <br>
      * @param fxmlDocument The fxml document that will be loaded. <br>
      */
-    private void launchPane(String fxmlDocument, String title, String stylesheet) {
+    private void launchPane(String fxmlDocument, String title, String stylesheet, double width) {
         try {
-            mainPane.getScene().getWindow().setWidth(1500.0);
+            mainPane.getScene().getWindow().setWidth(width);
+            CURRENT_PREF_MIN = width;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxmlDocument));
             fxmlLoader.setController(secController);
             Parent root = fxmlLoader.load();
             root.getStylesheets().addAll(String.valueOf(getClass().getResource("css/" + stylesheet)));
             ((Stage) mainPane.getScene().getWindow()).setTitle("La Ceiba: " + title);
+            ((Stage) mainPane.getScene().getWindow()).setMinWidth(width);
             currentScene.setCenter(root);
-            sceneActive = true;
+            currentScene.setVisible(true);
+            currentScene.setDisable(false);
+            sceneIsActive = true;
         } catch (IOException ignored) {}
     }
 
@@ -80,10 +85,17 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void carClicked(MouseEvent event) {
-        if (mainPane.getScene().getWindow().getWidth() == 1500.0 && sceneActive) {
+        if (mainPane.getScene().getWindow().getWidth() != 352.0 && sceneIsActive) {
+            ((Stage) mainPane.getScene().getWindow()).setMinWidth(325.0);
             mainPane.getScene().getWindow().setWidth(352.0);
+            currentScene.setVisible(false);
+            currentScene.setDisable(true);
+        } else if (sceneIsActive) {
+            mainPane.getScene().getWindow().setWidth(CURRENT_PREF_MIN);
+            mainPane.getScene().getWindow().setWidth(CURRENT_PREF_MIN);
+            currentScene.setVisible(true);
+            currentScene.setDisable(false);
         }
-        else if (sceneActive) mainPane.getScene().getWindow().setWidth(1500.0);
     }
 
     /**
@@ -91,7 +103,7 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void clientsClicked(ActionEvent event) {
-        launchPane("clients-view.fxml","Clientes","databases.css");
+        launchPane("clients-view.fxml","Clientes","databases.css", 1500);
     }
 
     /**
@@ -107,7 +119,7 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void loginClicked(ActionEvent event) {
-        launchPane("login.fxml","Iniciar Sesión","main.css");
+        launchPane("login.fxml","Iniciar Sesión","main.css", 704);
     }
 
     /**
@@ -115,7 +127,7 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void mapClicked(ActionEvent event) {
-        launchPane("map-view.fxml","Mapa", "main.css");
+        launchPane("map-view.fxml","Mapa", "main.css",1500);
     }
 
     /**
@@ -123,7 +135,7 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void receiptsClicked(ActionEvent event) {
-        launchPane("receipt-gen.fxml", "Facturación", "receipts.css");
+        launchPane("receipt-gen.fxml", "Facturación", "receipts.css", 772);
     }
 
     /**
@@ -131,7 +143,7 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void reportsClicked(ActionEvent event) {
-        launchPane("reports.fxml", "Reportes y Extractos", "main.css");
+        launchPane("reports.fxml", "Reportes y Extractos", "main.css", 1132);
     }
 
     /**
@@ -139,7 +151,7 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void usersClicked(ActionEvent event) {
-        launchPane("user-view.fxml","Clientes","databases.css");
+        launchPane("user-view.fxml","Clientes","databases.css", 1500);
     }
 
     /**
@@ -147,6 +159,13 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void vehiclesClicked(ActionEvent event) {
-        launchPane("vehicles-view.fxml","Clientes","databases.css");
+        launchPane("vehicles-view.fxml","Clientes","databases.css",1500);
+    }
+
+    /**
+     * @param CURRENT_PREF_MIN The new value
+     */
+    public void setCURRENT_PREF_MIN(double CURRENT_PREF_MIN) {
+        this.CURRENT_PREF_MIN = CURRENT_PREF_MIN;
     }
 }

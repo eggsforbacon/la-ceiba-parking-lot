@@ -62,3 +62,7 @@
 .vbox {
 	-fx-background-color: #B3E5FC;
 }
+
+.current-scene {
+	-fx-background-color: #bde1f2;
+}
