@@ -23,6 +23,7 @@ public abstract class Vehicle {
     protected LocalDateTime actualExitDate;
     protected String actualExitDateString;
     protected boolean additionalTime;
+    private DateTimeFormatter formatter;
 
 
     public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,String observations,int stayIndicator,int numberOfTime){
@@ -36,7 +37,7 @@ public abstract class Vehicle {
         this.observations = observations;
         valueToPay = 0;
         stay = stay.values()[stayIndicator];
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         entryDate = LocalDateTime.now();
         entryDateString = entryDate.format(formatter);
         this.numberOfTime = numberOfTime;
@@ -77,7 +78,7 @@ public abstract class Vehicle {
     public void takeOut(){
         enabled = false;
         actualExitDate = LocalDateTime.now();
-        actualExitDateString = actualExitDate.toString();
+        actualExitDateString = actualExitDate.format(formatter);
     }
 
     /**
@@ -193,4 +194,21 @@ public abstract class Vehicle {
     public void setActualExitDateString(String actualExitDateString) {
         this.actualExitDateString = actualExitDateString;
     }
+
+    public LocalDateTime getEntryDate() {
+        return entryDate;
+    }
+
+    public void setEntryDate(LocalDateTime entryDate) {
+        this.entryDate = entryDate;
+    }
+
+    public LocalDateTime getSupposedExitDate() {
+        return supposedExitDate;
+    }
+
+    public void setSupposedExitDate(LocalDateTime supposedExitDate) {
+        this.supposedExitDate = supposedExitDate;
+    }
+
 }
