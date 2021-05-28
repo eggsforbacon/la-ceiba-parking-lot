@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="mainPane" prefWidth="352.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox alignment="CENTER" prefHeight="800.0" prefWidth="352.0" spacing="10.0" styleClass="vbox" stylesheets="@../css/main.css" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="800.0" prefWidth="352.0" spacing="10.0" styleClass="vbox" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#carClicked" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,6 +34,6 @@
       </VBox>
    </left>
    <center>
-      <BorderPane fx:id="currentScene" minHeight="782.0" minWidth="0.0" prefHeight="782.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+      <BorderPane fx:id="currentScene" maxWidth="1.7976931348623157E308" minHeight="782.0" minWidth="0.0" prefHeight="782.0" styleClass="current-scene" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

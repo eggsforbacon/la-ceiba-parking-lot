@@ -25,6 +25,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        controller.setCURRENT_PREF_MIN(352);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/main-view.fxml"));
         fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
@@ -34,7 +35,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         scene.getStylesheets().addAll(String.valueOf(getClass().getResource("css/main.css")));
         primaryStage.setTitle("La Ceiba: Inicio");
-        primaryStage.setMinHeight(800);
+        primaryStage.setMinHeight(840);
         primaryStage.setMinWidth(352);
         primaryStage.show();
     }
