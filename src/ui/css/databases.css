@@ -1,0 +1,24 @@
+.table-view {
+	-fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #d3e7f0;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+  -fx-background-color: #0098d9;
+  -fx-border-color: white;
+  -fx-background-radius: 15;
+  -fx-border-radius: 12;
+}
+
+.table-row-cell {
+  -fx-background-color: transparent;
+}
+
+.table-row-cell:odd {
+  -fx-background-color: #63b1d6;
+}

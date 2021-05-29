@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -11,74 +13,105 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="reportPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+
+<VBox id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane fx:id="reportPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="780.0" styleClass="background" VBox.vgrow="ALWAYS">
+         <center>
+            <HBox id="container" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Fecha" />
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="10.0" />
-                  <Label text="Desde:" />
-                  <DatePicker prefHeight="6.0" prefWidth="218.0" promptText="mm/dd/aa" showWeekNumbers="true" />
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="4.0" />
-                  <Label text="Hasta:" />
-                  <DatePicker prefHeight="30.0" prefWidth="218.0" promptText="mm/dd/aa" showWeekNumbers="true" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="foreground" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Fecha">
+                           <styleClass>
+                              <String fx:value="secondary-label" />
+                              <String fx:value="subtitle" />
+                           </styleClass>
+                        </Label>
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="9.0" />
+                        <Label styleClass="secondary-label" text="Desde:" />
+                        <DatePicker prefHeight="6.0" prefWidth="218.0" promptText="MM/DD/AA" />
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="4.0" />
+                        <Label styleClass="secondary-label" text="Hasta:" />
+                        <DatePicker prefHeight="30.0" prefWidth="218.0" promptText="MM/DD/AA" showWeekNumbers="true" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="foreground" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Hora">
+                           <styleClass>
+                              <String fx:value="secondary-label" />
+                              <String fx:value="subtitle" />
+                           </styleClass>
+                        </Label>
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="10.0" />
+                        <Label styleClass="secondary-label" text="Desde:" />
+                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="4.0" />
+                        <Label styleClass="secondary-label" text="Hasta:" />
+                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="15.0" top="5.0" />
+               </BorderPane.margin>
                <children>
-                  <Label text="Hora" />
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="10.0" />
-                  <Label text="Desde:" />
-                  <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="4.0" />
-                  <Label text="Hasta:" />
-                  <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </center>
-   <bottom>
-      <Button mnemonicParsing="false" text="Generar" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="15.0" />
-         </BorderPane.margin>
-      </Button>
-   </bottom>
-   <top>
-      <VBox prefHeight="109.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0">
-               <children>
-                  <Label text="Tipo de reporte:">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ChoiceBox prefHeight="31.0" prefWidth="177.0">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </ChoiceBox>
+                  <Button mnemonicParsing="false" text="Generar" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0">
+         </bottom>
+         <top>
+            <VBox alignment="CENTER" prefHeight="109.0" prefWidth="600.0" stylesheets="@../css/choicebox-light.css" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Elegir Separador:">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ChoiceBox prefHeight="31.0" prefWidth="98.0">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </ChoiceBox>
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0">
+                     <children>
+                        <Label text="Tipo de reporte:">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ChoiceBox prefHeight="31.0" prefWidth="177.0">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0">
+                     <children>
+                        <Label text="Elegir Separador:">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ChoiceBox prefHeight="37.0" prefWidth="91.0">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-         </children>
-      </VBox>
-   </top>
-</BorderPane>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </VBox>
+         </top>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </BorderPane>
+   </children>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/receipts.css" />
+   </stylesheets>
+</VBox>

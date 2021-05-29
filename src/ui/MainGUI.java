@@ -44,6 +44,8 @@ public class MainGUI implements Initializable {
 
     SecondaryGUI secController;
 
+    boolean isMaximized;
+
     double CURRENT_PREF_MIN;
 
     public MainGUI() {
@@ -65,8 +67,11 @@ public class MainGUI implements Initializable {
      */
     private void launchPane(String fxmlDocument, String title, String stylesheet, double width) {
         try {
-            mainPane.getScene().getWindow().setWidth(width);
-            CURRENT_PREF_MIN = width;
+            isMaximized = ((Stage) mainPane.getScene().getWindow()).isMaximized();
+            if (!isMaximized) {
+                mainPane.getScene().getWindow().setWidth(width);
+                CURRENT_PREF_MIN = width;
+            }
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxmlDocument));
             fxmlLoader.setController(secController);
             Parent root = fxmlLoader.load();
@@ -85,16 +90,18 @@ public class MainGUI implements Initializable {
      */
     @FXML
     void carClicked(MouseEvent event) {
-        if (mainPane.getScene().getWindow().getWidth() != 352.0 && sceneIsActive) {
-            ((Stage) mainPane.getScene().getWindow()).setMinWidth(325.0);
-            mainPane.getScene().getWindow().setWidth(352.0);
-            currentScene.setVisible(false);
-            currentScene.setDisable(true);
-        } else if (sceneIsActive) {
-            mainPane.getScene().getWindow().setWidth(CURRENT_PREF_MIN);
-            mainPane.getScene().getWindow().setWidth(CURRENT_PREF_MIN);
-            currentScene.setVisible(true);
-            currentScene.setDisable(false);
+        if (!isMaximized) {
+            if (mainPane.getScene().getWindow().getWidth() != 352.0 && sceneIsActive) {
+                ((Stage) mainPane.getScene().getWindow()).setMinWidth(325.0);
+                mainPane.getScene().getWindow().setWidth(352.0);
+                currentScene.setVisible(false);
+                currentScene.setDisable(true);
+            } else if (sceneIsActive) {
+                mainPane.getScene().getWindow().setWidth(CURRENT_PREF_MIN);
+                mainPane.getScene().getWindow().setWidth(CURRENT_PREF_MIN);
+                currentScene.setVisible(true);
+                currentScene.setDisable(false);
+            }
         }
     }
 

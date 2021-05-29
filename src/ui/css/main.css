@@ -34,6 +34,7 @@
 
 .button {
 	-fx-pref-width: 128px;
+	-fx-pref-height: 8px;
 	-fx-background-color: #536DFE;
 	-fx-text-fill: #FFFFFF;
 	-fx-background-radius: 15px;
@@ -45,9 +46,8 @@
 	-fx-text-fill: #536DFE;
 }
 
-.button:active {
+.button:armed {
 	-fx-background-color: #d7e3f5;
-	-fx-border-color: #5089de;
 }
 
 .app-title {
@@ -65,4 +65,8 @@
 
 .current-scene {
 	-fx-background-color: #bde1f2;
+}
+
+#container {
+	-fx-background-color: transparent;
 }

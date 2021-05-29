@@ -1,0 +1,18 @@
+.choice-box {
+	-fx-background-color: #0288D1;
+	-fx-background-radius: 15;
+}
+
+.choice-box .arrow {
+	-fx-background-color: white;
+	-fx-border-color: #536DFE;
+}
+
+.choice-box .label {
+	-fx-text-fill: #FFFFFF;
+}
+
+.choice-box .context-menu {
+	-fx-background-radius: 15;
+	-fx-background-color: #03A9F4;
+}
