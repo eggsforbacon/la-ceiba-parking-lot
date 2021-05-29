@@ -51,20 +51,20 @@ public abstract class Vehicle {
      */
     public void calculateExitDate(){
         switch (stay){
-            case HOUR:
+            case HORA:
                 supposedExitDate = entryDate.plusHours(numberOfTime);
                 supposedExitDateString = supposedExitDate.toString();
                 break;
-            case DAY:
+            case DIA:
                 supposedExitDate = entryDate.plusDays(numberOfTime);
                 supposedExitDateString = supposedExitDate.toString();
                 break;
-            case MONTH:
+            case MES:
                 supposedExitDate = entryDate.plusMonths(numberOfTime);
                 supposedExitDateString = supposedExitDate.toString();
                 break;
 
-            case UNDEFINED:
+            case INDEFINIDO:
                 supposedExitDateString = "No se puede calcular. Indefinido";
                 break;
 
@@ -87,8 +87,10 @@ public abstract class Vehicle {
      <b> post: </b>Sets the boolean that indicates if the time was exceeded to true <br>
      */
     public void checkAdditionalTime(){
-        if(LocalDateTime.now().isAfter(supposedExitDate)){
-            additionalTime = true;
+        if(!stay.toString().equalsIgnoreCase("INDEFINIDO") ){
+            if(LocalDateTime.now().isAfter(supposedExitDate)){
+                additionalTime = true;
+            }
         }
     }
 
@@ -211,4 +213,35 @@ public abstract class Vehicle {
         this.supposedExitDate = supposedExitDate;
     }
 
+    public VehicleType getType() {
+        return type;
+    }
+
+    public void setType(VehicleType type) {
+        this.type = type;
+    }
+
+    public StayTime getStay() {
+        return stay;
+    }
+
+    public void setStay(StayTime stay) {
+        this.stay = stay;
+    }
+
+    public LocalDateTime getActualExitDate() {
+        return actualExitDate;
+    }
+
+    public void setActualExitDate(LocalDateTime actualExitDate) {
+        this.actualExitDate = actualExitDate;
+    }
+
+    public boolean isAdditionalTime() {
+        return additionalTime;
+    }
+
+    public void setAdditionalTime(boolean additionalTime) {
+        this.additionalTime = additionalTime;
+    }
 }
