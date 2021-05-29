@@ -15,14 +15,23 @@ public class Main extends Application {
     MainGUI controller;
     private static final String SAVE_PATH = "data/data.1zj";
 
+    /**
+     * Principal constructor for the class. <br>
+     * */
     public Main() {
         controller = new MainGUI();
     }
 
+    /**
+     * @param args The arguments for the compiler and the JavaVM. <br>
+     * */
     public static void main(String[] args) {
         LauncherImpl.launchApplication(Main.class, PreloaderGUI.class, args);
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public void start(Stage primaryStage) throws IOException {
         controller.setCURRENT_PREF_MIN(352);
@@ -40,6 +49,9 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public void init() {
         int COUNT_LIMIT = 40000;
@@ -49,6 +61,9 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public void stop() {
     }

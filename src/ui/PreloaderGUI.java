@@ -14,6 +14,9 @@ public class PreloaderGUI extends Preloader {
     private Stage preloaderStage;
     private Scene scene;
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public void start(Stage primaryStage) {
         preloaderStage = primaryStage;
@@ -24,6 +27,9 @@ public class PreloaderGUI extends Preloader {
         preloaderStage.show();
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public void init() throws Exception {
         load();
@@ -33,12 +39,18 @@ public class PreloaderGUI extends Preloader {
         scene.setFill(Color.TRANSPARENT);
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public void handleApplicationNotification(Preloader.PreloaderNotification info) {
         if (info instanceof ProgressNotification)
             MainGUI.progressBar.setProgress(((ProgressNotification) info).getProgress());
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public void handleStateChangeNotification(StateChangeNotification info) {
         StateChangeNotification.Type type = info.getType();
