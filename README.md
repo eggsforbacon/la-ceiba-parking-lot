@@ -22,6 +22,7 @@ Windows
 Intellij IDEA and Eclipse IDE
 
 ### [File for Milestone1](docs/FirstDelivery.pdf)
+### [Design of the test cases](https://docs.google.com/document/d/1rJG2B4wJkk-KD5t1A2mdccVYT4sfvYLXXF2zAyB9Ff8/edit?usp=sharing)
 
 ---
 
