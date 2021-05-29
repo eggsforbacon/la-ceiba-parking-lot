@@ -16,6 +16,21 @@
 	-fx-text-fill: #212121;
 }
 
+.check-box .box {
+	-fx-background-radius: 50;
+	-fx-background-color: #536DFE;
+}
+
+.check-box:selected .mark {
+	-fx-background-color: #FFFFFF;
+}
+
+.check-box:selected .box {
+	-fx-border-color: #FFFFFF;
+	-fx-border-width: 3;
+	-fx-border-radius: 50;
+}
+
 /**********************************************************/
 /*						Date Picker						  */
 /**********************************************************/
@@ -113,10 +128,4 @@
 .date-picker-popup > * > .today {
 	-fx-background-color: #536DFE;
 	-fx-text-fill: #B3E5FC;
-}
-
-.text-field {
-	-fx-background-radius: 12;
-	-fx-prompt-text-fill: #e4e8f5;
-	-fx-background-color: #536DFE;
 }

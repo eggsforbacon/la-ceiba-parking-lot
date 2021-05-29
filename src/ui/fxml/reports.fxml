@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane fx:id="reportPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="780.0" styleClass="background" VBox.vgrow="ALWAYS">
@@ -30,10 +29,10 @@
                         </Label>
                         <Separator opacity="0.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="9.0" />
                         <Label styleClass="secondary-label" text="Desde:" />
-                        <DatePicker prefHeight="6.0" prefWidth="218.0" promptText="MM/DD/AA" />
+                        <DatePicker fx:id="reportFromDTP" prefHeight="6.0" prefWidth="218.0" promptText="MM/DD/AA" />
                         <Separator opacity="0.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="4.0" />
                         <Label styleClass="secondary-label" text="Hasta:" />
-                        <DatePicker prefHeight="30.0" prefWidth="218.0" promptText="MM/DD/AA" showWeekNumbers="true" />
+                        <DatePicker fx:id="reportToDTP" prefHeight="30.0" prefWidth="218.0" promptText="MM/DD/AA" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="foreground" HBox.hgrow="ALWAYS">
@@ -46,10 +45,10 @@
                         </Label>
                         <Separator opacity="0.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="10.0" />
                         <Label styleClass="secondary-label" text="Desde:" />
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
+                        <TextField fx:id="reportFromHourTF" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
                         <Separator opacity="0.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="4.0" />
                         <Label styleClass="secondary-label" text="Hasta:" />
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
+                        <TextField fx:id="reportToHourTF" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="218.0" promptText="HH:mm (24h)" />
                      </children>
                   </VBox>
                </children>
@@ -64,46 +63,28 @@
                   <Insets bottom="15.0" top="5.0" />
                </BorderPane.margin>
                <children>
-                  <Button mnemonicParsing="false" text="Generar" />
+                  <Button mnemonicParsing="false" onAction="#generateReport" text="Generar" />
                </children>
             </HBox>
          </bottom>
          <top>
-            <VBox alignment="CENTER" prefHeight="109.0" prefWidth="600.0" stylesheets="@../css/choicebox-light.css" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0" stylesheets="@../css/choicebox-light.css">
                <children>
-                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0">
-                     <children>
-                        <Label text="Tipo de reporte:">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <ChoiceBox prefHeight="31.0" prefWidth="177.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </ChoiceBox>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="5.0">
-                     <children>
-                        <Label text="Elegir Separador:">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <ChoiceBox prefHeight="37.0" prefWidth="91.0">
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </ChoiceBox>
-                     </children>
-                  </HBox>
+                  <Label text="Tipo de reporte:">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ChoiceBox fx:id="reportTypeCHB" prefHeight="31.0" prefWidth="177.0">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </ChoiceBox>
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-               </padding>
-            </VBox>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" />
+               </BorderPane.margin>
+            </HBox>
          </top>
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

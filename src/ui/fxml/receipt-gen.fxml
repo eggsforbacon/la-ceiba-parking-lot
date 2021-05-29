@@ -17,7 +17,7 @@
       <Label text="Generación de recibo:" />
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
          <children>
-            <CheckBox alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#toggleMonthly" selected="true" text="Recibo mensual" />
+            <CheckBox fx:id="receiptToggle" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#toggleMonthly" selected="true" text="Recibo mensual" />
          </children>
       </HBox>
       <Separator opacity="0.0" orientation="VERTICAL" prefHeight="59.0" prefWidth="0.0" />
@@ -25,73 +25,76 @@
          <children>
             <HBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
-                  <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Factura de venta numero: ####AAAA" />
+                  <Label fx:id="receiptCodeMonthlyLBL" minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Factura de venta numero: ####AAAA" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
                   <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Ciudad de venta:" />
-                  <TextField minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
+                  <TextField fx:id="receiptCityMonthlyTF" minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
-                  <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Valor pagado: $###.###" />
+                  <Label fx:id="receiptPaidValueMonthlyLBL" minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Valor pagado: $###.###" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
                   <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Fecha de facturación:" />
-                  <DatePicker minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="119.0" />
+                  <DatePicker fx:id="receiptDateMonthlyDTP" minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="137.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
                   <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Nombre del cliente:" />
-                  <TextField minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
+                  <TextField fx:id="receiptClientNameMonthlyTF" minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
                </children>
             </HBox>
-            <Label minHeight="0.0" minWidth="0.0" prefHeight="64.0" prefWidth="257.0" styleClass="secondary-label" text="Vechiculo por el que se paga: AAAAAA" />
-            <Label minHeight="0.0" minWidth="0.0" prefHeight="43.0" styleClass="secondary-label" text="Tiempo de estadía: ##" wrapText="true" />
+            <Label fx:id="receiptVehicleMonthlyLBL" minHeight="0.0" minWidth="0.0" prefHeight="64.0" styleClass="secondary-label" text="Vechiculo por el que se paga: AAAAAA" />
+            <Label fx:id="receiptDaysMonthlyLBL" minHeight="0.0" minWidth="0.0" prefHeight="43.0" styleClass="secondary-label" text="Tiempo de estadía: ##" wrapText="true" />
          </children>
          <VBox.margin>
             <Insets left="5.0" right="5.0" />
          </VBox.margin>
       </VBox>
-      <VBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="413.0" spacing="15.0" styleClass="foreground" visible="false">
+      <VBox fx:id="dailyVBox" alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="413.0" spacing="15.0" styleClass="foreground" visible="false">
          <children>
             <HBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
                   <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Tipo de vehículo:" />
-                  <ChoiceBox minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="121.0" stylesheets="@../css/choicebox-dark.css" />
+                  <ChoiceBox fx:id="receiptVehicleTypeCHB" minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="121.0" stylesheets="@../css/choicebox-dark.css" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
                   <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Fecha de facturación:" />
-                  <DatePicker minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="119.0" />
+                  <DatePicker fx:id="receiptDateDailyDTP" minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="119.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
-                  <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Valor pagado: $###.###" />
+                  <Label fx:id="receiptPaidValueDailyLBL" minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Valor pagado: $###.###" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
                   <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Placa del vehículo:" />
-                  <TextField minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
+                  <TextField fx:id="receiptPlateDailyTF" minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0" spacing="10.0">
                <children>
                   <Label minHeight="0.0" minWidth="0.0" styleClass="secondary-label" text="Total de horas:" />
-                  <TextField minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
+                  <TextField fx:id="receiptHoursDailyTF" minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="108.0" />
                </children>
             </HBox>
          </children>
+         <VBox.margin>
+            <Insets left="5.0" right="5.0" />
+         </VBox.margin>
       </VBox>
-      <Button mnemonicParsing="false" text="Generar" />
+      <Button mnemonicParsing="false" onAction="#generateReceipt" text="Generar" />
    </children>
    <stylesheets>
       <URL value="@../css/main.css" />

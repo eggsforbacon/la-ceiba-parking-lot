@@ -1,5 +1,6 @@
 .table-view {
 	-fx-background-color: transparent;
+  -fx-background-radius: 15;
 }
 
 .table-view .column-header .label {
@@ -13,6 +14,11 @@
   -fx-border-color: white;
   -fx-background-radius: 15;
   -fx-border-radius: 12;
+}
+
+.table-view .column-header-background, .table-view .placeholder .label {
+  -fx-background-color: transparent;
+  -fx-text-fill: #0288D1;
 }
 
 .table-row-cell {
