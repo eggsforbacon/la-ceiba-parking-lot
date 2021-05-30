@@ -100,7 +100,6 @@ class VehicleGenericChildrenTest {
         vehicleSetupScenary2();
         //Stay time: 2 hours
         VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",0,2);
-        testVehicle.calculateExitDate();
         testVehicle.checkAdditionalTime();
         assertFalse(testVehicle.isAdditionalTime());
     }
@@ -110,7 +109,6 @@ class VehicleGenericChildrenTest {
         vehicleSetupScenary2();
         //Stay time: Undefined
         VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",3,0);
-        testVehicle.calculateExitDate();
         testVehicle.checkAdditionalTime();
         assertFalse(testVehicle.isAdditionalTime());
     }

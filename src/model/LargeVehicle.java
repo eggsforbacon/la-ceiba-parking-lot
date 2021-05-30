@@ -14,12 +14,35 @@ public class LargeVehicle extends Vehicle {
         super(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
     }
 
+
+    public void changeStayTime(){
+        switch (stay){
+            case HORA:
+                if(numberOfTime>=5){
+                    stay = StayTime.DIA;
+                }
+                break;
+            case DIA:
+                if(numberOfTime)
+                break;
+        }
+    }
     @Override
     public double calculateValueToPay() {
         double value = 0;
         switch (stay){
             case HORA:
                 value = HOURVALUE*numberOfTime;
+                if(value > DAYVALUE){
+                    stay = StayTime.values()[1];
+                    value = DAYVALUE;
+                    calculateExitDate();
+                    checkAdditionalTime();
+                }
+                if(additionalTime){
+
+                    supposedExitDate; ///NO
+                }
                 break;
             case DIA:
 
