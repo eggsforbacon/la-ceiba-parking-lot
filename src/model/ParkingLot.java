@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ParkingLot implements Serializable {
-    private ArrayList<Client> clientsPL;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private ArrayList<Client> clientsPL;
     private ArrayList<Vehicle> vehiclesPL;
   
 
