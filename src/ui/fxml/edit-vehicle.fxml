@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="584.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="564.0" styleClass="foreground" VBox.vgrow="ALWAYS">
+               <children>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="16.0" prefWidth="38.0" />
+                  <Label styleClass="subtitle-2" text="Editar Vehículo:" />
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="16.0" prefWidth="38.0" />
+                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                     <children>
+                        <Label text="Editar tipo de vehículo:" />
+                        <ChoiceBox fx:id="editVehicleTypeCHB" prefWidth="150.0" stylesheets="@../css/choicebox-dark.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                     <children>
+                        <Label text="Editar tiempo de estadía:" />
+                        <TextField fx:id="editVehicleNumberDaysTF" prefHeight="37.0" prefWidth="41.0" promptText="#" />
+                        <ChoiceBox fx:id="editVehicleStayTypeCHB" prefHeight="37.0" prefWidth="118.0" stylesheets="@../css/choicebox-dark.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                     <children>
+                        <Label text="Editar placa:" />
+                        <TextField fx:id="editVehiclePlatesTF" prefHeight="37.0" prefWidth="100.0" promptText="AAA000" />
+                        <Separator opacity="0.0" prefHeight="14.0" prefWidth="27.0" />
+                        <Label text="Editar modelo:" />
+                        <TextField fx:id="editVehicleModelTF" prefHeight="37.0" prefWidth="139.0" promptText="Marca, Modelo" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                     <children>
+                        <Label text="Editar color:" />
+                        <ChoiceBox fx:id="editVehicleColorCHB" prefHeight="37.0" prefWidth="132.0" stylesheets="@../css/choicebox-dark.css" />
+                        <Separator opacity="0.0" prefHeight="14.0" prefWidth="23.0" />
+                        <Label text="Editar puesto:" />
+                        <ChoiceBox fx:id="editVehicleSeatCHB" prefHeight="37.0" prefWidth="76.0" stylesheets="@../css/choicebox-dark.css" />
+                     </children>
+                  </HBox>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="62.0" prefWidth="6.0" />
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="564.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#confirmEditVehicle" text="Confirm" />
+                        <Button mnemonicParsing="false" onAction="#cancelCancelVehicle" text="Cancelar" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

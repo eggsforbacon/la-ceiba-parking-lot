@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -13,8 +14,8 @@ import javafx.stage.Stage;
 import model.*;
 import java.io.IOException;
 
-public class SecondaryGUI {
-    /*------------------------ JAVAFX FIELDS ------------------------*/
+public class CurrentSceneGUI {
+    /*------------------------- JAVAFX FIELDS --------------------------*/
 
     /*Login*/
 
@@ -42,42 +43,10 @@ public class SecondaryGUI {
     private TableColumn<Client, String> clientEnabledCOL;
 
     @FXML
+    private Button clientEditBTN;
+
+    @FXML
     private Button clientDeleteBTN;
-
-    /*New User, New Vehicle*/
-
-    @FXML
-    private TextField newClientFullnameTF;
-
-    @FXML
-    private TextField newClientPhoneTF;
-
-    @FXML
-    private TextField newClientIDTF;
-
-    @FXML
-    private ChoiceBox<String> newClientDocumentTypeCHB;
-
-    @FXML
-    private ChoiceBox<String> newVehicleTypeCHB;
-
-    @FXML
-    private TextField newVehicleNumberDaysTF;
-
-    @FXML
-    private ChoiceBox<String> newVehicleStayTypeCHB;
-
-    @FXML
-    private TextField newVehiclePlatesTF;
-
-    @FXML
-    private TextField newVehicleModelTF;
-
-    @FXML
-    private ChoiceBox<String> newVehicleColorCHB;
-
-    @FXML
-    private ChoiceBox<Integer> newVehicleSeatCHB;
 
     /*Vehicles DB*/
 
@@ -126,20 +95,6 @@ public class SecondaryGUI {
 
     @FXML
     private Button userEditBTN;
-
-    /*New User Prompt*/
-
-    @FXML
-    private TextField newUserFullNameTF;
-
-    @FXML
-    private TextField newUsernameTF;
-
-    @FXML
-    private PasswordField newPasswordPWF;
-
-    @FXML
-    private TextField newUserIDTF;
 
     /*Receipt Generation*/
 
@@ -208,20 +163,31 @@ public class SecondaryGUI {
     @FXML
     private ChoiceBox<String> reportTypeCHB;
 
-    /*------------------------ METHODS ------------------------*/
+    /*------------------------ CLASS ATTRIBUTES ------------------------*/
+
+    ParkingLot laCeiba;
+    EmergentWindowsGUI emergentWindowsController;
+
+    /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
 
-    /*Initializer and Constructors*/
+    /*Initializer, Constructors and General*/
 
-    /*General Purpose*/
+    /**
+     * Principal constructor of the class. <br>
+     * @param laCeiba The model object that stores all the information. @NotNull. <br>
+     * */
+    public CurrentSceneGUI(ParkingLot laCeiba) {
+        this.laCeiba = laCeiba;
+        emergentWindowsController = new EmergentWindowsGUI(laCeiba);
+    }
 
     /**
      * Launches an fxml file. <br>
      * @param fxml The name of the fxml file. @NotNull.<br>
      * @param title The title of the window to be launched. @NotEmpty.<br>
-     * @param modality The modality which the window will be loaded with. Defined within the enum Modality. <br>
      * */
-    private void launchFXML(String fxml, String title, Modality modality) {
+    private void launchFXML(String fxml, String title) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxml));
             fxmlLoader.setController(this);
@@ -229,7 +195,11 @@ public class SecondaryGUI {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.initModality(modality);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle(title);
+            Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
+            stage.getIcons().add(icon);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException ignored) {}
     }
@@ -249,7 +219,7 @@ public class SecondaryGUI {
      * */
     @FXML
     void registerClicked(ActionEvent event) {
-
+        launchFXML("create-user.fxml","Nuevo Usuario");
     }
 
     /*Clients DB*/
@@ -259,23 +229,7 @@ public class SecondaryGUI {
      * */
     @FXML
     void addClient(ActionEvent event) {
-
-    }
-
-    /**
-     * Confirms the creation of a new client and adds it to the program. <br>
-     * */
-    @FXML
-    void createNewClient(ActionEvent event) {
-
-    }
-
-    /**
-     * Cancels the creation of a new client in the program. <br>
-     * */
-    @FXML
-    void cancelCreateNewClient(ActionEvent event) {
-
+        launchFXML("create-client-vehicle.fxml", "Nuevo Cliente");
     }
 
     /**
@@ -284,6 +238,14 @@ public class SecondaryGUI {
     @FXML
     void deleteClient(ActionEvent event) {
 
+    }
+
+    /**
+     * Prompts the user to edit the selected client. <br>
+     * */
+    @FXML
+    void editClient(ActionEvent event) {
+        launchFXML("edit-client.fxml", "Editar Cliente");
     }
 
     /*Vehicles DB*/
@@ -301,7 +263,7 @@ public class SecondaryGUI {
      * */
     @FXML
     void editVehicle(ActionEvent event) {
-
+        launchFXML("edit-vehicle.fxml", "Editar Vehículo");
     }
 
     /*Map view (Throwing this one under the rug for a little while)*/
@@ -314,23 +276,7 @@ public class SecondaryGUI {
      * */
     @FXML
     void addUser(ActionEvent event) {
-
-    }
-
-    /**
-     * Confirms the creation of a new user and adds it to the program. <br>
-     * */
-    @FXML
-    void createNewUser(ActionEvent event) {
-
-    }
-
-    /**
-     * Cancels the creation of a new user. <br>
-     * */
-    @FXML
-    void cancelCreateNewUser(ActionEvent event) {
-
+        launchFXML("create-user.fxml", "Nuevo Usuario");
     }
 
     /**
@@ -348,7 +294,7 @@ public class SecondaryGUI {
      * */
     @FXML
     void editUser(ActionEvent event) {
-
+        launchFXML("edit-user.fxml", "Editar Usuario");
     }
 
     /*Receipt Generation*/

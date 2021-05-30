@@ -10,11 +10,15 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.ParkingLot;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainGUI implements Initializable {
+
+    /*-------------------------- JAVAFX FIELDS -------------------------*/
 
     /*Splash screen*/
 
@@ -39,19 +43,33 @@ public class MainGUI implements Initializable {
     @FXML
     private BorderPane currentScene = new BorderPane();
 
+    /*------------------------ CLASS ATTRIBUTES ------------------------*/
+
+    ParkingLot laCeiba;
+    CurrentSceneGUI currentSceneController;
     boolean sceneIsActive;
-
-    SecondaryGUI secController;
-
     boolean isMaximized;
-
     double CURRENT_PREF_MIN;
+
+    /*---------------------------- METHODS -----------------------------*/
+    //Methods will be written in order according to the intended flow of the program
+
+    /*Initializer, Constructors and General*/
+
+    /**
+     * Empty constructor of the class. This method is required for the preloader to work.<br>
+     * */
+    public MainGUI() {
+
+    }
 
     /**
      * Principal constructor of the class. <br>
+     * @param laCeiba The model object that stores all the information. @NotNull. <br>
      * */
-    public MainGUI() {
-        secController = new SecondaryGUI();
+    public MainGUI(ParkingLot laCeiba) {
+        this.laCeiba = laCeiba;
+        currentSceneController = new CurrentSceneGUI(laCeiba);
         sceneIsActive = false;
     }
     /**
@@ -77,7 +95,7 @@ public class MainGUI implements Initializable {
                 CURRENT_PREF_MIN = width;
             }
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxmlDocument));
-            fxmlLoader.setController(secController);
+            fxmlLoader.setController(currentSceneController);
             Parent root = fxmlLoader.load();
             ((Stage) mainPane.getScene().getWindow()).setTitle("La Ceiba: " + title);
             ((Stage) mainPane.getScene().getWindow()).setMinWidth(width);
@@ -87,6 +105,8 @@ public class MainGUI implements Initializable {
             sceneIsActive = true;
         } catch (IOException ignored) {}
     }
+
+    /*Menu Options*/
 
     /**
      * Called when the image view on "main-view.fxml" is clicked on <br>

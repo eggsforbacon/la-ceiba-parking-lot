@@ -26,6 +26,7 @@
       <VBox alignment="CENTER" minWidth="0.0" prefHeight="553.0" prefWidth="220.0" spacing="10.0" styleClass="background" BorderPane.alignment="CENTER">
          <children>
             <Button minWidth="0.0" mnemonicParsing="false" onAction="#addClient" text="Añadir" />
+            <Button fx:id="clientEditBTN" minWidth="0.0" mnemonicParsing="false" onAction="#editClient" text="Editar" />
             <Button fx:id="clientDeleteBTN" minWidth="0.0" mnemonicParsing="false" onAction="#deleteClient" text="Borrar" />
          </children>
          <BorderPane.margin>

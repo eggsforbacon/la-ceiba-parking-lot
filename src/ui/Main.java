@@ -8,18 +8,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.ParkingLot;
 import java.io.IOException;
 
 public class Main extends Application {
 
     MainGUI controller;
+    ParkingLot laCeiba;
     private static final String SAVE_PATH = "data/data.1zj";
 
     /**
      * Principal constructor for the class. <br>
      * */
     public Main() {
-        controller = new MainGUI();
+        laCeiba = new ParkingLot();
+        controller = new MainGUI(laCeiba);
     }
 
     /**
@@ -44,7 +47,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         scene.getStylesheets().addAll(String.valueOf(getClass().getResource("css/main.css")));
         primaryStage.setTitle("La Ceiba: Inicio");
-        primaryStage.setMinHeight(840);
+        primaryStage.setMinHeight(860);
         primaryStage.setMinWidth(352);
         primaryStage.show();
     }
