@@ -12,6 +12,10 @@ public class Client extends Person {
     }
     
 
+	public boolean getState() {
+		return state;
+	}
+
 	public String getCellNumber() {
 		return cellNumber;
 	}
@@ -19,6 +23,9 @@ public class Client extends Person {
 	public void setCellNumber(String cellNumber) {
 		this.cellNumber = cellNumber;
 	} 
+	public void setState(boolean state) {
+		this.state = state;
+	}
     
     
 }
