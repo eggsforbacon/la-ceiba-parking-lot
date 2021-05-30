@@ -27,7 +27,6 @@
       <VBox alignment="CENTER" minWidth="0.0" prefHeight="553.0" prefWidth="220.0" spacing="10.0" styleClass="background" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="vehicleEditBTN" minWidth="0.0" mnemonicParsing="false" onAction="#editVehicle" text="Editar" />
-            <Button minWidth="0.0" mnemonicParsing="false" onAction="#addVehicle" text="Añadir" />
             <Button fx:id="vehicleDeleteBTN" minWidth="0.0" mnemonicParsing="false" onAction="#deleteVehicle" text="Borrar" />
          </children>
          <BorderPane.margin>

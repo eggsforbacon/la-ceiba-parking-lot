@@ -44,6 +44,41 @@ public class SecondaryGUI {
     @FXML
     private Button clientDeleteBTN;
 
+    /*New User, New Vehicle*/
+
+    @FXML
+    private TextField newClientFullnameTF;
+
+    @FXML
+    private TextField newClientPhoneTF;
+
+    @FXML
+    private TextField newClientIDTF;
+
+    @FXML
+    private ChoiceBox<String> newClientDocumentTypeCHB;
+
+    @FXML
+    private ChoiceBox<String> newVehicleTypeCHB;
+
+    @FXML
+    private TextField newVehicleNumberDaysTF;
+
+    @FXML
+    private ChoiceBox<String> newVehicleStayTypeCHB;
+
+    @FXML
+    private TextField newVehiclePlatesTF;
+
+    @FXML
+    private TextField newVehicleModelTF;
+
+    @FXML
+    private ChoiceBox<String> newVehicleColorCHB;
+
+    @FXML
+    private ChoiceBox<Integer> newVehicleSeatCHB;
+
     /*Vehicles DB*/
 
     @FXML
@@ -91,6 +126,20 @@ public class SecondaryGUI {
 
     @FXML
     private Button userEditBTN;
+
+    /*New User Prompt*/
+
+    @FXML
+    private TextField newUserFullNameTF;
+
+    @FXML
+    private TextField newUsernameTF;
+
+    @FXML
+    private PasswordField newPasswordPWF;
+
+    @FXML
+    private TextField newUserIDTF;
 
     /*Receipt Generation*/
 
@@ -157,7 +206,7 @@ public class SecondaryGUI {
     private TextField reportToHourTF;
 
     @FXML
-    private ChoiceBox<?> reportTypeCHB;
+    private ChoiceBox<String> reportTypeCHB;
 
     /*------------------------ METHODS ------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -206,10 +255,26 @@ public class SecondaryGUI {
     /*Clients DB*/
 
     /**
-     * Prompts the user to add a client to the program. <br>
+     * Prompts the user to add a client with its vehicle to the program. <br>
      * */
     @FXML
     void addClient(ActionEvent event) {
+
+    }
+
+    /**
+     * Confirms the creation of a new client and adds it to the program. <br>
+     * */
+    @FXML
+    void createNewClient(ActionEvent event) {
+
+    }
+
+    /**
+     * Cancels the creation of a new client in the program. <br>
+     * */
+    @FXML
+    void cancelCreateNewClient(ActionEvent event) {
 
     }
 
@@ -222,14 +287,6 @@ public class SecondaryGUI {
     }
 
     /*Vehicles DB*/
-
-    /**
-     * Prompts the user to add a vehicle to the program. <br>
-     * */
-    @FXML
-    void addVehicle(ActionEvent event) {
-
-    }
 
     /**
      * Deletes the selected vehicle. <br>
@@ -257,6 +314,22 @@ public class SecondaryGUI {
      * */
     @FXML
     void addUser(ActionEvent event) {
+
+    }
+
+    /**
+     * Confirms the creation of a new user and adds it to the program. <br>
+     * */
+    @FXML
+    void createNewUser(ActionEvent event) {
+
+    }
+
+    /**
+     * Cancels the creation of a new user. <br>
+     * */
+    @FXML
+    void cancelCreateNewUser(ActionEvent event) {
 
     }
 

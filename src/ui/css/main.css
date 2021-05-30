@@ -34,7 +34,7 @@
 
 .button {
 	-fx-pref-width: 128px;
-	-fx-min-height: 8px;
+	-fx-pref-height: 8px;
 	-fx-background-color: #536DFE;
 	-fx-text-fill: #FFFFFF;
 	-fx-background-radius: 15px;
@@ -57,6 +57,10 @@
 .subtitle {
 	-fx-font-size: 19px;
 	-fx-font-style: italic;
+}
+
+.subtitle-2 {
+	-fx-font-size: 19px;
 }
 
 .vbox {
@@ -82,6 +86,13 @@
 	-fx-background-color: #B3E5FC;
 	-fx-background-radius: 15;
 }
+
+.separator:horizontal .line{
+	-fx-background-color: #BDBDBD;
+	-fx-background-radius: 15;
+}
+
+/*Ids*/
 
 #container {
 	-fx-background-color: transparent;
