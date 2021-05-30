@@ -48,8 +48,25 @@ public class ParkingLot implements Serializable {
     @param id A string who have the client큦 id
     @return true or false
     */
-    public boolean disableClient(String id) {
+    public boolean disableClientByID(String id) {
     	Client aux=searchByID(id);
+    	if(aux!=null) {
+    		aux.setState(false);
+    		return true;
+    	}
+    	return false;
+    }
+    
+    
+    /**
+    Disable a specific client in the parking lot <br>
+    <b> pre: </b>Needs verify if the client already exists and if he does not own a car in the parking lot<br>
+    <b> post: </b>The specific client will be disabled<br>
+    @param name A string who have the client큦 name
+    @return true or false
+    */
+    public boolean disableClientByName(String name) {
+    	Client aux=searchByName(name);
     	if(aux!=null) {
     		aux.setState(false);
     		return true;
@@ -77,6 +94,44 @@ public class ParkingLot implements Serializable {
     	
     }
     
+    
+    /**
+    Update a specific client's ID<br>
+    <b> pre: </b>Needs verify if the client already exists and if his new ID is not used by other client<br>
+    <b> post: </b>The specific client will be updated his ID<br>
+    @param newID A string who have the client큦 new ID
+    @param pastID A string who have the client큦 past ID
+    @return true or false
+    */
+    public boolean updateClientID(String pastID, String newID) {
+    	if((searchByID(newID)==null)&&(searchByID(pastID)!=null)) {
+    		searchByID(pastID).setId(newID);
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
+    
+    
+    /**
+    Update a specific client's cell number<br>
+    <b> pre: </b>Needs verify if the client already exists<br>
+    <b> post: </b>The specific client will be updated his cell number<br>
+    @param id A string who have the client큦 ID
+    @param newCellNumber A string who have the client큦 new cell number
+    @return true or false
+    */
+    public boolean updateClientCellNumber(String id, String newCellNumber) {
+    	Client aux=searchByID(id);
+    	if(aux!=null) {
+    		aux.setCellNumber(newCellNumber);
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
     
     /**
     Verify if the new client has already exist<br>
