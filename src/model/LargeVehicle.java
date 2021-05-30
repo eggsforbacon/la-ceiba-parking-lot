@@ -4,9 +4,7 @@ public class LargeVehicle extends Vehicle {
     private final static int HOURVALUE = 3000;
     private final static int TWOHOURSVALUE = 4000;
     private final static int ADITIONALVALUE = 1000;
-    private final static int DAYVALUE = 7000;
-    private final static int NIGHTVALUE = 10000;
-    private final static int DAYANDNIGHTVALUE = 12000;
+    private final static int DAYVALUE = 12000;
     private final static int MONTHVALUE = 60000;
     private final static int[] availableSpots = {21,22,23,24,25,26,27,28,29};
 
@@ -23,7 +21,7 @@ public class LargeVehicle extends Vehicle {
                 }
                 break;
             case DIA:
-                if(numberOfTime)
+                //if(numberOfTime)
                 break;
         }
     }
@@ -41,7 +39,7 @@ public class LargeVehicle extends Vehicle {
                 }
                 if(additionalTime){
 
-                    supposedExitDate; ///NO
+                    //supposedExitDate; ///NO
                 }
                 break;
             case DIA:
