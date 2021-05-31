@@ -14,8 +14,9 @@ public class SmallVehicle extends Vehicle{
 
 
     @Override
-    public double calculateValueToPay() {
-        return 0; //WIP
+    public void calculateValueToPay() {
+
+
     }
 
     @Override

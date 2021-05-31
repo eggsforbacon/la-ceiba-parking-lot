@@ -7,8 +7,9 @@ public class VehicleGenericChildren extends Vehicle{
     }
 
     @Override
-    public double calculateValueToPay() {
-        return 0;
+    public void calculateValueToPay() {
+
+
     }
 
     @Override

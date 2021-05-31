@@ -87,6 +87,7 @@ public abstract class Vehicle {
      <b> post: </b>Sets the boolean that indicates if the time was exceeded to true <br>
      */
     public void checkAdditionalTime(){
+        calculateExitDate();
         if(!stay.toString().equalsIgnoreCase("INDEFINIDO") ){
             if(LocalDateTime.now().isAfter(supposedExitDate)){
                 additionalTime = true;
@@ -94,7 +95,7 @@ public abstract class Vehicle {
         }
     }
 
-    public abstract double calculateValueToPay();
+    public abstract void calculateValueToPay();
     public abstract void setSpot();
 
 

@@ -1,5 +1,10 @@
 package model;
 
+import com.sun.org.apache.xerces.internal.impl.dv.xs.AbstractDateTimeDV;
+
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 public class LargeVehicle extends Vehicle {
     private final static int HOURVALUE = 3000;
     private final static int TWOHOURSVALUE = 4000;
@@ -13,46 +18,94 @@ public class LargeVehicle extends Vehicle {
     }
 
 
-    public void changeStayTime(){
+    public StayTime changeStayTime(){
         switch (stay){
             case HORA:
-                if(numberOfTime>=5){
-                    stay = StayTime.DIA;
+                if(numberOfTime>=10){
+                    return StayTime.DIA;
                 }
                 break;
             case DIA:
-                //if(numberOfTime)
+                if(numberOfTime>=5){
+                    return StayTime.MES;
+                }
                 break;
         }
+        return stay;
     }
     @Override
-    public double calculateValueToPay() {
+    public void calculateValueToPay() {
         double value = 0;
-        switch (stay){
-            case HORA:
-                value = HOURVALUE*numberOfTime;
-                if(value > DAYVALUE){
-                    stay = StayTime.values()[1];
-                    value = DAYVALUE;
-                    calculateExitDate();
-                    checkAdditionalTime();
-                }
-                if(additionalTime){
-
-                    //supposedExitDate; ///NO
-                }
-                break;
-            case DIA:
-
-                break;
-            case MES:
-
-                break;
-            case  INDEFINIDO:
-
-                break;
+        StayTime compare=stay;
+        int comp=numberOfTime;
+        if(changeStayTime()!=stay){
+            compare = changeStayTime();
+            comp=1;
         }
-        return 0; //WIP
+        switch (compare.toString()){
+            case "HORA":
+                switch (comp){
+                    case 1:
+                        valueToPay = HOURVALUE;
+                        break;
+                    case 2:
+                        valueToPay = TWOHOURSVALUE;
+                        break;
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        valueToPay = TWOHOURSVALUE+(comp-2)*ADITIONALVALUE;
+                        break;
+                }
+                checkAdditionalTime();
+                if(additionalTime){
+                   valueToPay = calculateValueAdditionalTime();
+                }
+                break;
+            case "DIA":
+                valueToPay = DAYVALUE*comp;
+                if(additionalTime){
+                    valueToPay = calculateValueAdditionalTime();
+                }
+                break;
+            case "MES":
+                valueToPay = MONTHVALUE*comp;
+                if(additionalTime){
+                    valueToPay = calculateValueAdditionalTime();
+                }
+                break;
+            case  "INDEFINIDO":
+                valueToPay= calculateValueAdditionalTime();
+                break;
+            default:
+        }//WIP
+    }
+
+    private double calculateValueAdditionalTime(){
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime tempDateTime = LocalDateTime.from(entryDate);
+        long months = tempDateTime.until(now, ChronoUnit.MONTHS );
+        tempDateTime = tempDateTime.plusMonths( months );
+        long days = tempDateTime.until(now, ChronoUnit.DAYS );
+        tempDateTime = tempDateTime.plusDays( days );
+        long hours = tempDateTime.until(now, ChronoUnit.HOURS );
+        return calculateMinimunValue(months, days,hours);
+    }
+    private double calculateMinimunValue(long months,long days,long hours){
+        double value = 0;
+        value += months * MONTHVALUE;
+        value += days*DAYVALUE;
+        if(hours >= 5){
+            value += DAYVALUE;
+        }
+        else{
+            value += hours*ADITIONALVALUE;
+        }
+        return value;
     }
 
     @Override
