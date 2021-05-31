@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.ParkingLot;
 
 public class PreloaderGUI extends Preloader {
 
@@ -35,7 +34,6 @@ public class PreloaderGUI extends Preloader {
     public void init() throws Exception {
         load();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/splash-screen.fxml"));
-        //fxmlLoader.setController();
         Parent root = fxmlLoader.load();
         scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);

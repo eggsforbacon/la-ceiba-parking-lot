@@ -27,7 +27,7 @@ public class MainGUI implements Initializable {
     private Label progress;
 
     @FXML
-    private ProgressBar preloaderPBar;
+    private ProgressBar preloaderPBar = new ProgressBar();
 
     public static Label label =  new Label();
 
