@@ -14,6 +14,7 @@ public class PreloaderGUI extends Preloader {
 
     private Stage preloaderStage;
     private Scene scene;
+    ParkingLot laCeiba;
 
     /**
      * {@inheritDoc}
@@ -35,6 +36,7 @@ public class PreloaderGUI extends Preloader {
     public void init() throws Exception {
         load();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/splash-screen.fxml"));
+        //fxmlLoader.setController();
         Parent root = fxmlLoader.load();
         scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);

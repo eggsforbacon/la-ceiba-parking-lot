@@ -1,127 +1,135 @@
 package ui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.ParkingLot;
 
-public class EmergentWindowsGUI {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class EmergentWindowsGUI implements Initializable {
     /*------------------------ JAVAFX FIELDS ------------------------*/
+
+    /*Dialogue Window*/
+
+    @FXML
+    private Button dialDismissBTN = new Button();
+
+    @FXML
+    private Label dialMessageLBL = new Label();
 
     /*User Registration*/
 
     @FXML
-    private TextField newUserFullNameTF;
+    private TextField newUserFullNameTF = new TextField();
 
     @FXML
-    private TextField newUsernameTF;
+    private TextField newUsernameTF = new TextField();
 
     @FXML
-    private PasswordField newPasswordPWF;
+    private PasswordField newPasswordPWF = new PasswordField();
 
     @FXML
-    private TextField newUserIDTF;
+    private TextField newUserIDTF = new TextField();
 
     /*User Editing*/
 
     @FXML
-    private TextField editUserFullNameTF;
+    private TextField editUserFullNameTF = new TextField();
 
     @FXML
-    private TextField oldUsernameTF;
+    private TextField oldUsernameTF = new TextField();
 
     @FXML
-    private PasswordField oldPasswordPWF;
+    private PasswordField oldPasswordPWF = new PasswordField();
 
     @FXML
-    private TextField editUsernameTF;
+    private TextField editUsernameTF = new TextField();
 
     @FXML
-    private PasswordField editPasswordPWF;
+    private PasswordField editPasswordPWF = new PasswordField();
 
     @FXML
-    private TextField editUserIDTF;
+    private TextField editUserIDTF = new TextField();
 
     /*Client Registration*/
 
     @FXML
-    private TextField newClientFullnameTF;
+    private TextField newClientFullnameTF = new TextField();
 
     @FXML
-    private TextField newClientPhoneTF;
+    private TextField newClientPhoneTF = new TextField();
 
     @FXML
-    private TextField newClientIDTF;
+    private TextField newClientIDTF = new TextField();
 
     @FXML
-    private ChoiceBox<String> newClientDocumentTypeCHB;
+    private ChoiceBox<String> newClientDocumentTypeCHB = new ChoiceBox<>();
 
     /*Client Editing*/
 
     @FXML
-    private TextField editClientFullnameTF;
+    private TextField editClientFullnameTF = new TextField();
+    @FXML
+    private TextField editClientPhoneTF = new TextField();
 
     @FXML
-    private TextField editClientPhoneTF;
+    private TextField editClientIDTF = new TextField();
 
     @FXML
-    private TextField editClientIDTF;
-
-    @FXML
-    private ChoiceBox<String> editClientDocumentTypeCHB;
+    private ChoiceBox<String> editClientDocumentTypeCHB = new ChoiceBox<>();
 
     /*Vehicle Registration*/
 
     @FXML
-    private ChoiceBox<String> newVehicleTypeCHB;
+    private ChoiceBox<String> newVehicleTypeCHB = new ChoiceBox<>();
 
     @FXML
-    private TextField newVehicleNumberDaysTF;
+    private TextField newVehicleNumberDaysTF = new TextField();
 
     @FXML
-    private ChoiceBox<String> newVehicleStayTypeCHB;
+    private ChoiceBox<String> newVehicleStayTypeCHB = new ChoiceBox<>();
 
     @FXML
-    private TextField newVehiclePlatesTF;
+    private TextField newVehiclePlatesTF = new TextField();
 
     @FXML
-    private TextField newVehicleModelTF;
+    private TextField newVehicleModelTF = new TextField();
 
     @FXML
-    private ChoiceBox<String> newVehicleColorCHB;
+    private ChoiceBox<String> newVehicleColorCHB = new ChoiceBox<>();
 
     @FXML
-    private ChoiceBox<Integer> newVehicleSeatCHB;
+    private ChoiceBox<Integer> newVehicleSeatCHB = new ChoiceBox<>();
 
     /*Vehicle Editing*/
 
     @FXML
-    private ChoiceBox<?> editVehicleTypeCHB;
+    private ChoiceBox<String> editVehicleTypeCHB = new ChoiceBox<>();
 
     @FXML
-    private TextField editVehicleNumberDaysTF;
+    private TextField editVehicleNumberDaysTF = new TextField();
 
     @FXML
-    private ChoiceBox<?> editVehicleStayTypeCHB;
+    private ChoiceBox<String> editVehicleStayTypeCHB = new ChoiceBox<>();
 
     @FXML
-    private TextField editVehiclePlatesTF;
+    private TextField editVehiclePlatesTF = new TextField();
 
     @FXML
-    private TextField editVehicleModelTF;
+    private TextField editVehicleModelTF = new TextField();
 
     @FXML
-    private ChoiceBox<String> editVehicleColorCHB;
+    private ChoiceBox<String> editVehicleColorCHB = new ChoiceBox<>();
 
     @FXML
-    private ChoiceBox<String> editVehicleSeatCHB;
+    private ChoiceBox<String> editVehicleSeatCHB = new ChoiceBox<>();
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
-
-    ParkingLot laCeiba;
 
     /*------------------------ METHODS ------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -130,10 +138,46 @@ public class EmergentWindowsGUI {
 
     /**
      * Principal constructor of the class. <br>
-     * @param laCeiba The model object that stores all the information. @NotNull. <br>
      * */
-    public EmergentWindowsGUI(ParkingLot laCeiba) {
-        this.laCeiba = laCeiba;
+    public EmergentWindowsGUI() {
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<String> dummy = FXCollections.observableArrayList("1", "2", "3", "4", "5");
+        ObservableList<Integer> dummyInt = FXCollections.observableArrayList(1, 2, 3, 4, 5);
+        newClientDocumentTypeCHB.setItems(dummy);
+        editClientDocumentTypeCHB.setItems(dummy);
+        newVehicleTypeCHB.setItems(dummy);
+        newVehicleStayTypeCHB.setItems(dummy);
+        newVehicleColorCHB.setItems(dummy);
+        editVehicleTypeCHB.setItems(dummy);
+        editVehicleStayTypeCHB.setItems(dummy);
+        editVehicleColorCHB.setItems(dummy);
+        editVehicleSeatCHB.setItems(dummy);
+        newVehicleSeatCHB.setItems(dummyInt);
+    }
+
+    /*Dialogue window*/
+
+    /**
+     * @param message The message the dialogue window will contain. <br>
+     * */
+    public void setDialMessageLBL(String message) {
+        dialMessageLBL.setText(message);
+    }
+
+    /**
+     * Dismisses the dialogue window, aka closes it. <br>
+     * */
+    @FXML
+    void dismissDialogue(ActionEvent event) {
+        ((Stage) dialDismissBTN.getScene().getWindow()).close();
+        dialMessageLBL.setText("Message");
     }
 
     /*Users*/

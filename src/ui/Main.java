@@ -14,15 +14,13 @@ import java.io.IOException;
 public class Main extends Application {
 
     MainGUI controller;
-    ParkingLot laCeiba;
     private static final String SAVE_PATH = "data/data.1zj";
 
     /**
      * Principal constructor for the class. <br>
      * */
     public Main() {
-        laCeiba = new ParkingLot();
-        controller = new MainGUI(laCeiba);
+        controller = new MainGUI();
     }
 
     /**
@@ -30,6 +28,18 @@ public class Main extends Application {
      * */
     public static void main(String[] args) {
         LauncherImpl.launchApplication(Main.class, PreloaderGUI.class, args);
+    }
+
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public void init() {
+        int COUNT_LIMIT = 40000;
+        for (int i = 0; i <= COUNT_LIMIT; i++) {
+            double progress = (double) i/COUNT_LIMIT;
+            LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
+        }
     }
 
     /**
@@ -50,18 +60,6 @@ public class Main extends Application {
         primaryStage.setMinHeight(860);
         primaryStage.setMinWidth(352);
         primaryStage.show();
-    }
-
-    /**
-     * {@inheritDoc}
-     * */
-    @Override
-    public void init() {
-        int COUNT_LIMIT = 40000;
-        for (int i = 0; i <= COUNT_LIMIT; i++) {
-            double progress = (double) i/COUNT_LIMIT;
-            LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
-        }
     }
 
     /**

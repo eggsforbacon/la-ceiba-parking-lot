@@ -1,8 +1,11 @@
 package ui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -13,159 +16,160 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CurrentSceneGUI {
+public class CurrentSceneGUI implements Initializable {
     /*------------------------- JAVAFX FIELDS --------------------------*/
 
     /*Login*/
 
     @FXML
-    private TextField loginUserTF;
+    private TextField loginUserTF = new TextField();
 
     @FXML
-    private PasswordField loginPassPWF;
+    private PasswordField loginPassPWF =  new PasswordField();
 
     /*Clients DB*/
 
     @FXML
-    private TableView<Client> clientsTBV;
+    private TableView<Client> clientsTBV = new TableView<>();
 
     @FXML
-    private TableColumn<Client, String> clientsNameCOL;
+    private TableColumn<Client, String> clientsNameCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<Client, String> clientsIDCOL;
+    private TableColumn<Client, String> clientsIDCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<Client, String> clientsPhoneCOL;
+    private TableColumn<Client, String> clientsPhoneCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<Client, String> clientEnabledCOL;
+    private TableColumn<Client, String> clientEnabledCOL = new TableColumn<>();
 
     @FXML
-    private Button clientEditBTN;
+    private Button clientEditBTN = new Button();
 
     @FXML
-    private Button clientDeleteBTN;
+    private Button clientDeleteBTN = new Button();
 
     /*Vehicles DB*/
 
     @FXML
-    private TableView<Vehicle> vechiclesTBV;
+    private TableView<Vehicle> vehiclesTBV = new TableView<>();
 
     @FXML
-    private TableColumn<Vehicle, String> vehicleTypeCOL;
+    private TableColumn<Vehicle, String> vehicleTypeCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> vehicleStayCOL;
+    private TableColumn<Vehicle, String> vehicleStayCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> vehiclePlateCOL;
+    private TableColumn<Vehicle, String> vehiclePlateCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> vehicleSlotCOL;
+    private TableColumn<Vehicle, String> vehicleSlotCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> vehicleEnabledCOL;
+    private TableColumn<Vehicle, String> vehicleEnabledCOL = new TableColumn<>();
 
     @FXML
-    private Button vehicleEditBTN;
+    private Button vehicleEditBTN = new Button();
 
     @FXML
-    private Button vehicleDeleteBTN;
+    private Button vehicleDeleteBTN = new Button();
 
     /*Map view (Throwing this one under the rug for a little while)*/
 
     /*Users DB*/
 
     @FXML
-    private TableView<?> usersTBV;
+    private TableView<Employee> usersTBV = new TableView<>();
 
     @FXML
-    private TableColumn<?, String> userNameCOL;
+    private TableColumn<Employee, String> userNameCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<?, String> userUsernameCOL;
+    private TableColumn<Employee, String> userUsernameCOL = new TableColumn<>();
 
     @FXML
-    private TableColumn<?, String> userIDCOL;
+    private TableColumn<Employee, String> userIDCOL = new TableColumn<>();
 
     @FXML
-    private Button userDeleteBTN;
+    private Button userDeleteBTN = new Button();
 
     @FXML
-    private Button userEditBTN;
+    private Button userEditBTN = new Button();
 
     /*Receipt Generation*/
 
     @FXML
-    private CheckBox receiptToggle;
+    private CheckBox receiptToggle = new CheckBox();
 
     @FXML
-    private VBox monthlyVBox;
+    private VBox monthlyVBox = new VBox();
 
     @FXML
-    private Label receiptCodeMonthlyLBL;
+    private Label receiptCodeMonthlyLBL = new Label();
 
     @FXML
-    private TextField receiptCityMonthlyTF;
+    private TextField receiptCityMonthlyTF = new TextField();
 
     @FXML
-    private Label receiptPaidValueMonthlyLBL;
+    private Label receiptPaidValueMonthlyLBL = new Label();
 
     @FXML
-    private DatePicker receiptDateMonthlyDTP;
+    private DatePicker receiptDateMonthlyDTP = new DatePicker();
 
     @FXML
-    private TextField receiptClientNameMonthlyTF;
+    private TextField receiptClientNameMonthlyTF = new TextField();
 
     @FXML
-    private Label receiptVehicleMonthlyLBL;
+    private Label receiptVehicleMonthlyLBL = new Label();
 
     @FXML
-    private Label receiptDaysMonthlyLBL;
+    private Label receiptDaysMonthlyLBL = new Label();
 
     @FXML
-    private VBox dailyVBox;
+    private VBox dailyVBox = new VBox();
 
     @FXML
-    private ChoiceBox<String> receiptVehicleTypeCHB;
+    private ChoiceBox<String> receiptVehicleTypeCHB = new ChoiceBox<>();
 
     @FXML
-    private DatePicker receiptDateDailyDTP;
+    private DatePicker receiptDateDailyDTP = new DatePicker();
 
     @FXML
-    private Label receiptPaidValueDailyLBL;
+    private Label receiptPaidValueDailyLBL = new Label();
 
     @FXML
-    private TextField receiptPlateDailyTF;
+    private TextField receiptPlateDailyTF = new TextField();
 
     @FXML
-    private TextField receiptHoursDailyTF;
+    private TextField receiptHoursDailyTF = new TextField();
 
     /*Report Generation*/
 
     @FXML
-    private BorderPane reportPane;
+    private BorderPane reportPane = new BorderPane();
 
     @FXML
-    private DatePicker reportFromDTP;
+    private DatePicker reportFromDTP = new DatePicker();
 
     @FXML
-    private DatePicker reportToDTP;
+    private DatePicker reportToDTP = new DatePicker();
 
     @FXML
-    private TextField reportFromHourTF;
+    private TextField reportFromHourTF = new TextField();
 
     @FXML
-    private TextField reportToHourTF;
+    private TextField reportToHourTF = new TextField();
 
     @FXML
-    private ChoiceBox<String> reportTypeCHB;
+    private ChoiceBox<String> reportTypeCHB = new ChoiceBox<>();
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
-    ParkingLot laCeiba;
     EmergentWindowsGUI emergentWindowsController;
 
     /*---------------------------- METHODS -----------------------------*/
@@ -175,11 +179,16 @@ public class CurrentSceneGUI {
 
     /**
      * Principal constructor of the class. <br>
-     * @param laCeiba The model object that stores all the information. @NotNull. <br>
      * */
-    public CurrentSceneGUI(ParkingLot laCeiba) {
-        this.laCeiba = laCeiba;
-        emergentWindowsController = new EmergentWindowsGUI(laCeiba);
+    public CurrentSceneGUI() {
+        emergentWindowsController = new EmergentWindowsGUI();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<String> dummy = FXCollections.observableArrayList("1", "2", "3", "4", "5");
+        receiptVehicleTypeCHB.setItems(dummy);
+        reportTypeCHB.setItems(dummy);
     }
 
     /**
@@ -190,7 +199,7 @@ public class CurrentSceneGUI {
     private void launchFXML(String fxml, String title) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxml));
-            fxmlLoader.setController(this);
+            fxmlLoader.setController(emergentWindowsController);
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -211,7 +220,8 @@ public class CurrentSceneGUI {
      * */
     @FXML
     void loginClicked(ActionEvent event) {
-
+        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
+        launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
 
     /**
@@ -237,7 +247,8 @@ public class CurrentSceneGUI {
      * */
     @FXML
     void deleteClient(ActionEvent event) {
-
+        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
+        launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
 
     /**
@@ -255,7 +266,8 @@ public class CurrentSceneGUI {
      * */
     @FXML
     void deleteVehicle(ActionEvent event) {
-
+        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
+        launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
 
     /**
@@ -285,7 +297,8 @@ public class CurrentSceneGUI {
      * */
     @FXML
     void deleteUser(ActionEvent event) {
-
+        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
+        launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
 
     /**
@@ -322,7 +335,8 @@ public class CurrentSceneGUI {
      * */
     @FXML
     void generateReceipt(ActionEvent event) {
-
+        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
+        launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
 
     /*Report Generation*/
@@ -332,6 +346,7 @@ public class CurrentSceneGUI {
      * */
     @FXML
     void generateReport(ActionEvent event) {
-
+        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
+        launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
 }

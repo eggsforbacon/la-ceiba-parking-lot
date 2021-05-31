@@ -54,6 +54,11 @@
 	-fx-font-size: 25px;
 }
 
+.dial-lbl {
+	-fx-text-fill: #B3E5FC;
+	-fx-font-style: italic;
+}
+
 .subtitle {
 	-fx-font-size: 19px;
 	-fx-font-style: italic;

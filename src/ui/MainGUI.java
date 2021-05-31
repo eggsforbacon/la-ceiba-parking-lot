@@ -10,8 +10,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.ParkingLot;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,13 +21,13 @@ public class MainGUI implements Initializable {
     /*Splash screen*/
 
     @FXML
-    private BorderPane splashPane;
+    private BorderPane splashPane = new BorderPane();
 
     @FXML
-    private Label progress;
+    private Label progress = new Label();
 
     @FXML
-    private ProgressBar preloaderPBar;
+    private ProgressBar preloaderPBar = new ProgressBar();
 
     public static Label label =  new Label();
 
@@ -45,7 +43,6 @@ public class MainGUI implements Initializable {
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
-    ParkingLot laCeiba;
     CurrentSceneGUI currentSceneController;
     boolean sceneIsActive;
     boolean isMaximized;
@@ -57,20 +54,10 @@ public class MainGUI implements Initializable {
     /*Initializer, Constructors and General*/
 
     /**
-     * Empty constructor of the class. This method is required for the preloader to work.<br>
+     * Principal constructor of the class. <br>
      * */
     public MainGUI() {
 
-    }
-
-    /**
-     * Principal constructor of the class. <br>
-     * @param laCeiba The model object that stores all the information. @NotNull. <br>
-     * */
-    public MainGUI(ParkingLot laCeiba) {
-        this.laCeiba = laCeiba;
-        currentSceneController = new CurrentSceneGUI(laCeiba);
-        sceneIsActive = false;
     }
     /**
      * {@inheritDoc}
