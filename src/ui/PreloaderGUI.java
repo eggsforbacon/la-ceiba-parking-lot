@@ -14,7 +14,6 @@ public class PreloaderGUI extends Preloader {
 
     private Stage preloaderStage;
     private Scene scene;
-    ParkingLot laCeiba;
 
     /**
      * {@inheritDoc}

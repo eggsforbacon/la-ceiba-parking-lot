@@ -74,6 +74,7 @@ public class EmergentWindowsGUI implements Initializable {
 
     @FXML
     private TextField editClientFullnameTF = new TextField();
+
     @FXML
     private TextField editClientPhoneTF = new TextField();
 
