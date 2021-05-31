@@ -19,7 +19,7 @@ class VehicleGenericChildrenTest {
     }
 
     public void vehicleSetupScenary2(){
-        //Nothing, funny isn't it?
+        //Nothing, funny isn't it?  2// No it´s not funny
     }
 
     @Test
