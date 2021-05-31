@@ -18,7 +18,7 @@ class LargeVehicleTest {
     }
 
     public void largeVehicleSetupScenary2() {
-
+        //Nothing, oh yeah
     }
 
     @Test
