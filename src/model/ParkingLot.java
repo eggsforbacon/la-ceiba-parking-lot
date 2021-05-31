@@ -17,8 +17,10 @@ public class ParkingLot implements Serializable {
         employeesPL=new ArrayList<>();
     }
     
-    
-   //Clients methods 
+    //Client methods
+    //
+    //
+    //
     /**
     Add a client to the parking lot <br>
     <b> pre: </b>Needs verify if the clients is already in the parking lot<br>
@@ -203,7 +205,11 @@ public class ParkingLot implements Serializable {
     	return null;
     }
    
-    //Employee method
+    //Employee methods
+    //
+    //
+    //
+    
     /**
     Add a employee to the parking lot <br>
     <b> pre: </b>Needs verify if the employee is already in the parking lot<br>
