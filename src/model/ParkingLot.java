@@ -220,7 +220,7 @@ public class ParkingLot implements Serializable {
     @return true or false
     */
     public boolean addEmployee(String name, String id, String username, String password) {
-    	String temp=EmployeeVeryfier(name,id,username,password);
+    	String temp=employeeVeryfier(name,id,username,password);
     	//Añadir excepción para verificar si el nombre está repetido o si el id está repetido
     	if(temp.contains("name")){
     		return false;
@@ -243,7 +243,7 @@ public class ParkingLot implements Serializable {
     
     
     /**
-    Disable a specific employee in the parking lot <br>
+    Disable a specific employee in the parking lot searching by It's ID <br>
     <b> pre: </b>Needs verify if the employee already exists in the parking lot<br>
     <b> post: </b>The specific employee will be disabled<br>
     @param id A string who have the employee´s id
@@ -260,7 +260,7 @@ public class ParkingLot implements Serializable {
     
     
     /**
-    Disable a specific employee in the parking lot <br>
+    Disable a specific employee in the parking lot searching by It's name <br>
     <b> pre: </b>Needs verify if the employee already exists in the parking lot<br>
     <b> post: </b>The specific employee will be disabled<br>
     @param id A string who have the employee´s name
@@ -325,7 +325,7 @@ public class ParkingLot implements Serializable {
     @return true or false
     */
     public boolean updateEmployeeUsername(String id, String newUsername,String pastUsername, String password) {
-    	if(EmployeeVeryfierLogin(pastUsername, password)) {
+    	if(employeeVeryfierLogin(pastUsername, password)) {
 	    	if((searchEmployeeByID(id)!=null)) {
 	    		searchEmployeeByID(id).setUsername(newUsername);
 	    		return true;
@@ -345,31 +345,32 @@ public class ParkingLot implements Serializable {
     @param newpassword A string who have the employee´s new password
     @param username A string who have the employee´s username
     @param id A string who have the employee´s ID
+    @param password A string who have the employee´s past password
     @return true or false
     */
-    public boolean updateEmployeePassword(String id, String username, String newPassword) {
-    	if(EmployeeVeryfierLogin(username, newPassword)) {
-	    	if((searchEmployeeByID(id)!=null)) {
-	    		searchEmployeeByID(id).setPassword(newPassword);
-	    		return true;
-	    	}
-	    	else {
-	    		return false;
-	    	}
+    public boolean updateEmployeePassword(String id, String username,String password, String newPassword) {
+    	if(employeeVeryfierLogin(username, password)) {
+    		if(!(employeeVeryfierLogin("x", newPassword))) {
+		    	if((searchEmployeeByID(id)!=null)) {
+		    		searchEmployeeByID(id).setPassword(newPassword);
+		    		return true;
+		    	}
+    		}
     	}
     	return false;
     }
     
     /**
-    Verify if the new employee name or id is already in use<br>
+    Verify if the new employee's name, id, username or password is already in use<br>
     <b> pre: </b>Needs ask to the user the necessary parameters to create a employee<br>
     <b> post: </b>The user verify if the employee´s name or ID is duplicated<br>
     @param name A string who have the new employee´s name
     @param id A string who have the new employee´s ID
-    @param cellNumber A string who have the new employee´s cellNumber
+    @param password A string who have the new employee´s password
+    @param username A string who have the new employee's username
     @return temp A string
     */
-    public String EmployeeVeryfier(String name, String id, String username, String password) {
+    public String employeeVeryfier(String name, String id, String username, String password) {
     	String temp="";
 	    	if(employeesPL!=null) {
 	    		Employee aux=new Employee(name, id, username, password);
@@ -393,25 +394,26 @@ public class ParkingLot implements Serializable {
     
     
     /**
-    Verify if the  employee username and password is already in use<br>
+    Verify if the employee username and password is already in use<br>
     <b> pre: </b>Needs there to be employee created<br>
     <b> post: </b>The user verify if the employee´s user name or password is duplicated<br>
     @param username A string who have the employee´s username
     @param password A string who have the new employee´s password
     @return true or false
     */
-    public boolean EmployeeVeryfierLogin(String username, String password) {
+    public boolean employeeVeryfierLogin(String username, String password) {
+    	boolean temp=false;
 	    	if(employeesPL!=null) {
 		    	for(int i=0;i<employeesPL.size();i++) {		    		
 		    		if (username.equalsIgnoreCase(employeesPL.get(i).getUsername())) {
-		    			return false;
+		    			temp= true;
 		    		}
 		    		if(password.equalsIgnoreCase(employeesPL.get(i).getPassword())) {
-		    			return false;
+		    			temp= true;
 		    		}
 		    	}
 	    	}
-	    	 return true;
+	    	 return temp;
     	}
     
     
