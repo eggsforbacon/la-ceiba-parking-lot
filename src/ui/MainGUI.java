@@ -24,10 +24,10 @@ public class MainGUI implements Initializable {
     private BorderPane splashPane = new BorderPane();
 
     @FXML
-    private Label progress = new Label();
+    private Label progress;
 
     @FXML
-    private ProgressBar preloaderPBar = new ProgressBar();
+    private ProgressBar preloaderPBar;
 
     public static Label label =  new Label();
 
@@ -57,7 +57,7 @@ public class MainGUI implements Initializable {
      * Principal constructor of the class. <br>
      * */
     public MainGUI() {
-
+        currentSceneController = new CurrentSceneGUI();
     }
     /**
      * {@inheritDoc}

@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import model.ParkingLot;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -34,18 +33,6 @@ public class Main extends Application {
      * {@inheritDoc}
      * */
     @Override
-    public void init() {
-        int COUNT_LIMIT = 40000;
-        for (int i = 0; i <= COUNT_LIMIT; i++) {
-            double progress = (double) i/COUNT_LIMIT;
-            LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * */
-    @Override
     public void start(Stage primaryStage) throws IOException {
         controller.setCURRENT_PREF_MIN(352);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/main-view.fxml"));
@@ -60,6 +47,18 @@ public class Main extends Application {
         primaryStage.setMinHeight(860);
         primaryStage.setMinWidth(352);
         primaryStage.show();
+    }
+
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public void init() {
+        int COUNT_LIMIT = 40000;
+        for (int i = 0; i <= COUNT_LIMIT; i++) {
+            double progress = (double) i/COUNT_LIMIT;
+            LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
+        }
     }
 
     /**
