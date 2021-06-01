@@ -17,7 +17,12 @@ public class LargeVehicle extends Vehicle {
         super(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
     }
 
-
+    /**
+     Change the user's stay time if necessary<br>
+     <b> pre: </b> The stay attribute must be initialized <br>
+     <b> post: </b>Change the length of stay or not<br>
+     @return stayTime
+     */
     public StayTime changeStayTime(){
         switch (stay){
             case HORA:
@@ -33,6 +38,12 @@ public class LargeVehicle extends Vehicle {
         }
         return stay;
     }
+
+    /**
+     Calculate the amount to pay according to the time of stay<br>
+     <b> pre: </b> The stay attribute must be initialized<br>
+     <b> post: </b>The specific value is given<br>
+     */
     @Override
     public void calculateValueToPay() {
         double value = 0;
@@ -85,6 +96,12 @@ public class LargeVehicle extends Vehicle {
         }//WIP
     }
 
+    /**
+     Calculate the amount to pay when the time of stay is undefined or exceeds what was agreed<br>
+     <b> pre: </b> The stay attribute must be initialized <br>
+     <b> post: </b>The specific value is given<br>
+     @return minimumValue
+     */
     private double calculateValueAdditionalTime(){
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime tempDateTime = LocalDateTime.from(entryDate);
@@ -95,6 +112,13 @@ public class LargeVehicle extends Vehicle {
         long hours = tempDateTime.until(now, ChronoUnit.HOURS );
         return calculateMinimunValue(months, days,hours);
     }
+
+    /**
+     calculates the minimum value that can be paid for a defined number of time<br>
+     <b> pre: </b> <br>
+     <b> post: </b>The specific value is given<<br>
+     @return value
+     */
     private double calculateMinimunValue(long months,long days,long hours){
         double value = 0;
         value += months * MONTHVALUE;
