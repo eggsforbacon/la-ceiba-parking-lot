@@ -52,11 +52,11 @@ class SmallVehicleTest {
     @Test
     void calculateValueToPayTest4() {
         smallVehicleSetupScenary2();
-        //11 horas
+        //13 horas
         //Automovil
-        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",0,11);
+        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",0,13);
         testVehicle.calculateValueToPay();
-        assertEquals(testVehicle.getValueToPay(),7500);
+        assertEquals(testVehicle.getValueToPay(),8000);
     }
 
     @Test
