@@ -5,6 +5,7 @@ public abstract class Spot {
     private Spot up;
     private Spot down;
     private Spot left;
+    private String info;
 
     public Spot(){
         rigth = null;
@@ -14,6 +15,8 @@ public abstract class Spot {
     }
 
     public abstract String getInformation();
+
+    public abstract String getActualPosition();
 
     public Spot getRigth() {
         return rigth;
