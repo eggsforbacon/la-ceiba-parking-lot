@@ -71,7 +71,7 @@ public class ParkingLotMap {
             setRightColumn(a.getUp());
         }
     }
-
+    //aaaaaa
     private int translatorBR(int n){
         switch (n){
             case 1:
