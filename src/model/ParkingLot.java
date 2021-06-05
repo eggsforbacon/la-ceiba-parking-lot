@@ -9,12 +9,14 @@ public class ParkingLot implements Serializable {
 	private ArrayList<Client> clientsPL;
     private ArrayList<Vehicle> vehiclesPL;
     private ArrayList<Employee> employeesPL;
+    private ParkingLotMap plMap;
   
 
     public ParkingLot(){
         clientsPL = new ArrayList<>();
         vehiclesPL = new ArrayList<>();
         employeesPL=new ArrayList<>();
+        plMap = new ParkingLotMap();
     }
     
     //Client methods
@@ -216,7 +218,8 @@ public class ParkingLot implements Serializable {
     <b> post: </b>The employee will be created and added to the parking lot<br>
     @param name A string who have the new employee큦 name
     @param id A string who have the new employee큦 ID
-    @param cellNumber A string who have the new employee큦 cellNumber
+    @param username A string who have the new employee큦 username
+	@param password  A string who have the new employee큦 password
     @return true or false
     */
     public boolean addEmployee(String name, String id, String username, String password) {
@@ -263,7 +266,7 @@ public class ParkingLot implements Serializable {
     Disable a specific employee in the parking lot searching by It's name <br>
     <b> pre: </b>Needs verify if the employee already exists in the parking lot<br>
     <b> post: </b>The specific employee will be disabled<br>
-    @param id A string who have the employee큦 name
+    @param name A string who have the employee큦 name
     @return true or false
     */
     public boolean disableemployeeByName(String name) {
@@ -319,9 +322,10 @@ public class ParkingLot implements Serializable {
     Update a specific employee's password<br>
     <b> pre: </b>Needs verify if the employee already exists and if his new password is not used by other employee<br>
     <b> post: </b>The specific employee will be updated his password<br>
-    @param newpassword A string who have the employee큦 new password
-    @param username A string who have the employee큦 username
-    @param id A string who have the employee큦 ID
+	 @param id A string who have the employee큦 ID
+	 @param newUsername A string who have the employee큦 new username
+	 @param pastUsername A string who have the employee's past username
+    @param password A string who have the employee큦 password
     @return true or false
     */
     public boolean updateEmployeeUsername(String id, String newUsername,String pastUsername, String password) {
@@ -342,10 +346,10 @@ public class ParkingLot implements Serializable {
     Update a specific employee's password<br>
     <b> pre: </b>Needs verify if the employee already exists and if his new password is not used by other employee<br>
     <b> post: </b>The specific employee will be updated his password<br>
-    @param newpassword A string who have the employee큦 new password
-    @param username A string who have the employee큦 username
-    @param id A string who have the employee큦 ID
-    @param password A string who have the employee큦 past password
+	 @param id A string who have the employee큦 ID
+	 @param username A string who have the employee큦 username
+	 @param password A string who have the employee큦 past password
+    @param newPassword A string who have the employee큦 new password
     @return true or false
     */
     public boolean updateEmployeePassword(String id, String username,String password, String newPassword) {
@@ -456,4 +460,8 @@ public class ParkingLot implements Serializable {
 		return null;
     	
     }
+
+    public ParkingLotMap getPlMap(){
+    	return plMap;
+	}
 }

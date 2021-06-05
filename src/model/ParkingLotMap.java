@@ -15,7 +15,6 @@ public class ParkingLotMap {
         rightColumnNumber = 1;
         setLeftColumn();
         getSpot28();
-        System.out.println(spot28.getActualPosition());
         uniteLeftAndRight();
     }
 
