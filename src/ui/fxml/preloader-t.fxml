@@ -4,12 +4,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.PreloaderGUI2">
    <bottom>
       <Pane prefHeight="30.0" prefWidth="805.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
             <Rectangle fx:id="pBarRCT" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>

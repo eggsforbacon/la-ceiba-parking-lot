@@ -1,7 +1,7 @@
 package model;
 
 public class PreloaderBar {
-    public final static double LOADED_WIDTH = 805.0;
+    public final double LOADED_WIDTH = 805.0;
     private double barWidth;
     private boolean active;
 
