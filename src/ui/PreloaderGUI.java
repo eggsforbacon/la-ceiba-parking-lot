@@ -32,7 +32,6 @@ public class PreloaderGUI extends Preloader {
      * */
     @Override
     public void init() throws Exception {
-        load();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/splash-screen.fxml"));
         Parent root = fxmlLoader.load();
         scene = new Scene(root);
@@ -43,24 +42,8 @@ public class PreloaderGUI extends Preloader {
      * {@inheritDoc}
      * */
     @Override
-    public void handleApplicationNotification(Preloader.PreloaderNotification info) {
-        if (info instanceof ProgressNotification)
-            MainGUI.progressBar.setProgress(((ProgressNotification) info).getProgress());
-    }
-
-    /**
-     * {@inheritDoc}
-     * */
-    @Override
     public void handleStateChangeNotification(StateChangeNotification info) {
         StateChangeNotification.Type type = info.getType();
         if (type == StateChangeNotification.Type.BEFORE_START) preloaderStage.hide();
-    }
-
-    /**
-     * Loads all additional data of the app before launch. <br>
-     */
-    private void load() {
-        //TODO: add every model method that requires loading before the apps launch
     }
 }

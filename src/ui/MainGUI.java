@@ -10,6 +10,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.ParkingLot;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,12 +28,7 @@ public class MainGUI implements Initializable {
     @FXML
     private Label progress;
 
-    @FXML
-    private ProgressBar preloaderPBar = new ProgressBar();
-
     public static Label label =  new Label();
-
-    public static ProgressBar progressBar = new ProgressBar();
 
     /*Main Pane*/
 
@@ -47,6 +44,8 @@ public class MainGUI implements Initializable {
     boolean sceneIsActive;
     boolean isMaximized;
     double CURRENT_PREF_MIN;
+    ParkingLot laCeiba = new ParkingLot();
+    private static final String SAVE_PATH = "data/data.1zj";
 
     /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -57,7 +56,7 @@ public class MainGUI implements Initializable {
      * Principal constructor of the class. <br>
      * */
     public MainGUI() {
-        currentSceneController = new CurrentSceneGUI();
+        currentSceneController = new CurrentSceneGUI(laCeiba);
     }
     /**
      * {@inheritDoc}
@@ -65,7 +64,6 @@ public class MainGUI implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         label = progress;
-        progressBar = preloaderPBar;
         currentScene.prefHeightProperty().bind(mainPane.heightProperty());
         currentScene.prefWidthProperty().bind(mainPane.widthProperty());
     }

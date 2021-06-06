@@ -13,7 +13,6 @@ import java.io.IOException;
 public class Main extends Application {
 
     MainGUI controller;
-    private static final String SAVE_PATH = "data/data.1zj";
 
     /**
      * Principal constructor for the class. <br>
