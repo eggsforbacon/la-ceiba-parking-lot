@@ -21,16 +21,6 @@ public class MainGUI implements Initializable {
 
     /*-------------------------- JAVAFX FIELDS -------------------------*/
 
-    /*Splash screen*/
-
-    @FXML
-    private BorderPane splashPane = new BorderPane();
-
-    @FXML
-    private Label progress;
-
-    public static Label label =  new Label();
-
     /*Main Pane*/
 
     @FXML
@@ -45,8 +35,7 @@ public class MainGUI implements Initializable {
     boolean sceneIsActive;
     boolean isMaximized;
     double CURRENT_PREF_MIN;
-    ParkingLot laCeiba = new ParkingLot();
-    private static final String SAVE_PATH = "data/data.1zj";
+    ParkingLot laCeiba;
 
     /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -55,16 +44,18 @@ public class MainGUI implements Initializable {
 
     /**
      * Principal constructor of the class. <br>
+     * @param laCeiba The object in which the apps info will be stored. <br>
      * */
-    public MainGUI() {
+    public MainGUI(ParkingLot laCeiba) {
+        this.laCeiba = laCeiba;
         currentSceneController = new CurrentSceneGUI(laCeiba);
     }
+
     /**
      * {@inheritDoc}
      * */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        label = progress;
         currentScene.prefHeightProperty().bind(mainPane.heightProperty());
         currentScene.prefWidthProperty().bind(mainPane.widthProperty());
     }

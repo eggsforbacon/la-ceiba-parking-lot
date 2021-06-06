@@ -16,16 +16,6 @@ import java.util.Objects;
 
 public class Main extends Application {
 
-    MainGUI controller;
-    ParkingLot laCeiba;
-
-    /**
-     * Principal constructor for the class. <br>
-     * */
-    public Main() {
-        controller = new MainGUI();
-    }
-
     /**
      * @param args The arguments for the compiler and the JavaVM. <br>
      * */
@@ -38,8 +28,7 @@ public class Main extends Application {
      * */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        controller.setCURRENT_PREF_MIN(352);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/preloader-t.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/splash-screen.fxml")));
         Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
         primaryStage.getIcons().add(icon);
         Scene scene = new Scene(root);

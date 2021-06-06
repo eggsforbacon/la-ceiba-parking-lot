@@ -1,7 +1,7 @@
 package model;
 
 public class PreloaderBar {
-    public final double LOADED_WIDTH = 805.0;
+    public final double LOADED_WIDTH = 697.0;
     private double barWidth;
     private boolean active;
 
@@ -38,13 +38,6 @@ public class PreloaderBar {
     }
 
     /*Setters*/
-
-    /**
-     * @param barWidth The value of the progress to be set to. <br>
-     * */
-    public void setBarWidth(double barWidth) {
-        this.barWidth = barWidth;
-    }
 
     /**
      * @param active The status to be toggled to. <br>

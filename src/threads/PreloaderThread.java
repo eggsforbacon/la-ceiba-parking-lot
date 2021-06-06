@@ -2,13 +2,13 @@ package threads;
 
 import javafx.application.Platform;
 import model.PreloaderBar;
-import ui.PreloaderGUI2;
+import ui.PreloaderGUI;
 
 public class PreloaderThread extends Thread {
     PreloaderBar progressBar;
-    PreloaderGUI2 preloader;
+    PreloaderGUI preloader;
 
-    public PreloaderThread(PreloaderBar bar, PreloaderGUI2 controller) {
+    public PreloaderThread(PreloaderBar bar, PreloaderGUI controller) {
         progressBar = bar;
         preloader = controller;
     }
@@ -18,7 +18,7 @@ public class PreloaderThread extends Thread {
      * */
     @Override
     public void run() {
-        int LOADING_TIME_INTERVAL = 3;
+        int LOADING_TIME_INTERVAL = 4;
         while (progressBar.isActive()) {
             progressBar.doProgress();
             Platform.runLater(new Thread(() -> preloader.loadBar()));
