@@ -171,6 +171,7 @@ public class CurrentSceneGUI implements Initializable {
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
     EmergentWindowsGUI emergentWindowsController;
+    ParkingLot laCeiba;
 
     /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -179,9 +180,11 @@ public class CurrentSceneGUI implements Initializable {
 
     /**
      * Principal constructor of the class. <br>
+     * @param laCeiba The object in which the apps info will be stored. <br>
      * */
-    public CurrentSceneGUI() {
-        emergentWindowsController = new EmergentWindowsGUI();
+    public CurrentSceneGUI(ParkingLot laCeiba) {
+        this.laCeiba = laCeiba;
+        emergentWindowsController = new EmergentWindowsGUI(laCeiba);
     }
 
     @Override

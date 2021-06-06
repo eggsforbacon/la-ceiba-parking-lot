@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.ParkingLot;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -132,6 +133,8 @@ public class EmergentWindowsGUI implements Initializable {
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
+    ParkingLot laCeiba;
+
     /*------------------------ METHODS ------------------------*/
     //Methods will be written in order according to the intended flow of the program
 
@@ -139,9 +142,10 @@ public class EmergentWindowsGUI implements Initializable {
 
     /**
      * Principal constructor of the class. <br>
-     * */
-    public EmergentWindowsGUI() {
-
+     *
+     * @param laCeiba The object in which the apps info will be stored. <br>*/
+    public EmergentWindowsGUI(ParkingLot laCeiba) {
+        this.laCeiba = laCeiba;
     }
 
     /**
