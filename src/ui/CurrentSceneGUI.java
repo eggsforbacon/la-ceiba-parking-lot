@@ -259,6 +259,11 @@ public class CurrentSceneGUI implements Initializable {
 
     /*Clients DB*/
 
+
+    void initClientsDB() {
+
+    }
+
     /**
      * Prompts the user to add a client with its vehicle to the program. <br>
      * */
@@ -285,6 +290,10 @@ public class CurrentSceneGUI implements Initializable {
     }
 
     /*Vehicles DB*/
+
+    void initVehiclesDB() {
+
+    }
 
     /**
      * Deletes the selected vehicle. <br>
