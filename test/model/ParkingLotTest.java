@@ -163,4 +163,47 @@ class ParkingLotTest {
 		parkingLotScenary3();
 		assertTrue(parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("a"),3,"None",1,2));
 	}
+	
+	@Test
+	void disableVehicleTest() {
+		parkingLotScenary3();
+		assertTrue(parkingLotTest.disableVehicleByPlate("aaa"));
+	}
+	
+	@Test
+	void updateVehicleModelTest() {
+		parkingLotScenary3();
+		assertTrue(parkingLotTest.updateVehicleModel("aaa","aveo"));
+	}
+	
+	@Test
+	void updateVehicleColorTest() {
+		parkingLotScenary3();
+		assertTrue(parkingLotTest.updateVehicleColor("aaa","negro"));
+	}
+	
+	@Test
+	void updateVehicleSpotTest() {
+		parkingLotScenary3();
+		assertTrue(parkingLotTest.updateSpot("aaa",3));
+	}
+	
+	@Test
+	void updateVehicleObservationTest() {
+		parkingLotScenary3();
+		assertTrue(parkingLotTest.updateObservation("aaa","none2"));
+	}
+	
+	@Test
+	void verifySpotTest() {
+		parkingLotScenary3();
+		assertTrue(parkingLotTest.verifySpot(10));
+	}
+	
+	@Test
+	void verifyVehicleByPlateTest() {
+		parkingLotScenary3();
+		assertFalse(parkingLotTest.verifyVehicleByPlate("aaa"));
+	}
+	
 }
