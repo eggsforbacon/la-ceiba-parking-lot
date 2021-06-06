@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Comparable<Vehicle> {
 
     protected VehicleType type; //Esto se define en base a un Enum, es el tipo del vehiculo (carro,moto,etc)
     protected String model;  //En plan Mazda, chevrolet, etc
@@ -245,4 +245,9 @@ public abstract class Vehicle {
     public void setAdditionalTime(boolean additionalTime) {
         this.additionalTime = additionalTime;
     }
+    
+    @Override
+	public int compareTo(Vehicle o) {
+		return getLicensePlate().compareToIgnoreCase(o.getLicensePlate());
+	}
 }

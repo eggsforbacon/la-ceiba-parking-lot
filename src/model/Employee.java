@@ -1,6 +1,6 @@
 package model;
 
-public class Employee extends Person {
+public class Employee extends Person implements Comparable<Employee> {
 
 	private String username;
 	private String password;
@@ -38,6 +38,11 @@ public class Employee extends Person {
 		this.password = password;
 	}
 
-	//Aaaaaaa subete ptm
+	@Override
+	public int compareTo(Employee o) {
+		return getUsername().compareToIgnoreCase(o.getUsername());
+	}
+
+	
 
 }

@@ -1,6 +1,6 @@
 package model;
 
-public class Client extends Person {
+public class Client extends Person implements Comparable<Client> {
 	
 	private String cellNumber;
 	private boolean state;
@@ -26,6 +26,13 @@ public class Client extends Person {
 	public void setState(boolean state) {
 		this.state = state;
 	}
+
+
+	@Override
+	public int compareTo(Client o) {
+		return getName().compareTo(o.getName());
+	}
+
     
     
 }

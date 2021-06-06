@@ -2,13 +2,16 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ParkingLot implements Serializable {
     
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Client> clientsPL;
+	private static ArrayList<Client> clientsPL;
     private ArrayList<Vehicle> vehiclesPL;
-    private ArrayList<Employee> employeesPL;
+    private static ArrayList<Employee> employeesPL;
     private ParkingLotMap plMap;
   
 
@@ -649,4 +652,67 @@ public class ParkingLot implements Serializable {
     	}
     	return true;
     }
+    
+    //Sorting algorithms
+    //
+    //
+    
+    //Bubble lleva 1 implementación
+    public static void clientBubbleSortName() {
+    	
+		for(int i=1; i<clientsPL.size();i++) {
+			
+			for(int j=0;j<clientsPL.size()-i;j++) {
+				
+				if((clientsPL.get(j).compareTo(clientsPL.get(j+1))>0)) {
+					
+						Client temp = clientsPL.get(j);
+						//array[j] = array[j+1];
+						clientsPL.set(j,clientsPL.get(j+1));
+						clientsPL.set(j+1, temp);
+					
+					}
+				}
+			}
+    	}
+    
+    
+	
+    //"Implementado "1 vez"
+   public void clientInsertionSortByName(){
+	   int i;
+		int j;
+		Vehicle aux;
+		for (i = 1;i <vehiclesPL.size(); i++){
+			aux = vehiclesPL.get(i);
+			j = i - 1;
+			while ((j >= 0) && (aux.compareTo(vehiclesPL.get(j))<0)){
+				vehiclesPL.set(j+1,vehiclesPL.get(j));
+				j--;
+			}
+			vehiclesPL.set(j+1, aux);
+		}
+	}
+   
+   
+   //Está implementado "1 vez"
+   public static void EmployeeselectionSortName(Integer[] array) {
+		for(int i=0;i<employeesPL.size();i++) {
+			
+		Employee min=employeesPL.get(0);
+		for(int j=i+1;i<employeesPL.size();j++) {
+			if(employeesPL.get(j).compareTo(min)<0) {
+				Employee temp=employeesPL.get(j);
+				employeesPL.set(j, min);
+				min=temp;
+				}
+			}
+		employeesPL.set(i, min);
+		}
+	}
+   //Comparator lleva 1 implementación
+   public void sortEmployeeByName() {   //Note: This method must be used because when the first or last name is modified, the order of these in the arrayList is changed.
+		Comparator<Employee> nComparator = new employeeComparator();
+		Collections.sort(employeesPL,nComparator);
+	}
 }
