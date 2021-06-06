@@ -19,6 +19,8 @@ class ParkingLotMapTest {
         assertEquals("-10 -9",plMap.getLeftColumn().getActualPosition());
     }
 
+    //Comentario para arreglar commits como cosa rara
+
     @Test
     void setBottomRowTest1() {
         parkingLotMapTestSetupScenary1();
