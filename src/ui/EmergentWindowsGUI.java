@@ -6,6 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.ParkingLot;
 
@@ -130,6 +134,17 @@ public class EmergentWindowsGUI implements Initializable {
 
     @FXML
     private ChoiceBox<String> editVehicleSeatCHB = new ChoiceBox<>();
+
+    /*Map*/
+
+    @FXML
+    private VBox slotBDP = new VBox();
+
+    @FXML
+    private Label slotNumberLBL = new Label();
+
+    @FXML
+    private Rectangle vehicleRCT = new Rectangle();
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
@@ -267,5 +282,36 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void cancelCancelVehicle(ActionEvent event) {
         ((Stage) editVehicleTypeCHB.getScene().getWindow()).close();
+    }
+
+    /*Map*/
+
+    /**
+     * Loads a parking slot. <br>
+     * @param slotNumber The number of the slot. Negative numbers represent bike slots. <br>
+     * @param slotId The css id this slot will have. Must be either <b>upper</b>, <b>mid</b> or <b>bottom</b>.
+     * */
+    public void loadSlot(int slotNumber, String slotId) {
+        slotNumberLBL.setText(String.valueOf(slotNumber));
+        slotBDP.setId(slotId);
+        if (slotNumber < 0) {
+            slotBDP.setPrefHeight(50);
+        }
+    }
+
+    /**
+     * Hides the slot's information on lost focus. <br>
+     * */
+    @FXML
+    void hideSlotInformation(MouseEvent event) {
+
+    }
+
+    /**
+     * Shows the slot's information on context menu requested. <br>
+     * */
+    @FXML
+    void showSlotInformation(ContextMenuEvent event) {
+
     }
 }

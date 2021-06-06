@@ -6,11 +6,13 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -79,7 +81,16 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     private Button vehicleDeleteBTN = new Button();
 
-    /*Map view (Throwing this one under the rug for a little while)*/
+    /*Map view*/
+
+    @FXML
+    private HBox topHBOX = new HBox();
+
+    @FXML
+    private HBox bottomHBOX = new HBox();
+
+    @FXML
+    private VBox sideVBOX = new VBox();
 
     /*Users DB*/
 
@@ -192,6 +203,7 @@ public class CurrentSceneGUI implements Initializable {
         ObservableList<String> dummy = FXCollections.observableArrayList("1", "2", "3", "4", "5");
         receiptVehicleTypeCHB.setItems(dummy);
         reportTypeCHB.setItems(dummy);
+        initMap();
     }
 
     /**
@@ -200,20 +212,30 @@ public class CurrentSceneGUI implements Initializable {
      * @param title The title of the window to be launched. @NotEmpty.<br>
      * */
     private void launchFXML(String fxml, String title) {
+        Parent root = loadFxml(fxml);
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle(title);
+        Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
+        stage.getIcons().add(icon);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    /**
+     * Loads an fxml file into a Parent object. <br>
+     * @param fxml The title of the window to be launched. @NotEmpty @NotNull.<br>*/
+    private Parent loadFxml(String fxml) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxml));
             fxmlLoader.setController(emergentWindowsController);
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle(title);
-            Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
-            stage.getIcons().add(icon);
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException ignored) {}
+            return fxmlLoader.load();
+        } catch (Exception e) {
+            System.out.println("Can't load requested document right now.\nRequested document: \"" + fxml + "\"");
+            throw new NullPointerException("Document is null");
+        }
     }
 
     /*Login*/
@@ -282,6 +304,38 @@ public class CurrentSceneGUI implements Initializable {
     }
 
     /*Map view (Throwing this one under the rug for a little while)*/
+
+    void initMap() {
+        for (int i = 10; i > -11; i--) {
+            if (i == 1) i -= 2;
+            emergentWindowsController.loadSlot(i, "upper");
+            Parent slot = loadFxml("parking-slot.fxml");
+            if (i == 2) {
+                Separator sep = new Separator(Orientation.HORIZONTAL);
+                sep.setOpacity(1);
+                topHBOX.getChildren().add(sep);
+            }
+            topHBOX.getChildren().add(slot);
+        }
+
+        topHBOX.getChildren().remove(topHBOX.getChildren().size() - 1);
+
+        for (int i = 9; i < 16; i++) {
+            emergentWindowsController.loadSlot(i, "mid");
+            Parent slot = loadFxml("parking-slot.fxml");
+            sideVBOX.getChildren().add(slot);
+        }
+
+        sideVBOX.getChildren().remove(sideVBOX.getChildren().size() - 1);
+
+        for (int i = 15; i < 30; i++) {
+            emergentWindowsController.loadSlot(i, "mid");
+            Parent slot = loadFxml("parking-slot.fxml");
+            bottomHBOX.getChildren().add(slot);
+        }
+
+        bottomHBOX.getChildren().remove(bottomHBOX.getChildren().size() - 1);
+    }
 
     /*Users DB*/
 

@@ -1,58 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Polyline?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="814.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-  <columnConstraints>
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="100.0" />
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-  </rowConstraints>
+
+<HBox id="container" alignment="CENTER" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.rowIndex="1" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="3" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.rowIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.rowIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.columnIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="1" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.rowIndex="3" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#494949" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#474747bf" height="206.0" stroke="BLACK" strokeType="INSIDE" width="259.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.rowIndex="3" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" stroke="BLACK" strokeType="INSIDE" width="99.0" GridPane.columnIndex="3" />
-      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      <Line endX="-38.5" fill="#ebd159" rotate="90.0" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="1" />
-      <Line endX="-38.5" fill="#ebd159" rotate="90.0" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Line endX="-38.5" fill="#ebd159" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Line endX="-38.5" fill="#ebd159" rotate="90.0" startX="-100.0" stroke="#ebd159" strokeLineCap="ROUND" strokeWidth="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Polyline fill="#ebd15900" points="50.0, -40.0, 50.0, -40.0, -2.0, -40.0, -2.0, -89.0" stroke="#ebd159" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="5.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="724.0" prefWidth="1160.0" styleClass="parking-lot" stylesheets="@../css/map.css">
+         <top>
+            <HBox fx:id="topHBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" styleClass="slot-zone" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="95.0" />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+         <bottom>
+            <HBox fx:id="bottomHBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" styleClass="slot-zone" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <VBox fx:id="sideVBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="120.0" styleClass="slot-zone" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="55.0" top="55.0" />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+         <HBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </HBox.margin>
+      </BorderPane>
    </children>
-</GridPane>
+</HBox>

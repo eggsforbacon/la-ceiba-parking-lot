@@ -18,7 +18,7 @@
 }
 
 .table-view .column-header .label {
-    -fx-text-fill: -TEXT-ICON;
+    -fx-text-fill: -TEXT-ICONS;
     -fx-font-weight: bold;
     -fx-background-color: transparent;
 }

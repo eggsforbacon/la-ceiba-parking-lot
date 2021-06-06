@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -77,7 +78,7 @@ public class MainGUI implements Initializable {
             isMaximized = ((Stage) mainPane.getScene().getWindow()).isMaximized();
             if (!isMaximized) {
                 mainPane.getScene().getWindow().setWidth(width);
-                CURRENT_PREF_MIN = width;
+                CURRENT_PREF_MIN = width + 5;
             }
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxmlDocument));
             fxmlLoader.setController(currentSceneController);

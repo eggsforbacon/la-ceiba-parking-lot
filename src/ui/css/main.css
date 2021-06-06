@@ -55,6 +55,7 @@
 	-fx-background-radius: 15px;
 	-fx-border-radius: 15px;
 	-fx-skin: 'ui.skins.BlueButtonSkin';
+	-fx-effect: dropshadow(gaussian, -SECONDARY-TEXT, 15, 0.2, 0, 0);
 }
 
 .button:hover {
@@ -100,16 +101,19 @@
 .background {
 	-fx-background-color: -PRIMARY-COLOR;
 	-fx-background-radius: 15;
+	-fx-effect: dropshadow(gaussian, -SECONDARY-TEXT, 15, 0.2, 0, 0);
 }
 
 .foreground {
 	-fx-background-color: -LIGHT-PRIMARY-COLOR;
 	-fx-background-radius: 15;
+	-fx-effect: dropshadow(gaussian, -SECONDARY-TEXT, 15, 0.2, 0, 0);
 }
 
 .separator:horizontal .line{
 	-fx-background-color: -DIVIDER-COLOR;
 	-fx-background-radius: 15;
+	-fx-effect: dropshadow(gaussian, -PRIMARY-TEXT, 10, 0.2, 0, 0);
 }
 
 /*Ids*/
