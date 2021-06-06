@@ -5,25 +5,25 @@ import java.time.format.DateTimeFormatter;
 
 public abstract class Vehicle {
 
-    protected VehicleType type;
-    protected String model;
-    protected String licensePlate;
+    protected VehicleType type; //Esto se define en base a un Enum, es el tipo del vehiculo (carro,moto,etc)
+    protected String model;  //En plan Mazda, chevrolet, etc
+    protected String licensePlate; //la placa :v
     protected String color;
-    protected Client owner;
+    protected Client owner; //aqui toca conectarlo con esa clase
     protected boolean enabled;
-    protected int spot;
+    protected int spot; //el numero del puesto en el parqueadero
     protected String observations;
-    protected double valueToPay;
-    protected StayTime stay;
-    protected LocalDateTime entryDate;
-    protected String entryDateString;
-    protected int numberOfTime;
-    protected LocalDateTime supposedExitDate;
+    protected double valueToPay; //esto se calcula llamando a calculateValue
+    protected StayTime stay; //Es un enum, puede ser hora, dia, mes o indefinido
+    protected LocalDateTime entryDate; //la fecha en que entro el vehiculo
+    protected String entryDateString; //eso pero en string
+    protected int numberOfTime; // el numero de tiempo, en plan si escoge horas es 2 horas, si escoge meses es 2 meses blablabla
+    protected LocalDateTime supposedExitDate; // La fecha en que DEBERIA irse
     protected String supposedExitDateString;
-    protected LocalDateTime actualExitDate;
+    protected LocalDateTime actualExitDate; //La fecha en que se fue
     protected String actualExitDateString;
-    protected boolean additionalTime;
-    private DateTimeFormatter formatter;
+    protected boolean additionalTime; // para saber si se paso de la fecha acordada o no
+    private DateTimeFormatter formatter; // ignoralo
 
 
     public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,String observations,int stayIndicator,int numberOfTime){
