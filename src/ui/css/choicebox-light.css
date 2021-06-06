@@ -1,18 +1,42 @@
+* {
+	-DARK-PRIMARY-COLOR: #0288D1;
+	-LIGHT-PRIMARY-COLOR: #B3E5FC;
+	-PRIMARY-COLOR: #03A9F4;
+	-SECONDARY-COLOR: #E6F5FC;
+	-TEXT-ICONS: #FFFFFF;
+	-ACCENT-COLOR: #536DFE;
+	-SECONDARY-ACCENT-COLOR: #BEE3ED;
+	-PRIMARY-TEXT: #212121;
+	-SECONDARY-TEXT: #757575;
+	-DIVIDER-COLOR: #BDBDBD;
+	-PARKING-COLOR: #FCBA03;
+}
+
 .choice-box {
-	-fx-background-color: #B3E5FC;
+	-fx-background-color: -LIGHT-PRIMARY-COLOR;
 	-fx-background-radius: 15;
 }
 
 .choice-box .arrow {
 	-fx-background-color: white;
-	-fx-border-color: #536DFE;
+	-fx-border-color: -ACCENT-COLOR;
 }
 
 .choice-box .label {
-	-fx-text-fill: #FFFFFF;
+	-fx-text-fill: -PRIMARY-TEXT;
+}
+
+.choice-box .context-menu > .label {
+	-fx-text-fill: -TEXT-ICONS;
 }
 
 .choice-box .context-menu {
 	-fx-background-radius: 15;
-	-fx-background-color: #03A9F4;
+	-fx-background-color: -PRIMARY-COLOR;
+}
+
+.choice-box .menu-item:hover > .label, .choice-box .menu-item:hover {
+	-fx-background-color: -ACCENT-COLOR;
+	-fx-text-fill: -TEXT-ICONS;
+	-fx-background-radius: 12;
 }

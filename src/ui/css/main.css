@@ -1,3 +1,18 @@
+* {
+	-DARK-PRIMARY-COLOR: #0288D1;
+	-LIGHT-PRIMARY-COLOR: #B3E5FC;
+	-PRIMARY-COLOR: #03A9F4;
+	-SECONDARY-COLOR: #E6F5FC;
+	-TEXT-ICONS: #FFFFFF;
+	-ACCENT-COLOR: #536DFE;
+	-SECONDARY-ACCENT-COLOR: #BEE3ED;
+	-ALTERNATE-ACCENT-COLOR: #E4E8F5;
+	-PRIMARY-TEXT: #212121;
+	-SECONDARY-TEXT: #757575;
+	-DIVIDER-COLOR: #BDBDBD;
+	-PARKING-COLOR: #FCBA03;
+}
+
 .root {
 	-fx-font-family: "Helvetica";
 	-fx-font-size: 16px;
@@ -5,7 +20,7 @@
 }
 
 .preloader {
-	-fx-border-color: #aed3d6;
+	-fx-border-color: -LIGHT-PRIMARY-COLOR;
 	-fx-border-width: 8px;
 	-fx-background-image: url("../resources/splash.png");
 	-fx-border-radius: 15;
@@ -28,26 +43,26 @@
 
 #preloader-lbl {
 	-fx-font-size: 18px;
-	-fx-text-fill: white;
+	-fx-text-fill: -TEXT-ICONS;
 	-fx-font-weight: bold;
 }
 
 .button {
 	-fx-pref-width: 128px;
 	-fx-pref-height: 8px;
-	-fx-background-color: #536DFE;
-	-fx-text-fill: #FFFFFF;
+	-fx-background-color: -ACCENT-COLOR;
+	-fx-text-fill: -TEXT-ICONS;
 	-fx-background-radius: 15px;
 	-fx-border-radius: 15px;
 	-fx-skin: 'ui.skins.BlueButtonSkin';
 }
 
 .button:hover {
-	-fx-text-fill: #536DFE;
+	-fx-text-fill: -ACCENT-COLOR;
 }
 
 .button:armed {
-	-fx-background-color: #d7e3f5;
+	-fx-background-color: -ACCENT-COLOR;
 }
 
 .app-title {
@@ -55,7 +70,7 @@
 }
 
 .dial-lbl {
-	-fx-text-fill: #B3E5FC;
+	-fx-text-fill: -LIGHT-PRIMARY-COLOR;
 	-fx-font-style: italic;
 }
 
@@ -69,31 +84,31 @@
 }
 
 .vbox {
-	-fx-background-color: #B3E5FC;
+	-fx-background-color: -LIGHT-PRIMARY-COLOR;
 }
 
 .current-scene {
-	-fx-background-color: #bde1f2;
+	-fx-background-color: #BDE1F2;
 }
 
 .text-field {
 	-fx-background-radius: 12;
-	-fx-prompt-text-fill: #e4e8f5;
-	-fx-background-color: #536DFE;
+	-fx-prompt-text-fill: -ALTERNATE-ACCENT-COLOR;
+	-fx-background-color: -ACCENT-COLOR;
 }
 
 .background {
-	-fx-background-color: #03A9F4;
+	-fx-background-color: -PRIMARY-COLOR;
 	-fx-background-radius: 15;
 }
 
 .foreground {
-	-fx-background-color: #B3E5FC;
+	-fx-background-color: -LIGHT-PRIMARY-COLOR;
 	-fx-background-radius: 15;
 }
 
 .separator:horizontal .line{
-	-fx-background-color: #BDBDBD;
+	-fx-background-color: -DIVIDER-COLOR;
 	-fx-background-radius: 15;
 }
 

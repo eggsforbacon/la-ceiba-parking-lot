@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="100.0" styleClass="parking-slot" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox fx:id="slotBDP" alignment="CENTER" onContextMenuRequested="#showSlotInformation" onMouseExited="#hideSlotInformation" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="slotNumberLBL" styleClass="slot" text="N" />
+            <Rectangle fx:id="vehicleRCT" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

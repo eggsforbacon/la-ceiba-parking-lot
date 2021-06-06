@@ -1,30 +1,44 @@
+* {
+  -DARK-PRIMARY-COLOR: #0288D1;
+  -LIGHT-PRIMARY-COLOR: #B3E5FC;
+  -PRIMARY-COLOR: #03A9F4;
+  -SECONDARY-COLOR: #E6F5FC;
+  -TEXT-ICONS: #FFFFFF;
+  -ACCENT-COLOR: #536DFE;
+  -SECONDARY-ACCENT-COLOR: #BEE3ED;
+  -PRIMARY-TEXT: #212121;
+  -SECONDARY-TEXT: #757575;
+  -DIVIDER-COLOR: #BDBDBD;
+  -PARKING-COLOR: #FCBA03;
+}
+
 .table-view {
 	-fx-background-color: transparent;
   -fx-background-radius: 15;
 }
 
 .table-view .column-header .label {
-    -fx-text-fill: #d3e7f0;
+    -fx-text-fill: -TEXT-ICON;
     -fx-font-weight: bold;
     -fx-background-color: transparent;
 }
 
 .table-view .column-header {
-  -fx-background-color: #0098d9;
-  -fx-border-color: white;
+  -fx-background-color: -ACCENT-COLOR;
+  -fx-border-color: -TEXT-ICONS;
   -fx-background-radius: 15;
   -fx-border-radius: 12;
 }
 
 .table-view .column-header-background, .table-view .placeholder .label {
   -fx-background-color: transparent;
-  -fx-text-fill: #0288D1;
+  -fx-text-fill: -DARK-PRIMARY-COLOR;
 }
 
 .table-row-cell {
-  -fx-background-color: transparent;
+  -fx-background-color: -PRIMARY-COLOR;
 }
 
 .table-row-cell:odd {
-  -fx-background-color: #63b1d6;
+  -fx-background-color: -LIGHT-PRIMARY-COLOR;
 }

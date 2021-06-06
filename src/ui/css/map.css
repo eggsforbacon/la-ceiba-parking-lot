@@ -1,0 +1,54 @@
+* {
+	-DARK-PRIMARY-COLOR: #0288D1;
+	-LIGHT-PRIMARY-COLOR: #B3E5FC;
+	-PRIMARY-COLOR: #03A9F4;
+	-SECONDARY-COLOR: #E6F5FC;
+	-TEXT-ICONS: #FFFFFF;
+	-ACCENT-COLOR: #536DFE;
+	-SECONDARY-ACCENT-COLOR: #BEE3ED;
+	-PRIMARY-TEXT: #212121;
+	-SECONDARY-TEXT: #757575;
+	-DIVIDER-COLOR: #BDBDBD;
+	-PARKING-COLOR: #FCBA03;
+}
+
+.slot {
+	-fx-text-fill: -PRIMARY-TEXT;
+	-fx-font-size: 22;
+}
+
+#upper {
+	-fx-border-color: -PRIMARY-TEXT;
+	-fx-border-style: segments(5, 5, 5, 5) segments(5, 5, 5, 5) none segments(5, 5, 5, 5) line-cap round;
+	-fx-border-size: 15;
+}
+
+#mid {
+	-fx-border-color: -PRIMARY-TEXT;
+	-fx-border-style: segments(5, 5, 5, 5) none segments(5, 5, 5, 5)  segments(5, 5, 5, 5) line-cap round;
+	-fx-border-size: 15;
+}
+
+#bottom {
+	-fx-border-color: -PRIMARY-TEXT;
+	-fx-border-style: hidden segments(5, 5, 5, 5) segments(5, 5, 5, 5) segments(5, 5, 5, 5) line-cap round;
+	-fx-border-size: 15;
+}
+
+#bikes {
+	-fx-border-color: -PRIMARY-TEXT;
+	-fx-border-style: hidden segments(5, 5, 5, 5) none segments(5, 5, 5, 5) line-cap round;
+	-fx-border-size: 15;
+}
+
+.slot-zone {
+	-fx-background-color: -TEXT-ICONS;
+	-fx-background-radius: 12;
+}
+
+.parking-lot {
+	-fx-background-image: url("../resources/gravel-center-2.png");
+	-fx-background-size: 200, 414;
+	-fx-background-image-radius: 12;
+	-fx-effect: dropshadow(gaussian, -SECONDARY-TEXT, 15, 0.2, 0, 0);
+}
