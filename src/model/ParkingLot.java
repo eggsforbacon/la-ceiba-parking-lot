@@ -464,4 +464,189 @@ public class ParkingLot implements Serializable {
     public ParkingLotMap getPlMap(){
     	return plMap;
 	}
+    
+    //Manage vehicles
+    
+    /**
+    Add a vehicle to the vehicle's ArrayList creating it by It's specific type <br>
+    <b> pre: </b>Needs there is no other vehicle with the same specifications<br>
+    <b> post: </b>The specific vehicle will be created and added<br>
+    @param typeIndicator int whose information stipulate the type of the vehicle
+    @param model String with the vehicle큦 model
+    @param licensePlate String with the vehicle's plate information
+    @param color String with the vehicle's color
+    @param owner The object client with the owner's information
+    @param spot int with the vehicle's position at the parking lot
+    @param observations String with extra information about the vehicle
+    @param stayIndicator int with the indicator for the StayTime enum
+    @param numberofTime int with the amount of time that vehicle will spend in the PL
+    @return true or false
+    */
+    public boolean addVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, String observations, int stayIndicator, int numberOfTime) {
+    	
+    	if(verifyVehicleByPlate(licensePlate)) {
+
+		    	switch(typeIndicator) {
+		    	case 0:
+		    		SmallVehicle smallVTemp=new SmallVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+		    		vehiclesPL.add(smallVTemp);
+		    		return true;
+		    	case 1:
+		    		Motorcycle motorcycleTemp=new Motorcycle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+		    		vehiclesPL.add(motorcycleTemp);
+		    		return true;
+		    	case 2:
+		    		LargeVehicle largeVTemp=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+		    		vehiclesPL.add(largeVTemp);
+		    		return true;
+		    	case 3:
+		    		LargeVehicle largeVTemp2=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+		    		vehiclesPL.add(largeVTemp2);
+		    		return true;
+		    	case 4:
+		    		LargeVehicle largeVTemp3=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+		    		vehiclesPL.add(largeVTemp3);
+		    		return true;
+		    	case 5:
+		    		LargeVehicle largeVTemp4=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+		    		vehiclesPL.add(largeVTemp4);
+		    		return true;
+		    		
+		    	default: return false;
+    		}
+    	}
+    	else {
+    		return false;
+    	}
+    }
+    
+    
+    /**
+    Disable a vehicle searching it by It's license plate <br>
+    <b> pre: </b>Needs that the vehicle is already created<br>
+    <b> post: </b>Disable the vehicle<br>
+    @param plate A string who have the specific vehicle큦 license plate
+    @return true or false
+    */
+    public boolean disableVehicleByPlate(String plate) {
+    	for(int i=0;i<vehiclesPL.size();i++) {
+    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+    			vehiclesPL.get(i).setEnabled(false);
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    
+    /**
+    Update a vehicle's model searching it by It's license plate <br>
+    <b> pre: </b>Needs that the vehicle is already created<br>
+    <b> post: </b>Update the model<br>
+    @param plate A string who have the specific vehicle큦 license plate
+    @param newModel A string who have the new model
+    @return true or false
+    */
+    public boolean updateVehicleModel(String plate, String newModel) {
+    	for(int i=0;i<vehiclesPL.size();i++) {
+    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+    			vehiclesPL.get(i).setModel(newModel);
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    
+    /**
+    Update a vehicle's color searching it by It's license plate <br>
+    <b> pre: </b>Needs that the vehicle is already created<br>
+    <b> post: </b>Update the color<br>
+    @param plate A string who have the specific vehicle큦 license plate
+    @param newColor A string who have the new color
+    @return true or false
+    */
+    public boolean updateVehicleColor(String plate, String newColor) {
+    	for(int i=0;i<vehiclesPL.size();i++) {
+    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+    			vehiclesPL.get(i).setColor(newColor);
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    
+    /**
+    Update the spot in which is placed the vehicle <br>
+    <b> pre: </b>Needs the vehicle is already created<br>
+    <b> post: </b>Change the spot<br>
+    @param newSpot int with the new place number
+    @param plate String with the license plate information
+    @return true or false
+    */
+    public boolean updateSpot(String plate,int newSpot) {
+    	if(verifySpot(newSpot)) {
+    		for(int i=0;i<vehiclesPL.size();i++) {
+    			if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+        			vehiclesPL.get(i).setSpot(newSpot);
+        			return true;
+        		}
+    		}
+    	}
+    	return false;
+    }
+    
+    
+    /**
+    Update the observation of the vehicle <br>
+    <b> pre: </b>Needs the vehicle is already created<br>
+    <b> post: </b>Change the observation<br>
+    @param newObservation String with the new observation
+    @param plate String with the license plate information
+    @return true or false
+    */
+    public boolean updateObservation(String plate,String newObservation) {
+    	for(int i=0;i<vehiclesPL.size();i++) {
+    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+    			vehiclesPL.get(i).setObservations(newObservation);
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    
+    /**
+    Verify if the new spot is already in use <br>
+    <b> pre: </b><br>
+    <b> post: </b>Check if the place is vacate<br>
+    @param spot int with the place's number
+    @return true or false
+    */
+    public boolean verifySpot(int spot) {
+    	for(int i=0;i<vehiclesPL.size();i++) {
+    	if(vehiclesPL.get(i).getSpot()==spot) {
+			return false;
+			}
+    	}
+    	return true;
+    }
+    
+    
+    /**
+    Verify if the new vehicle is already created <br>
+    <b> pre: </b><br>
+    <b> post: </b>Verify is the vehicle can be created<br>
+    @param plate A string who have the specific vehicle큦 license plate
+    @return true or false
+    */
+    public boolean verifyVehicleByPlate(String plate) {
+    	for(int i=0;i<vehiclesPL.size();i++) {
+    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+    			return false;
+    		}
+    	}
+    	return true;
+    }
 }

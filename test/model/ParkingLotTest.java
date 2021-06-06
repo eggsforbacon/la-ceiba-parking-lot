@@ -16,6 +16,11 @@ class ParkingLotTest {
 		parkingLotTest.addEmployee("a", "1", "user","pass");
 	}
 	
+	public void parkingLotScenary3() {
+		parkingLotTest.addClient("a", "1", "2");
+		parkingLotTest.addVehicle(0,"a","aaa","b",parkingLotTest.searchByName("a"),2,"None",1,2);
+	}
+	
 	//Client tests
 	//
 	//
@@ -147,5 +152,15 @@ class ParkingLotTest {
 		parkingLotScenary2();
 		Employee aux=parkingLotTest.searchEmployeeByName("a");
 		assertEquals(parkingLotTest.searchEmployeeByID("1"),aux);
+	}
+	
+	//vehicles tests
+	//
+	//
+	
+	@Test
+	void addVehicleTest() {
+		parkingLotScenary3();
+		assertTrue(parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("a"),3,"None",1,2));
 	}
 }
