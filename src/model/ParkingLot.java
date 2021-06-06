@@ -13,6 +13,8 @@ public class ParkingLot implements Serializable {
     private ArrayList<Vehicle> vehiclesPL;
     private static ArrayList<Employee> employeesPL;
     private ParkingLotMap plMap;
+    private BTPerHourOrDaily perHourOrDailyVehicles;
+    private BTMonthly monthlyVehicles;
   
 
     public ParkingLot(){
@@ -467,6 +469,7 @@ public class ParkingLot implements Serializable {
     public ParkingLotMap getPlMap(){
     	return plMap;
 	}
+
     
     //Manage vehicles
     
@@ -482,46 +485,84 @@ public class ParkingLot implements Serializable {
     @param spot int with the vehicle's position at the parking lot
     @param observations String with extra information about the vehicle
     @param stayIndicator int with the indicator for the StayTime enum
-    @param numberofTime int with the amount of time that vehicle will spend in the PL
+    @param numberOfTime int with the amount of time that vehicle will spend in the PL
     @return true or false
     */
     public boolean addVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, String observations, int stayIndicator, int numberOfTime) {
-    	
+    	boolean check = false;
+    	Vehicle toAdd;
     	if(verifyVehicleByPlate(licensePlate)) {
 
 		    	switch(typeIndicator) {
 		    	case 0:
-		    		SmallVehicle smallVTemp=new SmallVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-		    		vehiclesPL.add(smallVTemp);
-		    		return true;
+		    		toAdd=new SmallVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+		    		vehiclesPL.add(toAdd);
+		    		check = true;
+		    		break;
 		    	case 1:
-		    		Motorcycle motorcycleTemp=new Motorcycle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-		    		vehiclesPL.add(motorcycleTemp);
-		    		return true;
+		    		toAdd=new Motorcycle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+		    		vehiclesPL.add(toAdd);
+		  			check = true;
+		  			break;
 		    	case 2:
-		    		LargeVehicle largeVTemp=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-		    		vehiclesPL.add(largeVTemp);
-		    		return true;
-		    	case 3:
-		    		LargeVehicle largeVTemp2=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-		    		vehiclesPL.add(largeVTemp2);
-		    		return true;
-		    	case 4:
-		    		LargeVehicle largeVTemp3=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-		    		vehiclesPL.add(largeVTemp3);
-		    		return true;
-		    	case 5:
-		    		LargeVehicle largeVTemp4=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-		    		vehiclesPL.add(largeVTemp4);
-		    		return true;
-		    		
-		    	default: return false;
+					case 3:
+					case 4:
+					case 5:
+						toAdd=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+						vehiclesPL.add(toAdd);
+		    			check = true;
+		    			break;
+					default: return false;
     		}
+    		switch(stayIndicator){
+				case 0:
+				case 1:
+					addAVehicleToPerHourOrDailyVehicles(toAdd);
+					break;
+				case 2:
+					addAVehicleToMonthlyVehicles(toAdd);
+					break;
+				default:
+			}
     	}
-    	else {
-    		return false;
-    	}
+    	return check;
     }
+
+	public void addAVehicleToPerHourOrDailyVehicles(Vehicle newVehicle){
+    	BTPerHourOrDaily newBt = new BTPerHourOrDaily();
+		newBt.setBtVehicle(newVehicle);
+		perHourOrDailyVehicles = addAVehicleToPerHourOrDailyVehicles(perHourOrDailyVehicles,newBt);
+	}
+
+	private BTPerHourOrDaily addAVehicleToPerHourOrDailyVehicles(BTPerHourOrDaily r,BTPerHourOrDaily newBT){
+		if (r == null) {
+			r = newBT;
+			return r;
+		}
+		if ((newBT.getBtVehicle().compareTo(r.getBtVehicle())) <= 0) //no estoy seguro
+			r.setLeft(addAVehicleToPerHourOrDailyVehicles((BTPerHourOrDaily) r.getLeft(),newBT));
+		else if ((newBT.getBtVehicle().compareTo(r.getBtVehicle())) > 0)
+			r.setRight(addAVehicleToPerHourOrDailyVehicles((BTPerHourOrDaily) r.getRight(),newBT));
+		return r;
+	}
+
+	public void addAVehicleToMonthlyVehicles(Vehicle newVehicle){
+		BTMonthly newBt = new BTMonthly();
+		newBt.setBtVehicle(newVehicle);
+		monthlyVehicles = addAVehicleToMonthlyVehicles(monthlyVehicles,newBt);
+	}
+
+	private BTMonthly addAVehicleToMonthlyVehicles(BTMonthly r,BTMonthly newBT){
+		if (r == null) {
+			r = newBT;
+			return r;
+		}
+		if ((newBT.getBtVehicle().compareTo(r.getBtVehicle())) <= 0) //no estoy seguro
+			r.setLeft(addAVehicleToMonthlyVehicles((BTMonthly) r.getLeft(),newBT));
+		else if ((newBT.getBtVehicle().compareTo(r.getBtVehicle())) > 0)
+			r.setRight(addAVehicleToMonthlyVehicles((BTMonthly) r.getRight(),newBT));
+		return r;
+	}
     
     
     /**
@@ -679,7 +720,7 @@ public class ParkingLot implements Serializable {
     
 	
     //"Implementado "1 vez"
-   public void clientInsertionSortByName(){
+   public void clientInsertionSortByName(){ //Client pero llama vehicle xd
 	   int i;
 		int j;
 		Vehicle aux;

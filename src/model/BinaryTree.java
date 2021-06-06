@@ -17,7 +17,7 @@ public abstract class BinaryTree {
         valueToPay = 0;
     }
 
-    public abstract String getInfo();
+    public abstract void setBtVehicle(Vehicle newVehicle);
 
     public BinaryTree getRight() {
         return right;
@@ -37,10 +37,6 @@ public abstract class BinaryTree {
 
     public Vehicle getBtVehicle() {
         return btVehicle;
-    }
-
-    public void setBtVehicle(Vehicle btVehicle) {
-        this.btVehicle = btVehicle;
     }
 
     public String getLicensePlate() {

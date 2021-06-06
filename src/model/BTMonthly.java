@@ -15,9 +15,13 @@ public class BTMonthly extends BinaryTree{
     }
 
     @Override
-    public String getInfo() {
-        return null;
+    public void setBtVehicle(Vehicle newVehicle) {
+        btVehicle = newVehicle;
+        ownerName = btVehicle.getOwner().getName();
+        spotNumber = btVehicle.getSpot();
+        dayToPay = btVehicle.getSupposedExitDateString();
     }
+
 
     public String getOwnerName() {
         return ownerName;
