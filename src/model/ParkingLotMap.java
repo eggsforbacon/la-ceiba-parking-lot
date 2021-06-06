@@ -1,5 +1,6 @@
 package model;
 
+
 public class ParkingLotMap {
     private Spot leftColumn;
     private Spot bottomRow;
@@ -221,10 +222,11 @@ public class ParkingLotMap {
      @return The respective spot
      */
     private Spot spotAt(int index,Spot spot) {
+        String[] comparator = spot.getActualPosition().split(" ");
         if (spot.getDown() == null) {
            return searchInBottomRow(index,bottomRow);
         } else {
-            if (spot.getActualPosition().contains(index + "")) {
+            if (comparator[0].equals(index + "")) {
                 return spot;
             } else {
                 return spotAt(index, spot.getDown());
@@ -240,11 +242,12 @@ public class ParkingLotMap {
      @return The respective spot
      */
     private Spot searchInBottomRow(int index,Spot spot){
+        String[] comparator = spot.getActualPosition().split(" ");
         if(spot.getRigth()==null){
             return  searchInRightColumn(index, rightColumn);
         }
         else{
-            if (spot.getActualPosition().contains(index + "")) {
+            if (comparator[0].equals(index + "")) {
                 return spot;
             } else {
                 return searchInBottomRow(index, spot.getRigth());
@@ -260,15 +263,16 @@ public class ParkingLotMap {
      @return The respective spot
      */
     private Spot searchInRightColumn(int index,Spot spot){
+        String[] comparator = spot.getActualPosition().split(" ");
         if(spot.getUp()==null){
-            if (spot.getActualPosition().contains(index + "")) {
+            if (comparator[0].equals(index + "")) {
                 return spot;
             } else {
                 return null;
             }
         }
         else{
-            if (spot.getActualPosition().contains(index + "")) {
+            if (comparator[0].equals(index + "")) {
                 return spot;
             } else {
                 return searchInRightColumn(index, spot.getUp());
@@ -293,7 +297,6 @@ public class ParkingLotMap {
      */
     private void uniteLeftAndRight(int i,Spot left,Spot right){
         if(i<12){
-            System.out.println("A ver cuando"+i);
             left.setRigth(right);
             right.setLeft(left);
             uniteLeftAndRight(i+1,left.getDown(),right.getDown());
@@ -324,6 +327,42 @@ public class ParkingLotMap {
             getSpot28(a.getUp());
             return null;
         }
+    }
+
+    public Spot getLeftColumn() {
+        return leftColumn;
+    }
+
+    public Spot getBottomRow() {
+        return bottomRow;
+    }
+
+    public Spot getRightColumn() {
+        return rightColumn;
+    }
+
+    public int getLeftColumnNumber() {
+        return leftColumnNumber;
+    }
+
+    public void setLeftColumnNumber(int leftColumnNumber) {
+        this.leftColumnNumber = leftColumnNumber;
+    }
+
+    public int getBottomRowNumber() {
+        return bottomRowNumber;
+    }
+
+    public void setBottomRowNumber(int bottomRowNumber) {
+        this.bottomRowNumber = bottomRowNumber;
+    }
+
+    public int getRightColumnNumber() {
+        return rightColumnNumber;
+    }
+
+    public void setRightColumnNumber(int rightColumnNumber) {
+        this.rightColumnNumber = rightColumnNumber;
     }
 
     //IGNORAR xd
