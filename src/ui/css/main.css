@@ -30,15 +30,17 @@
   	-fx-background-position: center;
 }
 
-.progress-bar > .track {
-	-fx-text-box-border: #0d2854;
-	-fx-control-inner-background: #264982;
+.p-bar-track {
+	-fx-fill: -ACCENT-COLOR;
+	-fx-stroke-width: 0;
+	-fx-arc-height: 10;
 }
 
-.progress-bar .bar {
-	-fx-padding: 2px; 
-    -fx-background-insets: 1;
-    -fx-background-color: #aed3d6;
+.p-bar {
+    -fx-fill: -LIGHT-PRIMARY-COLOR;
+    -fx-arc-height: 10;
+    -fx-stroke: -DARK-PRIMARY-COLOR;
+    -fx-stroke-width: 1.5;
 }
 
 #preloader-lbl {

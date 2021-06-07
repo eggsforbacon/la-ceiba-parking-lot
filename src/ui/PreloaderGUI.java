@@ -59,14 +59,14 @@ public class PreloaderGUI implements Initializable {
     /**
      * Updates the rectangle bar's width, i.e. loads it. <br>
      * */
-    public void loadBar() {
+    public void loadBar() throws InterruptedException {
         double newWidth = bar.getBarWidth();
         pBarRCT.setWidth(newWidth);
         double percentage = (newWidth / bar.LOADED_WIDTH) * 100;
         DecimalFormat format = new DecimalFormat("#.00");
         progressLBL.setText("Cargando... (" + format.format(percentage) + "% )");
-        if (percentage >= 50.0 && !isLoaded) {
-            Platform.runLater(new Thread(this::sleepSleep));
+        if (percentage >= 65.0 && !isLoaded) {
+            Thread.sleep(1200);
             load(); // <- Might have a loading exception here
             isLoaded = true;
         }
@@ -102,16 +102,6 @@ public class PreloaderGUI implements Initializable {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    /**
-     * Sleeps the thread for a specified amount of milliseconds. <br>  */
-    public void sleepSleep() {
-        try {
-            Thread.sleep(800);
-        } catch (InterruptedException ie) {
-            ie.printStackTrace();
         }
     }
 }
