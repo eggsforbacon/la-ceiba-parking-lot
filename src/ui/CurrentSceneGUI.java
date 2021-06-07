@@ -328,6 +328,7 @@ public class CurrentSceneGUI implements Initializable {
                 break;
             default:
                 laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(laCeiba.binarySearchPerson(laCeiba.getEmployeesPL(), loginUserTF.getText())));
+                launchError("Bienvenido "+laCeiba.getActualEmployee().getName(),"Mensaje de inicio de sesion");
                 loginSuccessful = true;
                 break;
         }
