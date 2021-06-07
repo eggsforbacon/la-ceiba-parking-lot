@@ -77,8 +77,6 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     private TextField newClientIDTF = new TextField();
 
-    @FXML
-    private ChoiceBox<String> newClientDocumentTypeCHB = new ChoiceBox<>();
 
     /*Client Editing*/
 
@@ -91,8 +89,6 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     private TextField editClientIDTF = new TextField();
 
-    @FXML
-    private ChoiceBox<String> editClientDocumentTypeCHB = new ChoiceBox<>();
 
     /*Vehicle Registration*/
 
@@ -154,6 +150,7 @@ public class EmergentWindowsGUI implements Initializable {
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
     ParkingLot laCeiba;
+    boolean successsful=false;
 
     /*------------------------ METHODS ------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -173,18 +170,51 @@ public class EmergentWindowsGUI implements Initializable {
      * */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> dummy = FXCollections.observableArrayList("1", "2", "3", "4", "5");
+        ObservableList<String> dummy = FXCollections.observableArrayList("AUTOMOVIL","MOTO","CAMION","BUS","FURGON","CAMIONETA");
+        ObservableList<String> dummy2 = FXCollections.observableArrayList("HORA","DIA","MES","INDEFINIDO");
+        ObservableList<String> dummy3 = FXCollections.observableArrayList("NEGRO","BLANCO","GRIS","ROJO","AZUL","AMARILLO","NARANJA","VERDE","ROSA","MORADO");
         ObservableList<Integer> dummyInt = FXCollections.observableArrayList(1, 2, 3, 4, 5);
-        newClientDocumentTypeCHB.setItems(dummy);
-        editClientDocumentTypeCHB.setItems(dummy);
         newVehicleTypeCHB.setItems(dummy);
-        newVehicleStayTypeCHB.setItems(dummy);
-        newVehicleColorCHB.setItems(dummy);
+        newVehicleStayTypeCHB.setItems(dummy2);
+        newVehicleColorCHB.setItems(dummy3);
+        //newVehicleSeatCHB.setItems(dummyInt);
         editVehicleTypeCHB.setItems(dummy);
-        editVehicleStayTypeCHB.setItems(dummy);
-        editVehicleColorCHB.setItems(dummy);
-        editVehicleSeatCHB.setItems(dummy);
-        newVehicleSeatCHB.setItems(dummyInt);
+        editVehicleStayTypeCHB.setItems(dummy2);
+        editVehicleColorCHB.setItems(dummy3);
+        //editVehicleSeatCHB.setItems(dummy);
+    }
+
+    public Button getDialDismissBTN() {
+        return dialDismissBTN;
+    }
+
+    public void setDialDismissBTN(Button dialDismissBTN) {
+        this.dialDismissBTN = dialDismissBTN;
+    }
+
+    public ChoiceBox<Integer> getNewVehicleSeatCHB() {
+        return newVehicleSeatCHB;
+    }
+
+    public void setNewVehicleSeatCHB(ChoiceBox<Integer> newVehicleSeatCHB) {
+        this.newVehicleSeatCHB = newVehicleSeatCHB;
+    }
+
+    public ChoiceBox<String> getEditVehicleSeatCHB() {
+        return editVehicleSeatCHB;
+    }
+
+    public void setEditVehicleSeatCHB(ChoiceBox<String> editVehicleSeatCHB) {
+        this.editVehicleSeatCHB = editVehicleSeatCHB;
+    }
+
+    public String getVehicleType(){
+        if(newVehicleTypeCHB.getSelectionModel().getSelectedItem() != null){
+            return newVehicleTypeCHB.getValue();
+        }
+        else{
+            return "";
+        }
     }
 
     /**
@@ -306,6 +336,18 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void createNewClient(ActionEvent event) {
         ((Stage) newClientFullnameTF.getScene().getWindow()).close();
+        boolean check = laCeiba.addClient(newClientFullnameTF.getText(),newClientIDTF.getText(),newClientPhoneTF.getText());
+        if(check){
+            successsful=true;
+            //boolean check2 = laCeiba.addVehicle()
+        }
+        else{
+            launchError("Datos del cliente incorrectos o invalidos","Creacion de cliente");
+        }
+    }
+
+    public boolean getSuccessful(){
+        return successsful;
     }
 
     /**
@@ -378,4 +420,6 @@ public class EmergentWindowsGUI implements Initializable {
     void showSlotInformation(ContextMenuEvent event) {
 
     }
+
+
 }

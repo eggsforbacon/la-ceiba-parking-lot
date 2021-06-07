@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="584.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="584.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -37,7 +37,6 @@
                      <children>
                         <Label text="Número de Identificación" />
                         <TextField fx:id="newClientIDTF" prefHeight="37.0" prefWidth="152.0" promptText="1234567890" />
-                        <ChoiceBox fx:id="newClientDocumentTypeCHB" prefHeight="37.0" prefWidth="58.0" stylesheets="@../css/choicebox-dark.css" />
                      </children>
                   </HBox>
                   <Separator minHeight="0.0" minWidth="0.0" prefHeight="16.0" prefWidth="167.0">

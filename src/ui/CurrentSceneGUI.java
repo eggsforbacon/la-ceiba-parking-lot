@@ -20,6 +20,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyCode;
 import model.*;
+import threads.ChoiceBoxThread;
+import threads.LoginThread;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -391,8 +394,10 @@ public class CurrentSceneGUI implements Initializable {
      * Prompts the user to add a client with its vehicle to the program. <br>
      * */
     @FXML
-    void addClient(ActionEvent event) {
+    public void addClient(ActionEvent event) {
         launchFXML("create-client-vehicle.fxml", "Nuevo Cliente");
+        new ChoiceBoxThread(emergentWindowsController).start();
+
     }
 
     /**
