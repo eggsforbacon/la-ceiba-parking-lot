@@ -34,7 +34,6 @@ public abstract class Vehicle implements Comparable<Vehicle> {
         this.color = color;
         this.owner = owner;
         this.spot = spot;
-        this.observations = observations;
         valueToPay = 0;
         stay = stay.values()[stayIndicator];
         formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");

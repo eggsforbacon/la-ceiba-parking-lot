@@ -7,6 +7,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import exceptions.NotAllowedException;
+import exceptions.NameAlreadyInUseException;
+import exceptions.IDAlreadyInUseException;
+import exceptions.PasswordAlreadyInUseException;
+import exceptions.UsernameAlreadyInUseException;
 
 public class ParkingLot implements Serializable {
     
@@ -21,6 +26,7 @@ public class ParkingLot implements Serializable {
     private Employee actualEmployee;
     private boolean firstTime;
     private boolean columnsVeryfier=false;
+
   
 
     public ParkingLot(){
@@ -49,8 +55,10 @@ public class ParkingLot implements Serializable {
     @param id A string who have the new clientï¿½s ID
     @param cellNumber A string who have the new clientï¿½s cellNumber
     @return true or false
+     * @throws NameAlreadyInUseException 
+     * @throws IDAlreadyInUseException 
     */
-    public boolean addClient(String name, String id, String cellNumber) {
+    public boolean addClient(String name, String id, String cellNumber) throws NameAlreadyInUseException, IDAlreadyInUseException {
     	if(searchByName(name)!=null&&searchByName(name).getStatus()==false) {
     		clientsPL.add(new Client(name,id,cellNumber));
     		return true;
@@ -59,11 +67,10 @@ public class ParkingLot implements Serializable {
     		String temp=ClientVeryfier(name,id, cellNumber);
         	//Aï¿½adir excepciï¿½n para verificar si el nombre estï¿½ repetido o si el id estï¿½ repetido
         	if(temp.contains("name")){
-        		return false;
+        		throw new NameAlreadyInUseException();
         	}
         	else if(temp.contains("id")) {
-        		return false;
-        	}
+        		throw new IDAlreadyInUseException();        	}
         	else {
         		Client aux=new Client(name, id, cellNumber);
         		clientsPL.add(aux);
@@ -246,8 +253,12 @@ public class ParkingLot implements Serializable {
     @param username A string who have the new employeeï¿½s username
 	@param password  A string who have the new employeeï¿½s password
     @return true or false
+     * @throws NameAlreadyInUseException 
+     * @throws IDAlreadyInUseException 
+     * @throws UsernameAlreadyInUseException 
+     * @throws PasswordAlreadyInUseException 
     */
-    public boolean addEmployee(String name, String id, String username, String password) {
+    public boolean addEmployee(String name, String id, String username, String password) throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
     	if(searchEmployeeByName(name)!=null&&searchEmployeeByName(name).getState()==false) {
     		for(int i=0;i<employeesPL.size();i++) {
     			if(employeesPL.get(i).getId().equalsIgnoreCase(searchEmployeeByName(name).getId())) {
@@ -259,17 +270,16 @@ public class ParkingLot implements Serializable {
     	String temp=employeeVeryfier(name,id,username,password);
     	//Añadir excepciï¿½n para verificar si el nombre estï¿½ repetido o si el id estï¿½ repetido
     	if(temp.contains("name")){
-    		return false;
+    		throw new NameAlreadyInUseException();
     	}
     	else if(temp.contains("id")) {
-    		
-    		return false;
+    		throw new IDAlreadyInUseException();
     	}
     	else if(temp.contains("username")) {
-    		return false;
+    		throw new UsernameAlreadyInUseException();
     	}
     	else if(temp.contains("password")) {
-    		return false;
+    		throw new PasswordAlreadyInUseException();
     	}
     	else {
     		Employee aux=new Employee(name, id, username, password);
@@ -516,8 +526,9 @@ public class ParkingLot implements Serializable {
     @param stayIndicator int with the indicator for the StayTime enum
     @param numberOfTime int with the amount of time that vehicle will spend in the PL
     @return true or false
+     * @throws NotAllowedException 
     */
-    public boolean addVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, int stayIndicator, int numberOfTime) {
+    public boolean addVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, int stayIndicator, int numberOfTime) throws NotAllowedException {
     	boolean check = false;
     	Vehicle toAdd;
     	if(verifyVehicleByPlate(licensePlate)) {
@@ -532,7 +543,7 @@ public class ParkingLot implements Serializable {
 		    			}
 		    		}
 		    		if(check==false) {
-		    			//EXCEPTION
+		    			throw new NotAllowedException();
 		    		}
 		    		
 		    		break;
@@ -545,7 +556,7 @@ public class ParkingLot implements Serializable {
 		    			}
 		    		}
 		    		if(check==false) {
-		    			//EXCEPTION
+		    			throw new NotAllowedException();
 		    		}
 		  			break;
 		    	case 2:
@@ -560,7 +571,7 @@ public class ParkingLot implements Serializable {
 			    			}
 			    		}
 						if(check==false) {
-			    			//EXCEPTION
+							throw new NotAllowedException();
 			    		}
 		    			break;
 					default: return false;
