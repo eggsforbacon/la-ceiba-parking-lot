@@ -520,4 +520,12 @@ public class CurrentSceneGUI implements Initializable {
         emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
         launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
+
+    public boolean isLoginSuccessful() {
+        return loginSuccessful;
+    }
+
+    public void setLoginSuccessful(boolean loginSuccessful) {
+        this.loginSuccessful = loginSuccessful;
+    }
 }

@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.ParkingLot;
+import threads.LoginThread;
 
 import java.io.IOException;
 import java.net.URL;
@@ -86,6 +87,7 @@ public class MainGUI implements Initializable {
         if(laCeiba.checkFirstTime()){
             toggleButtons(true);
             laCeiba.setFirstTime(false);
+            login();
         }
         else{
             toggleButtons(false);
@@ -93,7 +95,7 @@ public class MainGUI implements Initializable {
     }
 
     public void login(){
-
+        new LoginThread(this).start();
     }
 
     /**
@@ -228,5 +230,13 @@ public class MainGUI implements Initializable {
      * */
     public void setCURRENT_PREF_MIN(double CURRENT_PREF_MIN) {
         this.CURRENT_PREF_MIN = CURRENT_PREF_MIN;
+    }
+
+    public CurrentSceneGUI getCurrentSceneController() {
+        return currentSceneController;
+    }
+
+    public void setCurrentSceneController(CurrentSceneGUI currentSceneController) {
+        this.currentSceneController = currentSceneController;
     }
 }
