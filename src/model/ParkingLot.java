@@ -735,9 +735,11 @@ public class ParkingLot implements Serializable {
     	return true;
     }
     
+    
     //Sorting algorithms
     //
     //
+    
     
     /**
     Use the bubble sort to organize the clients by name<br>
@@ -957,6 +959,25 @@ public class ParkingLot implements Serializable {
 			}
 		}
 		return pos;
+	}
+   
+   //Login
+   //
+   //
+   
+   public int login(String username,String password) {
+		int index = -1; //Not found
+		boolean band = false;
+		for(int i = 0; i < employeesPL.size() && !band; i++) {
+			if((employeesPL.get(i).getUsername().equals(username)) && (employeesPL.get(i).getPassword().equals(password))) {
+				index = i;
+				band = true;
+			}
+		}
+		if (root.getUsername().equals(username) && root.getPassword().equals(password)) {
+			index = -2; // The user is the rootUser
+		}
+		return index;
 	}
    
    //Getters y setters
