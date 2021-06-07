@@ -20,6 +20,7 @@ public class ParkingLot implements Serializable {
     private Employee root;
     private Employee actualEmployee;
     private boolean firstTime;
+    private boolean columnsVeryfier=false;
   
 
     public ParkingLot(){
@@ -1009,6 +1010,15 @@ public class ParkingLot implements Serializable {
    //
    //
    
+   
+   
+   /**
+   Generate a csv about the client's information <br>
+   <b> pre: </b>Needs a file in which write the information<br>
+   <b> post: </b>Generate the csv<br>
+   @param startDate LocalDateTime with the begin date 
+   @param endDate LocalDateTime with the end date 
+   */
    public void generateClientsReport(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException{
 		PrintWriter pw = new PrintWriter("");
 		String separator=";";
@@ -1041,12 +1051,20 @@ public class ParkingLot implements Serializable {
 		pw.close();
 	  }
    
+   
+   /**
+   Generate a csv about the vehicle's general information <br>
+   <b> pre: </b>Needs a file in which write the information<br>
+   <b> post: </b>Generate the csv<br>
+   @param startDate LocalDateTime with the begin date 
+   @param endDate LocalDateTime with the end date 
+   */
    public void generateVehiclesReport(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException{
 		PrintWriter pw = new PrintWriter("");
 		String separator=";";
-		sortEmployeeByName();
-		String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+"Color"+
-		"Nombre de propietario"+"Identificación propietario"+"Fecha de entrada"+"Fecha de salida";
+		vehicleInsertionSortByPlate();
+		String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+separator+"Color"+ separator 
+		+"Nombre de propietario"+ separator +"Identificación propietario"+ separator +"Fecha de entrada"+ separator +"Fecha de salida";
 		pw.println(columns);
 		 for(int i = 0; i < vehiclesPL.size(); i++) {
 			 LocalDateTime dateOfClient=vehiclesPL.get(i).getEntryDate();
@@ -1057,6 +1075,104 @@ public class ParkingLot implements Serializable {
 		 }
 		pw.close();
 	  }
+   
+   
+   /**
+   Generate a csv about the vehicle's monthly information <br>
+   <b> pre: </b>Needs a file in which write the information<br>
+   <b> post: </b>Generate the csv<br>
+   @param monthlyVehicles the node of the binary tree
+   @param startDate LocalDateTime with the begin date 
+   @param endDate LocalDateTime with the end date 
+   */
+   public void reportInfoMonthly(BTMonthly monthlyVehicles,LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException {
+	   columnsVeryfier=false;
+	   reportInfoMonthly(monthlyVehicles, startDate, endDate, columnsVeryfier);
+   }
+   
+   
+   /**
+   Generate a csv about the vehicle's monthly information <br>
+   <b> pre: </b>Needs a file in which write the information<br>
+   <b> post: </b>Generate the csv<br>
+   @param monthlyVehicles the node of the binary tree
+   @param startDate LocalDateTime with the begin date 
+   @param endDate LocalDateTime with the end date 
+   */
+   private void reportInfoMonthly(BTMonthly monthlyVehicles,LocalDateTime startDate,LocalDateTime endDate, boolean columnsVeyfier) throws FileNotFoundException{
+	   PrintWriter pw = new PrintWriter("");
+			   if(columnsVeryfier==false) {
+					   String separator=";";
+						String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+separator+"Color"+ separator 
+						+"Nombre de propietario"+ separator +"Identificación propietario"+ separator +"Fecha de entrada"+ separator +"Fecha de salida";
+						pw.println(columns);
+						columnsVeryfier=true;
+			   }
+	   String temp="";
+				if (monthlyVehicles != null) {
+					reportInfoMonthly((BTMonthly) monthlyVehicles.getLeft(), startDate, endDate, columnsVeryfier);
+					LocalDateTime dateOfClient=monthlyVehicles.getBtVehicle().getEntryDate();
+							if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
+									temp=monthlyVehicles.getBtVehicle().getLicensePlate()+";"+monthlyVehicles.getBtVehicle().getModel()+";"
+										+monthlyVehicles.getBtVehicle().getOwner().getName()
+										+";"+monthlyVehicles.getBtVehicle().getOwner().getCellNumber()+";"+monthlyVehicles.getBtVehicle().getValueToPay()
+										+"\n";
+									pw.println(temp);
+									reportInfoMonthly((BTMonthly)monthlyVehicles.getRight(), startDate, endDate, columnsVeryfier);
+							}
+					}
+		pw.close();
+		
+	}
+   
+   
+   /**
+   Generate a csv about the vehicle's per hour or daily information <br>
+   <b> pre: </b>Needs a file in which write the information<br>
+   <b> post: </b>Generate the csv<br>
+   @param perHourOrDailyVehicles the node of the binary tree
+   @param startDate LocalDateTime with the begin date 
+   @param endDate LocalDateTime with the end date 
+   */
+   public void reportInfoDaily(BTPerHourOrDaily perHourOrDailyVehicles,LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException {
+	   columnsVeryfier=false;
+	   reportInfoDaily(perHourOrDailyVehicles, startDate, endDate, columnsVeryfier);
+   }
+   
+   
+   /**
+   Generate a csv about the vehicle's per hour or daily information <br>
+   <b> pre: </b>Needs a file in which write the information<br>
+   <b> post: </b>Generate the csv<br>
+   @param perHourOrDailyVehicles the node of the binary tree
+   @param startDate LocalDateTime with the begin date 
+   @param endDate LocalDateTime with the end date 
+   */
+   private void reportInfoDaily(BTPerHourOrDaily perHourOrDailyVehicles,LocalDateTime startDate,LocalDateTime endDate, boolean columnsVeryfier) throws FileNotFoundException{
+	   PrintWriter pw = new PrintWriter("");
+	   if(columnsVeryfier==false) {
+		   String separator=";";
+			String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+separator+"Color"+ separator 
+			+"Nombre de propietario"+ separator +"Identificación propietario"+ separator +"Fecha de entrada"+ separator +"Fecha de salida";
+			pw.println(columns);
+			columnsVeryfier=true;
+		   }
+	   String temp="";
+		if (perHourOrDailyVehicles != null) {
+				reportInfoDaily((BTPerHourOrDaily) perHourOrDailyVehicles.getLeft(), startDate, endDate, columnsVeryfier);
+				LocalDateTime dateOfClient=perHourOrDailyVehicles.getBtVehicle().getEntryDate();
+				if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
+							temp=perHourOrDailyVehicles.getBtVehicle().getLicensePlate()+";"
+							+perHourOrDailyVehicles.getBtVehicle().getModel()+";"+perHourOrDailyVehicles.getBtVehicle().getOwner().getName()
+							+";"+perHourOrDailyVehicles.getBtVehicle().getOwner().getCellNumber()+";"+perHourOrDailyVehicles.getBtVehicle().getValueToPay()
+							+"\n";
+						pw.println(temp);
+						reportInfoDaily((BTPerHourOrDaily)perHourOrDailyVehicles.getRight(), startDate, endDate,columnsVeryfier);
+				}
+		}
+		pw.close();
+	}
+   
    //jd gei
    //Getters y setters
    //
@@ -1133,5 +1249,13 @@ public class ParkingLot implements Serializable {
 
 	public void setFirstTime(boolean firstTime) {
 		this.firstTime = firstTime;
+	}
+
+	public boolean getColumnsVeryfier() {
+		return columnsVeryfier;
+	}
+
+	public void setColumnsVeryfier(boolean columnsVeryfier) {
+		this.columnsVeryfier = columnsVeryfier;
 	}
 }

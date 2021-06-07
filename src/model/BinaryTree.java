@@ -14,7 +14,7 @@ public abstract class BinaryTree {
         btVehicle = null;
         licensePlate = "";
         number = 0;
-        valueToPay = 0;
+        setValueToPay(0);
     }
 
     public abstract void setBtVehicle(Vehicle newVehicle);
@@ -46,4 +46,14 @@ public abstract class BinaryTree {
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
     }
+
+	public double getValueToPay() {
+		return valueToPay;
+	}
+
+	public void setValueToPay(double valueToPay) {
+		this.valueToPay = valueToPay;
+	}
+	
+	
 }

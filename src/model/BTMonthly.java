@@ -54,4 +54,6 @@ public class BTMonthly extends BinaryTree{
     public void setDayToPay(String dayToPay) {
         this.dayToPay = dayToPay;
     }
+    
+	
 }

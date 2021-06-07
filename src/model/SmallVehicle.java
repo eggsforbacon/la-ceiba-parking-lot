@@ -33,6 +33,9 @@ public class SmallVehicle extends Vehicle{
                     return StayTime.MES;
                 }
                 break;
+		default:
+			//Añadir excepción
+			break;
         }
         return stay;
     }
@@ -44,7 +47,6 @@ public class SmallVehicle extends Vehicle{
      */
     @Override
     public void calculateValueToPay() {
-        double value = 0;
         StayTime compare=stay;
         int comp=numberOfTime;
         if(changeStayTime()!=stay){
@@ -137,10 +139,17 @@ public class SmallVehicle extends Vehicle{
         //WIP
     }
 
-	@Override
+    @Override
 	public String showInformation() {
-		// TODO Auto-generated method stub
-		return null;
+		String info=getType()+";"+getModel()+";"+getLicensePlate()+";"+getColor()
+		+";"+getOwner().getName()+";"+getOwner().getId()+";"+getEntryDateString()
+		+";"+getActualExitDateString()+";"+getValueToPay();
+		
+		return info;
+	}
+
+	public static int[] getAvailablespots() {
+		return availableSpots;
 	}
 
 }

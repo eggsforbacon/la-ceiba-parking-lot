@@ -1,7 +1,5 @@
 package model;
 
-import com.sun.org.apache.xerces.internal.impl.dv.xs.AbstractDateTimeDV;
-
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -35,6 +33,9 @@ public class LargeVehicle extends Vehicle {
                     return StayTime.MES;
                 }
                 break;
+		default:
+			//Añadir excepción
+			break;
         }
         return stay;
     }
@@ -46,7 +47,6 @@ public class LargeVehicle extends Vehicle {
      */
     @Override
     public void calculateValueToPay() {
-        double value = 0;
         StayTime compare=stay;
         int comp=numberOfTime;
         if(changeStayTime()!=stay){
@@ -141,9 +141,13 @@ public class LargeVehicle extends Vehicle {
 	public String showInformation() {
 		String info=getType()+";"+getModel()+";"+getLicensePlate()+";"+getColor()
 		+";"+getOwner().getName()+";"+getOwner().getId()+";"+getEntryDateString()
-		+";"+getActualExitDateString()+";";
+		+";"+getActualExitDateString()+";"+getValueToPay();
 		
 		return info;
+	}
+
+	public static int[] getAvailablespots() {
+		return availableSpots;
 	}
 
 }
