@@ -83,9 +83,9 @@ public class MainGUI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         currentScene.prefHeightProperty().bind(mainPane.heightProperty());
         currentScene.prefWidthProperty().bind(mainPane.widthProperty());
-        if(true){
+        if(laCeiba.checkFirstTime()){
             toggleButtons(true);
-
+            laCeiba.setFirstTime(false);
         }
         else{
 

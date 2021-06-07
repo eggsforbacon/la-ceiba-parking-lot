@@ -820,4 +820,76 @@ public static void clientBubbleSortByID() {
 		Comparator<Vehicle> nComparator = new vehicleComparator();
 		Collections.sort(vehiclesPL,nComparator);
 	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public static ArrayList<Client> getClientsPL() {
+		return clientsPL;
+	}
+
+	public static void setClientsPL(ArrayList<Client> clientsPL) {
+		ParkingLot.clientsPL = clientsPL;
+	}
+
+	public ArrayList<Vehicle> getVehiclesPL() {
+		return vehiclesPL;
+	}
+
+	public void setVehiclesPL(ArrayList<Vehicle> vehiclesPL) {
+		this.vehiclesPL = vehiclesPL;
+	}
+
+	public static ArrayList<Employee> getEmployeesPL() {
+		return employeesPL;
+	}
+
+	public static void setEmployeesPL(ArrayList<Employee> employeesPL) {
+		ParkingLot.employeesPL = employeesPL;
+	}
+
+	public void setPlMap(ParkingLotMap plMap) {
+		this.plMap = plMap;
+	}
+
+	public BTPerHourOrDaily getPerHourOrDailyVehicles() {
+		return perHourOrDailyVehicles;
+	}
+
+	public void setPerHourOrDailyVehicles(BTPerHourOrDaily perHourOrDailyVehicles) {
+		this.perHourOrDailyVehicles = perHourOrDailyVehicles;
+	}
+
+	public BTMonthly getMonthlyVehicles() {
+		return monthlyVehicles;
+	}
+
+	public void setMonthlyVehicles(BTMonthly monthlyVehicles) {
+		this.monthlyVehicles = monthlyVehicles;
+	}
+
+	public Employee getRoot() {
+		return root;
+	}
+
+	public void setRoot(Employee root) {
+		this.root = root;
+	}
+
+	public Employee getActualEmployee() {
+		return actualEmployee;
+	}
+
+	public void setActualEmployee(Employee actualEmployee) {
+		this.actualEmployee = actualEmployee;
+	}
+
+	public boolean isFirstTime() {
+		return firstTime;
+	}
+
+	public void setFirstTime(boolean firstTime) {
+		this.firstTime = firstTime;
+	}
 }
