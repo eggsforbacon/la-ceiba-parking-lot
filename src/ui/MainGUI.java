@@ -112,6 +112,7 @@ public class MainGUI implements Initializable {
                 mainPane.getScene().getWindow().setWidth(width);
                 CURRENT_PREF_MIN = width + 5;
             }
+            currentSceneController.setCurrentScene(title);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxmlDocument));
             fxmlLoader.setController(currentSceneController);
             Parent root = fxmlLoader.load();
@@ -167,7 +168,7 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void vehiclesClicked(ActionEvent event) {
-        launchPane("vehicles-view.fxml","Clientes", 1500);
+        launchPane("vehicles-view.fxml","Vehículos", 1500);
     }
 
     /**
