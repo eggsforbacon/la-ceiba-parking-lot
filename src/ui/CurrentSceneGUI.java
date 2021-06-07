@@ -274,6 +274,8 @@ public class CurrentSceneGUI implements Initializable {
         }
     }
 
+    //Confirmo
+
     public void launchError(String message, String title) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/dialogue.fxml"));
