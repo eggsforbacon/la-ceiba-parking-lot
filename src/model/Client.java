@@ -32,6 +32,16 @@ public class Client extends Person implements Comparable<Client> {
 	public int compareTo(Client o) {
 		return getName().compareTo(o.getName());
 	}
+
+
+	@Override
+	public String showInformation() {
+		String info = getName()+";";
+		info+=getId()+";";
+		info+=getCellNumber()+";";
+		return info;
+		
+	}
 	
 
     

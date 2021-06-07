@@ -1,6 +1,9 @@
 package model;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -238,11 +241,12 @@ public class ParkingLot implements Serializable {
     */
     public boolean addEmployee(String name, String id, String username, String password) {
     	String temp=employeeVeryfier(name,id,username,password);
-    	//Aï¿½adir excepciï¿½n para verificar si el nombre estï¿½ repetido o si el id estï¿½ repetido
+    	//Añadir excepciï¿½n para verificar si el nombre estï¿½ repetido o si el id estï¿½ repetido
     	if(temp.contains("name")){
     		return false;
     	}
     	else if(temp.contains("id")) {
+    		
     		return false;
     	}
     	else if(temp.contains("username")) {
@@ -996,6 +1000,26 @@ public class ParkingLot implements Serializable {
 		}
 		return index;
 	}
+   
+   //Reports
+   //
+   //
+   
+   public void generateClientsReport(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException{
+		PrintWriter pw = new PrintWriter("");
+		String separator=";";
+		clientBubbleSortName();
+		String columns = "Nombre y apellidos" + separator + "Identificación" + separator + "Telefono del cliente";
+		pw.println(columns);
+		 for(int i = 0; i < clientsPL.size(); i++) {
+			 LocalDateTime dateOfClient=clientsPL.get(i).getEntryDate();
+			 if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
+		    		pw.println(clientsPL.get(i).showInformation());
+		    	}
+			 
+		 }
+		pw.close();
+	  }
    
    //Getters y setters
    //

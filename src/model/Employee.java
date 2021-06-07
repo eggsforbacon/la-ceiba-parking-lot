@@ -43,6 +43,12 @@ public class Employee extends Person implements Comparable<Employee> {
 		return getUsername().compareToIgnoreCase(o.getUsername());
 	}
 
+	@Override
+	public String showInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }
