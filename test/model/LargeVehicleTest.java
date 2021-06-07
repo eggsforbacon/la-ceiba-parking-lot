@@ -26,7 +26,7 @@ class LargeVehicleTest {
         largeVehicleSetupScenary2();
         //1 hora
         //Camion
-        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,"",0,1);
+        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,0,1);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),3000);
     }
@@ -35,7 +35,7 @@ class LargeVehicleTest {
         largeVehicleSetupScenary2();
         //2 hora
         //Camion
-        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,"",0,2);
+        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,0,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),4000);
     }
@@ -45,7 +45,7 @@ class LargeVehicleTest {
         largeVehicleSetupScenary2();
         //5 hora
         //Camion
-        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,"",0,5);
+        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,0,5);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),7000);
     }
@@ -55,7 +55,7 @@ class LargeVehicleTest {
         largeVehicleSetupScenary2();
         //11 horas
         //Camion
-        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,"",0,11);
+        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,0,11);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),12000);
     }
@@ -66,7 +66,7 @@ class LargeVehicleTest {
         //2 hora
         //Camion
         //No se cumplio con el tiempo definido
-        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,"",0,2);
+        LargeVehicle testVehicle = new LargeVehicle(2,"a","a","a",null,1,0,2);
         testVehicle.setEntryDate(dateTime);
         testVehicle.calculateValueToPay();
         assertNotEquals(testVehicle.getValueToPay(),4000);
@@ -77,7 +77,7 @@ class LargeVehicleTest {
         largeVehicleSetupScenary2();
         //2 dias
         //Bus
-        LargeVehicle testVehicle = new LargeVehicle(3,"a","a","a",null,1,"",1,2);
+        LargeVehicle testVehicle = new LargeVehicle(3,"a","a","a",null,1,1,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),24000);
     }
@@ -87,7 +87,7 @@ class LargeVehicleTest {
         largeVehicleSetupScenary2();
         //2 meses
         //Bus
-        LargeVehicle testVehicle = new LargeVehicle(3,"a","a","a",null,1,"",2,2);
+        LargeVehicle testVehicle = new LargeVehicle(3,"a","a","a",null,1,2,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),120000);
     }

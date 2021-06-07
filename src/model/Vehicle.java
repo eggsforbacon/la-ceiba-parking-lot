@@ -26,7 +26,7 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     private DateTimeFormatter formatter; // ignoralo
 
 
-    public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,String observations,int stayIndicator,int numberOfTime){
+    public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,int stayIndicator,int numberOfTime){
         type = VehicleType.values()[typeIndicator];
         enabled = true;
         this.model = model;
@@ -140,14 +140,6 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     
     public int getSpot() {
         return spot;
-    }
-
-    public String getObservations() {
-        return observations;
-    }
-
-    public void setObservations(String observations) {
-        this.observations = observations;
     }
 
     public boolean isEnabled() {

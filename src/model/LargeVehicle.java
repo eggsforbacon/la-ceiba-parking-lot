@@ -11,8 +11,8 @@ public class LargeVehicle extends Vehicle {
     private final static int MONTHVALUE = 60000;
     private final int[] availableSpots = {21,22,23,24,25,26,27,28,29};
 
-    public LargeVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, String observations, int stayIndicator, int numberOfTime) {
-        super(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+    public LargeVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, int stayIndicator, int numberOfTime) {
+        super(typeIndicator, model, licensePlate, color, owner, spot, stayIndicator, numberOfTime);
     }
 
     /**

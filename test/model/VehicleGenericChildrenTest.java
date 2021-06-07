@@ -26,7 +26,7 @@ class VehicleGenericChildrenTest {
     void calculateExitDateTest1() {
         vehicleSetupScenary1();
         //Stay time: 1 Month
-        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",2,1);
+        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,2,1);
         testVehicle.setEntryDate(dateTime);
         testVehicle.calculateExitDate();
         String str = "2021-06-27 11:30:40";
@@ -39,7 +39,7 @@ class VehicleGenericChildrenTest {
     void calculateExitDateTest2() {
         vehicleSetupScenary1();
         //Stay time: 3 hours
-        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",0,3);
+        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,0,3);
         testVehicle.setEntryDate(dateTime);
         testVehicle.calculateExitDate();
         String str = "2021-05-27 14:30:40";
@@ -52,7 +52,7 @@ class VehicleGenericChildrenTest {
     void calculateExitDateTest3() {
         vehicleSetupScenary1();
         //Stay time: 5 days
-        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",1,5);
+        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,1,5);
         testVehicle.setEntryDate(dateTime);
         testVehicle.calculateExitDate();
         String str = "2021-06-01 11:30:40";
@@ -64,7 +64,7 @@ class VehicleGenericChildrenTest {
     void calculateExitDateTest4() {
         vehicleSetupScenary1();
         //Stay time: Undefined
-        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",3,0);
+        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,3,0);
         testVehicle.setEntryDate(dateTime);
         testVehicle.calculateExitDate();
         assertEquals(testVehicle.getSupposedExitDateString(),"No se puede calcular. Indefinido");
@@ -75,7 +75,7 @@ class VehicleGenericChildrenTest {
     void takeOutTest() {
         //Can fail but is extremely unlikely
         vehicleSetupScenary2();
-        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",3,0);
+        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,3,0);
         testVehicle.takeOut();
         assertTrue(!testVehicle.isEnabled());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -87,7 +87,7 @@ class VehicleGenericChildrenTest {
     void checkAdditionalTimeTest1() {
         vehicleSetupScenary1();
         //Stay time: 2 hours
-        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",0,2);
+        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,0,2);
         testVehicle.setEntryDate(dateTime);
         testVehicle.calculateExitDate();
         testVehicle.checkAdditionalTime();
@@ -99,7 +99,7 @@ class VehicleGenericChildrenTest {
     void checkAdditionalTimeTest2() {
         vehicleSetupScenary2();
         //Stay time: 2 hours
-        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",0,2);
+        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,0,2);
         testVehicle.checkAdditionalTime();
         assertFalse(testVehicle.isAdditionalTime());
     }
@@ -108,7 +108,7 @@ class VehicleGenericChildrenTest {
     void checkAdditionalTimeTest3() {
         vehicleSetupScenary2();
         //Stay time: Undefined
-        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,"",3,0);
+        VehicleGenericChildren  testVehicle = new VehicleGenericChildren(1,"a","a","a",null,1,3,0);
         testVehicle.checkAdditionalTime();
         assertFalse(testVehicle.isAdditionalTime());
     }

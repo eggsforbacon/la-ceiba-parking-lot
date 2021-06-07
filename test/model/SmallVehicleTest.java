@@ -25,7 +25,7 @@ class SmallVehicleTest {
         smallVehicleSetupScenary2();
         //1 hora
         //Automovil
-        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",0,1);
+        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,0,1);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),2000);
     }
@@ -34,7 +34,7 @@ class SmallVehicleTest {
         smallVehicleSetupScenary2();
         //2 hora
         //Automovil
-        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",0,2);
+        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,0,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),3000);
     }
@@ -44,7 +44,7 @@ class SmallVehicleTest {
         smallVehicleSetupScenary2();
         //5 hora
         //Automovil
-        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",0,5);
+        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,0,5);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),4500);
     }
@@ -54,7 +54,7 @@ class SmallVehicleTest {
         smallVehicleSetupScenary2();
         //13 horas
         //Automovil
-        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",0,13);
+        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,0,13);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),8000);
     }
@@ -65,7 +65,7 @@ class SmallVehicleTest {
         //2 hora
         //Automovil
         //No se cumplio con el tiempo definido
-        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",0,2);
+        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,0,2);
         testVehicle.setEntryDate(dateTime);
         testVehicle.calculateValueToPay();
         assertNotEquals(testVehicle.getValueToPay(),3000);
@@ -76,7 +76,7 @@ class SmallVehicleTest {
         smallVehicleSetupScenary2();
         //2 dias
         //Automovil
-        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",1,2);
+        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,1,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),16000);
     }
@@ -86,7 +86,7 @@ class SmallVehicleTest {
         smallVehicleSetupScenary2();
         //2 meses
         //Automovil
-        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,"",2,2);
+        SmallVehicle testVehicle = new SmallVehicle(0,"a","a","a",null,1,2,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),110000);
     }

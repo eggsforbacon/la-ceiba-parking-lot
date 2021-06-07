@@ -517,29 +517,51 @@ public class ParkingLot implements Serializable {
     @param numberOfTime int with the amount of time that vehicle will spend in the PL
     @return true or false
     */
-    public boolean addVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, String observations, int stayIndicator, int numberOfTime) {
+    public boolean addVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, int stayIndicator, int numberOfTime) {
     	boolean check = false;
     	Vehicle toAdd;
     	if(verifyVehicleByPlate(licensePlate)) {
 
 		    	switch(typeIndicator) {
 		    	case 0:
-		    		toAdd=new SmallVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-		    		vehiclesPL.add(toAdd);
-		    		check = true;
+		    		toAdd=new SmallVehicle(typeIndicator, model, licensePlate, color, owner, spot, stayIndicator, numberOfTime);
+		    		for(int i=0;i<toAdd.getAvailablespots().length;i++) {
+		    			if(toAdd.getSpot()==toAdd.getAvailablespots()[i]) {
+		    				vehiclesPL.add(toAdd);
+				    		check = true;
+		    			}
+		    		}
+		    		if(check==false) {
+		    			//EXCEPTION
+		    		}
+		    		
 		    		break;
 		    	case 1:
-		    		toAdd=new Motorcycle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-		    		vehiclesPL.add(toAdd);
-		  			check = true;
+		    		toAdd=new Motorcycle(typeIndicator, model, licensePlate, color, owner, spot, stayIndicator, numberOfTime);
+		    		for(int i=0;i<toAdd.getAvailablespots().length;i++) {
+		    			if(toAdd.getSpot()==toAdd.getAvailablespots()[i]) {
+		    				vehiclesPL.add(toAdd);
+				    		check = true;
+		    			}
+		    		}
+		    		if(check==false) {
+		    			//EXCEPTION
+		    		}
 		  			break;
 		    	case 2:
 					case 3:
 					case 4:
 					case 5:
-						toAdd=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
-						vehiclesPL.add(toAdd);
-		    			check = true;
+						toAdd=new LargeVehicle(typeIndicator, model, licensePlate, color, owner, spot, stayIndicator, numberOfTime);
+						for(int i=0;i<toAdd.getAvailablespots().length;i++) {
+			    			if(toAdd.getSpot()==toAdd.getAvailablespots()[i]) {
+			    				vehiclesPL.add(toAdd);
+					    		check = true;
+			    			}
+			    		}
+						if(check==false) {
+			    			//EXCEPTION
+			    		}
 		    			break;
 					default: return false;
     		}
@@ -707,23 +729,7 @@ public class ParkingLot implements Serializable {
     }
     
     
-    /**
-    Update the observation of the vehicle <br>
-    <b> pre: </b>Needs the vehicle is already created<br>
-    <b> post: </b>Change the observation<br>
-    @param newObservation String with the new observation
-    @param plate String with the license plate information
-    @return true or false
-    */
-    public boolean updateObservation(String plate,String newObservation) {
-    	for(int i=0;i<vehiclesPL.size();i++) {
-    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
-    			vehiclesPL.get(i).setObservations(newObservation);
-    			return true;
-    		}
-    	}
-    	return false;
-    }
+   
     
     
     /**
@@ -1064,7 +1070,7 @@ public class ParkingLot implements Serializable {
 		String separator=";";
 		vehicleInsertionSortByPlate();
 		String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+separator+"Color"+ separator 
-		+"Nombre de propietario"+ separator +"Identificación propietario"+ separator +"Fecha de entrada"+ separator +"Fecha de salida";
+		+"Nombre de propietario"+ separator +"Identificación propietario"+ separator +"Fecha de entrada"+ separator +"Fecha de salida"+"Valor a pagar";
 		pw.println(columns);
 		 for(int i = 0; i < vehiclesPL.size(); i++) {
 			 LocalDateTime dateOfClient=vehiclesPL.get(i).getEntryDate();

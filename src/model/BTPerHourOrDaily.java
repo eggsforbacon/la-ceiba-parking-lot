@@ -24,7 +24,7 @@ public class BTPerHourOrDaily extends BinaryTree{
         type = btVehicle.getType().toString();
         String[] parts = btVehicle.getEntryDateString().split(" ");
         entryHour = parts[1];
-        observations = btVehicle.getObservations();
+
     }
 
 

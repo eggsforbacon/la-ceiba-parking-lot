@@ -10,8 +10,8 @@ public class Motorcycle extends Vehicle{
     private final static int MONTHVALUE = 30000;
     private final  int[] availableSpots = {-9,-8,-7,-6,-5,-4,-3,-2,-1};
 
-    public Motorcycle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, String observations, int stayIndicator, int numberOfTime) {
-        super(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
+    public Motorcycle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, int stayIndicator, int numberOfTime) {
+        super(typeIndicator, model, licensePlate, color, owner, spot, stayIndicator, numberOfTime);
     }
     /**
      Change the user's stay time if necessary<br>

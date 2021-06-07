@@ -25,7 +25,7 @@ class MotorcycleTest {
         motorcycleSetupScenary2();
         //1 hora
         //motocicleta
-        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,"",0,1);
+        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,0,1);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),1000);
     }
@@ -34,7 +34,7 @@ class MotorcycleTest {
         motorcycleSetupScenary2();
         //2 hora
         //motocicleta
-        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,"",0,2);
+        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,0,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),1500);
     }
@@ -44,7 +44,7 @@ class MotorcycleTest {
         motorcycleSetupScenary2();
         //5 hora
         //motocicleta
-        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,"",0,5);
+        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,0,5);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),3000);
     }
@@ -54,7 +54,7 @@ class MotorcycleTest {
         motorcycleSetupScenary2();
         //11 horas
         //motocicleta
-        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,"",0,11);
+        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,0,11);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),4000);
     }
@@ -65,7 +65,7 @@ class MotorcycleTest {
         //2 hora
         //motocicleta
         //No se cumplio con el tiempo definido
-        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,"",0,2);
+        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,0,2);
         testVehicle.setEntryDate(dateTime);
         testVehicle.calculateValueToPay();
         assertNotEquals(testVehicle.getValueToPay(),1500);
@@ -76,7 +76,7 @@ class MotorcycleTest {
         motorcycleSetupScenary2();
         //2 dias
         //motocicleta
-        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,"",1,2);
+        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,1,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),8000);
     }
@@ -86,7 +86,7 @@ class MotorcycleTest {
         motorcycleSetupScenary2();
         //2 meses
         //motocicleta
-        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,"",2,2);
+        Motorcycle testVehicle = new Motorcycle(1,"a","a","a",null,1,2,2);
         testVehicle.calculateValueToPay();
         assertEquals(testVehicle.getValueToPay(),60000);
     }

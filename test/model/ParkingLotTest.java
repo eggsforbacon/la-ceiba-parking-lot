@@ -20,12 +20,12 @@ class ParkingLotTest {
 	
 	public void parkingLotScenary3() {
 		parkingLotTest.addClient("a", "1", "2");
-		parkingLotTest.addVehicle(0,"a","aaa","b",parkingLotTest.searchByName("a"),2,"None",1,2);
+		parkingLotTest.addVehicle(0,"a","aaa","b",parkingLotTest.searchByName("a"),2,1,2);
 	}
 	
 	public void parkingLotScenary4() {
 		parkingLotTest.addClient("a", "1", "2");
-		parkingLotTest.addVehicle(0,"a","aaa","b",parkingLotTest.searchByName("a"),2,"None",2,2);
+		parkingLotTest.addVehicle(0,"a","aaa","b",parkingLotTest.searchByName("a"),2,2,2);
 	}
 	
 	
@@ -170,7 +170,7 @@ class ParkingLotTest {
 	@Test
 	void addVehicleTest() {
 		parkingLotScenary3();
-		assertTrue(parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("a"),3,"None",1,2));
+		assertTrue(parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("a"),3,1,2));
 	}
 	
 	@Test
@@ -197,11 +197,7 @@ class ParkingLotTest {
 		assertTrue(parkingLotTest.updateSpot("aaa",3));
 	}
 	
-	@Test
-	void updateVehicleObservationTest() {
-		parkingLotScenary3();
-		assertTrue(parkingLotTest.updateObservation("aaa","none2"));
-	}
+	
 	
 	@Test
 	void verifySpotTest() {
@@ -250,7 +246,7 @@ class ParkingLotTest {
 		parkingLotScenary3();
 		Vehicle aux=parkingLotTest.getVehiclesPL().get(0);
 		parkingLotTest.addClient("b", "2", "3");
-		parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("b"),2,"None",1,2);
+		parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("b"),2,1,2);
 		parkingLotTest.vehicleInsertionSortByPlate();
 		assertTrue(parkingLotTest.getVehiclesPL().get(0)==aux);
 	}
@@ -260,7 +256,7 @@ class ParkingLotTest {
 		parkingLotScenary3();
 		Vehicle aux=parkingLotTest.getVehiclesPL().get(0);
 		parkingLotTest.addClient("b", "2", "3");
-		parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("b"),2,"None",1,2);
+		parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("b"),2,1,2);
 		parkingLotTest.vehicleInsertionSortByOwner();
 		assertTrue(parkingLotTest.getVehiclesPL().get(0)==aux);
 	}
@@ -296,7 +292,7 @@ class ParkingLotTest {
 	void sortVehicleByModelTest() {
 		parkingLotScenary3();
 		Vehicle aux=parkingLotTest.getVehiclesPL().get(0);
-		parkingLotTest.addVehicle(0,"c","bbb","b",parkingLotTest.searchByName("b"),2,"None",1,2);
+		parkingLotTest.addVehicle(0,"c","bbb","b",parkingLotTest.searchByName("b"),2,1,2);
 		parkingLotTest.sortVehicleByModel();
 		assertTrue(parkingLotTest.getVehiclesPL().get(0)==aux);
 	}
@@ -304,7 +300,7 @@ class ParkingLotTest {
 	@Test
 	void binarySearchVehicleTest() {
 		parkingLotScenary3();
-		parkingLotTest.addVehicle(0,"c","bbb","b",parkingLotTest.searchByName("b"),2,"None",1,2);
+		parkingLotTest.addVehicle(0,"c","bbb","b",parkingLotTest.searchByName("b"),2,1,2);
 		parkingLotTest.sortVehicleByModel();
 		ArrayList<Vehicle> temp=parkingLotTest.getVehiclesPL();
 		assertTrue(parkingLotTest.binarySearchVehicle(temp, "bbb")==1);
