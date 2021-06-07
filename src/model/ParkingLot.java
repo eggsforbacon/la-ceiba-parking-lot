@@ -965,6 +965,15 @@ public class ParkingLot implements Serializable {
    //
    //
    
+   
+   /**
+   Use the binary search to find a vehicle by It's license plate <br>
+   <b> pre: </b>There had to be an array list to search in<br>
+   <b> post: </b>Give the position of the vehicle<br>
+   @param password String with the employee password
+   @param username String with the employee user name 
+   @return int with 
+   */
    public int login(String username,String password) {
 		int index = -1; //Not found
 		boolean band = false;

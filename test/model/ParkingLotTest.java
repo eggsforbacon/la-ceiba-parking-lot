@@ -21,6 +21,8 @@ class ParkingLotTest {
 		parkingLotTest.addVehicle(0,"a","aaa","b",parkingLotTest.searchByName("a"),2,"None",1,2);
 	}
 	
+	
+	
 	//Client tests
 	//
 	//
@@ -205,5 +207,12 @@ class ParkingLotTest {
 		parkingLotScenary3();
 		assertFalse(parkingLotTest.verifyVehicleByPlate("aaa"));
 	}
+	
+	@Test
+	void addVehicleToPerHourOrDailyVehiclesTest() {
+		parkingLotScenary3();
+		assertEquals(parkingLotTest.getPerHourOrDailyVehicles().getBtVehicle().getLicensePlate(),"aaa");
+	}
+	
 	
 }
