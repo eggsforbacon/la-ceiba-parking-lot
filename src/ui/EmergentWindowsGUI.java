@@ -228,6 +228,7 @@ public class EmergentWindowsGUI implements Initializable {
         dialMessageLBL.setText(message);
     }
 
+
     /**
      * Dismisses the dialogue window, aka closes it. <br>
      * */

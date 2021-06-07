@@ -183,10 +183,18 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     private ChoiceBox<String> reportTypeCHB = new ChoiceBox<>();
 
+
+    @FXML
+    private Label dialMessageLBL;
+
+    @FXML
+    private Button dialDismissBTN;
+
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
-    EmergentWindowsGUI emergentWindowsController;
+
     ParkingLot laCeiba;
+    EmergentWindowsGUI emergentWindowsController;
     boolean loginSuccessful;
 
     /*---------------------------- METHODS -----------------------------*/
@@ -236,10 +244,30 @@ public class CurrentSceneGUI implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxml));
             fxmlLoader.setController(emergentWindowsController);
+            emergentWindowsController.setDialMessageLBL("niia");
             return fxmlLoader.load();
         } catch (Exception e) {
             System.out.println("Can't load requested document right now.\nRequested document: \"" + fxml + "\"");
             throw new NullPointerException("Document is null");
+        }
+    }
+
+    public void launchError(String message, String title) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/dialogue.fxml"));
+            fxmlLoader.setController(this);
+            Parent root = fxmlLoader.load();
+            Stage errorPane = new Stage();
+            errorPane.setScene(new Scene(root));
+            errorPane.initModality(Modality.APPLICATION_MODAL);
+            errorPane.setTitle(title);
+            dialMessageLBL.setText(message);
+            dialMessageLBL.setStyle("\n-fx-font-style: italic;");
+            errorPane.setResizable(false);
+            errorPane.show();
+        } catch (Exception e) {
+            System.out.println("Something went wrong.");
+            e.printStackTrace();
         }
     }
 
@@ -252,12 +280,14 @@ public class CurrentSceneGUI implements Initializable {
     void loginClicked(ActionEvent event) {
         switch (laCeiba.login(loginUserTF.getText(),loginPassPWF.getText())){
             case -1:
-                emergentWindowsController.setDialMessageLBL("Datos erroneos o incompletos. Intente de nuevo.");
-                launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
+                //emergentWindowsController.setDialMessageLBL("Datos erroneos o incompletos. Intente de nuevo.");
+                //launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
+                launchError("Datos erroneos o incompletos. Intente de nuevo.","Mensaje de inicio de sesion");
                 break;
             case -2:
-                emergentWindowsController.setDialMessageLBL("El uso del usuario root no es recomendado. Proceder con precaución.");
-                launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
+                //emergentWindowsController.setDialMessageLBL("El uso del usuario root no es recomendado. Proceder con precaución.");
+                //launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
+                launchError("El uso del usuario root no es recomendado. Proceder con precaucion.","Mensaje de inicio de sesion");
                 loginSuccessful = true;
                 break;
             default:
@@ -266,6 +296,16 @@ public class CurrentSceneGUI implements Initializable {
                 break;
         }
     }
+
+    /**
+     * Dismisses the dialogue window, aka closes it. <br>
+     * */
+    @FXML
+    void dismissDialogue(ActionEvent event) {
+        ((Stage) dialDismissBTN.getScene().getWindow()).close();
+        dialMessageLBL.setText("Message");
+    }
+
 
     /**
      * Prompts the user with a registration window. <br>

@@ -5,8 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="279.0" prefWidth="509.0" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="279.0" prefWidth="509.0" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <Button fx:id="dialDismissBTN" mnemonicParsing="false" onAction="#dismissDialogue" text="OK" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -15,7 +14,7 @@
       </Button>
    </bottom>
    <center>
-      <Label fx:id="dialMessageLBL" styleClass="dial-lbl" text="Message" wrapText="true" BorderPane.alignment="CENTER">
+      <Label fx:id="dialMessageLBL" styleClass="dial-lbl" wrapText="true" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>

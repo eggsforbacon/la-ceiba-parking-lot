@@ -88,10 +88,20 @@ public class MainGUI implements Initializable {
             laCeiba.setFirstTime(false);
         }
         else{
-
+            toggleButtons(false);
         }
     }
 
+    public void login(){
+
+    }
+
+    /**
+     Disable or enable the main menu buttons <br>
+     <b> pre: </b><br>
+     <b> post: </b>Disables or enables the buttons<br>
+     @param state a boolean that indicate if they have to be enabled or disabled
+     */
     public void toggleButtons(boolean state) {
         mgUsersButton.setDisable(state);
         mgFacturationButton.setDisable(state);
