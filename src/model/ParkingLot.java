@@ -15,6 +15,9 @@ public class ParkingLot implements Serializable {
     private ParkingLotMap plMap;
     private BTPerHourOrDaily perHourOrDailyVehicles;
     private BTMonthly monthlyVehicles;
+    private Employee root;
+    private Employee actualEmployee;
+    private boolean firstTime;
   
 
     public ParkingLot(){
@@ -22,7 +25,14 @@ public class ParkingLot implements Serializable {
         vehiclesPL = new ArrayList<>();
         employeesPL=new ArrayList<>();
         plMap = new ParkingLotMap();
+        root = new Employee("Admin","12345","admin","1234");
+        actualEmployee = root;
+        firstTime = true;
     }
+
+    public boolean checkFirstTime(){
+    	return firstTime && actualEmployee.equals(root);
+	}
     
     //Client methods
     //

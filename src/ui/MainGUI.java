@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
@@ -28,6 +29,30 @@ public class MainGUI implements Initializable {
 
     @FXML
     private BorderPane currentScene = new BorderPane();
+
+    @FXML
+    private Button mgLoginButton;
+
+    @FXML
+    private Button mgClientsButton;
+
+    @FXML
+    private Button mgVehiclesButton;
+
+    @FXML
+    private Button mgMapButton;
+
+    @FXML
+    private Button mgUsersButton;
+
+    @FXML
+    private Button mgFacturationButton;
+
+    @FXML
+    private Button mgReportsButton;
+
+    @FXML
+    private Button mgExitButton;
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
@@ -58,6 +83,22 @@ public class MainGUI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         currentScene.prefHeightProperty().bind(mainPane.heightProperty());
         currentScene.prefWidthProperty().bind(mainPane.widthProperty());
+        if(true){
+            toggleButtons(true);
+
+        }
+        else{
+
+        }
+    }
+
+    public void toggleButtons(boolean state) {
+        mgUsersButton.setDisable(state);
+        mgFacturationButton.setDisable(state);
+        mgMapButton.setDisable(state);
+        mgReportsButton.setDisable(state);
+        mgClientsButton.setDisable(state);
+        mgVehiclesButton.setDisable(state);
     }
 
     /**
