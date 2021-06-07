@@ -841,7 +841,8 @@ public class ParkingLot implements Serializable {
    <b> pre: </b>There had to be an array list to sort<br>
    <b> post: </b>Sort the list<br>
    */
-   public void EmployeeselectionSortByUsername(Integer[] array) {
+   public void employeeselectionSortByUsername() {
+	   if(employeesPL.size()>2) {
 		for(int i=0;i<employeesPL.size();i++) {
 			
 		Employee min=employeesPL.get(0);
@@ -854,6 +855,7 @@ public class ParkingLot implements Serializable {
 			}
 		employeesPL.set(i, min);
 		}
+	   }
 	}
    
    
@@ -862,7 +864,8 @@ public class ParkingLot implements Serializable {
    <b> pre: </b>There had to be an array list to sort<br>
    <b> post: </b>Sort the list<br>
    */
-   public void EmployeeselectionSortById(Integer[] array) {
+   public void employeeselectionSortById() {
+	   if(employeesPL.size()>2) {
 		for(int i=0;i<employeesPL.size();i++) {
 			
 		Employee min=employeesPL.get(0);
@@ -875,6 +878,7 @@ public class ParkingLot implements Serializable {
 			}
 		employeesPL.set(i, min);
 		}
+	   }
 	}
    
    /**
@@ -971,12 +975,12 @@ public class ParkingLot implements Serializable {
    
    
    /**
-   Use the binary search to find a vehicle by It's license plate <br>
-   <b> pre: </b>There had to be an array list to search in<br>
-   <b> post: </b>Give the position of the vehicle<br>
+   Verify the login <br>
+   <b> pre: </b><br>
+   <b> post: </b>Give the case of the login<br>
    @param password String with the employee password
    @param username String with the employee user name 
-   @return int with 
+   @return int with the login case
    */
    public int login(String username,String password) {
 		int index = -1; //Not found

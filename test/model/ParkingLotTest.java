@@ -2,6 +2,8 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 class ParkingLotTest {
@@ -228,12 +230,117 @@ class ParkingLotTest {
 	@Test
 	void clientBubbleSortNameTest() {
 		parkingLotScenary1();
-		boolean temp=false;
 		Client aux=parkingLotTest.getClientsPL().get(0);
 		parkingLotTest.addClient("b", "2", "3");
 		parkingLotTest.clientBubbleSortName();
 		assertTrue(parkingLotTest.getClientsPL().get(0)==aux);
 	}
 	
+	@Test
+	void clientBubbleSortByIDTest() {
+		parkingLotScenary1();
+		Client aux=parkingLotTest.getClientsPL().get(0);
+		parkingLotTest.addClient("b", "2", "3");
+		parkingLotTest.clientBubbleSortByID();
+		assertTrue(parkingLotTest.getClientsPL().get(0)==aux);
+	}
+	
+	@Test
+	void vehicleInsertionSortByPlateTest() {
+		parkingLotScenary3();
+		Vehicle aux=parkingLotTest.getVehiclesPL().get(0);
+		parkingLotTest.addClient("b", "2", "3");
+		parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("b"),2,"None",1,2);
+		parkingLotTest.vehicleInsertionSortByPlate();
+		assertTrue(parkingLotTest.getVehiclesPL().get(0)==aux);
+	}
+	
+	@Test
+	void vehicleInsertionSortByOwnerTest() {
+		parkingLotScenary3();
+		Vehicle aux=parkingLotTest.getVehiclesPL().get(0);
+		parkingLotTest.addClient("b", "2", "3");
+		parkingLotTest.addVehicle(0,"a","bbb","b",parkingLotTest.searchByName("b"),2,"None",1,2);
+		parkingLotTest.vehicleInsertionSortByOwner();
+		assertTrue(parkingLotTest.getVehiclesPL().get(0)==aux);
+	}
+	
+	@Test
+	void employeeselectionSortByUsernameTest() {
+		parkingLotScenary2();
+		Employee aux=parkingLotTest.getEmployeesPL().get(0);
+		parkingLotTest.addEmployee("b", "2", "tame","word");
+		parkingLotTest.employeeselectionSortByUsername();
+		assertTrue(parkingLotTest.getEmployeesPL().get(0)==aux);
+	}
+	
+	@Test
+	void employeeselectionSortByIdTest() {
+		parkingLotScenary2();
+		Employee aux=parkingLotTest.getEmployeesPL().get(0);
+		parkingLotTest.addEmployee("b", "2", "tame","word");
+		parkingLotTest.employeeselectionSortById();
+		assertTrue(parkingLotTest.getEmployeesPL().get(0)==aux);
+	}
+	
+	@Test
+	void sortEmployeeByNameTest() {
+		parkingLotScenary2();
+		Employee aux=parkingLotTest.getEmployeesPL().get(0);
+		parkingLotTest.addEmployee("b", "2", "tame","blah");
+		parkingLotTest.sortEmployeeByName();
+		assertTrue(parkingLotTest.getEmployeesPL().get(0)==aux);
+	}
+	
+	@Test
+	void sortVehicleByModelTest() {
+		parkingLotScenary3();
+		Vehicle aux=parkingLotTest.getVehiclesPL().get(0);
+		parkingLotTest.addVehicle(0,"c","bbb","b",parkingLotTest.searchByName("b"),2,"None",1,2);
+		parkingLotTest.sortVehicleByModel();
+		assertTrue(parkingLotTest.getVehiclesPL().get(0)==aux);
+	}
+	
+	@Test
+	void binarySearchVehicleTest() {
+		parkingLotScenary3();
+		parkingLotTest.addVehicle(0,"c","bbb","b",parkingLotTest.searchByName("b"),2,"None",1,2);
+		parkingLotTest.sortVehicleByModel();
+		ArrayList<Vehicle> temp=parkingLotTest.getVehiclesPL();
+		assertTrue(parkingLotTest.binarySearchVehicle(temp, "bbb")==1);
+	}
+	
+	@Test
+	void binarySearchPersonTest() {
+		parkingLotScenary1();
+		parkingLotTest.addClient("b", "2", "3");
+		parkingLotTest.clientBubbleSortName();
+		ArrayList<Client> temp=parkingLotTest.getClientsPL();
+		assertTrue(parkingLotTest.binarySearchPerson(temp, "b")==1);
+	}
+	
+	@Test
+	void loginTest() {
+		parkingLotScenary2();
+		parkingLotTest.addEmployee("b", "2", "tame","blah");
+		parkingLotTest.sortEmployeeByName();
+		assertTrue(parkingLotTest.login("tame", "blah")==1);
+	}
+	
+	@Test
+	void loginTest2() {
+		parkingLotScenary2();
+		parkingLotTest.addEmployee("b", "2", "tame","blah");
+		parkingLotTest.sortEmployeeByName();
+		assertTrue(parkingLotTest.login("user", "pass")==0);
+	}
+	
+	@Test
+	void loginTest3() {
+		parkingLotScenary2();
+		parkingLotTest.addEmployee("b", "2", "tame","blah");
+		parkingLotTest.sortEmployeeByName();
+		assertTrue(parkingLotTest.login("admin","1234")==-2);
+	}
 	
 }
