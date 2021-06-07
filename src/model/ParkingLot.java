@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -708,7 +707,11 @@ public class ParkingLot implements Serializable {
     //
     //
     
-    //Bubble lleva 1 implementación
+    /**
+    Use the bubble sort to organize the clients by name<br>
+    <b> pre: </b>There had to be an array list to sort<br>
+    <b> post: </b>Sort the list<br> 
+    */
     public static void clientBubbleSortName() {
     	
 		for(int i=1; i<clientsPL.size();i++) {
@@ -727,27 +730,37 @@ public class ParkingLot implements Serializable {
 			}
     	}
     
-public static void clientBubbleSortByID() {
-    	
-		for(int i=1; i<clientsPL.size();i++) {
-			
-			for(int j=0;j<clientsPL.size()-i;j++) {
+    
+    /**
+    Use the bubble sort to organize the clients by Id <br>
+    <b> pre: </b>There had to be an array list to sort<br>
+    <b> post: </b>Sort the list<br>
+    */
+	public static void clientBubbleSortByID() {
+	    	
+			for(int i=1; i<clientsPL.size();i++) {
 				
-				if((clientsPL.get(j).getId().compareTo(clientsPL.get(j+1).getId())>0)) {
+				for(int j=0;j<clientsPL.size()-i;j++) {
 					
-						Client temp = clientsPL.get(j);
-						//array[j] = array[j+1];
-						clientsPL.set(j,clientsPL.get(j+1));
-						clientsPL.set(j+1, temp);
-					
+					if((clientsPL.get(j).getId().compareTo(clientsPL.get(j+1).getId())>0)) {
+						
+							Client temp = clientsPL.get(j);
+							//array[j] = array[j+1];
+							clientsPL.set(j,clientsPL.get(j+1));
+							clientsPL.set(j+1, temp);
+						
+						}
 					}
 				}
-			}
-    	}
-    
+	    	}
+	    
     
 	
-    //"Implementado "1 vez"
+	/**
+    Use the insertion sort to organize the vehicles by license plate <br>
+    <b> pre: </b>There had to be an array list to sort<br>
+    <b> post: </b>Sort the list<br>
+    */
    public void vehicleInsertionSortByPlate(){ //Client pero llama vehicle xd//Muerete es que estaba probandolos
 	   int i;
 		int j;
@@ -763,6 +776,12 @@ public static void clientBubbleSortByID() {
 		}
 	}
    
+   
+   /**
+   Use the insertion sort to organize the vehicles by owner's name <br>
+   <b> pre: </b>There had to be an array list to sort<br>
+   <b> post: </b>Sort the list<br>
+   */
    public void vehicleInsertionSortByOwner(){ //Client pero llama vehicle xd//Muerete es que estaba probandolos
 	   int i;
 		int j;
@@ -779,7 +798,11 @@ public static void clientBubbleSortByID() {
 	}
    
    
-   //Está implementado "1 vez"
+   /**
+   Use the selection sort to organize the employees by username <br>
+   <b> pre: </b>There had to be an array list to sort<br>
+   <b> post: </b>Sort the list<br>
+   */
    public static void EmployeeselectionSortByUsername(Integer[] array) {
 		for(int i=0;i<employeesPL.size();i++) {
 			
@@ -795,6 +818,12 @@ public static void clientBubbleSortByID() {
 		}
 	}
    
+   
+   /**
+   Use the selection sort to organize the employees by id <br>
+   <b> pre: </b>There had to be an array list to sort<br>
+   <b> post: </b>Sort the list<br>
+   */
    public static void EmployeeselectionSortById(Integer[] array) {
 		for(int i=0;i<employeesPL.size();i++) {
 			
@@ -810,16 +839,97 @@ public static void clientBubbleSortByID() {
 		}
 	}
    
-   //Comparator lleva 1 implementación
+   /**
+   Use the class comparator to organize the employees by name <br>
+   <b> pre: </b>There had to be an array list to sort<br>
+   <b> post: </b>Sort the list<br> 
+   */
    public void sortEmployeeByName() {   //Note: This method must be used because when the first or last name is modified, the order of these in the arrayList is changed.
 		Comparator<Employee> nComparator = new employeeComparator();
 		Collections.sort(employeesPL,nComparator);
 	}
    
+   
+   /**
+   Use the class comparator to organize the vehicles by model <br>
+   <b> pre: </b>There had to be an array list to sort<br>
+   <b> post: </b>Sort the list<br>
+   */
    public void sortVehicleByModel() {   //Note: This method must be used because when the first or last name is modified, the order of these in the arrayList is changed.
 		Comparator<Vehicle> nComparator = new vehicleComparator();
 		Collections.sort(vehiclesPL,nComparator);
 	}
+   
+   
+   //Binary search
+   //
+   //
+   
+   
+   /**
+   Use the binary search to find a person <br>
+   <b> pre: </b>There had to be an array list to search in<br>
+   <b> post: </b>Give the position of the person<br>
+   @param aL Array list generic with the list to search in
+   @param searchName String with the name to search
+   @return Pos int with the position
+   */
+   public int binarySearchPerson(ArrayList<?> aL,String searchName) {
+		int pos = -1;
+		int i = 0;
+		int j = aL.size() - 1;
+
+		while(i<=j && pos<0) {
+			int m = (i + j)/2;
+			String objectName= ((Person) aL.get(m)).getName();
+			String name = searchName;
+			if(objectName.equals(name)) {
+				pos = m;
+			}
+			else if((objectName.compareTo(name)) > 0){
+				j = m - 1;
+			}
+			else {
+				i = m + 1;
+			}
+		}
+		return pos;
+	}
+   
+   
+   /**
+   Use the binary search to find a vehicle by It's license plate <br>
+   <b> pre: </b>There had to be an array list to search in<br>
+   <b> post: </b>Give the position of the vehicle<br>
+   @param aL Array list generic with the list to search in
+   @param searchPlate String with the license plate to search
+   @return Pos int with the position
+   */
+   public int binarySearchVehicle(ArrayList<?> aL,String searchPlate) {
+		int pos = -1;
+		int i = 0;
+		int j = aL.size() - 1;
+
+		while(i<=j && pos<0) {
+			int m = (i + j)/2;
+			String objectName= ((Vehicle) aL.get(m)).getLicensePlate();
+			String plate = searchPlate;
+			if(objectName.equals(plate)) {
+				pos = m;
+			}
+			else if((objectName.compareTo(plate)) > 0){
+				j = m - 1;
+			}
+			else {
+				i = m + 1;
+			}
+		}
+		return pos;
+	}
+   
+   //Getters y setters
+   //
+   //
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
