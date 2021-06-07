@@ -183,6 +183,7 @@ public class CurrentSceneGUI implements Initializable {
 
     EmergentWindowsGUI emergentWindowsController;
     ParkingLot laCeiba;
+    boolean loginSuccessful;
 
     /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -253,13 +254,13 @@ public class CurrentSceneGUI implements Initializable {
             case -2:
                 emergentWindowsController.setDialMessageLBL("El uso del usuario root no es recomendado. Proceder con precaución.");
                 launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
+                loginSuccessful = true;
                 break;
             default:
                 laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(laCeiba.binarySearchPerson(laCeiba.getEmployeesPL(), loginUserTF.getText())));
-
+                loginSuccessful = true;
+                break;
         }
-        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
-        launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
 
     /**
