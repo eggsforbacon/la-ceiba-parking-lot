@@ -11,7 +11,7 @@ public class Client extends Person implements Comparable<Client> {
         status =true;
     }
     
-
+//ha
 	public boolean getStatus() {
 		return status;
 	}
