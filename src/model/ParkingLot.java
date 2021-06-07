@@ -79,7 +79,7 @@ public class ParkingLot implements Serializable {
     	return false;
     }
     
-    
+    //A juan david le gusta el monitor
     /**
     Disable a specific client in the parking lot <br>
     <b> pre: </b>Needs verify if the client already exists and if he does not own a car in the parking lot<br>
