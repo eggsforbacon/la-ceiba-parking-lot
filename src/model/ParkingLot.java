@@ -79,7 +79,7 @@ public class ParkingLot implements Serializable {
     	return false;
     }
     
-    
+    //A juan david le gusta el monitor
     /**
     Disable a specific client in the parking lot <br>
     <b> pre: </b>Needs verify if the client already exists and if he does not own a car in the parking lot<br>
@@ -537,6 +537,10 @@ public class ParkingLot implements Serializable {
     	return check;
     }
     
+    //Binary trees begin
+    //
+    //
+    
     
     /**
 	   Add a vehicle to the per hour or daily binary tree  <br>
@@ -604,7 +608,7 @@ public class ParkingLot implements Serializable {
 			r.setRight(addAVehicleToMonthlyVehicles((BTMonthly) r.getRight(),newBT));
 		return r;
 	}
-    
+    //Binary trees finish
     
     /**
     Disable a vehicle searching it by It's license plate <br>

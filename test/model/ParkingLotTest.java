@@ -21,6 +21,11 @@ class ParkingLotTest {
 		parkingLotTest.addVehicle(0,"a","aaa","b",parkingLotTest.searchByName("a"),2,"None",1,2);
 	}
 	
+	public void parkingLotScenary4() {
+		parkingLotTest.addClient("a", "1", "2");
+		parkingLotTest.addVehicle(0,"a","aaa","b",parkingLotTest.searchByName("a"),2,"None",2,2);
+	}
+	
 	
 	
 	//Client tests
@@ -209,9 +214,25 @@ class ParkingLotTest {
 	}
 	
 	@Test
-	void addVehicleToPerHourOrDailyVehiclesTest() {
+	void addAVehicleToPerHourOrDailyVehiclesTest() {
 		parkingLotScenary3();
 		assertEquals(parkingLotTest.getPerHourOrDailyVehicles().getBtVehicle().getLicensePlate(),"aaa");
+	}
+	
+	@Test
+	void addAVehicleToMonthlyVehiclesTest() {
+		parkingLotScenary4();
+		assertEquals(parkingLotTest.getMonthlyVehicles().getBtVehicle().getLicensePlate(),"aaa");
+	}
+	
+	@Test
+	void clientBubbleSortNameTest() {
+		parkingLotScenary1();
+		boolean temp=false;
+		Client aux=parkingLotTest.getClientsPL().get(0);
+		parkingLotTest.addClient("b", "2", "3");
+		parkingLotTest.clientBubbleSortName();
+		assertTrue(parkingLotTest.getClientsPL().get(0)==aux);
 	}
 	
 	

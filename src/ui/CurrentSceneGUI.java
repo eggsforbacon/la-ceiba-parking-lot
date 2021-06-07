@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -196,6 +197,7 @@ public class CurrentSceneGUI implements Initializable {
     ParkingLot laCeiba;
     EmergentWindowsGUI emergentWindowsController;
     boolean loginSuccessful;
+    String currentScene;
 
     /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -209,14 +211,34 @@ public class CurrentSceneGUI implements Initializable {
     public CurrentSceneGUI(ParkingLot laCeiba) {
         this.laCeiba = laCeiba;
         emergentWindowsController = new EmergentWindowsGUI(laCeiba);
+        currentScene = "none";
     }
 
+    /**
+     * {@inheritDoc}
+     * */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> dummy = FXCollections.observableArrayList("1", "2", "3", "4", "5");
         receiptVehicleTypeCHB.setItems(dummy);
         reportTypeCHB.setItems(dummy);
-        initMap();
+        currentInit();
+    }
+
+    /**
+     * Optimizes initialization according to active pane. <br>
+     * */
+    void currentInit() {
+        switch (currentScene) {
+            case "Clientes":
+                initClientsDB();
+                break;
+            case "Mapa":
+                initMap();
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -269,6 +291,13 @@ public class CurrentSceneGUI implements Initializable {
             System.out.println("Something went wrong.");
             e.printStackTrace();
         }
+    }
+
+    /**
+     * @param currentScene The string name of the new scene to be set to. <br>
+     * */
+    public void setCurrentScene(String currentScene) {
+        this.currentScene = currentScene;
     }
 
     /*Login*/
@@ -326,6 +355,13 @@ public class CurrentSceneGUI implements Initializable {
         clientsIDCOL.setCellValueFactory(new PropertyValueFactory<>("id"));
         clientsPhoneCOL.setCellValueFactory(new PropertyValueFactory<>("cellNumber"));
         clientEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
+        ObservableList<Client>clientList = FXCollections.observableArrayList(laCeiba.getClientsPL());
+        clientsTBV.setItems(clientList);
+
+        clientsNameCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+        clientsIDCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+        clientsPhoneCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+        clientEnabledCOL.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     /**
