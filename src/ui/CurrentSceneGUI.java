@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyCode;
 import model.*;
 import java.io.IOException;
 import java.net.URL;
@@ -274,7 +275,11 @@ public class CurrentSceneGUI implements Initializable {
         }
     }
 
-    //Confirmo
+    /**
+     * Launches the dialogue pane. <br>
+     * @param message The message to be displayed within the dialogue pane. @NotNull @NotEmpty.<br>
+     * @param title The title of the dialogue windows. @NotNull @NotEmpty.<br>
+     * */
 
     public void launchError(String message, String title) {
         try {
@@ -359,6 +364,21 @@ public class CurrentSceneGUI implements Initializable {
         clientEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
         ObservableList<Client>clientList = FXCollections.observableArrayList(laCeiba.getClientsPL());
         clientsTBV.setItems(clientList);
+        //SideBar
+        clientDeleteBTN.setDisable(true);
+        clientEditBTN.setDisable(true);
+        clientsTBV.setOnMouseClicked(event -> {
+            if (!clientsTBV.getSelectionModel().getSelectedItems().isEmpty()) {
+                clientDeleteBTN.setDisable(false);
+                clientEditBTN.setDisable(false);
+            }
+        });
+        clientsTBV.setOnKeyTyped(event -> {
+            if (event.getCode().equals(KeyCode.ESCAPE)) {
+                clientDeleteBTN.setDisable(true);
+                clientEditBTN.setDisable(true);
+            }
+        });
 
         clientsNameCOL.setCellFactory(TextFieldTableCell.forTableColumn());
         clientsIDCOL.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -379,8 +399,13 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void deleteClient(ActionEvent event) {
-        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
-        launchFXML("dialogue.fxml", "Ventana de dialogo");
+        boolean canDelete = true;
+        int selectedItems = clientsTBV.getSelectionModel().getSelectedItems().size();
+        for (int i = 0; i < selectedItems; i++) {
+            Client removed = clientsTBV.getSelectionModel().getSelectedItems().get(i);
+            canDelete = laCeiba.disableClientByName(removed.getName());
+            if (!canDelete) System.out.println("Couln't delete");
+        }
     }
 
     /**
@@ -393,8 +418,15 @@ public class CurrentSceneGUI implements Initializable {
 
     /*Vehicles DB*/
 
+    /**
+     * Initializes the vehicles database. <br>
+     * */
     void initVehiclesDB() {
-
+        /*vehicleSlotCOL
+				vehicleStayCOL
+				vehicleTypeCOL
+				vehiclePlateCOL
+				vehicleEnabledCOL*/
     }
 
     /**
