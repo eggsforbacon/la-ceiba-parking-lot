@@ -719,9 +719,11 @@ public class ParkingLot implements Serializable {
     */
     public boolean verifySpot(int spot) {
     	for(int i=0;i<vehiclesPL.size();i++) {
-    	if(vehiclesPL.get(i).getSpot()==spot) {
-			return false;
-			}
+    	if(vehiclesPL.get(i).isEnabled()) {
+	    	if(vehiclesPL.get(i).getSpot()==spot) {
+				return false;
+				}
+    		}
     	}
     	return true;
     }
@@ -736,8 +738,10 @@ public class ParkingLot implements Serializable {
     */
     public boolean verifyVehicleByPlate(String plate) {
     	for(int i=0;i<vehiclesPL.size();i++) {
-    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
-    			return false;
+    		if(vehiclesPL.get(i).isEnabled()) {
+	    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+	    			return false;
+	    		}
     		}
     	}
     	return true;
@@ -1015,6 +1019,39 @@ public class ParkingLot implements Serializable {
 			 LocalDateTime dateOfClient=clientsPL.get(i).getEntryDate();
 			 if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
 		    		pw.println(clientsPL.get(i).showInformation());
+		    	}
+			 
+		 }
+		pw.close();
+	  }
+   
+   public void generateEmployeesReport(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException{
+		PrintWriter pw = new PrintWriter("");
+		String separator=";";
+		sortEmployeeByName();
+		String columns = "Nombre y apellidos" + separator + "Identificación" + separator + "Nombre de usuario";
+		pw.println(columns);
+		 for(int i = 0; i < employeesPL.size(); i++) {
+			 LocalDateTime dateOfClient=employeesPL.get(i).getEntryDate();
+			 if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
+		    		pw.println(employeesPL.get(i).showInformation());
+		    	}
+			 
+		 }
+		pw.close();
+	  }
+   
+   public void generateVehiclesReport(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException{
+		PrintWriter pw = new PrintWriter("");
+		String separator=";";
+		sortEmployeeByName();
+		String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+"Color"+
+		"Nombre de propietario"+"Identificación propietario"+"Fecha de entrada"+"Fecha de salida";
+		pw.println(columns);
+		 for(int i = 0; i < vehiclesPL.size(); i++) {
+			 LocalDateTime dateOfClient=vehiclesPL.get(i).getEntryDate();
+			 if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
+		    		pw.println(vehiclesPL.get(i).showInformation());
 		    	}
 			 
 		 }

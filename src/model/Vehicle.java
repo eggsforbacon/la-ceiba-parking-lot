@@ -250,4 +250,6 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 	public int compareTo(Vehicle o) {
 		return getLicensePlate().compareToIgnoreCase(o.getLicensePlate());
 	}
+    
+    public abstract String showInformation();
 }

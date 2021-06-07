@@ -45,8 +45,8 @@ public class Employee extends Person implements Comparable<Employee> {
 
 	@Override
 	public String showInformation() {
-		// TODO Auto-generated method stub
-		return null;
+		String info=getName()+";"+getId()+";"+getUsername();
+		return info;
 	}
 
 	

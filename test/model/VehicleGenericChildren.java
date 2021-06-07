@@ -16,4 +16,10 @@ public class VehicleGenericChildren extends Vehicle{
     public void setSpot() {
      //Something
     }
+
+	@Override
+	public String showInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

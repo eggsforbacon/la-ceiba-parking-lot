@@ -137,4 +137,10 @@ public class SmallVehicle extends Vehicle{
         //WIP
     }
 
+	@Override
+	public String showInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

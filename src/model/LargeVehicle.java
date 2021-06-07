@@ -136,4 +136,14 @@ public class LargeVehicle extends Vehicle {
     public void setSpot() {
         //WIP
     }
+
+	@Override
+	public String showInformation() {
+		String info=getType()+";"+getModel()+";"+getLicensePlate()+";"+getColor()
+		+";"+getOwner().getName()+";"+getOwner().getId()+";"+getEntryDateString()
+		+";"+getActualExitDateString()+";";
+		
+		return info;
+	}
+
 }

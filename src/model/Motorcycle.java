@@ -127,4 +127,9 @@ public class Motorcycle extends Vehicle{
     public void setSpot() {
         //WIP
     }
+	@Override
+	public String showInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
