@@ -51,19 +51,26 @@ public class ParkingLot implements Serializable {
     @return true or false
     */
     public boolean addClient(String name, String id, String cellNumber) {
-    	String temp=ClientVeryfier(name,id, cellNumber);
-    	//Aï¿½adir excepciï¿½n para verificar si el nombre estï¿½ repetido o si el id estï¿½ repetido
-    	if(temp.contains("name")){
-    		return false;
-    	}
-    	else if(temp.contains("id")) {
-    		return false;
-    	}
-    	else {
-    		Client aux=new Client(name, id, cellNumber);
-    		clientsPL.add(aux);
+    	if(searchByName(name)!=null&&searchByName(name).getStatus()==false) {
+    		clientsPL.add(new Client(name,id,cellNumber));
     		return true;
     	}
+    	else {
+    		String temp=ClientVeryfier(name,id, cellNumber);
+        	//Aï¿½adir excepciï¿½n para verificar si el nombre estï¿½ repetido o si el id estï¿½ repetido
+        	if(temp.contains("name")){
+        		return false;
+        	}
+        	else if(temp.contains("id")) {
+        		return false;
+        	}
+        	else {
+        		Client aux=new Client(name, id, cellNumber);
+        		clientsPL.add(aux);
+        		return true;
+        	}
+    	}
+    	
     }
     
     
@@ -241,6 +248,14 @@ public class ParkingLot implements Serializable {
     @return true or false
     */
     public boolean addEmployee(String name, String id, String username, String password) {
+    	if(searchEmployeeByName(name)!=null&&searchEmployeeByName(name).getState()==false) {
+    		for(int i=0;i<employeesPL.size();i++) {
+    			if(employeesPL.get(i).getId().equalsIgnoreCase(searchEmployeeByName(name).getId())) {
+    				employeesPL.remove(i);
+    				employeesPL.add(new Employee(name, id, username, password));
+    			}
+    		}
+    	}
     	String temp=employeeVeryfier(name,id,username,password);
     	//Añadir excepciï¿½n para verificar si el nombre estï¿½ repetido o si el id estï¿½ repetido
     	if(temp.contains("name")){
@@ -720,11 +735,11 @@ public class ParkingLot implements Serializable {
     */
     public boolean verifySpot(int spot) {
     	for(int i=0;i<vehiclesPL.size();i++) {
-    	if(vehiclesPL.get(i).isEnabled()) {
-	    	if(vehiclesPL.get(i).getSpot()==spot) {
-				return false;
-				}
-    		}
+	    	if(vehiclesPL.get(i).isEnabled()) {
+				    	if(vehiclesPL.get(i).getSpot()==spot) {
+							return false;
+							}
+		    		}
     	}
     	return true;
     }
@@ -1020,7 +1035,7 @@ public class ParkingLot implements Serializable {
    @param endDate LocalDateTime with the end date 
    */
    public void generateClientsReport(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException{
-		PrintWriter pw = new PrintWriter("");
+		PrintWriter pw = new PrintWriter("data/reports/clientReport.csv");
 		String separator=";";
 		clientBubbleSortName();
 		String columns = "Nombre y apellidos" + separator + "Identificación" + separator + "Telefono del cliente";
@@ -1035,21 +1050,6 @@ public class ParkingLot implements Serializable {
 		pw.close();
 	  }
    
-   public void generateEmployeesReport(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException{
-		PrintWriter pw = new PrintWriter("");
-		String separator=";";
-		sortEmployeeByName();
-		String columns = "Nombre y apellidos" + separator + "Identificación" + separator + "Nombre de usuario";
-		pw.println(columns);
-		 for(int i = 0; i < employeesPL.size(); i++) {
-			 LocalDateTime dateOfClient=employeesPL.get(i).getEntryDate();
-			 if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
-		    		pw.println(employeesPL.get(i).showInformation());
-		    	}
-			 
-		 }
-		pw.close();
-	  }
    
    
    /**
@@ -1060,7 +1060,7 @@ public class ParkingLot implements Serializable {
    @param endDate LocalDateTime with the end date 
    */
    public void generateVehiclesReport(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException{
-		PrintWriter pw = new PrintWriter("");
+		PrintWriter pw = new PrintWriter("data/reports/vehicleReport.csv");
 		String separator=";";
 		vehicleInsertionSortByPlate();
 		String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+separator+"Color"+ separator 
@@ -1100,7 +1100,7 @@ public class ParkingLot implements Serializable {
    @param endDate LocalDateTime with the end date 
    */
    private void reportInfoMonthly(BTMonthly monthlyVehicles,LocalDateTime startDate,LocalDateTime endDate, boolean columnsVeyfier) throws FileNotFoundException{
-	   PrintWriter pw = new PrintWriter("");
+	   PrintWriter pw = new PrintWriter("data/reports/vehicleMonthlyReport.csv");
 			   if(columnsVeryfier==false) {
 					   String separator=";";
 						String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+separator+"Color"+ separator 
@@ -1149,7 +1149,7 @@ public class ParkingLot implements Serializable {
    @param endDate LocalDateTime with the end date 
    */
    private void reportInfoDaily(BTPerHourOrDaily perHourOrDailyVehicles,LocalDateTime startDate,LocalDateTime endDate, boolean columnsVeryfier) throws FileNotFoundException{
-	   PrintWriter pw = new PrintWriter("");
+	   PrintWriter pw = new PrintWriter("data/reports/vehiclePerHourOrDailyReport.csv");
 	   if(columnsVeryfier==false) {
 		   String separator=";";
 			String columns = "Tipo de vehiculo" + separator + "Modelo" + separator + "Matricula"+separator+"Color"+ separator 

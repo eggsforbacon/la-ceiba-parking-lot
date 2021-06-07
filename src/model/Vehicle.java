@@ -96,7 +96,7 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     }
 
     public abstract void calculateValueToPay();
-    public abstract void setSpot();
+   
 
 
 
@@ -133,7 +133,11 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     public void setOwner(Client owner) {
         this.owner = owner;
     }
-
+    
+    public void setSpot(int spot) {
+    	this.spot=spot;
+    }
+    
     public int getSpot() {
         return spot;
     }
@@ -154,9 +158,6 @@ public abstract class Vehicle implements Comparable<Vehicle> {
         this.enabled = enabled;
     }
 
-    public void setSpot(int spot) {
-        this.spot = spot;
-    }
 
     public double getValueToPay() {
         return valueToPay;
@@ -251,5 +252,6 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 		return getLicensePlate().compareToIgnoreCase(o.getLicensePlate());
 	}
     
+    public abstract int[] getAvailablespots();
     public abstract String showInformation();
 }

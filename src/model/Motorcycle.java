@@ -8,7 +8,7 @@ public class Motorcycle extends Vehicle{
     private final static int ADITIONALVALUE = 500;
     private final static int DAYVALUE = 4000;
     private final static int MONTHVALUE = 30000;
-    private final static int[] availableSpots = {-9,-8,-7,-6,-5,-4,-3,-2,-1};
+    private final  int[] availableSpots = {-9,-8,-7,-6,-5,-4,-3,-2,-1};
 
     public Motorcycle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, String observations, int stayIndicator, int numberOfTime) {
         super(typeIndicator, model, licensePlate, color, owner, spot, observations, stayIndicator, numberOfTime);
@@ -126,10 +126,7 @@ public class Motorcycle extends Vehicle{
         return value;
     }
 
-    @Override
-    public void setSpot() {
-        //WIP
-    }
+    
     @Override
 	public String showInformation() {
 		String info=getType()+";"+getModel()+";"+getLicensePlate()+";"+getColor()
@@ -138,7 +135,9 @@ public class Motorcycle extends Vehicle{
 		
 		return info;
 	}
-	public static int[] getAvailablespots() {
+    
+    @Override
+	public int[] getAvailablespots() {
 		return availableSpots;
 	}
 }
