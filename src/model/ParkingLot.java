@@ -8,9 +8,9 @@ import java.util.Comparator;
 public class ParkingLot implements Serializable {
     
 	private static final long serialVersionUID = 1L;
-	private static ArrayList<Client> clientsPL;
+	private  ArrayList<Client> clientsPL;
     private ArrayList<Vehicle> vehiclesPL;
-    private static ArrayList<Employee> employeesPL;
+    private ArrayList<Employee> employeesPL;
     private ParkingLotMap plMap;
     private BTPerHourOrDaily perHourOrDailyVehicles;
     private BTMonthly monthlyVehicles;
@@ -746,7 +746,7 @@ public class ParkingLot implements Serializable {
     <b> pre: </b>There had to be an array list to sort<br>
     <b> post: </b>Sort the list<br> 
     */
-    public static void clientBubbleSortName() {
+    public void clientBubbleSortName() {
     	
 		for(int i=1; i<clientsPL.size();i++) {
 			
@@ -770,7 +770,7 @@ public class ParkingLot implements Serializable {
     <b> pre: </b>There had to be an array list to sort<br>
     <b> post: </b>Sort the list<br>
     */
-	public static void clientBubbleSortByID() {
+	public void clientBubbleSortByID() {
 	    	
 			for(int i=1; i<clientsPL.size();i++) {
 				
@@ -837,7 +837,7 @@ public class ParkingLot implements Serializable {
    <b> pre: </b>There had to be an array list to sort<br>
    <b> post: </b>Sort the list<br>
    */
-   public static void EmployeeselectionSortByUsername(Integer[] array) {
+   public void EmployeeselectionSortByUsername(Integer[] array) {
 		for(int i=0;i<employeesPL.size();i++) {
 			
 		Employee min=employeesPL.get(0);
@@ -858,7 +858,7 @@ public class ParkingLot implements Serializable {
    <b> pre: </b>There had to be an array list to sort<br>
    <b> post: </b>Sort the list<br>
    */
-   public static void EmployeeselectionSortById(Integer[] array) {
+   public void EmployeeselectionSortById(Integer[] array) {
 		for(int i=0;i<employeesPL.size();i++) {
 			
 		Employee min=employeesPL.get(0);
@@ -997,12 +997,12 @@ public class ParkingLot implements Serializable {
 		return serialVersionUID;
 	}
 
-	public static ArrayList<Client> getClientsPL() {
+	public ArrayList<Client> getClientsPL() {
 		return clientsPL;
 	}
 
-	public static void setClientsPL(ArrayList<Client> clientsPL) {
-		ParkingLot.clientsPL = clientsPL;
+	public void setClientsPL(ArrayList<Client> clientsPL) {
+		this.clientsPL = clientsPL;
 	}
 
 	public ArrayList<Vehicle> getVehiclesPL() {
@@ -1013,12 +1013,12 @@ public class ParkingLot implements Serializable {
 		this.vehiclesPL = vehiclesPL;
 	}
 
-	public static ArrayList<Employee> getEmployeesPL() {
+	public ArrayList<Employee> getEmployeesPL() {
 		return employeesPL;
 	}
 
-	public static void setEmployeesPL(ArrayList<Employee> employeesPL) {
-		ParkingLot.employeesPL = employeesPL;
+	public void setEmployeesPL(ArrayList<Employee> employeesPL) {
+		this.employeesPL = employeesPL;
 	}
 
 	public void setPlMap(ParkingLotMap plMap) {
