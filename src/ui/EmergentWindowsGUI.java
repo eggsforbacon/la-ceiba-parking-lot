@@ -246,6 +246,32 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void createNewUser(ActionEvent event) {
         ((Stage) newUserFullNameTF.getScene().getWindow()).close();
+        boolean check = laCeiba.addEmployee(newUserFullNameTF.getText(),newUserIDTF.getText(),newUsernameTF.getText(),newPasswordPWF.getText());
+        if(check){
+            launchError("Creado correctamente","Creacion de empleado");
+        }
+        else{
+            launchError("Error. El empleado no pudo ser agregado","Creacion de empleado");
+        }
+    }
+
+    public void launchError(String message, String title) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/dialogue.fxml"));
+            fxmlLoader.setController(this);
+            Parent root = fxmlLoader.load();
+            Stage errorPane = new Stage();
+            errorPane.setScene(new Scene(root));
+            errorPane.initModality(Modality.APPLICATION_MODAL);
+            errorPane.setTitle(title);
+            dialMessageLBL.setText(message);
+            dialMessageLBL.setStyle("\n-fx-font-style: italic;");
+            errorPane.setResizable(false);
+            errorPane.show();
+        } catch (Exception e) {
+            System.out.println("Something went wrong.");
+            e.printStackTrace();
+        }
     }
 
     /**
