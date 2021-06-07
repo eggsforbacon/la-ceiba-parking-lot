@@ -245,6 +245,19 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void loginClicked(ActionEvent event) {
+        switch (laCeiba.login(loginUserTF.getText(),loginPassPWF.getText())){
+            case -1:
+                emergentWindowsController.setDialMessageLBL("Datos erroneos o incompletos. Intente de nuevo.");
+                launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
+                break;
+            case -2:
+                emergentWindowsController.setDialMessageLBL("El uso del usuario root no es recomendado. Proceder con precaución.");
+                launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
+                break;
+            default:
+                laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(laCeiba.binarySearchPerson(laCeiba.getEmployeesPL(), loginUserTF.getText())));
+
+        }
         emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
         launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
