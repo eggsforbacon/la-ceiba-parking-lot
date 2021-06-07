@@ -10,6 +10,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -167,6 +168,9 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     private DatePicker reportFromDTP = new DatePicker();
 
+
+
+
     @FXML
     private DatePicker reportToDTP = new DatePicker();
 
@@ -274,8 +278,14 @@ public class CurrentSceneGUI implements Initializable {
     /*Clients DB*/
 
 
+    /**
+     * Initializes the client database. <br>
+     * */
     void initClientsDB() {
-
+        clientsNameCOL.setCellValueFactory(new PropertyValueFactory<>("name"));
+        clientsIDCOL.setCellValueFactory(new PropertyValueFactory<>("id"));
+        clientsPhoneCOL.setCellValueFactory(new PropertyValueFactory<>("cellNumber"));
+        clientEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
     /**

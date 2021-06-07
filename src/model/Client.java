@@ -3,17 +3,17 @@ package model;
 public class Client extends Person implements Comparable<Client> {
 	
 	private String cellNumber;
-	private boolean state;
+	private boolean status;
 	
     public Client(String name, String id, String cellNumber) {
         super(name, id);
         this.cellNumber=cellNumber;
-        state=true;
+        status =true;
     }
     
 
-	public boolean getState() {
-		return state;
+	public boolean getStatus() {
+		return status;
 	}
 
 	public String getCellNumber() {
@@ -23,8 +23,8 @@ public class Client extends Person implements Comparable<Client> {
 	public void setCellNumber(String cellNumber) {
 		this.cellNumber = cellNumber;
 	} 
-	public void setState(boolean state) {
-		this.state = state;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 
