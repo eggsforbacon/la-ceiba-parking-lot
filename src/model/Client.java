@@ -32,6 +32,7 @@ public class Client extends Person implements Comparable<Client> {
 	public int compareTo(Client o) {
 		return getName().compareTo(o.getName());
 	}
+	
 
     
     
