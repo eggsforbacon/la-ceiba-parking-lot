@@ -18,11 +18,20 @@ public class PreloaderThread extends Thread {
      * */
     @Override
     public void run() {
-        int LOADING_TIME_INTERVAL = 4;
+        int LOADING_TIME_INTERVAL = 6;
         while (progressBar.isActive()) {
-            progressBar.doProgress();
-            Platform.runLater(new Thread(() -> preloader.loadBar()));
-            wait(LOADING_TIME_INTERVAL);
+            if (!currentThread().isInterrupted()) {
+                progressBar.doProgress();
+                Platform.runLater(new Thread(() -> {
+                    try {
+                        preloader.loadBar();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }));
+                wait(LOADING_TIME_INTERVAL);
+            }
+
         }
         Platform.runLater(new Thread(() -> preloader.postLoaded()));
     }
