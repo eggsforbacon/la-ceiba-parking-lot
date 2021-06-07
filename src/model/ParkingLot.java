@@ -536,13 +536,29 @@ public class ParkingLot implements Serializable {
     	}
     	return check;
     }
-
+    
+    
+    /**
+	   Add a vehicle to the per hour or daily binary tree  <br>
+	   <b> pre: </b>The vehicle was already created<br>
+	   <b> post: </b>Add a vehicle to the binary tree<br>
+	   @param newVehicle Vehicle who is go to be added to the binary tree
+	   */
 	public void addAVehicleToPerHourOrDailyVehicles(Vehicle newVehicle){
     	BTPerHourOrDaily newBt = new BTPerHourOrDaily();
 		newBt.setBtVehicle(newVehicle);
 		perHourOrDailyVehicles = addAVehicleToPerHourOrDailyVehicles(perHourOrDailyVehicles,newBt);
 	}
-
+	
+	
+	/**
+	   Find a vehicle to the per hour or daily binary tree  <br>
+	   <b> pre: </b><br>
+	   <b> post: </b>Add a vehicle to the binary tree<br>
+	   @param newBT A node of the binary tree per hour or daily
+	   @param r A node of the binary tree per hour or daily
+	   @return r node of the binary tree per hour or daily
+	   */
 	private BTPerHourOrDaily addAVehicleToPerHourOrDailyVehicles(BTPerHourOrDaily r,BTPerHourOrDaily newBT){
 		if (r == null) {
 			r = newBT;
@@ -554,13 +570,29 @@ public class ParkingLot implements Serializable {
 			r.setRight(addAVehicleToPerHourOrDailyVehicles((BTPerHourOrDaily) r.getRight(),newBT));
 		return r;
 	}
-
+	
+	
+	/**
+	   Add a vehicle to the month binary tree  <br>
+	   <b> pre: </b>The vehicle was already created<br>
+	   <b> post: </b>Add a vehicle to the binary tree<br>
+	   @param newVehicle Vehicle who is go to be added to the binary tree
+	   */
 	public void addAVehicleToMonthlyVehicles(Vehicle newVehicle){
 		BTMonthly newBt = new BTMonthly();
 		newBt.setBtVehicle(newVehicle);
 		monthlyVehicles = addAVehicleToMonthlyVehicles(monthlyVehicles,newBt);
 	}
-
+	
+	
+	/**
+	   Fin a vehicle to the month binary tree  <br>
+	   <b> pre: </b><br>
+	   <b> post: </b>Add a vehicle to the binary tree<br>
+	   @param newBT A node of the binary tree monthly
+	   @param r A node of the binary tree monthly
+	   @return r node of the binary tree monthly
+	   */
 	private BTMonthly addAVehicleToMonthlyVehicles(BTMonthly r,BTMonthly newBT){
 		if (r == null) {
 			r = newBT;
