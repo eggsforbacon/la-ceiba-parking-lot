@@ -93,7 +93,6 @@ public class PreloaderGUI implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
             Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
             stage.getIcons().add(icon);
             stage.setTitle("La Ceiba: Inicio");

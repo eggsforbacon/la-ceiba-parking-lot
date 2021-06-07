@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.ParkingLot;
@@ -32,6 +33,7 @@ public class Main extends Application {
         Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
         primaryStage.getIcons().add(icon);
         Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
