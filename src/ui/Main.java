@@ -10,7 +10,12 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -50,4 +55,7 @@ public class Main extends Application {
     public void stop() {
         Platform.exit();
     }
+    
+    
+    
 }

@@ -61,7 +61,7 @@ class ParkingLotTest {
 	@Test
 	void updateClientNameTest() throws NameAlreadyInUseException, IDAlreadyInUseException {
 		parkingLotScenary1();
-		assertTrue(parkingLotTest.updateClientName("c","a"));
+		assertTrue(parkingLotTest.updateClientName("1","c"));
 	}
 	
 	@Test
@@ -122,7 +122,7 @@ class ParkingLotTest {
 	@Test
 	void updateEmployeeNameTest() throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
 		parkingLotScenary2();
-		assertTrue(parkingLotTest.updateEmployeeName("c","a"));
+		assertTrue(parkingLotTest.updateEmployeeName("1","c"));
 	}
 	
 	@Test

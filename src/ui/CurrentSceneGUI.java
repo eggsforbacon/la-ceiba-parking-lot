@@ -431,6 +431,12 @@ public class CurrentSceneGUI implements Initializable {
     void editClient(ActionEvent event) {
         launchFXML("edit-client.fxml", "Editar Cliente");
     }
+    
+    
+    @FXML
+    void searchClient(ActionEvent event) {
+
+    }
 
     /*Vehicles DB*/
 
