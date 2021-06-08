@@ -18,7 +18,8 @@ public class ChoiceBoxThread extends Thread{
      * */
     @Override
     public void run() {
-        while(!e.getSuccessful()){
+        while(true){
+            System.out.println("Aun no termina");
             wait(10);
             ObservableList<Integer> dummy;
             switch (e.getVehicleType()){

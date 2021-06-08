@@ -2,8 +2,8 @@ package ui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
@@ -13,18 +13,20 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.input.KeyCode;
-import model.*;
+import model.Client;
+import model.Employee;
+import model.ParkingLot;
+import model.Vehicle;
 import threads.ChoiceBoxThread;
-import threads.LoginThread;
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CurrentSceneGUI implements Initializable {
@@ -202,6 +204,8 @@ public class CurrentSceneGUI implements Initializable {
     EmergentWindowsGUI emergentWindowsController;
     boolean loginSuccessful;
     String currentScene;
+    ArrayList<Thread> threads = new ArrayList<>();
+    int iLoveThisnumber=1;
 
     /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -255,6 +259,10 @@ public class CurrentSceneGUI implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setOnHidden(event -> {
+            //do all your processing here
+            emergentWindowsController.setSuccesssful(true);
+        });
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle(title);
         Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
@@ -395,8 +403,10 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     public void addClient(ActionEvent event) {
         launchFXML("create-client-vehicle.fxml", "Nuevo Cliente");
-        new ChoiceBoxThread(emergentWindowsController).start();
-
+        System.out.println("haz esta pendejada");
+        ChoiceBoxThread odioLosHilos = new ChoiceBoxThread(emergentWindowsController);
+        odioLosHilos.setDaemon(true);
+        odioLosHilos.start();
     }
 
     /**
@@ -576,4 +586,5 @@ public class CurrentSceneGUI implements Initializable {
     public void setLoginSuccessful(boolean loginSuccessful) {
         this.loginSuccessful = loginSuccessful;
     }
+
 }

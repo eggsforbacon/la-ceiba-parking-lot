@@ -339,10 +339,58 @@ public class EmergentWindowsGUI implements Initializable {
         boolean check = laCeiba.addClient(newClientFullnameTF.getText(),newClientIDTF.getText(),newClientPhoneTF.getText());
         if(check){
             successsful=true;
-            //boolean check2 = laCeiba.addVehicle()
+            try{
+                boolean check2 = laCeiba.addVehicle(translateVehicleType(getVehicleType()),newVehicleModelTF.getText(),newVehiclePlatesTF.
+                                getText(),newVehicleColorCHB.getSelectionModel().getSelectedItem(),
+                        laCeiba.searchByID(newClientIDTF.getText()),
+                        newVehicleSeatCHB.getSelectionModel().getSelectedItem(),"",translateVehicleStay(newVehicleStayTypeCHB.getSelectionModel().getSelectedItem())
+                        ,Integer.parseInt(newVehicleNumberDaysTF.getText()));
+                if(check2){
+                    launchError("Cliente y vehiculo creados correctamente","Creacion de vehiculo y cliente");
+                }
+                else{
+                    launchError("Error con los datos del vehiculo","Creacion de vehiculo y cliente");
+                }
+            }catch (NullPointerException e){
+                launchError("Llene todos los espacios","Creacion de vehiculo y cliente");
+            }
         }
         else{
             launchError("Datos del cliente incorrectos o invalidos","Creacion de cliente");
+        }
+    }
+
+    public int translateVehicleType(String cb){
+        switch (cb){
+            case "AUTOMOVIL":
+                return  0;
+            case "MOTO":
+                return 1;
+            case "CAMION":
+                return 2;
+            case "BUS":
+                return 3;
+            case "FURGON":
+                return 4;
+            case "CAMIONETA":
+                return 5;
+            default:
+                return -1;
+        }
+    }
+
+    public int translateVehicleStay(String cb){
+        switch (cb){
+            case "HORA":
+                return  0;
+            case "DIA":
+                return 1;
+            case "MES":
+                return 2;
+            case "INDEFINIDO":
+                return 3;
+            default:
+                return -1;
         }
     }
 
@@ -421,5 +469,7 @@ public class EmergentWindowsGUI implements Initializable {
 
     }
 
-
+    public void setSuccesssful(boolean successsful) {
+        this.successsful = successsful;
+    }
 }
