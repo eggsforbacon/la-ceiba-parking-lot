@@ -58,7 +58,7 @@ public class ParkingLot implements Serializable {
      * @throws NameAlreadyInUseException 
      * @throws IDAlreadyInUseException 
     */
-    public boolean addClient(String name, String id, String cellNumber) throws NameAlreadyInUseException, IDAlreadyInUseException {
+    public boolean addClient(String name, String id, String cellNumber) throws IDAlreadyInUseException {
     	if(searchByName(name)!=null&&searchByName(name).isEnabled()==false) {
     		clientsPL.add(new Client(name,id,cellNumber));
     		return true;
@@ -66,10 +66,7 @@ public class ParkingLot implements Serializable {
     	else {
     		String temp=ClientVeryfier(name,id, cellNumber);
         	//A�adir excepci�n para verificar si el nombre est� repetido o si el id est� repetido
-        	if(temp.contains("name")){
-        		throw new NameAlreadyInUseException();
-        	}
-        	else if(temp.contains("id")) {
+        	if(temp.contains("id")) {
         		throw new IDAlreadyInUseException();        	}
         	else {
         		Client aux=new Client(name, id, cellNumber);
@@ -79,6 +76,10 @@ public class ParkingLot implements Serializable {
     	}
     	
     }
+
+    public void removeLastClient(){
+    	clientsPL.remove(clientsPL.size()-1);
+	}
     
     
     /**
@@ -522,7 +523,6 @@ public class ParkingLot implements Serializable {
     @param color String with the vehicle's color
     @param owner The object client with the owner's information
     @param spot int with the vehicle's position at the parking lot
-    @param observations String with extra information about the vehicle
     @param stayIndicator int with the indicator for the StayTime enum
     @param numberOfTime int with the amount of time that vehicle will spend in the PL
     @return true or false

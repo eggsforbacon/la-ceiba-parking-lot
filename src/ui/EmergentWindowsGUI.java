@@ -345,12 +345,12 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void createNewClient(ActionEvent event) {
         ((Stage) newClientFullnameTF.getScene().getWindow()).close();
-        boolean check=false;
+        boolean check;
         try{
             check = laCeiba.addClient(newClientFullnameTF.getText(),newClientIDTF.getText(),newClientPhoneTF.getText());
         }
-        catch(NameAlreadyInUseException | IDAlreadyInUseException e){
-            launchError("Uno de los atributos escogidos ya esta en uso. Intente de nuevo","Creacion de vehiculo y cliente");
+        catch(IDAlreadyInUseException e){
+            check = true;
         }
 
         if(check){
@@ -366,9 +366,11 @@ public class EmergentWindowsGUI implements Initializable {
                     aVerSiEstoFunciona.initClientsDB();
                 }
                 else{
+                    laCeiba.removeLastClient();
                     launchError("Error con los datos del vehiculo","Creacion de vehiculo y cliente");
                 }
             }catch (NullPointerException | NotAllowedException e){
+                laCeiba.removeLastClient();
                 launchError("Asegurese de llenar todos los espacios","Creacion de vehiculo y cliente");
             }
         }
