@@ -325,7 +325,8 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void loginClicked(ActionEvent event) {
-        switch (laCeiba.login(loginUserTF.getText(),loginPassPWF.getText())){
+        int user = laCeiba.login(loginUserTF.getText(),loginPassPWF.getText());
+        switch (user){
             case -1:
                 //emergentWindowsController.setDialMessageLBL("Datos erroneos o incompletos. Intente de nuevo.");
                 //launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
@@ -338,7 +339,7 @@ public class CurrentSceneGUI implements Initializable {
                 loginSuccessful = true;
                 break;
             default:
-                laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(laCeiba.binarySearchPerson(laCeiba.getEmployeesPL(), loginUserTF.getText())));
+                laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(user));
                 launchError("Bienvenido "+laCeiba.getActualEmployee().getName(),"Mensaje de inicio de sesion");
                 loginSuccessful = true;
                 break;
@@ -403,7 +404,6 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     public void addClient(ActionEvent event) {
         launchFXML("create-client-vehicle.fxml", "Nuevo Cliente");
-        System.out.println("haz esta pendejada");
         ChoiceBoxThread odioLosHilos = new ChoiceBoxThread(emergentWindowsController);
         odioLosHilos.setDaemon(true);
         odioLosHilos.start();

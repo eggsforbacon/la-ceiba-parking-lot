@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -276,7 +277,13 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void createNewUser(ActionEvent event) {
         ((Stage) newUserFullNameTF.getScene().getWindow()).close();
-        boolean check = laCeiba.addEmployee(newUserFullNameTF.getText(),newUserIDTF.getText(),newUsernameTF.getText(),newPasswordPWF.getText());
+        boolean check = false;
+        try{
+            check = laCeiba.addEmployee(newUserFullNameTF.getText(),newUserIDTF.getText(),newUsernameTF.getText(),newPasswordPWF.getText());
+        }catch ( NameAlreadyInUseException | IDAlreadyInUseException | UsernameAlreadyInUseException | PasswordAlreadyInUseException e){
+            launchError("Uno de los atributos escogidos ya esta en uso. Intente de nuevo","Creacion de empleado");
+        }
+
         if(check){
             launchError("Creado correctamente","Creacion de empleado");
         }
@@ -336,14 +343,21 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void createNewClient(ActionEvent event) {
         ((Stage) newClientFullnameTF.getScene().getWindow()).close();
-        boolean check = laCeiba.addClient(newClientFullnameTF.getText(),newClientIDTF.getText(),newClientPhoneTF.getText());
+        boolean check=false;
+        try{
+            check = laCeiba.addClient(newClientFullnameTF.getText(),newClientIDTF.getText(),newClientPhoneTF.getText());
+        }
+        catch(NameAlreadyInUseException | IDAlreadyInUseException e){
+            launchError("Uno de los atributos escogidos ya esta en uso. Intente de nuevo","Creacion de vehiculo y cliente");
+        }
+
         if(check){
             successsful=true;
             try{
                 boolean check2 = laCeiba.addVehicle(translateVehicleType(getVehicleType()),newVehicleModelTF.getText(),newVehiclePlatesTF.
                                 getText(),newVehicleColorCHB.getSelectionModel().getSelectedItem(),
                         laCeiba.searchByID(newClientIDTF.getText()),
-                        newVehicleSeatCHB.getSelectionModel().getSelectedItem(),"",translateVehicleStay(newVehicleStayTypeCHB.getSelectionModel().getSelectedItem())
+                        newVehicleSeatCHB.getSelectionModel().getSelectedItem(),translateVehicleStay(newVehicleStayTypeCHB.getSelectionModel().getSelectedItem())
                         ,Integer.parseInt(newVehicleNumberDaysTF.getText()));
                 if(check2){
                     launchError("Cliente y vehiculo creados correctamente","Creacion de vehiculo y cliente");
@@ -351,8 +365,8 @@ public class EmergentWindowsGUI implements Initializable {
                 else{
                     launchError("Error con los datos del vehiculo","Creacion de vehiculo y cliente");
                 }
-            }catch (NullPointerException e){
-                launchError("Llene todos los espacios","Creacion de vehiculo y cliente");
+            }catch (NullPointerException | NotAllowedException e){
+                launchError("Asegurese de llenar todos los espacios","Creacion de vehiculo y cliente");
             }
         }
         else{
