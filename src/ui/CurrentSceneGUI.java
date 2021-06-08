@@ -357,7 +357,6 @@ public class CurrentSceneGUI implements Initializable {
 
     /*Clients DB*/
 
-
     /**
      * Initializes the client database. <br>
      * */
@@ -405,12 +404,12 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void deleteClient(ActionEvent event) {
-        boolean canDelete = true;
+        boolean canDelete;
         int selectedItems = clientsTBV.getSelectionModel().getSelectedItems().size();
         for (int i = 0; i < selectedItems; i++) {
             Client removed = clientsTBV.getSelectionModel().getSelectedItems().get(i);
             canDelete = laCeiba.disableClientByName(removed.getName());
-            if (!canDelete) System.out.println("Couln't delete");
+            if (!canDelete) System.out.println("Couldn't delete");
         }
     }
 
@@ -424,15 +423,20 @@ public class CurrentSceneGUI implements Initializable {
 
     /*Vehicles DB*/
 
+    @FXML
+    void toggleMonthlyVehicles(ActionEvent event) {
+
+    }
+
     /**
      * Initializes the vehicles database. <br>
      * */
     void initVehiclesDB() {
-        /*vehicleSlotCOL
-				vehicleStayCOL
-				vehicleTypeCOL
-				vehiclePlateCOL
-				vehicleEnabledCOL*/
+        vehicleSlotCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
+        vehicleStayCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
+        vehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
+        vehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
+        vehicleEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
     }
 
     /**
@@ -559,10 +563,16 @@ public class CurrentSceneGUI implements Initializable {
         launchFXML("dialogue.fxml", "Ventana de dialogo");
     }
 
+    /**
+     * @return The current status of the login. <br>
+     * */
     public boolean isLoginSuccessful() {
         return loginSuccessful;
     }
 
+    /**
+     * @param loginSuccessful The new login value. <br>
+     * */
     public void setLoginSuccessful(boolean loginSuccessful) {
         this.loginSuccessful = loginSuccessful;
     }

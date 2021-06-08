@@ -33,6 +33,7 @@
 .check-box .box {
 	-fx-background-radius: 50;
 	-fx-background-color: -ACCENT-COLOR;
+	-fx-effect: dropshadow(gaussian, -SECONDARY-TEXT, 15, 0.2, 0, 0);
 }
 
 .check-box:selected .mark {
@@ -43,6 +44,7 @@
 	-fx-border-color: -TEXT-ICONS;
 	-fx-border-width: 3;
 	-fx-border-radius: 50;
+	-fx-effect: dropshadow(gaussian, -SECONDARY-TEXT, 15, 0.2, 0, 0);
 }
 
 /**********************************************************/
