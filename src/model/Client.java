@@ -1,7 +1,11 @@
 package model;
 
-public class Client extends Person implements Comparable<Client> {
+import java.io.Serializable;
+
+public class Client extends Person implements Comparable<Client>, Serializable {
 	
+	
+	private static final long serialVersionUID = 1L;
 	private String cellNumber;
 	private boolean status;
 	

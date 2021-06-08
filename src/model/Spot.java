@@ -1,7 +1,11 @@
 package model;
 
-public abstract class Spot {
-    private Spot rigth;
+import java.io.Serializable;
+
+public abstract class Spot implements Serializable {
+    
+	private static final long serialVersionUID = 1L;
+	private Spot rigth;
     private Spot up;
     private Spot down;
     private Spot left;

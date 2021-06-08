@@ -1,8 +1,11 @@
 package model;
 
+import java.io.Serializable;
 
-public class ParkingLotMap {
-    private Spot leftColumn;
+public class ParkingLotMap implements Serializable {
+   
+	private static final long serialVersionUID = 1L;
+	private Spot leftColumn;
     private Spot bottomRow;
     private Spot rightColumn;
     private Spot spot28;

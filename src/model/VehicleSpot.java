@@ -1,8 +1,12 @@
 package model;
 
-public class VehicleSpot extends Spot{
+import java.io.Serializable;
 
-    private int number;
+public class VehicleSpot extends Spot implements Serializable{
+
+    
+	private static final long serialVersionUID = 1L;
+	private int number;
     private Vehicle spotVehicle;
 
     public VehicleSpot(int number){

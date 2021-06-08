@@ -1,10 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class LargeVehicle extends Vehicle {
-    private final static int HOURVALUE = 3000;
+public class LargeVehicle extends Vehicle implements Serializable{
+   
+	private static final long serialVersionUID = 1L;
+	private final static int HOURVALUE = 3000;
     private final static int TWOHOURSVALUE = 4000;
     private final static int ADITIONALVALUE = 1000;
     private final static int DAYVALUE = 12000;

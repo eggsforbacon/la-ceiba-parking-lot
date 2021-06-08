@@ -11,11 +11,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Objects;
 
 public class Main extends Application {
 
     /**
+	 * 
+	 */
+
+
+	/**
      * @param args The arguments for the compiler and the JavaVM. <br>
      * */
     public static void main(String[] args) {

@@ -1,7 +1,11 @@
 package model;
 
-public abstract class BinaryTree {
-    protected BinaryTree right;
+import java.io.Serializable;
+
+public abstract class BinaryTree implements Serializable{
+   
+	private static final long serialVersionUID = 1L;
+	protected BinaryTree right;
     protected BinaryTree left;
     protected Vehicle btVehicle;
     protected String licensePlate;

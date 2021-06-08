@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class Motorcycle extends Vehicle{
+public class Motorcycle extends Vehicle implements Serializable{
     private final static int HOURVALUE = 1000;
     private final static int ADITIONALVALUE = 500;
     private final static int DAYVALUE = 4000;

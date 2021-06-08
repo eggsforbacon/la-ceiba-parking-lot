@@ -124,9 +124,9 @@ public class ParkingLot implements Serializable {
     @param pastName A string who have the client�s pastName
     @return true or false
     */
-    public boolean updateClientName(String newName, String pastName) {
-    	if((searchByName(newName)==null)&&(searchByName(pastName)!=null)) {
-    		searchByName(pastName).setName(newName);
+    public boolean updateClientName(String id, String newName) {
+    	if((searchByID(id)!=null)&&(searchByName(newName)==null)) {
+    		searchByID(id).setName(newName);
     		return true;
     	}
     	else {
@@ -332,9 +332,9 @@ public class ParkingLot implements Serializable {
     @param pastName A string who have the employee�s past Name
     @return true or false
     */
-    public boolean updateEmployeeName(String newName, String pastName) {
-    	if((searchEmployeeByName(newName)==null)&&(searchEmployeeByName(pastName)!=null)) {
-    		searchEmployeeByName(pastName).setName(newName);
+    public boolean updateEmployeeName(String id, String newName) {
+    	if((searchEmployeeByID(id)!=null)&&(searchEmployeeByName(newName)==null)) {
+    		searchEmployeeByID(id).setName(newName);
     		return true;
     	}
     	else {

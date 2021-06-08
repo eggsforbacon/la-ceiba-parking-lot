@@ -96,8 +96,9 @@ public class PreloaderGUI implements Initializable {
             Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
             stage.getIcons().add(icon);
             stage.setTitle("La Ceiba: Inicio");
-            stage.setMinHeight(860);
-            stage.setMinWidth(352);
+            //stage.setMinHeight(1360);
+            //stage.setMinWidth(720);
+            stage.setMaximized(true);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

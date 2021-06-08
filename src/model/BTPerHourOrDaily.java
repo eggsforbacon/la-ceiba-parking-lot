@@ -1,8 +1,12 @@
 package model;
 
-public class BTPerHourOrDaily extends BinaryTree{
+import java.io.Serializable;
 
-    private String entryDate;
+public class BTPerHourOrDaily extends BinaryTree implements Serializable{
+
+    
+	private static final long serialVersionUID = 1L;
+	private String entryDate;
     private String type;
     private String entryHour;
     private String exitHour;

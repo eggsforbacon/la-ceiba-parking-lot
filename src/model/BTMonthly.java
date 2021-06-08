@@ -1,8 +1,12 @@
 package model;
 
-public class BTMonthly extends BinaryTree{
+import java.io.Serializable;
 
-    private String ownerName;
+public class BTMonthly extends BinaryTree implements Serializable{
+
+  
+	private static final long serialVersionUID = 1L;
+	private String ownerName;
     private int spotNumber;
     private String lastTimePaid;
     private String dayToPay;

@@ -1,11 +1,16 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public abstract class Vehicle implements Comparable<Vehicle> {
+public abstract class Vehicle implements Comparable<Vehicle>, Serializable{
 
-    protected VehicleType type; //Esto se define en base a un Enum, es el tipo del vehiculo (carro,moto,etc)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected VehicleType type; //Esto se define en base a un Enum, es el tipo del vehiculo (carro,moto,etc)
     protected String model;  //En plan Mazda, chevrolet, etc
     protected String licensePlate; //la placa :v
     protected String color;
@@ -24,6 +29,7 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     protected String actualExitDateString;
     protected boolean additionalTime; // para saber si se paso de la fecha acordada o no
     private DateTimeFormatter formatter; // ignoralo
+    private boolean yetPay;
 
 
     public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,int stayIndicator,int numberOfTime){
@@ -40,7 +46,9 @@ public abstract class Vehicle implements Comparable<Vehicle> {
         entryDate = LocalDateTime.now();
         entryDateString = entryDate.format(formatter);
         this.numberOfTime = numberOfTime;
+        setYetPay(false);
         calculateExitDate();
+        
     }
 
     /**
@@ -245,4 +253,12 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     
     public abstract int[] getAvailablespots();
     public abstract String showInformation();
+
+	public boolean getYetPay() {
+		return yetPay;
+	}
+
+	public void setYetPay(boolean yetPay) {
+		this.yetPay = yetPay;
+	}
 }
