@@ -218,7 +218,7 @@ public class CurrentSceneGUI implements Initializable {
      * */
     public CurrentSceneGUI(ParkingLot laCeiba) {
         this.laCeiba = laCeiba;
-        emergentWindowsController = new EmergentWindowsGUI(laCeiba);
+        emergentWindowsController = new EmergentWindowsGUI(laCeiba,this);
         currentScene = "none";
     }
 

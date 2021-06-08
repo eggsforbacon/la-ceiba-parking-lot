@@ -59,7 +59,7 @@ public class ParkingLot implements Serializable {
      * @throws IDAlreadyInUseException 
     */
     public boolean addClient(String name, String id, String cellNumber) throws NameAlreadyInUseException, IDAlreadyInUseException {
-    	if(searchByName(name)!=null&&searchByName(name).getStatus()==false) {
+    	if(searchByName(name)!=null&&searchByName(name).isEnabled()==false) {
     		clientsPL.add(new Client(name,id,cellNumber));
     		return true;
     	}

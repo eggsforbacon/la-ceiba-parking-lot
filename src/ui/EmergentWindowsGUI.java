@@ -152,6 +152,7 @@ public class EmergentWindowsGUI implements Initializable {
 
     ParkingLot laCeiba;
     boolean successsful=false;
+    CurrentSceneGUI aVerSiEstoFunciona;
 
     /*------------------------ METHODS ------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -162,8 +163,9 @@ public class EmergentWindowsGUI implements Initializable {
      * Principal constructor of the class. <br>
      *
      * @param laCeiba The object in which the apps info will be stored. <br>*/
-    public EmergentWindowsGUI(ParkingLot laCeiba) {
+    public EmergentWindowsGUI(ParkingLot laCeiba,CurrentSceneGUI aVerSiEstoFunciona) {
         this.laCeiba = laCeiba;
+        this.aVerSiEstoFunciona = aVerSiEstoFunciona;
     }
 
     /**
@@ -361,6 +363,7 @@ public class EmergentWindowsGUI implements Initializable {
                         ,Integer.parseInt(newVehicleNumberDaysTF.getText()));
                 if(check2){
                     launchError("Cliente y vehiculo creados correctamente","Creacion de vehiculo y cliente");
+                    aVerSiEstoFunciona.initClientsDB();
                 }
                 else{
                     launchError("Error con los datos del vehiculo","Creacion de vehiculo y cliente");

@@ -12,8 +12,17 @@ public class Client extends Person implements Comparable<Client> {
     }
     
 //ha
-	public boolean getStatus() {
-		return status;
+	public String getStatus() {
+    	if(status){
+    		return "SI";
+		}
+    	else{
+    		return "NO";
+		}
+	}
+
+	public boolean isEnabled(){
+    	return  status;
 	}
 
 	public String getCellNumber() {
