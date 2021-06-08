@@ -430,15 +430,35 @@ public class EmergentWindowsGUI implements Initializable {
      * */
     @FXML
     void confirmEditClient(ActionEvent event) {
+
         ((Stage) editClientFullnameTF.getScene().getWindow()).close();
+        String user = aVerSiEstoFunciona.getClientsTBV().getSelectionModel().getSelectedItem().getId();
+        if(!editClientFullnameTF.getText().equals("")){
+            if(!laCeiba.updateClientName(user,editClientFullnameTF.getText())){
+                launchError("No se pudo actualizar el nombre","Actualizacion de datos");
+            }
+        }
+        if(!editClientIDTF.getText().equals("")){
+            if(!laCeiba.updateClientID(user,editClientIDTF.getText())){
+                launchError("No se pudo actualizar el ID","Actualizacion de datos");
+            }
+        }
+        if(!editClientPhoneTF.getText().equals("")){
+            if(!laCeiba.updateClientCellNumber(user,editClientPhoneTF.getText())){
+                launchError("No se pudo actualizar el numero de telefono","Actualizacion de datos");
+            }
+        }
+        aVerSiEstoFunciona.initClientsDB();
+
     }
 
     /**
      * Cancels the editing of the selected client. <br>
      * */
     @FXML
-    void cancelCancelClient(ActionEvent event) {
+    void cancelEditClient(ActionEvent event) {
         ((Stage) editClientFullnameTF.getScene().getWindow()).close();
+
     }
 
     /**

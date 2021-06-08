@@ -278,9 +278,9 @@ public class CurrentSceneGUI implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxml));
             fxmlLoader.setController(emergentWindowsController);
-            emergentWindowsController.setDialMessageLBL("niia");
             return fxmlLoader.load();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             System.out.println("Can't load requested document right now.\nRequested document: \"" + fxml + "\"");
             throw new NullPointerException("Document is null");
         }
@@ -419,8 +419,9 @@ public class CurrentSceneGUI implements Initializable {
         for (int i = 0; i < selectedItems; i++) {
             Client removed = clientsTBV.getSelectionModel().getSelectedItems().get(i);
             canDelete = laCeiba.disableClientByName(removed.getName());
-            if (!canDelete) System.out.println("Couldn't delete");
+            if (!canDelete) launchError("No se pudo deshabilitar","Error");
         }
+        initClientsDB();
     }
 
     /**
@@ -587,4 +588,431 @@ public class CurrentSceneGUI implements Initializable {
         this.loginSuccessful = loginSuccessful;
     }
 
+    public TextField getLoginUserTF() {
+        return loginUserTF;
+    }
+
+    public void setLoginUserTF(TextField loginUserTF) {
+        this.loginUserTF = loginUserTF;
+    }
+
+    public PasswordField getLoginPassPWF() {
+        return loginPassPWF;
+    }
+
+    public void setLoginPassPWF(PasswordField loginPassPWF) {
+        this.loginPassPWF = loginPassPWF;
+    }
+
+    public TableView<Client> getClientsTBV() {
+        return clientsTBV;
+    }
+
+    public void setClientsTBV(TableView<Client> clientsTBV) {
+        this.clientsTBV = clientsTBV;
+    }
+
+    public TableColumn<Client, String> getClientsNameCOL() {
+        return clientsNameCOL;
+    }
+
+    public void setClientsNameCOL(TableColumn<Client, String> clientsNameCOL) {
+        this.clientsNameCOL = clientsNameCOL;
+    }
+
+    public TableColumn<Client, String> getClientsIDCOL() {
+        return clientsIDCOL;
+    }
+
+    public void setClientsIDCOL(TableColumn<Client, String> clientsIDCOL) {
+        this.clientsIDCOL = clientsIDCOL;
+    }
+
+    public TableColumn<Client, String> getClientsPhoneCOL() {
+        return clientsPhoneCOL;
+    }
+
+    public void setClientsPhoneCOL(TableColumn<Client, String> clientsPhoneCOL) {
+        this.clientsPhoneCOL = clientsPhoneCOL;
+    }
+
+    public TableColumn<Client, String> getClientEnabledCOL() {
+        return clientEnabledCOL;
+    }
+
+    public void setClientEnabledCOL(TableColumn<Client, String> clientEnabledCOL) {
+        this.clientEnabledCOL = clientEnabledCOL;
+    }
+
+    public Button getClientEditBTN() {
+        return clientEditBTN;
+    }
+
+    public void setClientEditBTN(Button clientEditBTN) {
+        this.clientEditBTN = clientEditBTN;
+    }
+
+    public Button getClientDeleteBTN() {
+        return clientDeleteBTN;
+    }
+
+    public void setClientDeleteBTN(Button clientDeleteBTN) {
+        this.clientDeleteBTN = clientDeleteBTN;
+    }
+
+    public TableView<Vehicle> getVehiclesTBV() {
+        return vehiclesTBV;
+    }
+
+    public void setVehiclesTBV(TableView<Vehicle> vehiclesTBV) {
+        this.vehiclesTBV = vehiclesTBV;
+    }
+
+    public TableColumn<Vehicle, String> getVehicleTypeCOL() {
+        return vehicleTypeCOL;
+    }
+
+    public void setVehicleTypeCOL(TableColumn<Vehicle, String> vehicleTypeCOL) {
+        this.vehicleTypeCOL = vehicleTypeCOL;
+    }
+
+    public TableColumn<Vehicle, String> getVehicleStayCOL() {
+        return vehicleStayCOL;
+    }
+
+    public void setVehicleStayCOL(TableColumn<Vehicle, String> vehicleStayCOL) {
+        this.vehicleStayCOL = vehicleStayCOL;
+    }
+
+    public TableColumn<Vehicle, String> getVehiclePlateCOL() {
+        return vehiclePlateCOL;
+    }
+
+    public void setVehiclePlateCOL(TableColumn<Vehicle, String> vehiclePlateCOL) {
+        this.vehiclePlateCOL = vehiclePlateCOL;
+    }
+
+    public TableColumn<Vehicle, String> getVehicleSlotCOL() {
+        return vehicleSlotCOL;
+    }
+
+    public void setVehicleSlotCOL(TableColumn<Vehicle, String> vehicleSlotCOL) {
+        this.vehicleSlotCOL = vehicleSlotCOL;
+    }
+
+    public TableColumn<Vehicle, String> getVehicleEnabledCOL() {
+        return vehicleEnabledCOL;
+    }
+
+    public void setVehicleEnabledCOL(TableColumn<Vehicle, String> vehicleEnabledCOL) {
+        this.vehicleEnabledCOL = vehicleEnabledCOL;
+    }
+
+    public Button getVehicleEditBTN() {
+        return vehicleEditBTN;
+    }
+
+    public void setVehicleEditBTN(Button vehicleEditBTN) {
+        this.vehicleEditBTN = vehicleEditBTN;
+    }
+
+    public Button getVehicleDeleteBTN() {
+        return vehicleDeleteBTN;
+    }
+
+    public void setVehicleDeleteBTN(Button vehicleDeleteBTN) {
+        this.vehicleDeleteBTN = vehicleDeleteBTN;
+    }
+
+    public HBox getTopHBOX() {
+        return topHBOX;
+    }
+
+    public void setTopHBOX(HBox topHBOX) {
+        this.topHBOX = topHBOX;
+    }
+
+    public HBox getBottomHBOX() {
+        return bottomHBOX;
+    }
+
+    public void setBottomHBOX(HBox bottomHBOX) {
+        this.bottomHBOX = bottomHBOX;
+    }
+
+    public VBox getSideVBOX() {
+        return sideVBOX;
+    }
+
+    public void setSideVBOX(VBox sideVBOX) {
+        this.sideVBOX = sideVBOX;
+    }
+
+    public TableView<Employee> getUsersTBV() {
+        return usersTBV;
+    }
+
+    public void setUsersTBV(TableView<Employee> usersTBV) {
+        this.usersTBV = usersTBV;
+    }
+
+    public TableColumn<Employee, String> getUserNameCOL() {
+        return userNameCOL;
+    }
+
+    public void setUserNameCOL(TableColumn<Employee, String> userNameCOL) {
+        this.userNameCOL = userNameCOL;
+    }
+
+    public TableColumn<Employee, String> getUserUsernameCOL() {
+        return userUsernameCOL;
+    }
+
+    public void setUserUsernameCOL(TableColumn<Employee, String> userUsernameCOL) {
+        this.userUsernameCOL = userUsernameCOL;
+    }
+
+    public TableColumn<Employee, String> getUserIDCOL() {
+        return userIDCOL;
+    }
+
+    public void setUserIDCOL(TableColumn<Employee, String> userIDCOL) {
+        this.userIDCOL = userIDCOL;
+    }
+
+    public Button getUserDeleteBTN() {
+        return userDeleteBTN;
+    }
+
+    public void setUserDeleteBTN(Button userDeleteBTN) {
+        this.userDeleteBTN = userDeleteBTN;
+    }
+
+    public Button getUserEditBTN() {
+        return userEditBTN;
+    }
+
+    public void setUserEditBTN(Button userEditBTN) {
+        this.userEditBTN = userEditBTN;
+    }
+
+    public CheckBox getReceiptToggle() {
+        return receiptToggle;
+    }
+
+    public void setReceiptToggle(CheckBox receiptToggle) {
+        this.receiptToggle = receiptToggle;
+    }
+
+    public VBox getMonthlyVBox() {
+        return monthlyVBox;
+    }
+
+    public void setMonthlyVBox(VBox monthlyVBox) {
+        this.monthlyVBox = monthlyVBox;
+    }
+
+    public Label getReceiptCodeMonthlyLBL() {
+        return receiptCodeMonthlyLBL;
+    }
+
+    public void setReceiptCodeMonthlyLBL(Label receiptCodeMonthlyLBL) {
+        this.receiptCodeMonthlyLBL = receiptCodeMonthlyLBL;
+    }
+
+    public TextField getReceiptCityMonthlyTF() {
+        return receiptCityMonthlyTF;
+    }
+
+    public void setReceiptCityMonthlyTF(TextField receiptCityMonthlyTF) {
+        this.receiptCityMonthlyTF = receiptCityMonthlyTF;
+    }
+
+    public Label getReceiptPaidValueMonthlyLBL() {
+        return receiptPaidValueMonthlyLBL;
+    }
+
+    public void setReceiptPaidValueMonthlyLBL(Label receiptPaidValueMonthlyLBL) {
+        this.receiptPaidValueMonthlyLBL = receiptPaidValueMonthlyLBL;
+    }
+
+    public DatePicker getReceiptDateMonthlyDTP() {
+        return receiptDateMonthlyDTP;
+    }
+
+    public void setReceiptDateMonthlyDTP(DatePicker receiptDateMonthlyDTP) {
+        this.receiptDateMonthlyDTP = receiptDateMonthlyDTP;
+    }
+
+    public TextField getReceiptClientNameMonthlyTF() {
+        return receiptClientNameMonthlyTF;
+    }
+
+    public void setReceiptClientNameMonthlyTF(TextField receiptClientNameMonthlyTF) {
+        this.receiptClientNameMonthlyTF = receiptClientNameMonthlyTF;
+    }
+
+    public Label getReceiptVehicleMonthlyLBL() {
+        return receiptVehicleMonthlyLBL;
+    }
+
+    public void setReceiptVehicleMonthlyLBL(Label receiptVehicleMonthlyLBL) {
+        this.receiptVehicleMonthlyLBL = receiptVehicleMonthlyLBL;
+    }
+
+    public Label getReceiptDaysMonthlyLBL() {
+        return receiptDaysMonthlyLBL;
+    }
+
+    public void setReceiptDaysMonthlyLBL(Label receiptDaysMonthlyLBL) {
+        this.receiptDaysMonthlyLBL = receiptDaysMonthlyLBL;
+    }
+
+    public VBox getDailyVBox() {
+        return dailyVBox;
+    }
+
+    public void setDailyVBox(VBox dailyVBox) {
+        this.dailyVBox = dailyVBox;
+    }
+
+    public ChoiceBox<String> getReceiptVehicleTypeCHB() {
+        return receiptVehicleTypeCHB;
+    }
+
+    public void setReceiptVehicleTypeCHB(ChoiceBox<String> receiptVehicleTypeCHB) {
+        this.receiptVehicleTypeCHB = receiptVehicleTypeCHB;
+    }
+
+    public DatePicker getReceiptDateDailyDTP() {
+        return receiptDateDailyDTP;
+    }
+
+    public void setReceiptDateDailyDTP(DatePicker receiptDateDailyDTP) {
+        this.receiptDateDailyDTP = receiptDateDailyDTP;
+    }
+
+    public Label getReceiptPaidValueDailyLBL() {
+        return receiptPaidValueDailyLBL;
+    }
+
+    public void setReceiptPaidValueDailyLBL(Label receiptPaidValueDailyLBL) {
+        this.receiptPaidValueDailyLBL = receiptPaidValueDailyLBL;
+    }
+
+    public TextField getReceiptPlateDailyTF() {
+        return receiptPlateDailyTF;
+    }
+
+    public void setReceiptPlateDailyTF(TextField receiptPlateDailyTF) {
+        this.receiptPlateDailyTF = receiptPlateDailyTF;
+    }
+
+    public TextField getReceiptHoursDailyTF() {
+        return receiptHoursDailyTF;
+    }
+
+    public void setReceiptHoursDailyTF(TextField receiptHoursDailyTF) {
+        this.receiptHoursDailyTF = receiptHoursDailyTF;
+    }
+
+    public BorderPane getReportPane() {
+        return reportPane;
+    }
+
+    public void setReportPane(BorderPane reportPane) {
+        this.reportPane = reportPane;
+    }
+
+    public DatePicker getReportFromDTP() {
+        return reportFromDTP;
+    }
+
+    public void setReportFromDTP(DatePicker reportFromDTP) {
+        this.reportFromDTP = reportFromDTP;
+    }
+
+    public DatePicker getReportToDTP() {
+        return reportToDTP;
+    }
+
+    public void setReportToDTP(DatePicker reportToDTP) {
+        this.reportToDTP = reportToDTP;
+    }
+
+    public TextField getReportFromHourTF() {
+        return reportFromHourTF;
+    }
+
+    public void setReportFromHourTF(TextField reportFromHourTF) {
+        this.reportFromHourTF = reportFromHourTF;
+    }
+
+    public TextField getReportToHourTF() {
+        return reportToHourTF;
+    }
+
+    public void setReportToHourTF(TextField reportToHourTF) {
+        this.reportToHourTF = reportToHourTF;
+    }
+
+    public ChoiceBox<String> getReportTypeCHB() {
+        return reportTypeCHB;
+    }
+
+    public void setReportTypeCHB(ChoiceBox<String> reportTypeCHB) {
+        this.reportTypeCHB = reportTypeCHB;
+    }
+
+    public Label getDialMessageLBL() {
+        return dialMessageLBL;
+    }
+
+    public void setDialMessageLBL(Label dialMessageLBL) {
+        this.dialMessageLBL = dialMessageLBL;
+    }
+
+    public Button getDialDismissBTN() {
+        return dialDismissBTN;
+    }
+
+    public void setDialDismissBTN(Button dialDismissBTN) {
+        this.dialDismissBTN = dialDismissBTN;
+    }
+
+    public ParkingLot getLaCeiba() {
+        return laCeiba;
+    }
+
+    public void setLaCeiba(ParkingLot laCeiba) {
+        this.laCeiba = laCeiba;
+    }
+
+    public EmergentWindowsGUI getEmergentWindowsController() {
+        return emergentWindowsController;
+    }
+
+    public void setEmergentWindowsController(EmergentWindowsGUI emergentWindowsController) {
+        this.emergentWindowsController = emergentWindowsController;
+    }
+
+    public String getCurrentScene() {
+        return currentScene;
+    }
+
+    public ArrayList<Thread> getThreads() {
+        return threads;
+    }
+
+    public void setThreads(ArrayList<Thread> threads) {
+        this.threads = threads;
+    }
+
+    public int getiLoveThisnumber() {
+        return iLoveThisnumber;
+    }
+
+    public void setiLoveThisnumber(int iLoveThisnumber) {
+        this.iLoveThisnumber = iLoveThisnumber;
+    }
 }
