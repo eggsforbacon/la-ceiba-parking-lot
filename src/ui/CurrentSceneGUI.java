@@ -197,6 +197,9 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     private Button dialDismissBTN;
 
+    @FXML
+    private TextField clientSearchTXT;
+
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
 
@@ -437,10 +440,10 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     void searchClient(ActionEvent event) {
 
+        //clientsTBV;
     }
-    // De nada
+    // De nada //Hombre, era lo minimo que podias hacer >:c
     /*Vehicles DB*/
-
     @FXML
     void toggleMonthlyVehicles(ActionEvent event) {
 

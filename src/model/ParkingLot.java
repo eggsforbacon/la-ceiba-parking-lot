@@ -25,7 +25,10 @@ public class ParkingLot implements Serializable {
     private Employee root;
     private Employee actualEmployee;
     private boolean firstTime;
-    private boolean columnsVeryfier=false;
+    private boolean columnsVeryfier;
+	private ArrayList<Client> searchClientResults;
+	private ArrayList<Employee> searchEmployeeResults;
+	private ArrayList<Vehicle> searchVehicleResults;
 
   
 
@@ -37,6 +40,8 @@ public class ParkingLot implements Serializable {
         root = new Employee("Admin","12345","admin","1234");
         actualEmployee = root;
         firstTime = true;
+		columnsVeryfier=false;
+		searchClientResults = new ArrayList<>();
     }
 
     public boolean checkFirstTime(){
@@ -121,7 +126,7 @@ public class ParkingLot implements Serializable {
     <b> pre: </b>Needs verify if the client already exists and if his new name is not used by other client<br>
     <b> post: </b>The specific client will be updated his name<br>
     @param newName A string who have the client�s newName
-    @param pastName A string who have the client�s pastName
+    @param id A string who have the clients id
     @return true or false
     */
     public boolean updateClientName(String id, String newName) {
@@ -329,7 +334,7 @@ public class ParkingLot implements Serializable {
     <b> pre: </b>Needs verify if the employee already exists and if his new name is not used by other employee<br>
     <b> post: </b>The specific employee will be updated his name<br>
     @param newName A string who have the employee�s new Name
-    @param pastName A string who have the employee�s past Name
+    @param id A string who have the employees id
     @return true or false
     */
     public boolean updateEmployeeName(String id, String newName) {
@@ -954,22 +959,22 @@ public class ParkingLot implements Serializable {
    <b> pre: </b>There had to be an array list to search in<br>
    <b> post: </b>Give the position of the person<br>
    @param aL Array list generic with the list to search in
-   @param searchName String with the name to search
+   @param searchId String with the id to search
    @return Pos int with the position
    */
-   public int binarySearchPerson(ArrayList<?> aL,String searchName) {
+   public int binarySearchPerson(ArrayList<?> aL,String searchId) {
 		int pos = -1;
 		int i = 0;
 		int j = aL.size() - 1;
 
 		while(i<=j && pos<0) {
 			int m = (i + j)/2;
-			String objectName= ((Person) aL.get(m)).getName();
-			String name = searchName;
-			if(objectName.equals(name)) {
+			String objectName= ((Person) aL.get(m)).getId();
+			String id = searchId;
+			if(objectName.equals(id)) {
 				pos = m;
 			}
-			else if((objectName.compareTo(name)) > 0){
+			else if((objectName.compareTo(id)) > 0){
 				j = m - 1;
 			}
 			else {
@@ -1189,8 +1194,32 @@ public class ParkingLot implements Serializable {
 		}
 		pw.close();
 	}
+
+	public void setSearchClientResults(String match) {
+		searchClientResults = new ArrayList<>();
+		for (Client c : clientsPL) {
+			String compare = c.getId();
+			if (compare.contains(match)) searchClientResults.add(c);
+		}
+	}
+
+	public void setSearchEmployeeResults(String match) {
+		searchEmployeeResults = new ArrayList<>();
+		for (Employee c : employeesPL) {
+			String compare = c.getId();
+			if (compare.contains(match)) searchEmployeeResults.add(c);
+		}
+	}
+
+	public void setSearchVehicleResults(String match) {
+		searchVehicleResults = new ArrayList<>();
+		for (Vehicle c : vehiclesPL) {
+			String compare = c.getLicensePlate();
+			if (compare.contains(match)) searchVehicleResults.add(c);
+		}
+	}
    
-   //jd gei
+   //jd gei //Algun problema con eso perra?
    //Getters y setters
    //
    //
