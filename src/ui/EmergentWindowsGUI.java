@@ -148,6 +148,24 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     private Rectangle vehicleRCT = new Rectangle();
 
+    @FXML
+    private Label contextColorLBL = new Label();
+
+    @FXML
+    private Label contextStayLBL = new Label();
+
+    @FXML
+    private Label contextPlateLBL = new Label();
+
+    @FXML
+    private Label contextPayYetLBL = new Label();
+
+    @FXML
+    private Label contextSlotLBL = new Label();
+
+    @FXML
+    private Label contextTypeLBL = new Label();
+
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
     ParkingLot laCeiba;
@@ -522,18 +540,22 @@ public class EmergentWindowsGUI implements Initializable {
     }
 
     /**
-     * Hides the slot's information on lost focus. <br>
-     * */
-    @FXML
-    void hideSlotInformation(MouseEvent event) {
-
-    }
-
-    /**
      * Shows the slot's information on context menu requested. <br>
      * */
     @FXML
     void showSlotInformation(ContextMenuEvent event) {
+        int LABEL = 0;
+        int slotNumber = Integer.parseInt(((Label) ((VBox) event.getSource()).getChildren().get(LABEL)).getText()); //And all it took were two casts and a parse :D -z
+        launchFXML("context-map.fxml", "Puesto " + slotNumber);
+        contextSlotLBL.setText("Puesto N°" + slotNumber);
+        contextColorLBL.setText(laCeiba.getPlMap().spotAt(slotNumber).getInformation());
+    }
+
+    /**
+     * Called when the button "Delete" is actioned on the map's context menu.
+     * */
+    @FXML
+    void mapContextDelete(ActionEvent event) {
 
     }
 

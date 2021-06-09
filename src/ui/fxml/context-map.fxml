@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="337.0" style="-fx-background-color: #B3E5FC;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" styleClass="background" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="contextColorLBL" text="Color: COLOUR" />
+            <Label fx:id="contextStayLBL" text="Tiempo de Estadía: ## STAY_UNITS" />
+            <Label fx:id="contextPlateLBL" text="Placa: PLATE" />
+            <Label fx:id="contextPayYetLBL" text="Estado de Factura: PAY_YET_OR_NAH" />
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="34.0" prefWidth="11.0" />
+            <Button mnemonicParsing="false" onAction="#mapContextDelete" text="Eliminar" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" spacing="15.0" styleClass="background" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+         <children>
+            <Label fx:id="contextSlotLBL" text="Puesto N° ##" />
+            <Label fx:id="contextTypeLBL" text="(TIPO)" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
