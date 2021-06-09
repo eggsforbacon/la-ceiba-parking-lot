@@ -1383,4 +1383,28 @@ public class ParkingLot implements Serializable {
 	public void setColumnsVeryfier(boolean columnsVeryfier) {
 		this.columnsVeryfier = columnsVeryfier;
 	}
+
+	public ArrayList<Client> getSearchClientResults() {
+		return searchClientResults;
+	}
+
+	public void setSearchClientResults(ArrayList<Client> searchClientResults) {
+		this.searchClientResults = searchClientResults;
+	}
+
+	public ArrayList<Employee> getSearchEmployeeResults() {
+		return searchEmployeeResults;
+	}
+
+	public void setSearchEmployeeResults(ArrayList<Employee> searchEmployeeResults) {
+		this.searchEmployeeResults = searchEmployeeResults;
+	}
+
+	public ArrayList<Vehicle> getSearchVehicleResults() {
+		return searchVehicleResults;
+	}
+
+	public void setSearchVehicleResults(ArrayList<Vehicle> searchVehicleResults) {
+		this.searchVehicleResults = searchVehicleResults;
+	}
 }

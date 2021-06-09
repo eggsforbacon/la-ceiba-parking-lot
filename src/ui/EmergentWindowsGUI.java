@@ -336,6 +336,18 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void confirmEditUser(ActionEvent event) {
         ((Stage) editUserFullNameTF.getScene().getWindow()).close();
+        String user = aVerSiEstoFunciona.getUsersTBV().getSelectionModel().getSelectedItem().getId();
+        if(!editUserFullNameTF.getText().equals("")){
+            if(!laCeiba.updateEmployeeName(user,editUserFullNameTF.getText())){
+                launchError("No se pudo actualizar el nombre","Actualizacion de datos");
+            }
+        }
+        if(!editUserIDTF.getText().equals("")){
+            if(!laCeiba.updateEmployeeID(user,editUserIDTF.getText())){
+                launchError("No se pudo actualizar el ID","Actualizacion de datos");
+            }
+        }
+        aVerSiEstoFunciona.initClientsDB();
     }
 
     /**
