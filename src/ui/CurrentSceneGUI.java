@@ -442,7 +442,7 @@ public class CurrentSceneGUI implements Initializable {
 
         //clientsTBV;
     }
-    // De nada //Hombre, era lo minimo que podias hacer >:c
+    // De nada //Hombre, era lo minimo que podias hacer >:c //Un dia de estos tengo que aprender a pushear sin crear conflictos :)
     /*Vehicles DB*/
     @FXML
     void toggleMonthlyVehicles(ActionEvent event) {
