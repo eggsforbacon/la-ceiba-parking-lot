@@ -333,13 +333,9 @@ public class CurrentSceneGUI implements Initializable {
         int user = laCeiba.login(loginUserTF.getText(),loginPassPWF.getText());
         switch (user){
             case -1:
-                //emergentWindowsController.setDialMessageLBL("Datos erroneos o incompletos. Intente de nuevo.");
-                //launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
                 launchError("Datos erróneos o incompletos. Intente de nuevo.","Mensaje de Inicio de Sesión");
                 break;
             case -2:
-                //emergentWindowsController.setDialMessageLBL("El uso del usuario root no es recomendado. Proceder con precaución.");
-                //launchFXML("dialogue.fxml","Mensaje de Inicio de Sesión");
                 launchError("El uso del usuario root no es recomendado. Proceder con precaución.","Mensaje de Inicio de Sesión");
                 loginSuccessful = true;
                 break;
