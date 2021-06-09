@@ -119,6 +119,12 @@ public class CurrentSceneGUI implements Initializable {
 
     @FXML
     private Button userEditBTN = new Button();
+    
+    @FXML
+    private TextField searchUserTXT;
+
+    @FXML
+    private Button userSearchBTN;
 
     /*Receipt Generation*/
 
@@ -456,7 +462,10 @@ public class CurrentSceneGUI implements Initializable {
         clientsTBV.setItems(clientsList);
     }
     // De nada //Hombre, era lo minimo que podias hacer >:c //Un dia de estos tengo que aprender a pushear sin crear conflictos :)
-    /*Vehicles DB*/
+    /*Vehicles DB*/ //Parecen pareja geis
+    
+    
+
     @FXML
     void toggleMonthlyVehicles(ActionEvent event) {
 
@@ -573,6 +582,13 @@ public class CurrentSceneGUI implements Initializable {
     void editUser(ActionEvent event) {
         launchFXML("edit-user.fxml", "Editar Usuario");
     }
+    
+    @FXML
+    void SearchUser(ActionEvent event) {
+
+    }
+
+   
 
     /*Receipt Generation*/
 
