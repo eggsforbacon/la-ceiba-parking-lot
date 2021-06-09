@@ -63,7 +63,7 @@ public class PreloaderGUI implements Initializable {
 
     /**
      * Updates the rectangle bar's width, i.e. loads it. <br>
-     * @throws InterruptedException 
+     * @throws InterruptedException Thrown when the thread can't sleep. <br>
      * */
     public void loadBar() throws InterruptedException  {
         double newWidth = bar.getBarWidth();
@@ -104,11 +104,8 @@ public class PreloaderGUI implements Initializable {
     
     	}
     	catch(IDAlreadyInUseException|IOException|UsernameAlreadyInUseException|ClassNotFoundException e){
-    		System.out.println("");
+    		System.out.println();
     	}
-	    	
-    	
-        //TODO: Load every model method in here
     }
 
     /**

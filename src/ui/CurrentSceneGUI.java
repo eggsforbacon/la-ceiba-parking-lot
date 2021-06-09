@@ -250,7 +250,7 @@ public class CurrentSceneGUI implements Initializable {
             case "Clientes":
                 initClientsDB();
                 break;
-            case "VehÃ­culos":
+            case "Vehículos":
                 initVehiclesDB();
                 break;
             case "Mapa":
@@ -532,7 +532,7 @@ public class CurrentSceneGUI implements Initializable {
     void initMap() {
         for (int i = 10; i > -11; i--) {
             if (i == 1) i -= 2;
-            emergentWindowsController.loadSlot(i, "upper");
+            emergentWindowsController.loadSlot(i, "upper", !laCeiba.getPlMap().spotAt(i).getInformation().equals("Aun no hay información de un vehiculo en este puesto\n"));
             Parent slot = loadFxml("parking-slot.fxml");
             if (i == 2) {
                 Separator sep = new Separator(Orientation.HORIZONTAL);
@@ -545,7 +545,7 @@ public class CurrentSceneGUI implements Initializable {
         topHBOX.getChildren().remove(topHBOX.getChildren().size() - 1);
 
         for (int i = 9; i < 16; i++) {
-            emergentWindowsController.loadSlot(i, "mid");
+            emergentWindowsController.loadSlot(i, "bottom", !laCeiba.getPlMap().spotAt(i).getInformation().equals("Aun no hay información de un vehiculo en este puesto\n"));
             Parent slot = loadFxml("parking-slot.fxml");
             sideVBOX.getChildren().add(slot);
         }
@@ -553,7 +553,7 @@ public class CurrentSceneGUI implements Initializable {
         sideVBOX.getChildren().remove(sideVBOX.getChildren().size() - 1);
 
         for (int i = 15; i < 30; i++) {
-            emergentWindowsController.loadSlot(i, "mid");
+            emergentWindowsController.loadSlot(i, "mid", !laCeiba.getPlMap().spotAt(i).getInformation().equals("Aun no hay información de un vehiculo en este puesto\n"));
             Parent slot = loadFxml("parking-slot.fxml");
             bottomHBOX.getChildren().add(slot);
         }

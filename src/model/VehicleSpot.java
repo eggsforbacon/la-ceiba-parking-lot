@@ -30,7 +30,7 @@ public class VehicleSpot extends Spot implements Serializable{
             info += "Propietario: "+spotVehicle.getOwner().getName()+"\n";
         }
         else{
-            info += "Aun no hay informacion de un vehiculo en este puesto"+"\n";
+            info += "Aun no hay información de un vehiculo en este puesto\n";
         }
 
         return info;

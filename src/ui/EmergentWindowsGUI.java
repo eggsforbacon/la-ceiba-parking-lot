@@ -194,15 +194,12 @@ public class EmergentWindowsGUI implements Initializable {
         ObservableList<String> dummy = FXCollections.observableArrayList("AUTOMOVIL","MOTO","CAMION","BUS","FURGON","CAMIONETA");
         ObservableList<String> dummy2 = FXCollections.observableArrayList("HORA","DIA","MES","INDEFINIDO");
         ObservableList<String> dummy3 = FXCollections.observableArrayList("NEGRO","BLANCO","GRIS","ROJO","AZUL","AMARILLO","NARANJA","VERDE","ROSA","MORADO");
-        ObservableList<Integer> dummyInt = FXCollections.observableArrayList(1, 2, 3, 4, 5);
         newVehicleTypeCHB.setItems(dummy);
         newVehicleStayTypeCHB.setItems(dummy2);
         newVehicleColorCHB.setItems(dummy3);
-        //newVehicleSeatCHB.setItems(dummyInt);
         editVehicleTypeCHB.setItems(dummy);
         editVehicleStayTypeCHB.setItems(dummy2);
         editVehicleColorCHB.setItems(dummy3);
-        //editVehicleSeatCHB.setItems(dummy);
     }
 
     public Button getDialDismissBTN() {
@@ -276,6 +273,30 @@ public class EmergentWindowsGUI implements Initializable {
     /*Dialogue window*/
 
     /**
+     * Launches the error window. <br>
+     * @param title The title of the window. <br>
+     * @param message The message to be shown in the error/dialogue window. <br>
+     * */
+    public void launchError(String message, String title) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/dialogue.fxml"));
+            fxmlLoader.setController(this);
+            Parent root = fxmlLoader.load();
+            Stage errorPane = new Stage();
+            errorPane.setScene(new Scene(root));
+            errorPane.initModality(Modality.APPLICATION_MODAL);
+            errorPane.setTitle(title);
+            dialMessageLBL.setText(message);
+            dialMessageLBL.setStyle("\n-fx-font-style: italic;");
+            errorPane.setResizable(false);
+            errorPane.show();
+        } catch (Exception e) {
+            System.out.println("Something went wrong.");
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * @param message The message the dialogue window will contain. <br>
      * */
     public void setDialMessageLBL(String message) {
@@ -316,29 +337,7 @@ public class EmergentWindowsGUI implements Initializable {
         aVerSiEstoFunciona.initUsersDB();
     }
 
-    /**
-     * Launches the error window. <br>
-     * @param title The title of the window. <br>
-     * @param message The message to be shown in the error/dialogue window. <br>
-     * */
-    public void launchError(String message, String title) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/dialogue.fxml"));
-            fxmlLoader.setController(this);
-            Parent root = fxmlLoader.load();
-            Stage errorPane = new Stage();
-            errorPane.setScene(new Scene(root));
-            errorPane.initModality(Modality.APPLICATION_MODAL);
-            errorPane.setTitle(title);
-            dialMessageLBL.setText(message);
-            dialMessageLBL.setStyle("\n-fx-font-style: italic;");
-            errorPane.setResizable(false);
-            errorPane.show();
-        } catch (Exception e) {
-            System.out.println("Something went wrong.");
-            e.printStackTrace();
-        }
-    }
+
 
     /**
      * Cancels the creation of a new user. <br>
@@ -548,12 +547,14 @@ public class EmergentWindowsGUI implements Initializable {
      * Loads a parking slot. <br>
      * @param slotNumber The number of the slot. Negative numbers represent bike slots. <br>
      * @param slotId The css id this slot will have. Must be either <b>upper</b>, <b>mid</b> or <b>bottom</b>.
-     * */
-    public void loadSlot(int slotNumber, String slotId) {
+     * @param busy The state of the slot. Whether there is or isn't a vehicle in it. */
+    public void loadSlot(int slotNumber, String slotId, boolean busy) {
         slotNumberLBL.setText(String.valueOf(slotNumber));
         slotBDP.setId(slotId);
-        if (slotNumber < 0) {
-            slotBDP.setPrefHeight(50);
+        if (busy) {
+            slotNumberLBL.setText("");
+            slotNumberLBL.setPrefHeight(0);
+            vehicleRCT.setHeight(50);
         }
     }
 
