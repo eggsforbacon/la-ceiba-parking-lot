@@ -282,7 +282,7 @@ public class EmergentWindowsGUI implements Initializable {
         boolean check = false;
         try{
             check = laCeiba.addEmployee(newUserFullNameTF.getText(),newUserIDTF.getText(),newUsernameTF.getText(),newPasswordPWF.getText());
-        }catch ( NameAlreadyInUseException | IDAlreadyInUseException | UsernameAlreadyInUseException | PasswordAlreadyInUseException e){
+        }catch ( IDAlreadyInUseException | UsernameAlreadyInUseException e){
             launchError("Uno de los atributos escogidos ya esta en uso. Intente de nuevo","Creacion de empleado");
         }
 
@@ -292,6 +292,7 @@ public class EmergentWindowsGUI implements Initializable {
         else{
             launchError("Error. El empleado no pudo ser agregado","Creacion de empleado");
         }
+        aVerSiEstoFunciona.initUsersDB();
     }
 
     public void launchError(String message, String title) {

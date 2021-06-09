@@ -193,7 +193,7 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void usersClicked(ActionEvent event) {
-        launchPane("user-view.fxml","Clientes", 1500);
+        launchPane("user-view.fxml","Users", 1500);
     }
 
     /**

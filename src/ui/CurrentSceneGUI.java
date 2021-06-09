@@ -256,6 +256,9 @@ public class CurrentSceneGUI implements Initializable {
             case "Mapa":
                 initMap();
                 break;
+            case "Users":
+                initUsersDB();
+                break;
             default:
                 break;
         }
@@ -554,6 +557,36 @@ public class CurrentSceneGUI implements Initializable {
     }
 
     /*Users DB*/
+
+    /**
+     * Initializes the client database. <br>
+     * */
+    void initUsersDB() {
+        userNameCOL.setCellValueFactory(new PropertyValueFactory<>("name"));
+        userUsernameCOL.setCellValueFactory(new PropertyValueFactory<>("username"));
+        userIDCOL.setCellValueFactory(new PropertyValueFactory<>("id"));
+        ObservableList<Employee> employeeList = FXCollections.observableArrayList(laCeiba.getEmployeesPL());
+        usersTBV.setItems(employeeList);
+        //SideBar
+        userDeleteBTN.setDisable(true);
+        userEditBTN.setDisable(true);
+        usersTBV.setOnMouseClicked(event -> {
+            if (!usersTBV.getSelectionModel().getSelectedItems().isEmpty()) {
+                userDeleteBTN.setDisable(false);
+                userEditBTN.setDisable(false);
+            }
+        });
+        usersTBV.setOnKeyTyped(event -> {
+            if (event.getCode().equals(KeyCode.ESCAPE)) {
+                userDeleteBTN.setDisable(true);
+                userEditBTN.setDisable(true);
+            }
+        });
+
+        userNameCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+        userUsernameCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+        userIDCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+    }
 
     /**
      * Prompts the user to add another user to the program. <br>
