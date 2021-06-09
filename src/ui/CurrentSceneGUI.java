@@ -439,7 +439,7 @@ public class CurrentSceneGUI implements Initializable {
     
     @FXML
     void searchClient(ActionEvent event) {
-
+        //laCeiba.setSearchClientResults();
         //clientsTBV;
     }
     // De nada //Hombre, era lo minimo que podias hacer >:c //Un dia de estos tengo que aprender a pushear sin crear conflictos :)

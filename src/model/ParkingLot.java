@@ -1195,6 +1195,12 @@ public class ParkingLot implements Serializable {
 		pw.close();
 	}
 
+	/**
+	 Create an arraylist with the closest results <br>
+	 <b> pre: </b>There had to be an array list to search in<br>
+	 <b> post: </b>Initializes the array<br>
+	 @param match An String that is what is going to be searched
+	 */
 	public void setSearchClientResults(String match) {
 		searchClientResults = new ArrayList<>();
 		for (Client c : clientsPL) {
@@ -1203,6 +1209,12 @@ public class ParkingLot implements Serializable {
 		}
 	}
 
+	/**
+	 Create an arraylist with the closest results <br>
+	 <b> pre: </b>There had to be an array list to search in<br>
+	 <b> post: </b>Initializes the array<br>
+	 @param match An String that is what is going to be searched
+	 */
 	public void setSearchEmployeeResults(String match) {
 		searchEmployeeResults = new ArrayList<>();
 		for (Employee c : employeesPL) {
@@ -1211,12 +1223,51 @@ public class ParkingLot implements Serializable {
 		}
 	}
 
+	/**
+	 Create an arraylist with the closest results <br>
+	 <b> pre: </b>There had to be an array list to search in<br>
+	 <b> post: </b>Initializes the array<br>
+	 @param match An String that is what is going to be searched
+	 */
 	public void setSearchVehicleResults(String match) {
 		searchVehicleResults = new ArrayList<>();
 		for (Vehicle c : vehiclesPL) {
 			String compare = c.getLicensePlate();
 			if (compare.contains(match)) searchVehicleResults.add(c);
 		}
+	}
+
+	/**
+	 Adds an element to the ArrayList<br>
+	 <b> pre: </b><br>
+	 <b> post: </b>Initializes the array<br>
+	 @param toAdd A Client that is what was found
+	 */
+	public void singleElementToSearchClient(Client toAdd){
+		searchClientResults = null;
+		searchClientResults.add(toAdd);
+	}
+
+	/**
+	 Adds an element to the ArrayList<br>
+	 <b> pre: </b><br>
+	 <b> post: </b>Initializes the array<br>
+	 @param toAdd A Vehicle that is what was found
+	 */
+	public void singleElementToSearchVehicle(Vehicle toAdd){
+		searchVehicleResults = null;
+		searchVehicleResults.add(toAdd);
+	}
+
+	/**
+	 Adds an element to the ArrayList<br>
+	 <b> pre: </b><br>
+	 <b> post: </b>Initializes the array<br>
+	 @param toAdd An employee that is what was found
+	 */
+	public void singleElementToSearchEmployee(Employee toAdd){
+		searchEmployeeResults = null;
+		searchEmployeeResults.add(toAdd);
 	}
 
    //jd gei //Algun problema con eso perra?
