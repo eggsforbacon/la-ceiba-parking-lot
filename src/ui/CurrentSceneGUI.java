@@ -250,11 +250,14 @@ public class CurrentSceneGUI implements Initializable {
             case "Clientes":
                 initClientsDB();
                 break;
-            case "Vehículos":
+            case "VehÃ­culos":
                 initVehiclesDB();
                 break;
             case "Mapa":
                 initMap();
+                break;
+            case "Users":
+                initUsersDB();
                 break;
             default:
                 break;
@@ -342,15 +345,15 @@ public class CurrentSceneGUI implements Initializable {
         int user = laCeiba.login(loginUserTF.getText(),loginPassPWF.getText());
         switch (user){
             case -1:
-                launchError("Datos erróneos o incompletos. Intente de nuevo.","Mensaje de Inicio de Sesión");
+                launchError("Datos errÃ³neos o incompletos. Intente de nuevo.","Mensaje de Inicio de SesiÃ³n");
                 break;
             case -2:
-                launchError("El uso del usuario root no es recomendado. Proceder con precaución.","Mensaje de Inicio de Sesión");
+                launchError("El uso del usuario root no es recomendado. Proceder con precauciÃ³n.","Mensaje de Inicio de SesiÃ³n");
                 loginSuccessful = true;
                 break;
             default:
                 laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(user));
-                launchError("Bienvenido " + laCeiba.getActualEmployee().getName(),"Mensaje de Inicio de Sesión");
+                launchError("Bienvenido " + laCeiba.getActualEmployee().getName(),"Mensaje de Inicio de SesiÃ³n");
                 loginSuccessful = true;
                 break;
         }
@@ -442,7 +445,9 @@ public class CurrentSceneGUI implements Initializable {
         launchFXML("edit-client.fxml", "Editar Cliente");
     }
     
-    
+    /**
+     * Shows a list of matching entries from the query introduced in the clientSearchTXT box on action .<br>
+     * */
     @FXML
     void searchClient(ActionEvent event) {
         int client = laCeiba.binarySearchPerson(laCeiba.getClientsPL(),clientSearchTXT.getText());
@@ -458,14 +463,16 @@ public class CurrentSceneGUI implements Initializable {
         clientsIDCOL.setCellValueFactory(new PropertyValueFactory<>("id"));
         clientsPhoneCOL.setCellValueFactory(new PropertyValueFactory<>("cellNumber"));
         clientEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
-        ObservableList<Client> clientsList = FXCollections.observableArrayList(laCeiba.getSearchClientResults());
+        ObservableList<Client> clientsList = FXCollections.observableArrayList(laCeiba.getSearchClientResults());//puto error
         clientsTBV.setItems(clientsList);
     }
     // De nada //Hombre, era lo minimo que podias hacer >:c //Un dia de estos tengo que aprender a pushear sin crear conflictos :)
-    /*Vehicles DB*/ //Parecen pareja geis
+    /*Vehicles DB*/ //Parecen pareja geis JAJSAJSJASJJSJAS NO HABÃ�A VISTO ESTOS COMENTARIOS JASJAJSJAS
+    //Se imaginan que se nos olvide borrarlos? ASJAJSAJXD
     
-    
-
+    /**
+     * Toggles the monthly view on and off. <br>
+     * */
     @FXML
     void toggleMonthlyVehicles(ActionEvent event) {
 
@@ -513,11 +520,14 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void editVehicle(ActionEvent event) {
-        launchFXML("edit-vehicle.fxml", "Editar Vehículo");
+        launchFXML("edit-vehicle.fxml", "Editar VehÃ­culo");
     }
 
     /*Map view (Throwing this one under the rug for a little while)*/
 
+    /**
+     * Initializes the map view. <br>
+     * */
     void initMap() {
         laCeiba.getPlMap().setLeftColumn();
         laCeiba.getPlMap().setBottomRow();
@@ -556,6 +566,36 @@ public class CurrentSceneGUI implements Initializable {
     /*Users DB*/
 
     /**
+     * Initializes the client database. <br>
+     * */
+    void initUsersDB() {
+        userNameCOL.setCellValueFactory(new PropertyValueFactory<>("name"));
+        userUsernameCOL.setCellValueFactory(new PropertyValueFactory<>("username"));
+        userIDCOL.setCellValueFactory(new PropertyValueFactory<>("id"));
+        ObservableList<Employee> employeeList = FXCollections.observableArrayList(laCeiba.getEmployeesPL());
+        usersTBV.setItems(employeeList);
+        //SideBar
+        userDeleteBTN.setDisable(true);
+        userEditBTN.setDisable(true);
+        usersTBV.setOnMouseClicked(event -> {
+            if (!usersTBV.getSelectionModel().getSelectedItems().isEmpty()) {
+                userDeleteBTN.setDisable(false);
+                userEditBTN.setDisable(false);
+            }
+        });
+        usersTBV.setOnKeyTyped(event -> {
+            if (event.getCode().equals(KeyCode.ESCAPE)) {
+                userDeleteBTN.setDisable(true);
+                userEditBTN.setDisable(true);
+            }
+        });
+
+        userNameCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+        userUsernameCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+        userIDCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+    }
+
+    /**
      * Prompts the user to add another user to the program. <br>
      * The current user MUST have administrative privileges for this action to be effective. <br>
      * */
@@ -582,13 +622,14 @@ public class CurrentSceneGUI implements Initializable {
     void editUser(ActionEvent event) {
         launchFXML("edit-user.fxml", "Editar Usuario");
     }
-    
+
+    /**
+     * Shows a list of matching entries from the query introduced in the userSearchTXT box on action.<br>
+     * */
     @FXML
     void SearchUser(ActionEvent event) {
 
     }
-
-   
 
     /*Receipt Generation*/
 
