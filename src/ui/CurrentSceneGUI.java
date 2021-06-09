@@ -445,7 +445,9 @@ public class CurrentSceneGUI implements Initializable {
         launchFXML("edit-client.fxml", "Editar Cliente");
     }
     
-    
+    /**
+     * Shows a list of matching entries from the query introduced in the clientSearchTXT box on action .<br>
+     * */
     @FXML
     void searchClient(ActionEvent event) {
         int client = laCeiba.binarySearchPerson(laCeiba.getClientsPL(),clientSearchTXT.getText());
@@ -465,10 +467,12 @@ public class CurrentSceneGUI implements Initializable {
         clientsTBV.setItems(clientsList);
     }
     // De nada //Hombre, era lo minimo que podias hacer >:c //Un dia de estos tengo que aprender a pushear sin crear conflictos :)
-    /*Vehicles DB*/ //Parecen pareja geis
+    /*Vehicles DB*/ //Parecen pareja geis JAJSAJSJASJJSJAS NO HABÍA VISTO ESTOS COMENTARIOS JASJAJSJAS
+    //Se imaginan que se nos olvide borrarlos? ASJAJSAJXD
     
-    
-
+    /**
+     * Toggles the monthly view on and off. <br>
+     * */
     @FXML
     void toggleMonthlyVehicles(ActionEvent event) {
 
@@ -521,6 +525,9 @@ public class CurrentSceneGUI implements Initializable {
 
     /*Map view (Throwing this one under the rug for a little while)*/
 
+    /**
+     * Initializes the map view. <br>
+     * */
     void initMap() {
         laCeiba.getPlMap().setLeftColumn();
         laCeiba.getPlMap().setBottomRow();
@@ -615,13 +622,14 @@ public class CurrentSceneGUI implements Initializable {
     void editUser(ActionEvent event) {
         launchFXML("edit-user.fxml", "Editar Usuario");
     }
-    
+
+    /**
+     * Shows a list of matching entries from the query introduced in the userSearchTXT box on action.<br>
+     * */
     @FXML
     void SearchUser(ActionEvent event) {
 
     }
-
-   
 
     /*Receipt Generation*/
 

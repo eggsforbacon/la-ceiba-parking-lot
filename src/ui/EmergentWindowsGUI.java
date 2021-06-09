@@ -211,6 +211,9 @@ public class EmergentWindowsGUI implements Initializable {
         this.editVehicleSeatCHB = editVehicleSeatCHB;
     }
 
+    /**
+     * @return The type of the selected vehicle.<br>
+     * */
     public String getVehicleType(){
         if(newVehicleTypeCHB.getSelectionModel().getSelectedItem() != null){
             return newVehicleTypeCHB.getValue();
@@ -295,6 +298,11 @@ public class EmergentWindowsGUI implements Initializable {
         aVerSiEstoFunciona.initUsersDB();
     }
 
+    /**
+     * Launches the error window. <br>
+     * @param title The title of the window. <br>
+     * @param message The message to be shown in the error/dialogue window. <br>
+     * */
     public void launchError(String message, String title) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/dialogue.fxml"));
@@ -380,6 +388,10 @@ public class EmergentWindowsGUI implements Initializable {
         }
     }
 
+    /**
+     * Translates the provided string to a working integer index representing the vehicle's type.<br>
+     * @param cb The string value to be translated. @NotNull. Must belong to the <b>VehicleType</b> enum. <br><br>
+     * */
     public int translateVehicleType(String cb){
         switch (cb){
             case "AUTOMOVIL":
@@ -399,6 +411,10 @@ public class EmergentWindowsGUI implements Initializable {
         }
     }
 
+    /**
+     * Translates the provided string into a working integer index representing the vehicle's stay type. <br>
+     * @param cb The string value to be translated. @NotNull. Must belong to the <b>StayTime</b> enum. <br><br>
+     * */
     public int translateVehicleStay(String cb){
         switch (cb){
             case "HORA":
