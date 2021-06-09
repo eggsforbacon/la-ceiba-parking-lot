@@ -22,11 +22,17 @@ public class VehicleSpot extends Spot implements Serializable{
     @Override
     public String getInformation() {
         String info = "";
-        info += "Tipo de vehiculo: "+spotVehicle.getType()+"\n";
-        info += "Modelo: "+spotVehicle.getModel()+"\n";
-        info += "Placa: "+spotVehicle.getLicensePlate()+"\n";
-        info += "Color: "+spotVehicle.getColor()+"\n";
-        info += "Propietario: "+spotVehicle.getOwner().getName()+"\n";
+        if(spotVehicle != null){
+            info += "Tipo de vehiculo: "+spotVehicle.getType()+"\n";
+            info += "Modelo: "+spotVehicle.getModel()+"\n";
+            info += "Placa: "+spotVehicle.getLicensePlate()+"\n";
+            info += "Color: "+spotVehicle.getColor()+"\n";
+            info += "Propietario: "+spotVehicle.getOwner().getName()+"\n";
+        }
+        else{
+            info += "Aun no hay informacion de un vehiculo en este puesto"+"\n";
+        }
+
         return info;
     }
 

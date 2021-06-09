@@ -26,17 +26,27 @@ public class MotorcycleSpot extends Spot implements Serializable {
     public String getInformation() {
         String info = "";
         info += "Motocicleta 1:"+"\n";
-        info += "Tipo de vehiculo: "+spotVehicle1.getType()+"\n";
-        info += "Modelo: "+spotVehicle1.getModel()+"\n";
-        info += "Placa: "+spotVehicle1.getLicensePlate()+"\n";
-        info += "Color: "+spotVehicle1.getColor()+"\n";
-        info += "Propietario: "+spotVehicle1.getOwner().getName()+"\n"+"\n";
+        if(spotVehicle1 == null){
+            info += "Aun no hay informacion de algun vehiculo en este puesto"+"\n";
+        }
+        else{
+            info += "Tipo de vehiculo: "+spotVehicle1.getType()+"\n";
+            info += "Modelo: "+spotVehicle1.getModel()+"\n";
+            info += "Placa: "+spotVehicle1.getLicensePlate()+"\n";
+            info += "Color: "+spotVehicle1.getColor()+"\n";
+            info += "Propietario: "+spotVehicle1.getOwner().getName()+"\n"+"\n";
+        }
         info += "Motocicleta 2:"+"\n";
-        info += "Tipo de vehiculo: "+spotVehicle2.getType()+"\n";
-        info += "Modelo: "+spotVehicle2.getModel()+"\n";
-        info += "Placa: "+spotVehicle2.getLicensePlate()+"\n";
-        info += "Color: "+spotVehicle2.getColor()+"\n";
-        info += "Propietario: "+spotVehicle2.getOwner().getName()+"\n";
+        if(spotVehicle2 == null){
+            info += "Aun no hay informacion de algun vehiculo en este puesto"+"\n";
+        }
+        else{
+            info += "Tipo de vehiculo: "+spotVehicle2.getType()+"\n";
+            info += "Modelo: "+spotVehicle2.getModel()+"\n";
+            info += "Placa: "+spotVehicle2.getLicensePlate()+"\n";
+            info += "Color: "+spotVehicle2.getColor()+"\n";
+            info += "Propietario: "+spotVehicle2.getOwner().getName()+"\n";
+        }
         return info;
     }
 

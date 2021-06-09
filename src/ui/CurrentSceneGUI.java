@@ -530,9 +530,6 @@ public class CurrentSceneGUI implements Initializable {
      * Initializes the map view. <br>
      * */
     void initMap() {
-        laCeiba.getPlMap().setLeftColumn();
-        laCeiba.getPlMap().setBottomRow();
-        laCeiba.getPlMap().setRightColumn();
         for (int i = 10; i > -11; i--) {
             if (i == 1) i -= 2;
             emergentWindowsController.loadSlot(i, "upper");

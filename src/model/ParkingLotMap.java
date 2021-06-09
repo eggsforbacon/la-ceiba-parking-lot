@@ -17,6 +17,10 @@ public class ParkingLotMap implements Serializable {
         leftColumnNumber = 1;
         bottomRowNumber = 1;
         rightColumnNumber = 1;
+        leftColumn = null;
+        rightColumn = null;
+        bottomRow = null;
+        System.out.println("Se creo el mapa");
         setLeftColumn();
         getSpot28();
         uniteLeftAndRight();
@@ -214,6 +218,7 @@ public class ParkingLotMap implements Serializable {
      @return The respective spot
      */
     public Spot spotAt(int index){
+        System.out.println(leftColumn.getActualPosition());
         return spotAt(index,leftColumn);
     }
     /**
@@ -227,11 +232,26 @@ public class ParkingLotMap implements Serializable {
     private Spot spotAt(int index,Spot spot) {
         String[] comparator = spot.getActualPosition().split(" ");
         if (spot.getDown() == null) {
-           return searchInBottomRow(index,bottomRow);
-        } else {
             if (comparator[0].equals(index + "")) {
                 return spot;
             } else {
+                return searchInBottomRow(index,bottomRow);
+            }
+        } else {
+            System.out.println(comparator[0]+" hola");
+            if (comparator[0].equals(index + "")) {
+                return spot;
+            }
+            else if(comparator.length > 1){
+                System.out.println(comparator[1]+" hola");
+                if(comparator[1].equals(index+"")){
+                    return spot;
+                }
+                else {
+                    return spotAt(index, spot.getDown());
+                }
+            }
+            else {
                 return spotAt(index, spot.getDown());
             }
         }
@@ -271,6 +291,7 @@ public class ParkingLotMap implements Serializable {
             if (comparator[0].equals(index + "")) {
                 return spot;
             } else {
+                System.out.println("Llego aqui");
                 return null;
             }
         }

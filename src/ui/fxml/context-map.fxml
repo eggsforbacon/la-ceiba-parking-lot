@@ -8,14 +8,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="337.0" style="-fx-background-color: #B3E5FC;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="337.0" style="-fx-background-color: #B3E5FC;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" styleClass="background" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="contextColorLBL" text="Color: COLOUR" />
-            <Label fx:id="contextStayLBL" text="Tiempo de Estadía: ## STAY_UNITS" />
-            <Label fx:id="contextPlateLBL" text="Placa: PLATE" />
-            <Label fx:id="contextPayYetLBL" text="Estado de Factura: PAY_YET_OR_NAH" />
+            <Label fx:id="contextColorLBL" prefHeight="136.0" prefWidth="274.0" text="Color: COLOUR" />
             <Separator opacity="0.0" orientation="VERTICAL" prefHeight="34.0" prefWidth="11.0" />
             <Button mnemonicParsing="false" onAction="#mapContextDelete" text="Eliminar" />
          </children>

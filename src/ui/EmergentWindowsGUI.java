@@ -353,19 +353,37 @@ public class EmergentWindowsGUI implements Initializable {
      * */
     @FXML
     void confirmEditUser(ActionEvent event) {
-        ((Stage) editUserFullNameTF.getScene().getWindow()).close();
-        String user = aVerSiEstoFunciona.getUsersTBV().getSelectionModel().getSelectedItem().getId();
-        if(!editUserFullNameTF.getText().equals("")){
-            if(!laCeiba.updateEmployeeName(user,editUserFullNameTF.getText())){
-                launchError("No se pudo actualizar el nombre","Actualizacion de datos");
+        int loginxd = laCeiba.login(oldUsernameTF.getText(),oldPasswordPWF.getText());
+        if(loginxd != -1 && loginxd != -2){
+            ((Stage) editUserFullNameTF.getScene().getWindow()).close();
+            String user = aVerSiEstoFunciona.getUsersTBV().getSelectionModel().getSelectedItem().getId();
+            if(!editUserFullNameTF.getText().equals("")){
+                if(!laCeiba.updateEmployeeName(user,editUserFullNameTF.getText())){
+                    launchError("No se pudo actualizar el nombre","Actualizacion de datos");
+                }
+            }
+            if(!editUserIDTF.getText().equals("")){
+                if(!laCeiba.updateEmployeeID(user,editUserIDTF.getText())){
+                    launchError("No se pudo actualizar el ID","Actualizacion de datos");
+                }
+            }
+
+            if(!editUsernameTF.getText().equals("")){
+                if(!laCeiba.updateEmployeeUsername(user,newUsernameTF.getText(),oldUsernameTF.getText(),oldPasswordPWF.getText())){
+                    launchError("No se pudo actualizar el Nombre de usuario","Actualizacion de datos");
+                }
+            }
+            if(!editPasswordPWF.getText().equals("")){
+                if(!laCeiba.updateEmployeePassword(user,editUsernameTF.getText(),oldPasswordPWF.getText(),editPasswordPWF.getText())){
+                    launchError("No se pudo actualizar la contrasenia","Actualizacion de datos");
+                }
             }
         }
-        if(!editUserIDTF.getText().equals("")){
-            if(!laCeiba.updateEmployeeID(user,editUserIDTF.getText())){
-                launchError("No se pudo actualizar el ID","Actualizacion de datos");
-            }
+        else{
+            launchError("Nombre de usuario o contraseña incorrectos","Error");
         }
-        aVerSiEstoFunciona.initClientsDB();
+
+        aVerSiEstoFunciona.initUsersDB();
     }
 
     /**
@@ -548,6 +566,7 @@ public class EmergentWindowsGUI implements Initializable {
         int slotNumber = Integer.parseInt(((Label) ((VBox) event.getSource()).getChildren().get(LABEL)).getText()); //And all it took were two casts and a parse :D -z
         launchFXML("context-map.fxml", "Puesto " + slotNumber);
         contextSlotLBL.setText("Puesto N°" + slotNumber);
+        System.out.println(slotNumber);
         contextColorLBL.setText(laCeiba.getPlMap().spotAt(slotNumber).getInformation());
     }
 
