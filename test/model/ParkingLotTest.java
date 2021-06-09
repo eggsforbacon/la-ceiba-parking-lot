@@ -216,6 +216,8 @@ class ParkingLotTest {
 		parkingLotScenary3();
 		assertFalse(parkingLotTest.verifyVehicleByPlate("aaa"));
 	}
+	//vehicle per hour or daily
+	//vehicle monthly
 	
 	@Test
 	void addAVehicleToPerHourOrDailyVehiclesTest() throws NotAllowedException, NameAlreadyInUseException, IDAlreadyInUseException {

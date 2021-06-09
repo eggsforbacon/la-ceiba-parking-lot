@@ -13,18 +13,26 @@ import javafx.stage.Stage;
 import model.ParkingLot;
 import model.PreloaderBar;
 import threads.PreloaderThread;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-public class PreloaderGUI implements Initializable {
+import exceptions.IDAlreadyInUseException;
+import exceptions.UsernameAlreadyInUseException;
 
+public class PreloaderGUI implements Initializable {
     private final PreloaderBar bar;
     boolean isLoaded;
     MainGUI controller;
     ParkingLot laCeiba = new ParkingLot();
-    private static final String SAVE_PATH = "data/data.1zj";
+    private static final String SAVE_PATH = "data/Serializable/plain_text/data.1jz";
 
     @FXML
     private BorderPane splashPane = new BorderPane();
@@ -55,8 +63,9 @@ public class PreloaderGUI implements Initializable {
 
     /**
      * Updates the rectangle bar's width, i.e. loads it. <br>
+     * @throws InterruptedException 
      * */
-    public void loadBar() throws InterruptedException {
+    public void loadBar() throws InterruptedException  {
         double newWidth = bar.getBarWidth();
         pBarRCT.setWidth(newWidth);
         double percentage = (newWidth / bar.LOADED_WIDTH) * 100;
@@ -71,8 +80,34 @@ public class PreloaderGUI implements Initializable {
 
     /**
      * Loads everything to be loaded into the model object. <br>
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     * @throws UsernameAlreadyInUseException 
+     * @throws IDAlreadyInUseException 
      * */
-    private void load() {
+    private void load() { 
+    	try {
+    		File parkingLotData = new File(SAVE_PATH);
+    		if(parkingLotData.exists()){
+    			ObjectInputStream OIS = new ObjectInputStream(new FileInputStream(parkingLotData));
+    			laCeiba= (ParkingLot)OIS.readObject();
+    			OIS.close();		
+    		}	
+    		BufferedReader br = new BufferedReader(new FileReader("data/Serializable/plain_text/Employees.txt"));
+    		String line = br.readLine();
+    		while(line!=null){
+    			String[] parts = line.split(";");
+    			laCeiba.addEmployee(parts[0],parts[1],parts[2],parts[4]);
+    			line = br.readLine();
+    		}
+    		br.close();
+    
+    	}
+    	catch(IDAlreadyInUseException|IOException|UsernameAlreadyInUseException|ClassNotFoundException e){
+    		System.out.println("");
+    	}
+	    	
+    	
         //TODO: Load every model method in here
     }
 

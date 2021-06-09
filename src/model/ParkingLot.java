@@ -1,9 +1,14 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -1288,16 +1293,18 @@ public class ParkingLot implements Serializable {
 	  }
 	
 	
-	public void plainTextLoadEmployees() throws IOException, NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
-		 BufferedReader br = new BufferedReader(new FileReader(""));
-		    String line = br.readLine();
-		    while(line!=null){
-		      String[] parts = line.split(";");
-		      addEmployee(parts[0],parts[1],parts[2],parts[4]);
-		      line = br.readLine();
-		    }
-		    br.close();
-	}
+	
+	/**
+	 Export the parking lot information to save it<br>
+	 <b> pre: </b>Needs a file in which save the class<br>
+	 <b> post: </b>Save the class in a file<br>
+	 */
+	public void saveParkingLot() throws IOException{
+	    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/Serializable/plain_text/data.1jz"));
+	    oos.writeObject(this);
+	    oos.close();
+	  }
+
 	
    //Getters y setters
    //
