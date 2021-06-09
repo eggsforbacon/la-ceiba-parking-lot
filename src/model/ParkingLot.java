@@ -1218,7 +1218,7 @@ public class ParkingLot implements Serializable {
 			if (compare.contains(match)) searchVehicleResults.add(c);
 		}
 	}
-   
+
    //jd gei //Algun problema con eso perra?
    //Getters y setters
    //
