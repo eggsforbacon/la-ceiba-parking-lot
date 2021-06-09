@@ -1,6 +1,9 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -1244,7 +1247,7 @@ public class ParkingLot implements Serializable {
 	 @param toAdd A Client that is what was found
 	 */
 	public void singleElementToSearchClient(Client toAdd){
-		searchClientResults = new ArrayList<>();
+		searchClientResults = null;
 		searchClientResults.add(toAdd);
 	}
 
@@ -1255,7 +1258,7 @@ public class ParkingLot implements Serializable {
 	 @param toAdd A Vehicle that is what was found
 	 */
 	public void singleElementToSearchVehicle(Vehicle toAdd){
-		searchVehicleResults = new ArrayList<>();
+		searchVehicleResults = null;
 		searchVehicleResults.add(toAdd);
 	}
 
@@ -1266,11 +1269,42 @@ public class ParkingLot implements Serializable {
 	 @param toAdd An employee that is what was found
 	 */
 	public void singleElementToSearchEmployee(Employee toAdd){
-		searchEmployeeResults = new ArrayList<>();
+		searchEmployeeResults = null;
 		searchEmployeeResults.add(toAdd);
 	}
 
-   //jd gei //Algun problema con eso perra?
+   //jd gei //Algun problema con eso perra?//Dimelo de frente cagón
+	
+	//Serialization 
+	//
+	//
+	
+	/**
+	 Export the employees information to save it<br>
+	 <b> pre: </b>Needs a list of employees<br>
+	 <b> post: </b>Save the information in a text file<br>
+	 */
+	public void plainTextSaveEmployees() throws FileNotFoundException{
+	    PrintWriter pw = new PrintWriter("data/Serializable/plain_text/Employees.txt");
+	    for(int i=0;i<employeesPL.size();i++){
+	      Employee employee = employeesPL.get(i);
+	      pw.println(employee.getName()+";"+employee.getId()+";"+employee.getUsername()+";"+employee.getPassword());
+	    }
+	    pw.close();
+	  }
+	
+	
+	public void plainTextLoadEmployees() throws IOException, NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
+		 BufferedReader br = new BufferedReader(new FileReader(""));
+		    String line = br.readLine();
+		    while(line!=null){
+		      String[] parts = line.split(";");
+		      addEmployee(parts[0],parts[1],parts[2],parts[4]);
+		      line = br.readLine();
+		    }
+		    br.close();
+	}
+	
    //Getters y setters
    //
    //
@@ -1354,9 +1388,5 @@ public class ParkingLot implements Serializable {
 
 	public void setColumnsVeryfier(boolean columnsVeryfier) {
 		this.columnsVeryfier = columnsVeryfier;
-	}
-
-	public ArrayList<Client> getSearchClientResults() {
-		return searchClientResults;
 	}
 }
