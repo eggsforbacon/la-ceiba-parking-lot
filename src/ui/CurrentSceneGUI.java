@@ -438,7 +438,7 @@ public class CurrentSceneGUI implements Initializable {
     void searchClient(ActionEvent event) {
 
     }
-
+    // De nada
     /*Vehicles DB*/
 
     @FXML
