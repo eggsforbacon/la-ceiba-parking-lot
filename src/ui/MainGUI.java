@@ -4,11 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -32,28 +29,28 @@ public class MainGUI implements Initializable {
     private BorderPane currentScene = new BorderPane();
 
     @FXML
-    private Button mgLoginButton;
+    private Button mgLoginButton = new Button();
 
     @FXML
-    private Button mgClientsButton;
+    private Button mgClientsButton = new Button();
 
     @FXML
-    private Button mgVehiclesButton;
+    private Button mgVehiclesButton = new Button();
 
     @FXML
-    private Button mgMapButton;
+    private Button mgMapButton = new Button();
 
     @FXML
-    private Button mgUsersButton;
+    private Button mgUsersButton = new Button();
 
     @FXML
-    private Button mgFacturationButton;
+    private Button mgReceiptButton = new Button();
 
     @FXML
-    private Button mgReportsButton;
+    private Button mgReportsButton = new Button();
 
     @FXML
-    private Button mgExitButton;
+    private Button mgExitButton = new Button();
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
@@ -106,7 +103,7 @@ public class MainGUI implements Initializable {
      */
     public void toggleButtons(boolean state) {
         mgUsersButton.setDisable(state);
-        mgFacturationButton.setDisable(state);
+        mgReceiptButton.setDisable(state);
         mgMapButton.setDisable(state);
         mgReportsButton.setDisable(state);
         mgClientsButton.setDisable(state);
@@ -234,9 +231,5 @@ public class MainGUI implements Initializable {
 
     public CurrentSceneGUI getCurrentSceneController() {
         return currentSceneController;
-    }
-
-    public void setCurrentSceneController(CurrentSceneGUI currentSceneController) {
-        this.currentSceneController = currentSceneController;
     }
 }

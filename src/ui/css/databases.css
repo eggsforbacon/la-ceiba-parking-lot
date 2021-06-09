@@ -15,6 +15,10 @@
 .table-view {
 	-fx-background-color: transparent;
   -fx-background-radius: 15;
+  -fx-effect: dropshadow(two-pass-box, -SECONDARY-TEXT, 15, 0.2, 0, 0);
+  -fx-border-color: -TEXT-ICONS;
+  -fx-border-radius: 12;
+  -fx-border-width: 2;
 }
 
 .table-view .column-header .label {
@@ -33,12 +37,17 @@
 .table-view .column-header-background, .table-view .placeholder .label {
   -fx-background-color: transparent;
   -fx-text-fill: -DARK-PRIMARY-COLOR;
+  -fx-effect: null;
 }
 
 .table-row-cell {
   -fx-background-color: -PRIMARY-COLOR;
+  -fx-background-radius: 15;
+  -fx-effect: null;
 }
 
 .table-row-cell:odd {
   -fx-background-color: -LIGHT-PRIMARY-COLOR;
+  -fx-background-radius: 15;
+  -fx-effect: null;
 }

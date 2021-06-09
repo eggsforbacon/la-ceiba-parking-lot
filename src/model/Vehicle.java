@@ -109,6 +109,18 @@ public abstract class Vehicle implements Comparable<Vehicle>, Serializable{
 
     //Getters and setters
 
+    /**
+     * Gets the current status of the vehicle as a string value. <br>
+     * */
+    public String getStatus() {
+        if(enabled){
+            return "SI";
+        }
+        else{
+            return "NO";
+        }
+    }
+
     public String getModel() {
         return model;
     }

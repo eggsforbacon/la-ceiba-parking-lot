@@ -1,6 +1,5 @@
 package ui;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,12 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ParkingLot;
 import model.PreloaderBar;
 import threads.PreloaderThread;
-
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -96,8 +93,6 @@ public class PreloaderGUI implements Initializable {
             Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
             stage.getIcons().add(icon);
             stage.setTitle("La Ceiba: Inicio");
-            //stage.setMinHeight(1360);
-            //stage.setMinWidth(720);
             stage.setMaximized(true);
             stage.show();
         } catch (IOException e) {

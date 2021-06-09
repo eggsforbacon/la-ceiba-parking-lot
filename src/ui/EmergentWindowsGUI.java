@@ -151,7 +151,7 @@ public class EmergentWindowsGUI implements Initializable {
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
     ParkingLot laCeiba;
-    boolean successsful=false;
+    boolean successful = false;
     CurrentSceneGUI aVerSiEstoFunciona;
 
     /*------------------------ METHODS ------------------------*/
@@ -354,7 +354,7 @@ public class EmergentWindowsGUI implements Initializable {
         }
 
         if(check){
-            successsful=true;
+            successful =true;
             try{
                 boolean check2 = laCeiba.addVehicle(translateVehicleType(getVehicleType()),newVehicleModelTF.getText(),newVehiclePlatesTF.
                                 getText(),newVehicleColorCHB.getSelectionModel().getSelectedItem(),
@@ -414,7 +414,7 @@ public class EmergentWindowsGUI implements Initializable {
     }
 
     public boolean getSuccessful(){
-        return successsful;
+        return successful;
     }
 
     /**
@@ -508,7 +508,7 @@ public class EmergentWindowsGUI implements Initializable {
 
     }
 
-    public void setSuccesssful(boolean successsful) {
-        this.successsful = successsful;
+    public void setSuccessful(boolean successful) {
+        this.successful = successful;
     }
 }

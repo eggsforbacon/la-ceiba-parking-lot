@@ -205,7 +205,7 @@ public class CurrentSceneGUI implements Initializable {
     boolean loginSuccessful;
     String currentScene;
     ArrayList<Thread> threads = new ArrayList<>();
-    int iLoveThisnumber=1;
+    int iLoveThisNumber = 1;
 
     /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -241,6 +241,9 @@ public class CurrentSceneGUI implements Initializable {
             case "Clientes":
                 initClientsDB();
                 break;
+            case "Vehículos":
+                initVehiclesDB();
+                break;
             case "Mapa":
                 initMap();
                 break;
@@ -261,7 +264,7 @@ public class CurrentSceneGUI implements Initializable {
         stage.setScene(scene);
         stage.setOnHidden(event -> {
             //do all your processing here
-            emergentWindowsController.setSuccesssful(true);
+            emergentWindowsController.setSuccessful(true);
         });
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle(title);
@@ -303,6 +306,8 @@ public class CurrentSceneGUI implements Initializable {
             errorPane.setTitle(title);
             dialMessageLBL.setText(message);
             dialMessageLBL.setStyle("\n-fx-font-style: italic;");
+            Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
+            errorPane.getIcons().add(icon);
             errorPane.setResizable(false);
             errorPane.show();
         } catch (Exception e) {
@@ -330,17 +335,17 @@ public class CurrentSceneGUI implements Initializable {
             case -1:
                 //emergentWindowsController.setDialMessageLBL("Datos erroneos o incompletos. Intente de nuevo.");
                 //launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
-                launchError("Datos erroneos o incompletos. Intente de nuevo.","Mensaje de inicio de sesion");
+                launchError("Datos erróneos o incompletos. Intente de nuevo.","Mensaje de Inicio de Sesión");
                 break;
             case -2:
                 //emergentWindowsController.setDialMessageLBL("El uso del usuario root no es recomendado. Proceder con precaución.");
-                //launchFXML("dialogue.fxml","Mensaje de inicio de sesion");
-                launchError("El uso del usuario root no es recomendado. Proceder con precaucion.","Mensaje de inicio de sesion");
+                //launchFXML("dialogue.fxml","Mensaje de Inicio de Sesión");
+                launchError("El uso del usuario root no es recomendado. Proceder con precaución.","Mensaje de Inicio de Sesión");
                 loginSuccessful = true;
                 break;
             default:
                 laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(user));
-                launchError("Bienvenido "+laCeiba.getActualEmployee().getName(),"Mensaje de inicio de sesion");
+                launchError("Bienvenido " + laCeiba.getActualEmployee().getName(),"Mensaje de Inicio de Sesión");
                 loginSuccessful = true;
                 break;
         }
@@ -450,10 +455,27 @@ public class CurrentSceneGUI implements Initializable {
      * */
     void initVehiclesDB() {
         vehicleSlotCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
-        vehicleStayCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
-        vehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
-        vehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
-        vehicleEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
+        vehicleStayCOL.setCellValueFactory(new PropertyValueFactory<>("stay"));
+        vehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
+        vehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
+        vehicleEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
+        ObservableList<Vehicle> vehicles = FXCollections.observableArrayList(laCeiba.getVehiclesPL());
+        vehiclesTBV.setItems(vehicles);
+        //SideBar
+        vehicleDeleteBTN.setDisable(true);
+        vehicleEditBTN.setDisable(true);
+        vehiclesTBV.setOnMouseClicked(event -> {
+            if (!vehiclesTBV.getSelectionModel().getSelectedItems().isEmpty()) {
+                vehicleDeleteBTN.setDisable(false);
+                vehicleEditBTN.setDisable(false);
+            }
+        });
+        vehiclesTBV.setOnKeyTyped(event -> {
+            if (event.getCode().equals(KeyCode.ESCAPE)) {
+                vehicleDeleteBTN.setDisable(true);
+                vehicleEditBTN.setDisable(true);
+            }
+        });
     }
 
     /**
@@ -1014,11 +1036,11 @@ public class CurrentSceneGUI implements Initializable {
         this.threads = threads;
     }
 
-    public int getiLoveThisnumber() {
-        return iLoveThisnumber;
+    public int getiLoveThisNumber() {
+        return iLoveThisNumber;
     }
 
-    public void setiLoveThisnumber(int iLoveThisnumber) {
-        this.iLoveThisnumber = iLoveThisnumber;
+    public void setiLoveThisNumber(int iLoveThisNumber) {
+        this.iLoveThisNumber = iLoveThisNumber;
     }
 }
