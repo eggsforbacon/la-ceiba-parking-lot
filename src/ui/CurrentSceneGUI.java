@@ -439,8 +439,21 @@ public class CurrentSceneGUI implements Initializable {
     
     @FXML
     void searchClient(ActionEvent event) {
-        //laCeiba.setSearchClientResults();
-        //clientsTBV;
+        int client = laCeiba.binarySearchPerson(laCeiba.getClientsPL(),clientSearchTXT.getText());
+        if(client != -1){
+            laCeiba.singleElementToSearchClient(laCeiba.getClientsPL().get(client));
+        }
+        else{
+            laCeiba.setSearchClientResults(clientSearchTXT.getText());
+        }
+        ObservableList<Client> clientEmpty = FXCollections.emptyObservableList();
+        clientsTBV.setItems(clientEmpty);
+        clientsNameCOL.setCellValueFactory(new PropertyValueFactory<>("name"));
+        clientsIDCOL.setCellValueFactory(new PropertyValueFactory<>("id"));
+        clientsPhoneCOL.setCellValueFactory(new PropertyValueFactory<>("cellNumber"));
+        clientEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
+        ObservableList<Client> clientsList = FXCollections.observableArrayList(laCeiba.getSearchClientResults());
+        clientsTBV.setItems(clientsList);
     }
     // De nada //Hombre, era lo minimo que podias hacer >:c //Un dia de estos tengo que aprender a pushear sin crear conflictos :)
     /*Vehicles DB*/
