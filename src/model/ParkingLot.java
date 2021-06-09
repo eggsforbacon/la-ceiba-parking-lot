@@ -267,7 +267,7 @@ public class ParkingLot implements Serializable {
      * @throws UsernameAlreadyInUseException 
      * @throws PasswordAlreadyInUseException 
     */
-    public boolean addEmployee(String name, String id, String username, String password) throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
+    public boolean addEmployee(String name, String id, String username, String password) throws IDAlreadyInUseException, UsernameAlreadyInUseException{
     	if(searchEmployeeByName(name)!=null&&searchEmployeeByName(name).getState()==false) {
     		for(int i=0;i<employeesPL.size();i++) {
     			if(employeesPL.get(i).getId().equalsIgnoreCase(searchEmployeeByName(name).getId())) {
@@ -278,17 +278,11 @@ public class ParkingLot implements Serializable {
     	}
     	String temp=employeeVeryfier(name,id,username,password);
     	//Añadir excepciï¿½n para verificar si el nombre estï¿½ repetido o si el id estï¿½ repetido
-    	if(temp.contains("name")){
-    		throw new NameAlreadyInUseException();
-    	}
-    	else if(temp.contains("id")) {
+    	if(temp.contains("id")) {
     		throw new IDAlreadyInUseException();
     	}
     	else if(temp.contains("username")) {
     		throw new UsernameAlreadyInUseException();
-    	}
-    	else if(temp.contains("password")) {
-    		throw new PasswordAlreadyInUseException();
     	}
     	else {
     		Employee aux=new Employee(name, id, username, password);

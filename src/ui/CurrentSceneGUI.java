@@ -466,9 +466,10 @@ public class CurrentSceneGUI implements Initializable {
         ObservableList<Client> clientsList = FXCollections.observableArrayList(laCeiba.getSearchClientResults());//puto error
         clientsTBV.setItems(clientsList);
     }
-    // De nada //Hombre, era lo minimo que podias hacer >:c //Un dia de estos tengo que aprender a pushear sin crear conflictos :)
-    /*Vehicles DB*/ //Parecen pareja geis JAJSAJSJASJJSJAS NO HABÃ�A VISTO ESTOS COMENTARIOS JASJAJSJAS
-    //Se imaginan que se nos olvide borrarlos? ASJAJSAJXD
+   
+    /*Vehicles DB*/
+
+    /*Vehicles DB*/
     
     /**
      * Toggles the monthly view on and off. <br>
