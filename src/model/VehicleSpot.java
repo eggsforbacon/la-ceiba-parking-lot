@@ -53,26 +53,5 @@ public class VehicleSpot extends Spot implements Serializable{
         this.number = number;
     }
     
-    public void iniTableViewPerHOD() {
-    	laCeiba.fillPerHODVehiclesPL();
-    	 
-    	ObservableList<Vehicle> perHODVehicles = FXCollections.observableArrayList(laCeiba.getPerHODVehiclesPL());
-    	perHODVehiclesTBV.setItems(perHODVehicles);
-    	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
-    	perHODVehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
-    	perHODVehicleEntryCOL.setCellValueFactory(new PropertyValueFactory<>("entryDateString"));
-    	perHODVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("supposedExitDateString"));
-    	perHODVehiclePayCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
-       
-        //SideBar
-        perHODVehicleDeleteBTN.setDisable(true);
-        perHODVehicleEditBTN.setDisable(true);
-        perHODVehiclesTBV.setOnMouseClicked(event -> {
-            if (! perHODVehiclesTBV.getSelectionModel().getSelectedItems().isEmpty()) {
-            	perHODVehicleDeleteBTN.setDisable(false);
-            	perHODVehicleEditBTN.setDisable(false);
-            }
-        });
-
-    }
+    
 }
