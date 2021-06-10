@@ -158,8 +158,8 @@ public class CurrentSceneGUI implements Initializable {
     private Label receiptVehicleMonthlyLBL = new Label();
 
     @FXML
-    private Label receiptDaysMonthlyLBL = new Label();
 
+    private Label receiptDaysMonthlyLBL = new Label();
     @FXML
     private VBox dailyVBox = new VBox();
 
