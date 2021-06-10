@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +19,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ParkingLot;
+import model.Vehicle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -136,7 +138,53 @@ public class EmergentWindowsGUI implements Initializable {
 
     @FXML
     private ChoiceBox<String> editVehicleSeatCHB = new ChoiceBox<>();
+    
+    /*Vehicles per hour or daily*/
+    //Tableview
+    @FXML
+    private TableView<Vehicle> perHODVehiclesTBV;
 
+    @FXML
+    private TableColumn<Vehicle, String> perHODVehicleTypeCOL;
+
+    @FXML
+    private TableColumn<Vehicle, String> perHODVehiclePlateCOL;
+
+    @FXML
+    private TableColumn<Vehicle, String> perHODVehicleEntryCOL;
+
+    @FXML
+    private TableColumn<Vehicle, String> perHODVehicleExitCOL;
+
+    @FXML
+    private TableColumn<Vehicle, Double> perHODVehicleAmountToPayCOL;
+
+    
+	    //Edit vehicle per hour 
+	    @FXML
+	    private Button perHODVehicleEditBTN;
+	    
+	    //Delete vehicle per hour 
+	    @FXML
+	    private Button perHODVehicleDeleteBTN;
+	    
+	    //vehicle per hour search txt
+	    @FXML
+	    private TextField perHODVehicleTXT;
+	    
+	    //search vehicle per hour 
+	    @FXML
+	    private Button perHODVehicleSearchBTN;
+	    
+	    //Per hour vehicle start button
+	    @FXML
+	    private Button perHODVehicleStartBTN;
+
+	/*vehicles monthly*/
+    @FXML
+    private Button monthlyVehicleStartBTN;
+    
+    
     /*Map*/
 
     @FXML
@@ -194,6 +242,25 @@ public class EmergentWindowsGUI implements Initializable {
         ObservableList<String> dummy = FXCollections.observableArrayList("AUTOMOVIL","MOTO","CAMION","BUS","FURGON","CAMIONETA");
         ObservableList<String> dummy2 = FXCollections.observableArrayList("HORA","DIA","MES","INDEFINIDO");
         ObservableList<String> dummy3 = FXCollections.observableArrayList("NEGRO","BLANCO","GRIS","ROJO","AZUL","AMARILLO","NARANJA","VERDE","ROSA","MORADO");
+        laCeiba.initPerHODList();
+    	ObservableList<Vehicle> perHODVehicles = FXCollections.observableArrayList(laCeiba.getPerHODVehiclesPL());
+    	
+    	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
+    	perHODVehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
+    	perHODVehicleEntryCOL.setCellValueFactory(new PropertyValueFactory<>("entryDateString"));
+    	perHODVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("actualExitDateString"));
+    	perHODVehicleAmountToPayCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
+        perHODVehiclesTBV.setItems(perHODVehicles);
+        //SideBar
+        perHODVehicleDeleteBTN.setDisable(true);
+        perHODVehicleEditBTN.setDisable(true);
+        perHODVehiclesTBV.setOnMouseClicked(event -> {
+            if (! perHODVehiclesTBV.getSelectionModel().getSelectedItems().isEmpty()) {
+            	perHODVehicleDeleteBTN.setDisable(false);
+            	perHODVehicleEditBTN.setDisable(false);
+            }
+        });
+        
         newVehicleTypeCHB.setItems(dummy);
         newVehicleStayTypeCHB.setItems(dummy2);
         newVehicleColorCHB.setItems(dummy3);

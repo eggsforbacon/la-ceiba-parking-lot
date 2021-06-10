@@ -37,6 +37,8 @@ public class ParkingLot implements Serializable {
 	private ArrayList<Client> searchClientResults;
 	private ArrayList<Employee> searchEmployeeResults;
 	private ArrayList<Vehicle> searchVehicleResults;
+	private ArrayList<Vehicle> perHODVehiclesPL;
+	private ArrayList<Vehicle> monthlyVehiclesPL;
 
   
 
@@ -668,6 +670,32 @@ public class ParkingLot implements Serializable {
 			r.setRight(addAVehicleToMonthlyVehicles((BTMonthly) r.getRight(),newBT));
 		return r;
 	}
+	
+	 public void initPerHODList(){
+		 initPerHODList(perHODVehiclesPL,perHourOrDailyVehicles);
+	 }
+	 
+	 private ArrayList<Vehicle> initPerHODList(ArrayList<Vehicle> a, BTPerHourOrDaily r){
+	    	if ( r!= null) {
+		    		if (r.getLeft()!=null) {
+		    			initPerHODList(a,(BTPerHourOrDaily)r.getLeft());
+		    		}
+		    		else {
+		    			goForward(a,r);
+		    		}
+		    	
+			}
+	    	return a;
+	    	
+					
+	    }
+	 
+	 private void goForward(ArrayList<Vehicle> a,BTPerHourOrDaily r) {
+		 while(r!=null) {
+			 a.add(r.getBtVehicle());
+			 goForward(a,(BTPerHourOrDaily)r.getRight());
+		 }
+	 }
     //Binary trees finish
     
     /**
@@ -1413,5 +1441,20 @@ public class ParkingLot implements Serializable {
 
 	public void setSearchVehicleResults(ArrayList<Vehicle> searchVehicleResults) {
 		this.searchVehicleResults = searchVehicleResults;
+	}
+	public ArrayList<Vehicle> getPerHODVehiclesPL() {
+		return perHODVehiclesPL;
+	}
+
+	public void setPerHODVehiclesPL(ArrayList<Vehicle> perHODVehiclesPL) {
+		this.perHODVehiclesPL = perHODVehiclesPL;
+	}
+
+	public ArrayList<Vehicle> getMonthlyVehiclesPL() {
+		return monthlyVehiclesPL;
+	}
+
+	public void setMonthlyVehiclesPL(ArrayList<Vehicle> monthlyVehiclesPL) {
+		this.monthlyVehiclesPL = monthlyVehiclesPL;
 	}
 }

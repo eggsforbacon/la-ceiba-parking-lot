@@ -23,6 +23,8 @@ import model.Client;
 import model.Employee;
 import model.ParkingLot;
 import model.Vehicle;
+import model.BTPerHourOrDaily;
+import model.BTMonthly;
 import threads.ChoiceBoxThread;
 
 import java.net.URL;
@@ -88,7 +90,10 @@ public class CurrentSceneGUI implements Initializable {
 
     @FXML
     private Button vehicleDeleteBTN = new Button();
-
+    
+   
+    
+    
     /*Map view*/
 
     @FXML
@@ -524,6 +529,36 @@ public class CurrentSceneGUI implements Initializable {
         launchFXML("edit-vehicle.fxml", "Editar VehÃ­culo");
     }
 
+    
+    
+    
+   
+    
+    @FXML
+    void monthlyVehicleStart(ActionEvent event) {
+    	launchFXML("PerHourOrDVehicles.fxml","Vehiculos diarios o por hora");
+    }
+
+    @FXML
+    void perHODVehicleStart(ActionEvent event) {
+    	launchFXML("MonthlyVehicles.fxml","Vehiculos mensuales");
+    }
+
+    @FXML
+    void perHODEditVehicle(ActionEvent event) {
+
+    }
+
+    @FXML
+    void perHODSearchVehicle(ActionEvent event) {
+
+    }
+
+    @FXML
+    void perHODVeleteVehicle(ActionEvent event) {
+
+    }
+    
     /*Map view (Throwing this one under the rug for a little while)*/
 
     /**
