@@ -481,20 +481,22 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void toggleMonthlyVehicles(ActionEvent event) {
-
+    	
     }
 
     /**
      * Initializes the vehicles database. <br>
      * */
     void initVehiclesDB() {
+    	
         vehicleSlotCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
         vehicleStayCOL.setCellValueFactory(new PropertyValueFactory<>("stay"));
         vehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
         vehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
         vehicleEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
         ObservableList<Vehicle> vehicles = FXCollections.observableArrayList(laCeiba.getVehiclesPL());
-        vehiclesTBV.setItems(vehicles);
+    	vehiclesTBV.setItems(vehicles);
+        
         //SideBar
         vehicleDeleteBTN.setDisable(true);
         vehicleEditBTN.setDisable(true);
@@ -532,17 +534,22 @@ public class CurrentSceneGUI implements Initializable {
     
     
     
-   
+    
+
+    
     
     @FXML
     void monthlyVehicleStart(ActionEvent event) {
-    	launchFXML("PerHourOrDVehicles.fxml","Vehiculos diarios o por hora");
+    	launchFXML("monthlyVehicles-view.fxml","Vehiculos mensuales");
     }
 
     @FXML
     void perHODVehicleStart(ActionEvent event) {
-    	launchFXML("MonthlyVehicles.fxml","Vehiculos mensuales");
+    	launchFXML("perHODVehicle-view.fxml","Vehiculos diarios o por hora");
+    	emergentWindowsController.iniTableViewPerHOD();
     }
+    
+    
 
     @FXML
     void perHODEditVehicle(ActionEvent event) {

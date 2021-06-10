@@ -46,6 +46,8 @@ public class ParkingLot implements Serializable {
         clientsPL = new ArrayList<>();
         vehiclesPL = new ArrayList<>();
         employeesPL=new ArrayList<>();
+        perHODVehiclesPL=new ArrayList<>();
+        monthlyVehiclesPL=new ArrayList<>();
         plMap = new ParkingLotMap();
         root = new Employee("Admin","12345","admin","1234");
         actualEmployee = root;
@@ -662,7 +664,7 @@ public class ParkingLot implements Serializable {
 		return r;
 	}
 	
-	 public void initList(){
+	/* public void initList(){
 		 initPerHODList(perHODVehiclesPL,perHourOrDailyVehicles);
 		 initMontlyList(monthlyVehiclesPL,monthlyVehicles);
 	 }
@@ -684,7 +686,9 @@ public class ParkingLot implements Serializable {
 	 
 	 private void goForward(ArrayList<Vehicle> a,BTPerHourOrDaily r) {
 		 while(r!=null) {
-			 a.add(r.getBtVehicle());
+			 if(r.getBtVehicle()!=null) {
+				 a.add(r.getBtVehicle());
+			 }
 			 goForward(a,(BTPerHourOrDaily)r.getRight());
 		 }
 	 }
@@ -709,9 +713,34 @@ public class ParkingLot implements Serializable {
 			a.add(r.getBtVehicle());
 			goForwardForMonthly(a,(BTMonthly) r.getRight());
 		}
-	}
+	}*/
     //Binary trees finish
     
+	
+	public void fillPerHODVehiclesPL(){
+		fillPerHODVehiclesPL(perHODVehiclesPL,perHourOrDailyVehicles);
+	}
+	
+	public void fillPerHODVehiclesPL(ArrayList<Vehicle> a,BTPerHourOrDaily b){
+		boolean temp=false;
+		if (b != null) {
+			
+			fillPerHODVehiclesPL(a,(BTPerHourOrDaily)b.getLeft());
+			if(b.getBtVehicle()!=null) {
+				for(int i=0;i<a.size();i++) {
+					if(b.getBtVehicle()==a.get(i)) {
+						temp=true;
+					}
+				}
+				if(temp==false) {
+					b.getBtVehicle().setPay(b.getBtVehicle().getValueToPay()+"");
+					a.add(b.getBtVehicle());
+				}
+			
+			}
+			fillPerHODVehiclesPL(a,(BTPerHourOrDaily)b.getRight());
+		}
+	}
     /**
     Disable a vehicle searching it by It's license plate <br>
     <b> pre: </b>Needs that the vehicle is already created<br>

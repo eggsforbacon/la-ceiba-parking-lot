@@ -155,6 +155,7 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     private TableColumn<Vehicle, String> perHODVehicleExitCOL= new TableColumn<>();
 
+    private TableColumn<Vehicle, String> perHODVehiclePayCOL= new TableColumn<>();
     
     @FXML
     private TableView<Vehicle> monthlyVehiclesTBV;
@@ -172,9 +173,9 @@ public class EmergentWindowsGUI implements Initializable {
     private TableColumn<Vehicle, String> MonthlyVehicleExitCOL;
 
     @FXML
-    private TableColumn<Vehicle, Double> MonthlyVehicleAmountToPayCOL;
+    private TableColumn<Vehicle, String> MonthlyVehicleAmountToPayCOL;
 
-    private TableColumn<Vehicle, Double> perHODVehicleAmountToPayCOL= new TableColumn<>();
+    
 
 
     
@@ -274,16 +275,25 @@ public class EmergentWindowsGUI implements Initializable {
         ObservableList<String> dummy = FXCollections.observableArrayList("AUTOMOVIL","MOTO","CAMION","BUS","FURGON","CAMIONETA");
         ObservableList<String> dummy2 = FXCollections.observableArrayList("HORA","DIA","MES","INDEFINIDO");
         ObservableList<String> dummy3 = FXCollections.observableArrayList("NEGRO","BLANCO","GRIS","ROJO","AZUL","AMARILLO","NARANJA","VERDE","ROSA","MORADO");
-        laCeiba.initList();
-        /*
+        newVehicleTypeCHB.setItems(dummy);
+        newVehicleStayTypeCHB.setItems(dummy2);
+        newVehicleColorCHB.setItems(dummy3);
+        editVehicleTypeCHB.setItems(dummy);
+        editVehicleStayTypeCHB.setItems(dummy2);
+        editVehicleColorCHB.setItems(dummy3);
+    }
+    
+    public void iniTableViewPerHOD() {
+    	laCeiba.fillPerHODVehiclesPL();
+    	 
     	ObservableList<Vehicle> perHODVehicles = FXCollections.observableArrayList(laCeiba.getPerHODVehiclesPL());
-
-    	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
+    	perHODVehiclesTBV.setItems(perHODVehicles);
+    	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
     	perHODVehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
     	perHODVehicleEntryCOL.setCellValueFactory(new PropertyValueFactory<>("entryDateString"));
-    	perHODVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("actualExitDateString"));
-    	perHODVehicleAmountToPayCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
-        perHODVehiclesTBV.setItems(perHODVehicles);
+    	perHODVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("supposedExitDateString"));
+    	perHODVehiclePayCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
+       
         //SideBar
         perHODVehicleDeleteBTN.setDisable(true);
         perHODVehicleEditBTN.setDisable(true);
@@ -293,13 +303,7 @@ public class EmergentWindowsGUI implements Initializable {
             	perHODVehicleEditBTN.setDisable(false);
             }
         });
-        */
-        newVehicleTypeCHB.setItems(dummy);
-        newVehicleStayTypeCHB.setItems(dummy2);
-        newVehicleColorCHB.setItems(dummy3);
-        editVehicleTypeCHB.setItems(dummy);
-        editVehicleStayTypeCHB.setItems(dummy2);
-        editVehicleColorCHB.setItems(dummy3);
+
     }
 
     public Button getDialDismissBTN() {

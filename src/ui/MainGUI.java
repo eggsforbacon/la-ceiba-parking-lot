@@ -178,6 +178,8 @@ public class MainGUI implements Initializable {
     @FXML
     void vehiclesClicked(ActionEvent event) {
         launchPane("vehicles-view.fxml","Vehículos", 1500);
+        currentSceneController.initVehiclesDB();
+        
     }
 
     /**

@@ -16,6 +16,8 @@ public class LargeVehicle extends Vehicle implements Serializable{
 
     public LargeVehicle(int typeIndicator, String model, String licensePlate, String color, Client owner, int spot, int stayIndicator, int numberOfTime) {
         super(typeIndicator, model, licensePlate, color, owner, spot, stayIndicator, numberOfTime);
+        changeStayTime();
+        calculateValueToPay();
     }
 
     /**

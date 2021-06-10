@@ -30,9 +30,12 @@ public abstract class Vehicle implements Comparable<Vehicle>, Serializable{
     protected boolean additionalTime; // para saber si se paso de la fecha acordada o no
     private DateTimeFormatter formatter; // ignoralo
     private boolean yetPay;
+    private String pay;
 
 
-    public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,int stayIndicator,int numberOfTime){
+  
+
+	public Vehicle(int typeIndicator,String model,String licensePlate,String color,Client owner,int spot,int stayIndicator,int numberOfTime){
         type = VehicleType.values()[typeIndicator];
         enabled = true;
         this.model = model;
@@ -48,6 +51,7 @@ public abstract class Vehicle implements Comparable<Vehicle>, Serializable{
         this.numberOfTime = numberOfTime;
         setYetPay(false);
         calculateExitDate();
+        pay=valueToPay+"";
         
     }
 
@@ -60,15 +64,15 @@ public abstract class Vehicle implements Comparable<Vehicle>, Serializable{
         switch (stay){
             case HORA:
                 supposedExitDate = entryDate.plusHours(numberOfTime);
-                supposedExitDateString = supposedExitDate.toString();
+                supposedExitDateString = supposedExitDate.format(formatter);
                 break;
             case DIA:
                 supposedExitDate = entryDate.plusDays(numberOfTime);
-                supposedExitDateString = supposedExitDate.toString();
+                supposedExitDateString = supposedExitDate.format(formatter);
                 break;
             case MES:
                 supposedExitDate = entryDate.plusMonths(numberOfTime);
-                supposedExitDateString = supposedExitDate.toString();
+                supposedExitDateString = supposedExitDate.format(formatter);
                 break;
 
             case INDEFINIDO:
@@ -170,8 +174,8 @@ public abstract class Vehicle implements Comparable<Vehicle>, Serializable{
     }
 
 
-    public double getValueToPay() {
-        return valueToPay;
+    public String getValueToPay() {
+        return valueToPay+"";
     }
 
     public void setValueToPay(double valueToPay) {
@@ -273,4 +277,12 @@ public abstract class Vehicle implements Comparable<Vehicle>, Serializable{
 	public void setYetPay(boolean yetPay) {
 		this.yetPay = yetPay;
 	}
+	
+	 public String getPay() {
+			return pay;
+		}
+
+	 public void setPay(String pay) {
+			this.pay = pay;
+		}
 }
