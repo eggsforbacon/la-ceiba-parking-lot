@@ -158,25 +158,58 @@ public class EmergentWindowsGUI implements Initializable {
 
     @FXML
     private TableColumn<Vehicle, Double> perHODVehicleAmountToPayCOL;
+    
+    @FXML
+    private TableView<Vehicle> monthlyVehiclesTBV;
+
+    @FXML
+    private TableColumn<Vehicle, String> monthlyVehicleTypeCOL;
+
+    @FXML
+    private TableColumn<Vehicle, String> monthlyVehiclePlateCOL;
+
+    @FXML
+    private TableColumn<Vehicle, String> MonthlyVehicleEntryCOL;
+
+    @FXML
+    private TableColumn<Vehicle, String> MonthlyVehicleExitCOL;
+
+    @FXML
+    private TableColumn<Vehicle, Double> MonthlyVehicleAmountToPayCOL;
+
 
     
-	    //Edit vehicle per hour 
+	    //Edit vehicle per hour and monthly 
 	    @FXML
 	    private Button perHODVehicleEditBTN;
 	    
-	    //Delete vehicle per hour 
+	    @FXML
+	    private Button monthlyVehicleEditBTN;
+
+	    
+	    //Delete vehicle per hour and monthly
 	    @FXML
 	    private Button perHODVehicleDeleteBTN;
 	    
-	    //vehicle per hour search txt
+	    @FXML
+	    private Button monthlyehicleDeleteBTN;
+
+	    
+	    //vehicle per hour and monthly search txt
 	    @FXML
 	    private TextField perHODVehicleTXT;
 	    
-	    //search vehicle per hour 
+	    @FXML
+	    private TextField monthlyVehicleTXT;
+	    
+	    //search vehicle per hour and monthly 
 	    @FXML
 	    private Button perHODVehicleSearchBTN;
 	    
-	    //Per hour vehicle start button
+	    @FXML
+	    private Button monthlyVehicleSearchBTN;
+	    
+	    //Per hour and monthly vehicle start button
 	    @FXML
 	    private Button perHODVehicleStartBTN;
 
@@ -606,6 +639,38 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void cancelCancelVehicle(ActionEvent event) {
         ((Stage) editVehicleTypeCHB.getScene().getWindow()).close();
+    }
+    
+    
+    @FXML
+    void perHODEditVehicle(ActionEvent event) {
+
+    }
+
+    @FXML
+    void perHODSearchVehicle(ActionEvent event) {
+
+    }
+
+    @FXML
+    void perHODVeleteVehicle(ActionEvent event) {
+
+    }
+    
+    //Monthly events
+    @FXML
+    void monthlyEditVehicle(ActionEvent event) {
+
+    }
+
+    @FXML
+    void monthlySearchVehicle(ActionEvent event) {
+
+    }
+
+    @FXML
+    void monthlyVeleteVehicle(ActionEvent event) {
+
     }
 
     /*Map*/

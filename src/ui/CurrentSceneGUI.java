@@ -130,6 +130,11 @@ public class CurrentSceneGUI implements Initializable {
 
     @FXML
     private Button userSearchBTN;
+    
+    @FXML
+    private Button perHODVehicleStartBTN;
+    
+    private Button monthlyVehicleStartBTN;
 
     /*Receipt Generation*/
 
@@ -536,28 +541,15 @@ public class CurrentSceneGUI implements Initializable {
     
     @FXML
     void monthlyVehicleStart(ActionEvent event) {
-    	launchFXML("PerHourOrDVehicles.fxml","Vehiculos diarios o por hora");
+    	launchFXML("PerHourOrDvehicles-view.fxml","Vehiculos diarios o por hora");
     }
 
     @FXML
     void perHODVehicleStart(ActionEvent event) {
-    	launchFXML("MonthlyVehicles.fxml","Vehiculos mensuales");
+    	launchFXML("Monthlyvehicles-view.fxml","Vehiculos mensuales");
     }
 
-    @FXML
-    void perHODEditVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void perHODSearchVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void perHODVeleteVehicle(ActionEvent event) {
-
-    }
+   
     
     /*Map view (Throwing this one under the rug for a little while)*/
 
