@@ -134,13 +134,13 @@ class ParkingLotTest {
 	@Test
 	void updateEmployeeUsernameTest() throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
 		parkingLotScenary2();
-		assertTrue(parkingLotTest.updateEmployeeUsername("1","name","user","pass"));
+		assertTrue(parkingLotTest.updateEmployeeUsername("1","name"));
 	}
 	
 	@Test
 	void updateEmployeePasswordTest() throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
 		parkingLotScenary2();
-		assertTrue(parkingLotTest.updateEmployeePassword("1","user","pass","new"));
+		assertTrue(parkingLotTest.updateEmployeePassword("1","new"));
 	}
 	
 	@Test
