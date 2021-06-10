@@ -70,4 +70,24 @@ public class MotorcycleSpot extends Spot implements Serializable {
     public void setNumber2(int number2) {
         this.number2 = number2;
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Vehicle getSpotVehicle1() {
+        return spotVehicle1;
+    }
+
+    public void setSpotVehicle1(Vehicle spotVehicle1) {
+        this.spotVehicle1 = spotVehicle1;
+    }
+
+    public Vehicle getSpotVehicle2() {
+        return spotVehicle2;
+    }
+
+    public void setSpotVehicle2(Vehicle spotVehicle2) {
+        this.spotVehicle2 = spotVehicle2;
+    }
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.rmi.MarshalledObject;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -771,11 +772,26 @@ public class ParkingLot implements Serializable {
     	for(int i=0;i<vehiclesPL.size();i++) {
     		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
     			vehiclesPL.get(i).setEnabled(false);
+    			cleanSpots(vehiclesPL.get(i).getSpot());
     			return true;
     		}
     	}
     	return false;
     }
+
+    public void cleanSpots(int number){
+    	if(number < 0){
+    		if(number % 2 == 0){
+				((MotorcycleSpot)plMap.spotAt(number)).setSpotVehicle1(null);
+			}
+    		else{
+				((MotorcycleSpot)plMap.spotAt(number)).setSpotVehicle2(null);
+			}
+		}
+    	else{
+			((VehicleSpot)plMap.spotAt(number)).setSpotVehicle(null);
+		}
+	}
     
     
     /**
