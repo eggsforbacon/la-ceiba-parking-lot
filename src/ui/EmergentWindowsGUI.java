@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
@@ -275,7 +274,7 @@ public class EmergentWindowsGUI implements Initializable {
         ObservableList<String> dummy = FXCollections.observableArrayList("AUTOMOVIL","MOTO","CAMION","BUS","FURGON","CAMIONETA");
         ObservableList<String> dummy2 = FXCollections.observableArrayList("HORA","DIA","MES","INDEFINIDO");
         ObservableList<String> dummy3 = FXCollections.observableArrayList("NEGRO","BLANCO","GRIS","ROJO","AZUL","AMARILLO","NARANJA","VERDE","ROSA","MORADO");
-        laCeiba.initPerHODList();
+        laCeiba.initList();
     	ObservableList<Vehicle> perHODVehicles = FXCollections.observableArrayList(laCeiba.getPerHODVehiclesPL());
     	
     	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -461,20 +460,19 @@ public class EmergentWindowsGUI implements Initializable {
                     launchError("No se pudo actualizar el nombre","Actualizacion de datos");
                 }
             }
-            if(!editUserIDTF.getText().equals("")){
-                if(!laCeiba.updateEmployeeID(user,editUserIDTF.getText())){
-                    launchError("No se pudo actualizar el ID","Actualizacion de datos");
-                }
-            }
-
             if(!editUsernameTF.getText().equals("")){
-                if(!laCeiba.updateEmployeeUsername(user,newUsernameTF.getText(),oldUsernameTF.getText(),oldPasswordPWF.getText())){
+                if(!laCeiba.updateEmployeeUsername(user,newUsernameTF.getText())){
                     launchError("No se pudo actualizar el Nombre de usuario","Actualizacion de datos");
                 }
             }
             if(!editPasswordPWF.getText().equals("")){
-                if(!laCeiba.updateEmployeePassword(user,editUsernameTF.getText(),oldPasswordPWF.getText(),editPasswordPWF.getText())){
+                if(!laCeiba.updateEmployeePassword(user,editPasswordPWF.getText())){
                     launchError("No se pudo actualizar la contrasenia","Actualizacion de datos");
+                }
+            }
+            if(!editUserIDTF.getText().equals("")){
+                if(!laCeiba.updateEmployeeID(user,editUserIDTF.getText())){
+                    launchError("No se pudo actualizar el ID","Actualizacion de datos");
                 }
             }
         }

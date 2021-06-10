@@ -378,21 +378,16 @@ public class ParkingLot implements Serializable {
     <b> post: </b>The specific employee will be updated his password<br>
 	 @param id A string who have the employee�s ID
 	 @param newUsername A string who have the employee�s new username
-	 @param pastUsername A string who have the employee's past username
-    @param password A string who have the employee�s password
     @return true or false
     */
-    public boolean updateEmployeeUsername(String id, String newUsername,String pastUsername, String password) {
-    	if(employeeVeryfierLogin(pastUsername, password)) {
-	    	if((searchEmployeeByID(id)!=null)) {
-	    		searchEmployeeByID(id).setUsername(newUsername);
-	    		return true;
-	    	}
-	    	else {
-	    		return false;
-	    	}
-    	}
-    	return false;
+    public boolean updateEmployeeUsername(String id, String newUsername) {
+		if(searchEmployeeByID(id)!=null) {
+			searchEmployeeByID(id).setUsername(newUsername);
+			return true;
+		}
+		else {
+			return false;
+		}
     }
     
     
@@ -401,21 +396,17 @@ public class ParkingLot implements Serializable {
     <b> pre: </b>Needs verify if the employee already exists and if his new password is not used by other employee<br>
     <b> post: </b>The specific employee will be updated his password<br>
 	 @param id A string who have the employee�s ID
-	 @param username A string who have the employee�s username
-	 @param password A string who have the employee�s past password
     @param newPassword A string who have the employee�s new password
     @return true or false
     */
-    public boolean updateEmployeePassword(String id, String username,String password, String newPassword) {
-    	if(employeeVeryfierLogin(username, password)) {
-    		if(!(employeeVeryfierLogin("x", newPassword))) {
-		    	if((searchEmployeeByID(id)!=null)) {
-		    		searchEmployeeByID(id).setPassword(newPassword);
-		    		return true;
-		    	}
-    		}
-    	}
-    	return false;
+    public boolean updateEmployeePassword(String id,String newPassword) {
+    	if(searchEmployeeByID(id)!=null) {
+			searchEmployeeByID(id).setPassword(newPassword);
+			return true;
+		}
+		else {
+			return false;
+		}
     }
     
     /**
@@ -671,8 +662,9 @@ public class ParkingLot implements Serializable {
 		return r;
 	}
 	
-	 public void initPerHODList(){
+	 public void initList(){
 		 initPerHODList(perHODVehiclesPL,perHourOrDailyVehicles);
+		 initMontlyList(monthlyVehiclesPL,monthlyVehicles);
 	 }
 	 
 	 private ArrayList<Vehicle> initPerHODList(ArrayList<Vehicle> a, BTPerHourOrDaily r){
@@ -696,6 +688,28 @@ public class ParkingLot implements Serializable {
 			 goForward(a,(BTPerHourOrDaily)r.getRight());
 		 }
 	 }
+
+	private ArrayList<Vehicle> initMontlyList(ArrayList<Vehicle> a, BTMonthly r){
+		if ( r!= null) {
+			if (r.getLeft()!=null) {
+				initMontlyList(a,(BTMonthly)r.getLeft());
+			}
+			else {
+				goForwardForMonthly(a,r);
+			}
+
+		}
+		return a;
+
+
+	}
+
+	private void goForwardForMonthly(ArrayList<Vehicle> a,BTMonthly r) {
+		while(r!=null) {
+			a.add(r.getBtVehicle());
+			goForwardForMonthly(a,(BTMonthly) r.getRight());
+		}
+	}
     //Binary trees finish
     
     /**
