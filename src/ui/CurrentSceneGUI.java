@@ -555,20 +555,6 @@ public class CurrentSceneGUI implements Initializable {
     
     
 
-    @FXML
-    void perHODEditVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void perHODSearchVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void perHODVeleteVehicle(ActionEvent event) {
-
-    }
     
     /*Map view (Throwing this one under the rug for a little while)*/
 

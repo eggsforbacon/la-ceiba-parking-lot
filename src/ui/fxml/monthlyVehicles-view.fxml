@@ -2,11 +2,9 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -29,11 +27,7 @@
       <VBox alignment="CENTER" minWidth="0.0" prefHeight="553.0" prefWidth="220.0" spacing="10.0" styleClass="background" BorderPane.alignment="CENTER">
          <children>
             <Separator opacity="0.0" orientation="VERTICAL" prefHeight="68.0" prefWidth="4.0" />
-            <Button fx:id="monthlyVehicleEditBTN" minWidth="0.0" mnemonicParsing="false" onAction="#monthlyEditVehicle" text="Editar" />
-            <Button fx:id="monthlyehicleDeleteBTN" minWidth="0.0" mnemonicParsing="false" onAction="#monthlyVeleteVehicle" text="Borrar" />
             <Separator opacity="0.0" orientation="VERTICAL" prefHeight="36.0" prefWidth="0.0" />
-            <TextField fx:id="monthlyVehicleTXT" maxWidth="-Infinity" prefHeight="37.0" prefWidth="180.0" />
-            <Button fx:id="monthlyVehicleSearchBTN" minWidth="0.0" mnemonicParsing="false" onAction="#monthlySearchVehicle" text="Buscar" />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
