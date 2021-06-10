@@ -120,6 +120,9 @@ public class CurrentSceneGUI implements Initializable {
     private TableColumn<Employee, String> userIDCOL = new TableColumn<>();
 
     @FXML
+    private TableColumn<Employee, String> userEnabledCOL = new TableColumn<>();
+
+    @FXML
     private Button userDeleteBTN = new Button();
 
     @FXML
@@ -612,6 +615,7 @@ public class CurrentSceneGUI implements Initializable {
         userNameCOL.setCellValueFactory(new PropertyValueFactory<>("name"));
         userUsernameCOL.setCellValueFactory(new PropertyValueFactory<>("username"));
         userIDCOL.setCellValueFactory(new PropertyValueFactory<>("id"));
+        userEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
         ObservableList<Employee> employeeList = FXCollections.observableArrayList(laCeiba.getEmployeesPL());
         usersTBV.setItems(employeeList);
         //SideBar
@@ -633,6 +637,7 @@ public class CurrentSceneGUI implements Initializable {
         userNameCOL.setCellFactory(TextFieldTableCell.forTableColumn());
         userUsernameCOL.setCellFactory(TextFieldTableCell.forTableColumn());
         userIDCOL.setCellFactory(TextFieldTableCell.forTableColumn());
+        userEnabledCOL.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     /**
@@ -650,8 +655,14 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void deleteUser(ActionEvent event) {
-        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
-        launchFXML("dialogue.fxml", "Ventana de dialogo");
+        boolean canDelete;
+        int selectedItems = usersTBV.getSelectionModel().getSelectedItems().size();
+        for (int i = 0; i < selectedItems; i++) {
+            Employee removed = usersTBV.getSelectionModel().getSelectedItems().get(i);
+            canDelete = laCeiba.disableemployeeByID(removed.getId());
+            if (!canDelete) launchError("No se pudo deshabilitar","Error");
+        }
+        initUsersDB();
     }
 
     /**
@@ -668,7 +679,21 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void SearchUser(ActionEvent event) {
-
+        int user = laCeiba.binarySearchPerson(laCeiba.getEmployeesPL(),searchUserTXT.getText());
+        if(user != -1){
+            laCeiba.singleElementToSearchEmployee(laCeiba.getEmployeesPL().get(user));
+        }
+        else{
+            laCeiba.setSearchEmployeeResults(searchUserTXT.getText());
+        }
+        ObservableList<Employee> userEmpty = FXCollections.emptyObservableList();
+        usersTBV.setItems(userEmpty);
+        userNameCOL.setCellValueFactory(new PropertyValueFactory<>("name"));
+        userUsernameCOL.setCellValueFactory(new PropertyValueFactory<>("username"));
+        userIDCOL.setCellValueFactory(new PropertyValueFactory<>("id"));
+        userEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
+        ObservableList<Employee> usersList = FXCollections.observableArrayList(laCeiba.getSearchEmployeeResults());//puto error
+        usersTBV.setItems(usersList);
     }
 
     /*Receipt Generation*/

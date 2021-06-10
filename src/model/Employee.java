@@ -34,6 +34,15 @@ public class Employee extends Person implements Comparable<Employee> {
 		this.username = username;
 	}
 
+	public String getStatus(){
+		if(state){
+			return "SI";
+		}
+		else{
+			return "NO";
+		}
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
