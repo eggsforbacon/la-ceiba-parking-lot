@@ -1,13 +1,8 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
@@ -719,6 +714,7 @@ public class ParkingLot implements Serializable {
 	
 	public void fillPerHODVehiclesPL(){
 		fillPerHODVehiclesPL(perHODVehiclesPL,perHourOrDailyVehicles);
+		fillMonthlyVehiclesPL(monthlyVehiclesPL,monthlyVehicles);
 	}
 	
 	public void fillPerHODVehiclesPL(ArrayList<Vehicle> a,BTPerHourOrDaily b){
@@ -739,6 +735,27 @@ public class ParkingLot implements Serializable {
 			
 			}
 			fillPerHODVehiclesPL(a,(BTPerHourOrDaily)b.getRight());
+		}
+	}
+	
+	public void fillMonthlyVehiclesPL(ArrayList<Vehicle> a,BTMonthly b){
+		boolean temp=false;
+		if (b != null) {
+			
+			fillMonthlyVehiclesPL(a,(BTMonthly)b.getLeft());
+			if(b.getBtVehicle()!=null) {
+				for(int i=0;i<a.size();i++) {
+					if(b.getBtVehicle()==a.get(i)) {
+						temp=true;
+					}
+				}
+				if(temp==false) {
+					b.getBtVehicle().setPay(b.getBtVehicle().getValueToPay()+"");
+					a.add(b.getBtVehicle());
+				}
+			
+			}
+			fillMonthlyVehiclesPL(a,(BTMonthly)b.getRight());
 		}
 	}
     /**
