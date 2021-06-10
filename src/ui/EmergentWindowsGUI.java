@@ -117,15 +117,9 @@ public class EmergentWindowsGUI implements Initializable {
 
     /*Vehicle Editing*/
 
-    @FXML
-    private ChoiceBox<String> editVehicleTypeCHB = new ChoiceBox<>();
 
-    @FXML
-    private TextField editVehicleNumberDaysTF = new TextField();
 
-    @FXML
-    private ChoiceBox<String> editVehicleStayTypeCHB = new ChoiceBox<>();
-
+    
     @FXML
     private TextField editVehiclePlatesTF = new TextField();
 
@@ -140,6 +134,7 @@ public class EmergentWindowsGUI implements Initializable {
     
     /*Vehicles per hour or daily*/
     //Tableview
+    
     @FXML
     private TableView<Vehicle> perHODVehiclesTBV = new TableView<>();
 
@@ -158,62 +153,32 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     private TableColumn<Vehicle, String> perHODVehiclePayCOL= new TableColumn<>();
     
+   
+
+    
     @FXML
-    private TableView<Vehicle> monthlyVehiclesTBV;
+    private TableView<Vehicle> monthlyVehiclesTBV=new TableView<>();
 
     @FXML
-    private TableColumn<Vehicle, String> monthlyVehicleTypeCOL;
+    private TableColumn<Vehicle, String> monthlyVehicleTypeCOL= new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> monthlyVehiclePlateCOL;
+    private TableColumn<Vehicle, String> monthlyVehiclePlateCOL= new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> MonthlyVehicleEntryCOL;
+    private TableColumn<Vehicle, String> MonthlyVehicleEntryCOL= new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> MonthlyVehicleExitCOL;
+    private TableColumn<Vehicle, String> MonthlyVehicleExitCOL= new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> MonthlyVehicleAmountToPayCOL;
+    private TableColumn<Vehicle, String> MonthlyVehicleAmountToPayCOL= new TableColumn<>();
 
     @FXML
     private Button monthlyVehicleStartBTN= new Button();
-
-
     
-	    //Edit vehicle per hour and monthly 
-	    @FXML
-	    private Button perHODVehicleEditBTN= new Button();
-	    
-	    @FXML
-	    private Button monthlyVehicleEditBTN;
-
-	    
-	    //Delete vehicle per hour and monthly
-	    @FXML
-	    private Button perHODVehicleDeleteBTN= new Button();
-	    
-	    @FXML
-	    private Button monthlyehicleDeleteBTN;
-
-	    
-	    //vehicle per hour and monthly search txt
-	    @FXML
-	    private TextField perHODVehicleTXT=new TextField();
-	    
-	    @FXML
-	    private TextField monthlyVehicleTXT;
-	    
-	    //search vehicle per hour and monthly 
-	    @FXML
-	    private Button perHODVehicleSearchBTN= new Button();
-	    
-	    @FXML
-	    private Button monthlyVehicleSearchBTN;
-	    
-	    //Per hour and monthly vehicle start button
-	    @FXML
-	    private Button perHODVehicleStartBTN= new Button();
+	@FXML
+	private Button perHODVehicleStartBTN= new Button();
 
 	
     
@@ -278,8 +243,6 @@ public class EmergentWindowsGUI implements Initializable {
         newVehicleTypeCHB.setItems(dummy);
         newVehicleStayTypeCHB.setItems(dummy2);
         newVehicleColorCHB.setItems(dummy3);
-        editVehicleTypeCHB.setItems(dummy);
-        editVehicleStayTypeCHB.setItems(dummy2);
         editVehicleColorCHB.setItems(dummy3);
     }
     
@@ -294,16 +257,7 @@ public class EmergentWindowsGUI implements Initializable {
     	perHODVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("supposedExitDateString"));
     	perHODVehiclePayCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
        
-        //SideBar
-        perHODVehicleDeleteBTN.setDisable(true);
-        perHODVehicleEditBTN.setDisable(true);
-        perHODVehiclesTBV.setOnMouseClicked(event -> {
-            if (! perHODVehiclesTBV.getSelectionModel().getSelectedItems().isEmpty()) {
-            	perHODVehicleDeleteBTN.setDisable(false);
-            	perHODVehicleEditBTN.setDisable(false);
-            }
-        });
-
+   
     }
     
     public void iniTableViewMonthly() {
@@ -316,16 +270,6 @@ public class EmergentWindowsGUI implements Initializable {
     	MonthlyVehicleEntryCOL.setCellValueFactory(new PropertyValueFactory<>("entryDateString"));
     	MonthlyVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("supposedExitDateString"));
     	MonthlyVehicleAmountToPayCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
-       
-        //SideBar
-    	monthlyehicleDeleteBTN.setDisable(true);
-        monthlyVehicleEditBTN.setDisable(true);
-        perHODVehiclesTBV.setOnMouseClicked(event -> {
-            if (! monthlyVehiclesTBV.getSelectionModel().getSelectedItems().isEmpty()) {
-            	monthlyehicleDeleteBTN.setDisable(false);
-            	monthlyVehicleEditBTN.setDisable(false);
-            }
-        });
 
     }
 //muerete
@@ -648,7 +592,6 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     void cancelEditClient(ActionEvent event) {
         ((Stage) editClientFullnameTF.getScene().getWindow()).close();
-
     }
 
     /**
@@ -656,7 +599,32 @@ public class EmergentWindowsGUI implements Initializable {
      * */
     @FXML
     void confirmEditVehicle(ActionEvent event) {
-        ((Stage) editVehicleTypeCHB.getScene().getWindow()).close();
+    	
+        ((Stage) editVehiclePlatesTF.getScene().getWindow()).close();
+        String plate = aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate();
+        if(!editVehiclePlatesTF.getText().equals("")){
+            if(!laCeiba.updateVehiclePlate(plate, editVehiclePlatesTF.getText())){
+                launchError("No se pudo actualizar la placa","Actualizacion de datos");
+            }
+        }
+        if(!editVehicleModelTF.getText().equals("")){
+            if(!laCeiba.updateVehicleModel(plate, editVehicleModelTF.getText())){
+                launchError("No se pudo actualizar el modelo","Actualizacion de datos");
+            }
+        }
+        if(!editVehicleColorCHB.getSelectionModel().getSelectedItem().equals("")){
+            if(!laCeiba.updateVehicleColor(plate, editVehicleColorCHB.getSelectionModel().getSelectedItem())){
+                launchError("No se pudo actualizar el color","Actualizacion de datos");
+            }
+        }
+        if(!editVehicleSeatCHB.getSelectionModel().getSelectedItem().equals("")){
+            if(!laCeiba.updateSpot(plate,Integer.parseInt(editVehicleSeatCHB.getSelectionModel().getSelectedItem()))){
+                launchError("No se pudo actualizar la posición","Actualizacion de datos");
+            }
+        }
+        aVerSiEstoFunciona.initVehiclesDB();
+        
+        
     }
 
     /**
@@ -664,40 +632,10 @@ public class EmergentWindowsGUI implements Initializable {
      * */
     @FXML
     void cancelCancelVehicle(ActionEvent event) {
-        ((Stage) editVehicleTypeCHB.getScene().getWindow()).close();
+        ((Stage) editVehiclePlatesTF.getScene().getWindow()).close();
     }
     
     
-    @FXML
-    void perHODEditVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void perHODSearchVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void perHODVeleteVehicle(ActionEvent event) {
-
-    }
-    
-    //Monthly events
-    @FXML
-    void monthlyEditVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void monthlySearchVehicle(ActionEvent event) {
-
-    }
-
-    @FXML
-    void monthlyVeleteVehicle(ActionEvent event) {
-
-    }
 
     /*Map*/
 

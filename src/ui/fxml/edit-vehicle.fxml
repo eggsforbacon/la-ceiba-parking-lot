@@ -24,19 +24,6 @@
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="16.0" prefWidth="38.0" />
                   <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
                      <children>
-                        <Label text="Editar tipo de vehículo:" />
-                        <ChoiceBox fx:id="editVehicleTypeCHB" prefWidth="150.0" stylesheets="@../css/choicebox-dark.css" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
-                     <children>
-                        <Label text="Editar tiempo de estadía:" />
-                        <TextField fx:id="editVehicleNumberDaysTF" prefHeight="37.0" prefWidth="41.0" promptText="#" />
-                        <ChoiceBox fx:id="editVehicleStayTypeCHB" prefHeight="37.0" prefWidth="118.0" stylesheets="@../css/choicebox-dark.css" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
-                     <children>
                         <Label text="Editar placa:" />
                         <TextField fx:id="editVehiclePlatesTF" prefHeight="37.0" prefWidth="100.0" promptText="AAA000" />
                         <Separator opacity="0.0" prefHeight="14.0" prefWidth="27.0" />

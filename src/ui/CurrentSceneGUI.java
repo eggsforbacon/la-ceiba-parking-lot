@@ -84,6 +84,12 @@ public class CurrentSceneGUI implements Initializable {
 
     @FXML
     private TableColumn<Vehicle, String> vehicleEnabledCOL = new TableColumn<>();
+    
+    @FXML
+    private TableColumn<Vehicle, String> vehicleColorCOL=new TableColumn<>();
+    
+    @FXML
+    private TableColumn<Vehicle, String> vehicleModelCol=new TableColumn<>();
 
     @FXML
     private Button vehicleEditBTN = new Button();
@@ -497,6 +503,8 @@ public class CurrentSceneGUI implements Initializable {
         vehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
         vehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
         vehicleEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
+        vehicleColorCOL.setCellValueFactory(new PropertyValueFactory<>("color"));
+        vehicleModelCol.setCellValueFactory(new PropertyValueFactory<>("model"));
         ObservableList<Vehicle> vehicles = FXCollections.observableArrayList(laCeiba.getVehiclesPL());
     	vehiclesTBV.setItems(vehicles);
         

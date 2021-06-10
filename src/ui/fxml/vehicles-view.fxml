@@ -14,10 +14,12 @@
    <center>
       <TableView fx:id="vehiclesTBV" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="vehicleTypeCOL" prefWidth="75.0" text="Tipo" />
-          <TableColumn fx:id="vehicleStayCOL" prefWidth="75.0" text="Estadía" />
             <TableColumn fx:id="vehiclePlateCOL" prefWidth="75.0" text="Placa" />
+            <TableColumn fx:id="vehicleModelCol" prefWidth="75.0" text="Modelo" />
+          <TableColumn fx:id="vehicleTypeCOL" prefWidth="75.0" text="Tipo" />
+            <TableColumn fx:id="vehicleColorCOL" prefWidth="75.0" text="Color" />
             <TableColumn fx:id="vehicleSlotCOL" prefWidth="75.0" text="Puesto" />
+          <TableColumn fx:id="vehicleStayCOL" prefWidth="75.0" text="Estadía" />
             <TableColumn fx:id="vehicleEnabledCOL" prefWidth="75.0" text="Habilitado" />
         </columns>
          <columnResizePolicy>

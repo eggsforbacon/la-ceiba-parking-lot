@@ -793,6 +793,20 @@ public class ParkingLot implements Serializable {
 		}
 	}
     
+    public void addSpot(int number,Vehicle vehicle) {
+    	if(number < 0){
+    		if(number % 2 == 0){
+				((MotorcycleSpot)plMap.spotAt(number)).setSpotVehicle1(vehicle);
+			}
+    		else{
+				((MotorcycleSpot)plMap.spotAt(number)).setSpotVehicle2(vehicle);
+			}
+		}
+    	else{
+			((VehicleSpot)plMap.spotAt(number)).setSpotVehicle(vehicle);
+		}
+    }
+    
     
     /**
     Update a vehicle's model searching it by It's license plate <br>
@@ -833,6 +847,29 @@ public class ParkingLot implements Serializable {
     
     
     /**
+    Update a vehicle's license plate searching it by It's past license plate <br>
+    <b> pre: </b>Needs that the vehicle is already created<br>
+    <b> post: </b>Update the license plate<br>
+    @param plate A string who have the specific vehicles license plate
+    @param newPlate A string who have the new license plate
+    @return true or false
+    */
+    public boolean updateVehiclePlate(String plate, String newPlate) {
+    	for(int i=0;i<vehiclesPL.size();i++) {
+    		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+    			if(!(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(newPlate))){
+    				vehiclesPL.get(i).setLicensePlate(newPlate);
+    				return true;
+    			}
+    		}
+    	}
+    	return false;
+    }
+    
+    
+    
+    
+    /**
     Update the spot in which is placed the vehicle <br>
     <b> pre: </b>Needs the vehicle is already created<br>
     <b> post: </b>Change the spot<br>
@@ -844,6 +881,8 @@ public class ParkingLot implements Serializable {
     	if(verifySpot(newSpot)) {
     		for(int i=0;i<vehiclesPL.size();i++) {
     			if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+    				cleanSpots(vehiclesPL.get(i).getSpot());
+    				addSpot(newSpot,vehiclesPL.get(i));
         			vehiclesPL.get(i).setSpot(newSpot);
         			return true;
         		}
