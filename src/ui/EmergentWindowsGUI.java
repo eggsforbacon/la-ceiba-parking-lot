@@ -141,22 +141,20 @@ public class EmergentWindowsGUI implements Initializable {
     /*Vehicles per hour or daily*/
     //Tableview
     @FXML
-    private TableView<Vehicle> perHODVehiclesTBV;
+    private TableView<Vehicle> perHODVehiclesTBV = new TableView<>();
 
     @FXML
-    private TableColumn<Vehicle, String> perHODVehicleTypeCOL;
+    private TableColumn<Vehicle, String> perHODVehicleTypeCOL= new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> perHODVehiclePlateCOL;
+    private TableColumn<Vehicle, String> perHODVehiclePlateCOL= new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> perHODVehicleEntryCOL;
+    private TableColumn<Vehicle, String> perHODVehicleEntryCOL= new TableColumn<>();
 
     @FXML
-    private TableColumn<Vehicle, String> perHODVehicleExitCOL;
+    private TableColumn<Vehicle, String> perHODVehicleExitCOL= new TableColumn<>();
 
-    @FXML
-    private TableColumn<Vehicle, Double> perHODVehicleAmountToPayCOL;
     
     @FXML
     private TableView<Vehicle> monthlyVehiclesTBV;
@@ -176,11 +174,13 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     private TableColumn<Vehicle, Double> MonthlyVehicleAmountToPayCOL;
 
+    private TableColumn<Vehicle, Double> perHODVehicleAmountToPayCOL= new TableColumn<>();
+
 
     
 	    //Edit vehicle per hour and monthly 
 	    @FXML
-	    private Button perHODVehicleEditBTN;
+	    private Button perHODVehicleEditBTN= new Button();
 	    
 	    @FXML
 	    private Button monthlyVehicleEditBTN;
@@ -188,7 +188,7 @@ public class EmergentWindowsGUI implements Initializable {
 	    
 	    //Delete vehicle per hour and monthly
 	    @FXML
-	    private Button perHODVehicleDeleteBTN;
+	    private Button perHODVehicleDeleteBTN= new Button();
 	    
 	    @FXML
 	    private Button monthlyehicleDeleteBTN;
@@ -196,25 +196,25 @@ public class EmergentWindowsGUI implements Initializable {
 	    
 	    //vehicle per hour and monthly search txt
 	    @FXML
-	    private TextField perHODVehicleTXT;
+	    private TextField perHODVehicleTXT=new TextField();
 	    
 	    @FXML
 	    private TextField monthlyVehicleTXT;
 	    
 	    //search vehicle per hour and monthly 
 	    @FXML
-	    private Button perHODVehicleSearchBTN;
+	    private Button perHODVehicleSearchBTN= new Button();
 	    
 	    @FXML
 	    private Button monthlyVehicleSearchBTN;
 	    
 	    //Per hour and monthly vehicle start button
 	    @FXML
-	    private Button perHODVehicleStartBTN;
+	    private Button perHODVehicleStartBTN= new Button();
 
 	/*vehicles monthly*/
     @FXML
-    private Button monthlyVehicleStartBTN;
+    private Button monthlyVehicleStartBTN= new Button();
     
     
     /*Map*/
@@ -275,8 +275,9 @@ public class EmergentWindowsGUI implements Initializable {
         ObservableList<String> dummy2 = FXCollections.observableArrayList("HORA","DIA","MES","INDEFINIDO");
         ObservableList<String> dummy3 = FXCollections.observableArrayList("NEGRO","BLANCO","GRIS","ROJO","AZUL","AMARILLO","NARANJA","VERDE","ROSA","MORADO");
         laCeiba.initList();
+        /*
     	ObservableList<Vehicle> perHODVehicles = FXCollections.observableArrayList(laCeiba.getPerHODVehiclesPL());
-    	
+
     	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
     	perHODVehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
     	perHODVehicleEntryCOL.setCellValueFactory(new PropertyValueFactory<>("entryDateString"));
@@ -292,7 +293,7 @@ public class EmergentWindowsGUI implements Initializable {
             	perHODVehicleEditBTN.setDisable(false);
             }
         });
-        
+        */
         newVehicleTypeCHB.setItems(dummy);
         newVehicleStayTypeCHB.setItems(dummy2);
         newVehicleColorCHB.setItems(dummy3);
