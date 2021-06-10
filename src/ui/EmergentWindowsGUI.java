@@ -176,7 +176,8 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     private TableColumn<Vehicle, String> MonthlyVehicleAmountToPayCOL;
 
-    
+    @FXML
+    private Button monthlyVehicleStartBTN= new Button();
 
 
     
@@ -214,9 +215,7 @@ public class EmergentWindowsGUI implements Initializable {
 	    @FXML
 	    private Button perHODVehicleStartBTN= new Button();
 
-	/*vehicles monthly*/
-    @FXML
-    private Button monthlyVehicleStartBTN= new Button();
+	
     
     
     /*Map*/
@@ -302,6 +301,29 @@ public class EmergentWindowsGUI implements Initializable {
             if (! perHODVehiclesTBV.getSelectionModel().getSelectedItems().isEmpty()) {
             	perHODVehicleDeleteBTN.setDisable(false);
             	perHODVehicleEditBTN.setDisable(false);
+            }
+        });
+
+    }
+    
+    public void iniTableViewMonthly() {
+    	laCeiba.fillPerHODVehiclesPL();
+    	 
+    	ObservableList<Vehicle> perHODVehicles = FXCollections.observableArrayList(laCeiba.getMonthlyVehiclesPL());
+    	monthlyVehiclesTBV.setItems(perHODVehicles);
+    	monthlyVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
+    	monthlyVehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
+    	MonthlyVehicleEntryCOL.setCellValueFactory(new PropertyValueFactory<>("entryDateString"));
+    	MonthlyVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("supposedExitDateString"));
+    	MonthlyVehicleAmountToPayCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
+       
+        //SideBar
+    	monthlyehicleDeleteBTN.setDisable(true);
+        monthlyVehicleEditBTN.setDisable(true);
+        perHODVehiclesTBV.setOnMouseClicked(event -> {
+            if (! monthlyVehiclesTBV.getSelectionModel().getSelectedItems().isEmpty()) {
+            	monthlyehicleDeleteBTN.setDisable(false);
+            	monthlyVehicleEditBTN.setDisable(false);
             }
         });
 

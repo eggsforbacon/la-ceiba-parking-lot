@@ -544,6 +544,7 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     void monthlyVehicleStart(ActionEvent event) {
     	launchFXML("monthlyVehicles-view.fxml","Vehiculos mensuales");
+    	emergentWindowsController.iniTableViewMonthly();
     }
 
     @FXML
