@@ -460,19 +460,19 @@ public class EmergentWindowsGUI implements Initializable {
         if(loginxd != -1 && loginxd != -2){
             ((Stage) editUserFullNameTF.getScene().getWindow()).close();
             String user = aVerSiEstoFunciona.getUsersTBV().getSelectionModel().getSelectedItem().getId();
-            if(!editUserFullNameTF.getText().equals("")){
-                if(!laCeiba.updateEmployeeName(user,editUserFullNameTF.getText())){
-                    launchError("No se pudo actualizar el nombre","Actualizacion de datos");
-                }
-            }
             if(!editUsernameTF.getText().equals("")){
-                if(!laCeiba.updateEmployeeUsername(user,newUsernameTF.getText())){
+                if(!laCeiba.updateEmployeeUsername(user,editUsernameTF.getText())){
                     launchError("No se pudo actualizar el Nombre de usuario","Actualizacion de datos");
                 }
             }
             if(!editPasswordPWF.getText().equals("")){
                 if(!laCeiba.updateEmployeePassword(user,editPasswordPWF.getText())){
                     launchError("No se pudo actualizar la contrasenia","Actualizacion de datos");
+                }
+            }
+            if(!editUserFullNameTF.getText().equals("")){
+                if(!laCeiba.updateEmployeeName(user,editUserFullNameTF.getText())){
+                    launchError("No se pudo actualizar el nombre","Actualizacion de datos");
                 }
             }
             if(!editUserIDTF.getText().equals("")){
