@@ -155,6 +155,7 @@ public class EmergentWindowsGUI implements Initializable {
     @FXML
     private TableColumn<Vehicle, String> perHODVehicleExitCOL= new TableColumn<>();
 
+    @FXML
     private TableColumn<Vehicle, String> perHODVehiclePayCOL= new TableColumn<>();
     
     @FXML
@@ -288,7 +289,7 @@ public class EmergentWindowsGUI implements Initializable {
     	 
     	ObservableList<Vehicle> perHODVehicles = FXCollections.observableArrayList(laCeiba.getPerHODVehiclesPL());
     	perHODVehiclesTBV.setItems(perHODVehicles);
-    	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
+    	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
     	perHODVehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
     	perHODVehicleEntryCOL.setCellValueFactory(new PropertyValueFactory<>("entryDateString"));
     	perHODVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("supposedExitDateString"));

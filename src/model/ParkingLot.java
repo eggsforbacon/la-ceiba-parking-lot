@@ -49,6 +49,8 @@ public class ParkingLot implements Serializable {
         firstTime = true;
 		columnsVeryfier=false;
 		searchClientResults = new ArrayList<>();
+		searchEmployeeResults = new ArrayList<>();
+		searchVehicleResults = new ArrayList<>();
     }
 
     public boolean checkFirstTime(){
