@@ -305,7 +305,7 @@ public class EmergentWindowsGUI implements Initializable {
         });
 
     }
-
+//muerete
     public Button getDialDismissBTN() {
         return dialDismissBTN;
     }
