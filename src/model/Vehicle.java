@@ -20,15 +20,15 @@ public abstract class Vehicle implements Comparable<Vehicle>, Serializable{
     protected String observations;
     protected double valueToPay; //esto se calcula llamando a calculateValue
     protected StayTime stay; //Es un enum, puede ser hora, dia, mes o indefinido
-    protected LocalDateTime entryDate; //la fecha en que entro el vehiculo
+    protected transient LocalDateTime entryDate; //la fecha en que entro el vehiculo
     protected String entryDateString; //eso pero en string
     protected int numberOfTime; // el numero de tiempo, en plan si escoge horas es 2 horas, si escoge meses es 2 meses blablabla
-    protected LocalDateTime supposedExitDate; // La fecha en que DEBERIA irse
+    protected transient LocalDateTime supposedExitDate; // La fecha en que DEBERIA irse
     protected String supposedExitDateString;
-    protected LocalDateTime actualExitDate; //La fecha en que se fue
+    protected transient LocalDateTime actualExitDate; //La fecha en que se fue
     protected String actualExitDateString;
     protected boolean additionalTime; // para saber si se paso de la fecha acordada o no
-    private DateTimeFormatter formatter; // ignoralo
+    private transient DateTimeFormatter formatter; // ignoralo
     private boolean yetPay;
     private String pay;
 

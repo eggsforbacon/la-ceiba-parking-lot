@@ -13,6 +13,7 @@ import model.Employee;
 import model.ParkingLot;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -21,6 +22,7 @@ public class Main extends Application {
 
     public Main(){
         laCeiba = new ParkingLot();
+        load();
         gui = new PreloaderGUI(laCeiba);
     }
 	/**
@@ -69,5 +71,30 @@ public class Main extends Application {
             e.printStackTrace();
         }
         Platform.exit();
+    }
+
+    private void load() {
+        ArrayList<Employee> d = new ArrayList<>();
+        try {
+            File parkingLotData = new File("data/Serializable/plain_text/data.1jz");
+            if(parkingLotData.exists()){
+                ObjectInputStream OIS = new ObjectInputStream(new FileInputStream(parkingLotData));
+                laCeiba= (ParkingLot)OIS.readObject();
+                OIS.close();
+            }
+            BufferedReader br = new BufferedReader(new FileReader("data/Serializable/plain_text/Employees.txt"));
+            String line = br.readLine();
+            while(line!=null){
+                String[] parts = line.split(";");
+                Employee a = new Employee(parts[0],parts[1],parts[2],parts[3]);
+                d.add(a);
+                line = br.readLine();
+            }
+            br.close();
+            laCeiba.setEmployeesPL(d);
+        }
+        catch(IOException|ClassNotFoundException e){
+            e.printStackTrace();
+        }
     }
 }

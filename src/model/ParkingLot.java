@@ -18,8 +18,8 @@ public class ParkingLot implements Serializable {
     private ParkingLotMap plMap;
     private BTPerHourOrDaily perHourOrDailyVehicles;
     private BTMonthly monthlyVehicles;
-    private Employee root;
-    private Employee actualEmployee;
+    transient Employee root;
+    transient Employee actualEmployee;
     private boolean firstTime;
     private boolean columnsVeryfier;
 	private ArrayList<Client> searchClientResults;

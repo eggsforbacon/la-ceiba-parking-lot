@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class Employee extends Person implements Comparable<Employee>, Serializable {
+public class Employee extends Person implements Comparable<Employee> {
 
 	private String username;
 	private String password;

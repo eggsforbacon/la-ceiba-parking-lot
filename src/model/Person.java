@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public abstract class Person {
+public abstract class Person implements Serializable {
     private String name;
     private String id;
     private LocalDateTime entryDate;

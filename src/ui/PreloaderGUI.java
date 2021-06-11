@@ -12,12 +12,14 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import model.Employee;
 import model.ParkingLot;
 import model.PreloaderBar;
 import threads.PreloaderThread;
 import java.io.*;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PreloaderGUI implements Initializable {
@@ -79,7 +81,8 @@ public class PreloaderGUI implements Initializable {
      * @throws UsernameAlreadyInUseException 
      * @throws IDAlreadyInUseException 
      * */
-    private void load() { 
+    private void load() {
+        ArrayList<Employee> d = new ArrayList<>();
     	try {
     		File parkingLotData = new File(SAVE_PATH);
     		if(parkingLotData.exists()){
@@ -91,14 +94,15 @@ public class PreloaderGUI implements Initializable {
     		String line = br.readLine();
     		while(line!=null){
     			String[] parts = line.split(";");
-    			laCeiba.addEmployee(parts[0],parts[1],parts[2],parts[4]);
+    			Employee a = new Employee(parts[0],parts[1],parts[2],parts[3]);
+    	        d.add(a);
     			line = br.readLine();
     		}
     		br.close();
-    
+            laCeiba.setEmployeesPL(d);
     	}
-    	catch(IDAlreadyInUseException|IOException|UsernameAlreadyInUseException|ClassNotFoundException e){
-    		System.out.println();
+    	catch(IOException|ClassNotFoundException e){
+    		e.printStackTrace();
     	}
     }
 
