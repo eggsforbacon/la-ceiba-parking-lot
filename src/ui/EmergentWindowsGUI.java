@@ -624,7 +624,7 @@ public class EmergentWindowsGUI implements Initializable {
                 launchError("No se pudo actualizar la placa","Actualizacion de datos");
             }
         }
-        
+        //aaaaaaaaaaa
         if(!editVehicleSeatCHB.getSelectionModel().getSelectedItem().isEmpty()){
             if(!laCeiba.updateSpot(plate,Integer.parseInt(editVehicleSeatCHB.getSelectionModel().getSelectedItem()))){
             	
