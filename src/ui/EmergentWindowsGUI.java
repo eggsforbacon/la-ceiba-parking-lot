@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -194,6 +193,9 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
     private Rectangle vehicleRCT = new Rectangle();
 
     @FXML
+    private Circle bikeCRC = new Circle();
+
+    @FXML
     private Label contextLBL = new Label();
 
     @FXML
@@ -201,24 +203,6 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
 
     @FXML
     private Label contextTypeLBL = new Label();
-
-    @FXML
-    private Label bikeTopNumberLBL = new Label();
-
-    @FXML
-    private Circle bikeTopCRC = new Circle();
-
-    @FXML
-    private Label bikeBottomNumberLBL = new Label();
-
-    @FXML
-    private Circle bikeBottomCRC = new Circle();
-
-    @FXML
-    private HBox bikeTopHBOX = new HBox();
-
-    @FXML
-    private HBox bikeBottomHBOX = new HBox();
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
@@ -689,116 +673,87 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
         if (laCeiba.verifySpot(slotNumber)) {
             slotNumberLBL.setPrefHeight(28);
             vehicleRCT.setHeight(0);
+            bikeCRC.setRadius(0);
         } else {
-            slotNumberLBL.setPrefHeight(0);
-            if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AUTOMOVIL")) {
-                vehicleRCT.setHeight(50);
-                vehicleRCT.setWidth(25);
-            } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAMION")) {
-                vehicleRCT.setHeight(50);
-                vehicleRCT.setWidth(35);
-            } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BUS")) {
-                vehicleRCT.setHeight(60);
-                vehicleRCT.setWidth(25);
-            } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("FURGON")) {
-                vehicleRCT.setHeight(40);
-                vehicleRCT.setWidth(25);
-            } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAMIONETA")) {
-                vehicleRCT.setHeight(55);
-                vehicleRCT.setWidth(30);
+            if (slotNumber >= 0) {
+                slotNumberLBL.setPrefHeight(0);
+                if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AUTOMOVIL")) {
+                    vehicleRCT.setHeight(50);
+                    vehicleRCT.setWidth(25);
+                } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAMION")) {
+                    vehicleRCT.setHeight(50);
+                    vehicleRCT.setWidth(35);
+                } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BUS")) {
+                    vehicleRCT.setHeight(60);
+                    vehicleRCT.setWidth(25);
+                } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("FURGON")) {
+                    vehicleRCT.setHeight(40);
+                    vehicleRCT.setWidth(25);
+                } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAMIONETA")) {
+                    vehicleRCT.setHeight(55);
+                    vehicleRCT.setWidth(30);
+                }
+
+                if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("NEGRO"))
+                    vehicleRCT.setFill(Paint.valueOf(BLACK));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BLANCO"))
+                    vehicleRCT.setFill(Paint.valueOf(WHITE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("ROJO"))
+                    vehicleRCT.setFill(Paint.valueOf(RED));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("GRIS"))
+                    vehicleRCT.setFill(Paint.valueOf(GRAY));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AZUL"))
+                    vehicleRCT.setFill(Paint.valueOf(BLUE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CELESTE"))
+                    vehicleRCT.setFill(Paint.valueOf(LIGHT_BLUE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AMARILLO"))
+                    vehicleRCT.setFill(Paint.valueOf(YELLOW));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("NARANJA"))
+                    vehicleRCT.setFill(Paint.valueOf(ORANGE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("VERDE"))
+                    vehicleRCT.setFill(Paint.valueOf(GREEN));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("ROSA"))
+                    vehicleRCT.setFill(Paint.valueOf(PINK));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("MORADO"))
+                    vehicleRCT.setFill(Paint.valueOf(PURPLE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAFE"))
+                    vehicleRCT.setFill(Paint.valueOf(BROWN));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BEIGE"))
+                    vehicleRCT.setFill(Paint.valueOf(BEIGE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("OTRO"))
+                    vehicleRCT.setFill(Paint.valueOf(OTHER));
+            } else {
+                bikeCRC.setRadius(10);
+                if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("NEGRO"))
+                    bikeCRC.setFill(Paint.valueOf(BLACK));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BLANCO"))
+                    bikeCRC.setFill(Paint.valueOf(WHITE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("ROJO"))
+                    bikeCRC.setFill(Paint.valueOf(RED));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("GRIS"))
+                    bikeCRC.setFill(Paint.valueOf(GRAY));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AZUL"))
+                    bikeCRC.setFill(Paint.valueOf(BLUE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CELESTE"))
+                    bikeCRC.setFill(Paint.valueOf(LIGHT_BLUE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AMARILLO"))
+                    bikeCRC.setFill(Paint.valueOf(YELLOW));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("NARANJA"))
+                    bikeCRC.setFill(Paint.valueOf(ORANGE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("VERDE"))
+                    bikeCRC.setFill(Paint.valueOf(GREEN));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("ROSA"))
+                    bikeCRC.setFill(Paint.valueOf(PINK));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("MORADO"))
+                    bikeCRC.setFill(Paint.valueOf(PURPLE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAFE"))
+                    bikeCRC.setFill(Paint.valueOf(BROWN));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BEIGE"))
+                    bikeCRC.setFill(Paint.valueOf(BEIGE));
+                else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("OTRO"))
+                    bikeCRC.setFill(Paint.valueOf(OTHER));
             }
-
-            if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("NEGRO")) vehicleRCT.setFill(Paint.valueOf(BLACK));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BLANCO")) vehicleRCT.setFill(Paint.valueOf(WHITE));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("ROJO")) vehicleRCT.setFill(Paint.valueOf(RED));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("GRIS")) vehicleRCT.setFill(Paint.valueOf(GRAY));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AZUL")) vehicleRCT.setFill(Paint.valueOf(BLUE));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CELESTE")) vehicleRCT.setFill(Paint.valueOf(LIGHT_BLUE));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AMARILLO")) vehicleRCT.setFill(Paint.valueOf(YELLOW));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("NARANJA")) vehicleRCT.setFill(Paint.valueOf(ORANGE));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("VERDE")) vehicleRCT.setFill(Paint.valueOf(GREEN));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("ROSA")) vehicleRCT.setFill(Paint.valueOf(PINK));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("MORADO")) vehicleRCT.setFill(Paint.valueOf(PURPLE));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAFE")) vehicleRCT.setFill(Paint.valueOf(BROWN));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BEIGE")) vehicleRCT.setFill(Paint.valueOf(BEIGE));
-            else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("OTRO")) vehicleRCT.setFill(Paint.valueOf(OTHER));
-            //I enjoyed writing this as much as you enjoyed reading it (:
         }
-    }
-
-    /**
-     * Loads a bike slot. <br>
-     * @param slotNumberTop The number of the top slot. <br>
-     * @param slotNumberBottom The number of the bottom slot. <br>
-     * */
-    public void loadMotorSlot(int slotNumberTop, int slotNumberBottom) {
-        bikeTopHBOX.setId("bikes");
-        bikeBottomHBOX.setId("bikes");
-        bikeTopNumberLBL.setText(String.valueOf(slotNumberTop));
-        bikeBottomNumberLBL.setText(String.valueOf(slotNumberBottom));
-        if (!laCeiba.verifySpot(slotNumberTop)) {
-            bikeTopCRC.setRadius(10);
-            if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("NEGRO"))
-                bikeTopCRC.setFill(Paint.valueOf(BLACK));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("BLANCO"))
-                bikeTopCRC.setFill(Paint.valueOf(WHITE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("ROJO"))
-                bikeTopCRC.setFill(Paint.valueOf(RED));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("GRIS"))
-                bikeTopCRC.setFill(Paint.valueOf(GRAY));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("AZUL"))
-                bikeTopCRC.setFill(Paint.valueOf(BLUE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("CELESTE"))
-                bikeTopCRC.setFill(Paint.valueOf(LIGHT_BLUE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("AMARILLO"))
-                bikeTopCRC.setFill(Paint.valueOf(YELLOW));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("NARANJA"))
-                bikeTopCRC.setFill(Paint.valueOf(ORANGE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("VERDE"))
-                bikeTopCRC.setFill(Paint.valueOf(GREEN));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("ROSA"))
-                bikeTopCRC.setFill(Paint.valueOf(PINK));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("MORADO"))
-                bikeTopCRC.setFill(Paint.valueOf(PURPLE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("CAFE"))
-                bikeTopCRC.setFill(Paint.valueOf(BROWN));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("BEIGE"))
-                bikeTopCRC.setFill(Paint.valueOf(BEIGE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberTop).getInformation().contains("OTRO"))
-                bikeTopCRC.setFill(Paint.valueOf(OTHER));
-        } if (laCeiba.verifySpot(slotNumberBottom)) {
-            bikeBottomCRC.setRadius(10);
-            if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("NEGRO"))
-                bikeBottomCRC.setFill(Paint.valueOf(BLACK));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("BLANCO"))
-                bikeBottomCRC.setFill(Paint.valueOf(WHITE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("ROJO"))
-                bikeBottomCRC.setFill(Paint.valueOf(RED));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("GRIS"))
-                bikeBottomCRC.setFill(Paint.valueOf(GRAY));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("AZUL"))
-                bikeBottomCRC.setFill(Paint.valueOf(BLUE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("CELESTE"))
-                bikeBottomCRC.setFill(Paint.valueOf(LIGHT_BLUE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("AMARILLO"))
-                bikeBottomCRC.setFill(Paint.valueOf(YELLOW));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("NARANJA"))
-                bikeBottomCRC.setFill(Paint.valueOf(ORANGE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("VERDE"))
-                bikeBottomCRC.setFill(Paint.valueOf(GREEN));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("ROSA"))
-                bikeBottomCRC.setFill(Paint.valueOf(PINK));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("MORADO"))
-                bikeBottomCRC.setFill(Paint.valueOf(PURPLE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("CAFE"))
-                bikeBottomCRC.setFill(Paint.valueOf(BROWN));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("BEIGE"))
-                bikeBottomCRC.setFill(Paint.valueOf(BEIGE));
-            else if (laCeiba.getPlMap().spotAt(slotNumberBottom).getInformation().contains("OTRO"))
-                bikeBottomCRC.setFill(Paint.valueOf(OTHER));
-        }
-
-        //This is, I shit you not, the third time i copy this (:
     }
 
     /**
