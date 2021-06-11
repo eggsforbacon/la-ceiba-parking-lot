@@ -848,6 +848,7 @@ public class ParkingLot implements Serializable {
     public boolean updateVehiclePlate(String plate, String newPlate) {
     	for(int i=0;i<vehiclesPL.size();i++) {
     		if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
+    			
     			if(!(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(newPlate))){
     				vehiclesPL.get(i).setLicensePlate(newPlate);
     				return true;
@@ -871,6 +872,7 @@ public class ParkingLot implements Serializable {
     public boolean updateSpot(String plate,int newSpot) {
     	if(verifySpot(newSpot)) {
     		for(int i=0;i<vehiclesPL.size();i++) {
+    			
     			if(vehiclesPL.get(i).getLicensePlate().equalsIgnoreCase(plate)) {
     				cleanSpots(vehiclesPL.get(i).getSpot());
     				addSpot(newSpot,vehiclesPL.get(i));

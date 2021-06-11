@@ -570,14 +570,16 @@ public class EmergentWindowsGUI implements Initializable {
                 launchError("No se pudo actualizar el nombre","Actualizacion de datos");
             }
         }
-        if(!editClientIDTF.getText().equals("")){
-            if(!laCeiba.updateClientID(user,editClientIDTF.getText())){
-                launchError("No se pudo actualizar el ID","Actualizacion de datos");
-            }
-        }
+       
         if(!editClientPhoneTF.getText().equals("")){
             if(!laCeiba.updateClientCellNumber(user,editClientPhoneTF.getText())){
                 launchError("No se pudo actualizar el numero de telefono","Actualizacion de datos");
+            }
+        }
+        
+        if(!editClientIDTF.getText().equals("")){
+            if(!laCeiba.updateClientID(user,editClientIDTF.getText())){
+                launchError("No se pudo actualizar el ID","Actualizacion de datos");
             }
         }
         aVerSiEstoFunciona.initClientsDB();
@@ -597,31 +599,78 @@ public class EmergentWindowsGUI implements Initializable {
      * */
     @FXML
     void confirmEditVehicle(ActionEvent event) {
-
-        ((Stage) editVehiclePlatesTF.getScene().getWindow()).close();
+    	
+        ((Stage) editVehicleModelTF.getScene().getWindow()).close();
+        
         String plate = aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate();
-        if(!editVehiclePlatesTF.getText().equals("")){
-            if(!laCeiba.updateVehiclePlate(plate, editVehiclePlatesTF.getText())){
-                launchError("No se pudo actualizar la placa","Actualizacion de datos");
-            }
-        }
+        verifyEditSpotVehicle(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem());
+        
+        
         if(!editVehicleModelTF.getText().equals("")){
             if(!laCeiba.updateVehicleModel(plate, editVehicleModelTF.getText())){
                 launchError("No se pudo actualizar el modelo","Actualizacion de datos");
             }
         }
+  
         if(!editVehicleColorCHB.getSelectionModel().getSelectedItem().isEmpty()){
             if(!laCeiba.updateVehicleColor(plate, editVehicleColorCHB.getSelectionModel().getSelectedItem())){
                 launchError("No se pudo actualizar el color","Actualizacion de datos");
             }
         }
-        if(!editVehicleSeatCHB.getSelectionModel().getSelectedItem().equals("")){
+        
+        if(!editVehiclePlatesTF.getText().equals("")){
+        	 System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO1111111111111111111111111111111");
+            if(!laCeiba.updateVehiclePlate(plate, editVehiclePlatesTF.getText())){
+                launchError("No se pudo actualizar la placa","Actualizacion de datos");
+            }
+        }
+        
+        if(!editVehicleSeatCHB.getSelectionModel().getSelectedItem().isEmpty()){
             if(!laCeiba.updateSpot(plate,Integer.parseInt(editVehicleSeatCHB.getSelectionModel().getSelectedItem()))){
+            	
                 launchError("No se pudo actualizar la posicion","Actualizacion de datos");
             }
         }
+      
+        
+        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
+        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
+        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
+        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
+        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
+        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
         aVerSiEstoFunciona.initVehiclesDB();
 
+    }
+   
+    public void verifyEditSpotVehicle(Vehicle a) {
+    	switch(a.getType()) {
+    	case MOTO:
+    		  ObservableList<String> temp = FXCollections.observableArrayList("-10","-9","-8","-7","-6","-5","-4","-3","-2","-1");
+    		  editVehicleSeatCHB.setItems(temp);
+    	break;
+    	case AUTOMOVIL:
+    		ObservableList<String> temp2 = FXCollections.observableArrayList("2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20");
+  			 editVehicleSeatCHB.setItems(temp2);
+    	break;	
+    	case CAMION:
+    	case FURGON:
+    	case CAMIONETA:
+    	case BUS:
+    		ObservableList<String> temp3 = FXCollections.observableArrayList("21","22","23","24","25","26","27","28","29");
+ 			 editVehicleSeatCHB.setItems(temp3);
+ 		break;
+ 		default:
+ 			System.out.println("si llega a aparecer este mensaje beso al monitor");
+    		
+    	}
     }
 
     /**
