@@ -891,7 +891,7 @@ public class ParkingLot implements Serializable {
     <b> pre: </b><br>
     <b> post: </b>Check if the place is vacate<br>
     @param spot int with the place's number. <br>
-    @return true if the spot is in use, or false if not. <br>
+    @return false if the spot is in use, or true if not. <br>
     */
     public boolean verifySpot(int spot) {
     	for(int i=0;i<vehiclesPL.size();i++) {

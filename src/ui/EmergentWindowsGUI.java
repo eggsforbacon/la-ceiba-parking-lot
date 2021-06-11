@@ -622,7 +622,6 @@ public class EmergentWindowsGUI implements Initializable {
         }
         aVerSiEstoFunciona.initVehiclesDB();
 
-
     }
 
     /**
@@ -659,7 +658,7 @@ public class EmergentWindowsGUI implements Initializable {
         int LABEL = 0;
         int slotNumber = Integer.parseInt(((Label) ((VBox) event.getSource()).getChildren().get(LABEL)).getText()); //And all it took were two casts and a parse :D -z
         launchFXML("Puesto " + slotNumber);
-        contextSlotLBL.setText("Puesto N°" + slotNumber);
+        contextSlotLBL.setText("Puesto #" + slotNumber);
         System.out.println(slotNumber);
         contextColorLBL.setText(laCeiba.getPlMap().spotAt(slotNumber).getInformation());
     }
