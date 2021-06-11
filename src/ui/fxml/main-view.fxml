@@ -27,7 +27,6 @@
             <Button fx:id="mgMapButton" mnemonicParsing="false" onAction="#mapClicked" text="Mapa" />
             <Separator opacity="0.0" orientation="VERTICAL" prefHeight="47.0" prefWidth="8.0" />
             <Button fx:id="mgUsersButton" mnemonicParsing="false" onAction="#usersClicked" text="Usuarios" />
-            <Button fx:id="mgReceiptButton" mnemonicParsing="false" onAction="#receiptsClicked" text="Facturación" />
             <Button fx:id="mgReportsButton" mnemonicParsing="false" onAction="#reportsClicked" text="Reportes" />
             <Separator opacity="0.0" orientation="VERTICAL" prefHeight="22.0" prefWidth="5.0" />
             <Button fx:id="mgExitButton" mnemonicParsing="false" onAction="#exitClicked" text="Salir" />

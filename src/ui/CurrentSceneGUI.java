@@ -534,8 +534,16 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void deleteVehicle(ActionEvent event) {
-        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
-        launchFXML("dialogue.fxml", "Ventana de dialogo");
+       // emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
+        //launchFXML("dialogue.fxml", "Ventana de dialogo");
+        boolean canDelete;
+        int selectedItems = vehiclesTBV.getSelectionModel().getSelectedItems().size();
+        for (int i = 0; i < selectedItems; i++) {
+            Vehicle removed = vehiclesTBV.getSelectionModel().getSelectedItems().get(i);
+            canDelete = laCeiba.disableVehicleByPlate(removed.getLicensePlate());
+            if (!canDelete) launchError("No se pudo deshabilitar","Error");
+        }
+        m.vehiclesClicked(event);
     }
 
     /**

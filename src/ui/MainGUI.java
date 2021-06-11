@@ -42,8 +42,8 @@ public class MainGUI implements Initializable {
     @FXML
     private Button mgUsersButton = new Button();
 
-    @FXML
-    private Button mgReceiptButton = new Button();
+
+
 
     @FXML
     private Button mgReportsButton = new Button();
@@ -102,7 +102,6 @@ public class MainGUI implements Initializable {
      */
     public void toggleButtons(boolean state) {
         mgUsersButton.setDisable(state);
-        mgReceiptButton.setDisable(state);
         mgMapButton.setDisable(state);
         mgReportsButton.setDisable(state);
         mgClientsButton.setDisable(state);
@@ -202,14 +201,8 @@ public class MainGUI implements Initializable {
         launchPane("user-view.fxml","Usuarios", 1500);
     }
 
-    /**
-     * Called when the option for receipts is clicked on "main-view.fxml" <br>
-     * */
-    @FXML
-    void receiptsClicked(ActionEvent event) {
-        ((Stage) mainPane.getScene().getWindow()).setResizable(true);
-        launchPane("receipt-gen.fxml", "Facturacion", 772);
-    }
+
+
 
     /**
      * Called when the option for reports is clicked on "main-view.fxml" <br>
@@ -243,4 +236,5 @@ public class MainGUI implements Initializable {
     public CurrentSceneGUI getCurrentSceneController() {
         return currentSceneController;
     }
+
 }

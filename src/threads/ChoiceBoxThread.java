@@ -32,7 +32,7 @@ public class ChoiceBoxThread extends Thread{
                     break;
                 case "MOTO":
                     if(choice != "MOTO"){
-                        dummy = FXCollections.observableArrayList(-9,-8,-7,-6,-5,-4,-3,-2,-1);
+                        dummy = FXCollections.observableArrayList(-10,-9,-8,-7,-6,-5,-4,-3,-2,-1);
                         e.getNewVehicleSeatCHB().setItems(dummy);
                         choice = "MOTO";
                     }
