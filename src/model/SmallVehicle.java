@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class SmallVehicle extends Vehicle{
+public class SmallVehicle extends Vehicle implements ChildrenVehicleMethods{
     private final static int HOURVALUE = 2000;
     private final static int TWOHOURSVALUE = 3000;
     private final static int ADITIONALVALUE = 500;
@@ -106,7 +106,7 @@ public class SmallVehicle extends Vehicle{
      <b> post: </b>The specific value is given<br>
      @return minimumValue
      */
-    private double calculateValueAdditionalTime(){
+    public double calculateValueAdditionalTime(){
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime tempDateTime = LocalDateTime.from(entryDate);
         long months = tempDateTime.until(now, ChronoUnit.MONTHS );
@@ -123,7 +123,7 @@ public class SmallVehicle extends Vehicle{
      <b> post: </b>The specific value is given<<br>
      @return value
      */
-    private double calculateMinimunValue(long months,long days,long hours){
+    public double calculateMinimunValue(long months,long days,long hours){
         double value = 0;
         value += months * MONTHVALUE;
         value += days*DAYVALUE;

@@ -107,7 +107,7 @@ public class LargeVehicle extends Vehicle implements Serializable{
      <b> post: </b>The specific value is given<br>
      @return minimumValue
      */
-    private double calculateValueAdditionalTime(){
+    public double calculateValueAdditionalTime(){
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime tempDateTime = LocalDateTime.from(entryDate);
         long months = tempDateTime.until(now, ChronoUnit.MONTHS );
@@ -124,7 +124,7 @@ public class LargeVehicle extends Vehicle implements Serializable{
      <b> post: </b>The specific value is given<<br>
      @return value
      */
-    private double calculateMinimunValue(long months,long days,long hours){
+    public double calculateMinimunValue(long months,long days,long hours){
         double value = 0;
         value += months * MONTHVALUE;
         value += days*DAYVALUE;

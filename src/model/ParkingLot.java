@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+
 public class ParkingLot implements Serializable {
     
 	private static final long serialVersionUID = 1L;
 	private  ArrayList<Client> clientsPL;
     private ArrayList<Vehicle> vehiclesPL;
-    private ArrayList<Employee> employeesPL;
+	transient ArrayList<Employee> employeesPL;
     private ParkingLotMap plMap;
     private BTPerHourOrDaily perHourOrDailyVehicles;
     private BTMonthly monthlyVehicles;

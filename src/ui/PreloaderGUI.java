@@ -24,7 +24,8 @@ public class PreloaderGUI implements Initializable {
     private final PreloaderBar bar;
     boolean isLoaded;
     MainGUI controller;
-    ParkingLot laCeiba = new ParkingLot();
+    ParkingLot laCeiba;
+
     private static final String SAVE_PATH = "data/Serializable/plain_text/data.1jz";
 
     @FXML
@@ -39,7 +40,8 @@ public class PreloaderGUI implements Initializable {
     /**
      * The main constructor of the class. <br>
      * */
-    public PreloaderGUI() {
+    public PreloaderGUI(ParkingLot laCeiba) {
+        this.laCeiba = laCeiba;
         bar = new PreloaderBar();
         isLoaded = false;
         controller = new MainGUI(laCeiba);

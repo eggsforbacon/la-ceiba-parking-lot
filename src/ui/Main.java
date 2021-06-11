@@ -9,14 +9,20 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Employee;
 import model.ParkingLot;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Objects;
 
 public class Main extends Application {
-ParkingLot laCeiba;
+    PreloaderGUI gui;
+    ParkingLot laCeiba;
+
+    public Main(){
+        laCeiba = new ParkingLot();
+        gui = new PreloaderGUI(laCeiba);
+    }
 	/**
      * @param args The arguments for the compiler and the JavaVM. <br>
      * */
@@ -29,7 +35,9 @@ ParkingLot laCeiba;
      * */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/splash-screen.fxml")));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/splash-screen.fxml"));
+        fxmlLoader.setController(gui);
+        Parent root = fxmlLoader.load();
         Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
         primaryStage.getIcons().add(icon);
         Scene scene = new Scene(root);
@@ -37,6 +45,7 @@ ParkingLot laCeiba;
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
+
     }
 
     /**
@@ -45,12 +54,17 @@ ParkingLot laCeiba;
     @Override
     public void stop() {
         try {
-            laCeiba.plainTextSaveEmployees();
-        } catch (FileNotFoundException |NullPointerException e) {
+            PrintWriter pw = new PrintWriter("data/Serializable/plain_text/Employees.txt");
+            for(int i=0;i<laCeiba.getEmployeesPL().size();i++){
+                Employee employee = laCeiba.getEmployeesPL().get(i);
+                pw.println(employee.getName()+";"+employee.getId()+";"+employee.getUsername()+";"+employee.getPassword());
+            }
+            pw.close();
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/Serializable/plain_text/data.1jz"));
+            oos.writeObject(laCeiba);
+            oos.close();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        try {
-            laCeiba.saveParkingLot();
         } catch (IOException e) {
             e.printStackTrace();
         }
