@@ -577,6 +577,7 @@ public class ParkingLot implements Serializable {
 					break;
 				default:
 			}
+			addSpot(toAdd.getSpot(),toAdd);
     	}
     	return check;
     }
