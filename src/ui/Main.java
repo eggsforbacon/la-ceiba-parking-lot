@@ -9,11 +9,14 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.ParkingLot;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
-
+ParkingLot laCeiba;
 	/**
      * @param args The arguments for the compiler and the JavaVM. <br>
      * */
@@ -41,7 +44,16 @@ public class Main extends Application {
      * */
     @Override
     public void stop() {
-
+        try {
+            laCeiba.plainTextSaveEmployees();
+        } catch (FileNotFoundException |NullPointerException e) {
+            e.printStackTrace();
+        }
+        try {
+            laCeiba.saveParkingLot();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Platform.exit();
     }
 }
