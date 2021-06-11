@@ -1,5 +1,7 @@
 package ui;
 
+import exceptions.IDAlreadyInUseException;
+import exceptions.UsernameAlreadyInUseException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,19 +15,10 @@ import javafx.stage.Stage;
 import model.ParkingLot;
 import model.PreloaderBar;
 import threads.PreloaderThread;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
-
-import exceptions.IDAlreadyInUseException;
-import exceptions.UsernameAlreadyInUseException;
 
 public class PreloaderGUI implements Initializable {
     private final PreloaderBar bar;
@@ -72,7 +65,7 @@ public class PreloaderGUI implements Initializable {
         DecimalFormat format = new DecimalFormat("#.00");
         progressLBL.setText("Cargando... (" + format.format(percentage) + "% )");
         if (percentage >= 65.0 && !isLoaded) {
-            Thread.sleep(1200);
+            //Thread.sleep(1200);
             load(); // <- Might have a loading exception here
             isLoaded = true;
         }

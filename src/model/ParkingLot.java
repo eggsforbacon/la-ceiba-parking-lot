@@ -1,21 +1,12 @@
 package model;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
-import java.io.Serializable;
-import java.rmi.MarshalledObject;
+import exceptions.*;
+
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import exceptions.NotAllowedException;
-import exceptions.NameAlreadyInUseException;
-import exceptions.IDAlreadyInUseException;
-import exceptions.PasswordAlreadyInUseException;
-import exceptions.UsernameAlreadyInUseException;
 
 public class ParkingLot implements Serializable {
     
@@ -899,8 +890,8 @@ public class ParkingLot implements Serializable {
     Verify if the new spot is already in use <br>
     <b> pre: </b><br>
     <b> post: </b>Check if the place is vacate<br>
-    @param spot int with the place's number
-    @return true or false
+    @param spot int with the place's number. <br>
+    @return true if the spot is in use, or false if not. <br>
     */
     public boolean verifySpot(int spot) {
     	for(int i=0;i<vehiclesPL.size();i++) {

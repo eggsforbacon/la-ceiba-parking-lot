@@ -23,10 +23,7 @@ import model.Client;
 import model.Employee;
 import model.ParkingLot;
 import model.Vehicle;
-import model.BTPerHourOrDaily;
-import model.BTMonthly;
 import threads.ChoiceBoxThread;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -135,10 +132,10 @@ public class CurrentSceneGUI implements Initializable {
     private Button userEditBTN = new Button();
     
     @FXML
-    private TextField searchUserTXT;
+    private TextField searchUserTXT = new TextField();
 
     @FXML
-    private Button userSearchBTN;
+    private Button userSearchBTN = new Button();
 
     /*Receipt Generation*/
 
@@ -167,8 +164,8 @@ public class CurrentSceneGUI implements Initializable {
     private Label receiptVehicleMonthlyLBL = new Label();
 
     @FXML
-
     private Label receiptDaysMonthlyLBL = new Label();
+
     @FXML
     private VBox dailyVBox = new VBox();
 
@@ -195,9 +192,6 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     private DatePicker reportFromDTP = new DatePicker();
 
-
-
-
     @FXML
     private DatePicker reportToDTP = new DatePicker();
 
@@ -210,6 +204,7 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     private ChoiceBox<String> reportTypeCHB = new ChoiceBox<>();
 
+    /*Dialogue Pane*/
 
     @FXML
     private Label dialMessageLBL;
@@ -218,7 +213,7 @@ public class CurrentSceneGUI implements Initializable {
     private Button dialDismissBTN;
 
     @FXML
-    private TextField clientSearchTXT;
+    private TextField clientSearchTXT = new TextField();
 
     /*------------------------ CLASS ATTRIBUTES ------------------------*/
 
@@ -261,18 +256,26 @@ public class CurrentSceneGUI implements Initializable {
      * */
     void currentInit() {
         switch (currentScene) {
+            case "Iniciar Sesion":
+                //initLogin();
+                break;
             case "Clientes":
                 initClientsDB();
                 break;
-            case "Vehículos":
+            case "Vehiculos":
                 initVehiclesDB();
                 break;
             case "Mapa":
                 initMap();
                 break;
-            case "Users":
+            case "Usuarios":
                 initUsersDB();
                 break;
+            case "Facturacion":
+                //initReceipts();
+                break;
+            case "Reportes y Extractos":
+                //initReports();
             default:
                 break;
         }
@@ -357,17 +360,17 @@ public class CurrentSceneGUI implements Initializable {
     @FXML
     void loginClicked(ActionEvent event) {
         int user = laCeiba.login(loginUserTF.getText(),loginPassPWF.getText());
-        switch (user){
+        switch (user) {
             case -1:
-                launchError("Datos errÃ³neos o incompletos. Intente de nuevo.","Mensaje de Inicio de SesiÃ³n");
+                launchError("Datos erroneos o incompletos. Intente de nuevo.", "Mensaje de Inicio de Sesion");
                 break;
             case -2:
-                launchError("El uso del usuario root no es recomendado. Proceder con precauciÃ³n.","Mensaje de Inicio de SesiÃ³n");
+                launchError("El uso del usuario root no es recomendado. Proceder con precaucion.", "Mensaje de Inicio de Sesion");
                 loginSuccessful = true;
                 break;
             default:
                 laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(user));
-                launchError("Bienvenido " + laCeiba.getActualEmployee().getName(),"Mensaje de Inicio de SesiÃ³n");
+                launchError("Bienvenido " + laCeiba.getActualEmployee().getName(), "Mensaje de Inicio de Sesion");
                 loginSuccessful = true;
                 break;
         }
@@ -480,18 +483,8 @@ public class CurrentSceneGUI implements Initializable {
         ObservableList<Client> clientsList = FXCollections.observableArrayList(laCeiba.getSearchClientResults());//puto error
         clientsTBV.setItems(clientsList);
     }
-   
-    /*Vehicles DB*/
 
     /*Vehicles DB*/
-    
-    /**
-     * Toggles the monthly view on and off. <br>
-     * */
-    @FXML
-    void toggleMonthlyVehicles(ActionEvent event) {
-    	
-    }
 
     /**
      * Initializes the vehicles database. <br>
@@ -542,29 +535,25 @@ public class CurrentSceneGUI implements Initializable {
         launchFXML("edit-vehicle.fxml", "Editar VehÃ­culo");
     }
 
-    
-    
-    
-    
-
-    
-    
+    /**
+     * Launches the monthly view of the vehicle database. <br>
+     * */
     @FXML
     void monthlyVehicleStart(ActionEvent event) {
     	launchFXML("monthlyVehicles-view.fxml","Vehiculos mensuales");
     	emergentWindowsController.iniTableViewMonthly();
     }
 
+    /**
+     * Launches the hourly/daily view of the vehicle database. <br>
+     * */
     @FXML
     void perHODVehicleStart(ActionEvent event) {
     	launchFXML("perHODVehicle-view.fxml","Vehiculos diarios o por hora");
     	emergentWindowsController.iniTableViewPerHOD();
     }
-    
-    
 
-    
-    /*Map view (Throwing this one under the rug for a little while)*/
+    /*Map view <- this one has been the bane of my existence.*/
 
     /**
      * Initializes the map view. <br>
@@ -572,7 +561,8 @@ public class CurrentSceneGUI implements Initializable {
     void initMap() {
         for (int i = 10; i > -11; i--) {
             if (i == 1) i -= 2;
-            //emergentWindowsController.loadSlot(i, "upper", !laCeiba.getPlMap().spotAt(i).getInformation().equals("Aun no hay información de un vehiculo en este puesto\n"));
+            System.out.println("top");
+            emergentWindowsController.loadSlot(i, "upper");
             Parent slot = loadFxml("parking-slot.fxml");
             if (i == 2) {
                 Separator sep = new Separator(Orientation.HORIZONTAL);
@@ -585,7 +575,8 @@ public class CurrentSceneGUI implements Initializable {
         topHBOX.getChildren().remove(topHBOX.getChildren().size() - 1);
 
         for (int i = 9; i < 16; i++) {
-            //emergentWindowsController.loadSlot(i, "bottom", !laCeiba.getPlMap().spotAt(i).getInformation().equals("Aun no hay información de un vehiculo en este puesto\n"));
+            System.out.println("mid");
+            emergentWindowsController.loadSlot(i, "mid");
             Parent slot = loadFxml("parking-slot.fxml");
             sideVBOX.getChildren().add(slot);
         }
@@ -593,7 +584,8 @@ public class CurrentSceneGUI implements Initializable {
         sideVBOX.getChildren().remove(sideVBOX.getChildren().size() - 1);
 
         for (int i = 15; i < 30; i++) {
-            //emergentWindowsController.loadSlot(i, "mid", !laCeiba.getPlMap().spotAt(i).getInformation().equals("Aun no hay información de un vehiculo en este puesto\n"));
+            System.out.println("bottom");
+            emergentWindowsController.loadSlot(i, "bottom");
             Parent slot = loadFxml("parking-slot.fxml");
             bottomHBOX.getChildren().add(slot);
         }

@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.ParkingLot;
 import threads.LoginThread;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -161,7 +160,8 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void loginClicked(ActionEvent event) {
-        launchPane("login.fxml","Iniciar Sesión", 704);
+        ((Stage) mainPane.getScene().getWindow()).setResizable(true);
+        launchPane("login.fxml","Iniciar Sesion", 704);
     }
 
     /**
@@ -169,6 +169,7 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void clientsClicked(ActionEvent event) {
+        ((Stage) mainPane.getScene().getWindow()).setResizable(true);
         launchPane("clients-view.fxml","Clientes", 1500);
     }
 
@@ -177,9 +178,9 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void vehiclesClicked(ActionEvent event) {
-        launchPane("vehicles-view.fxml","Vehículos", 1500);
-        currentSceneController.initVehiclesDB();
-        
+        ((Stage) mainPane.getScene().getWindow()).setResizable(true);
+        launchPane("vehicles-view.fxml","Vehiculos", 1500);
+        //currentSceneController.initVehiclesDB();
     }
 
     /**
@@ -187,6 +188,8 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void mapClicked(ActionEvent event) {
+        ((Stage) mainPane.getScene().getWindow()).setResizable(false);
+        ((Stage) mainPane.getScene().getWindow()).setMaximized(true);
         launchPane("map-view.fxml","Mapa", 1500);
     }
 
@@ -195,7 +198,8 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void usersClicked(ActionEvent event) {
-        launchPane("user-view.fxml","Users", 1500);
+        ((Stage) mainPane.getScene().getWindow()).setResizable(true);
+        launchPane("user-view.fxml","Usuarios", 1500);
     }
 
     /**
@@ -203,7 +207,8 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void receiptsClicked(ActionEvent event) {
-        launchPane("receipt-gen.fxml", "Facturación", 772);
+        ((Stage) mainPane.getScene().getWindow()).setResizable(true);
+        launchPane("receipt-gen.fxml", "Facturacion", 772);
     }
 
     /**
@@ -211,6 +216,7 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void reportsClicked(ActionEvent event) {
+        ((Stage) mainPane.getScene().getWindow()).setResizable(true);
         launchPane("reports.fxml", "Reportes y Extractos", 1132);
     }
 
@@ -231,6 +237,9 @@ public class MainGUI implements Initializable {
         this.CURRENT_PREF_MIN = CURRENT_PREF_MIN;
     }
 
+    /**
+     * @return The object of the secondary fxml controller class. <br>
+     * */
     public CurrentSceneGUI getCurrentSceneController() {
         return currentSceneController;
     }

@@ -119,7 +119,7 @@ public class EmergentWindowsGUI implements Initializable {
 
 
 
-    
+
     @FXML
     private TextField editVehiclePlatesTF = new TextField();
 
@@ -134,7 +134,7 @@ public class EmergentWindowsGUI implements Initializable {
     
     /*Vehicles per hour or daily*/
     //Tableview
-    
+
     @FXML
     private TableView<Vehicle> perHODVehiclesTBV = new TableView<>();
 
@@ -152,9 +152,6 @@ public class EmergentWindowsGUI implements Initializable {
 
     @FXML
     private TableColumn<Vehicle, String> perHODVehiclePayCOL= new TableColumn<>();
-    
-   
-
     
     @FXML
     private TableView<Vehicle> monthlyVehiclesTBV=new TableView<>();
@@ -180,9 +177,6 @@ public class EmergentWindowsGUI implements Initializable {
 	@FXML
 	private Button perHODVehicleStartBTN= new Button();
 
-	
-    
-    
     /*Map*/
 
     @FXML
@@ -245,10 +239,12 @@ public class EmergentWindowsGUI implements Initializable {
         newVehicleColorCHB.setItems(dummy3);
         editVehicleColorCHB.setItems(dummy3);
     }
-    
+
+    /**
+     * Initializes the filtered view of the vehicles database showing only the data that has their stay set to "HOUR" or "DAY". <br>
+     * */
     public void iniTableViewPerHOD() {
     	laCeiba.fillPerHODVehiclesPL();
-    	 
     	ObservableList<Vehicle> perHODVehicles = FXCollections.observableArrayList(laCeiba.getPerHODVehiclesPL());
     	perHODVehiclesTBV.setItems(perHODVehicles);
     	perHODVehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -256,10 +252,11 @@ public class EmergentWindowsGUI implements Initializable {
     	perHODVehicleEntryCOL.setCellValueFactory(new PropertyValueFactory<>("entryDateString"));
     	perHODVehicleExitCOL.setCellValueFactory(new PropertyValueFactory<>("supposedExitDateString"));
     	perHODVehiclePayCOL.setCellValueFactory(new PropertyValueFactory<>("valueToPay"));
-       
-   
     }
-    
+
+    /**
+     * Initializes the filtered view of the vehicles database showing only the data that has their stay set to "MONTH". <br>
+     * */
     public void iniTableViewMonthly() {
     	laCeiba.fillPerHODVehiclesPL();
     	 
@@ -310,12 +307,11 @@ public class EmergentWindowsGUI implements Initializable {
     }
 
     /**
-     * Launches an fxml file. <br>
-     * @param fxml The name of the fxml file. @NotNull.<br>
+     * Launches the context fxml file. <br>
      * @param title The title of the window to be launched. @NotEmpty.<br>
      * */
-    private void launchFXML(String fxml, String title) {
-        Parent root = loadFxml(fxml);
+    private void launchFXML(String title) {
+        Parent root = loadFxml();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -328,15 +324,14 @@ public class EmergentWindowsGUI implements Initializable {
     }
 
     /**
-     * Loads an fxml file into a Parent object. <br>
-     * @param fxml The title of the window to be launched. @NotEmpty @NotNull.<br>*/
-    private Parent loadFxml(String fxml) {
+     * Loads an fxml file into a Parent object. <br>  */
+    private Parent loadFxml() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxml));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/context-map.fxml"));
             fxmlLoader.setController(this);
             return fxmlLoader.load();
         } catch (Exception e) {
-            System.out.println("Can't load requested document right now.\nRequested document: \"" + fxml + "\"");
+            System.out.println("Can't load requested document right now.\nRequested document: \"" + "context-map.fxml" + "\"");
             throw new NullPointerException("Document is null");
         }
     }
@@ -359,6 +354,8 @@ public class EmergentWindowsGUI implements Initializable {
             errorPane.setTitle(title);
             dialMessageLBL.setText(message);
             dialMessageLBL.setStyle("\n-fx-font-style: italic;");
+            Image icon = new Image(String.valueOf(getClass().getResource("resources/icon.png")));
+            errorPane.getIcons().add(icon);
             errorPane.setResizable(false);
             errorPane.show();
         } catch (Exception e) {
@@ -395,14 +392,13 @@ public class EmergentWindowsGUI implements Initializable {
         boolean check = false;
         try{
             check = laCeiba.addEmployee(newUserFullNameTF.getText(),newUserIDTF.getText(),newUsernameTF.getText(),newPasswordPWF.getText());
-        }catch ( IDAlreadyInUseException | UsernameAlreadyInUseException e){
+        } catch ( IDAlreadyInUseException | UsernameAlreadyInUseException e){
             launchError("Uno de los atributos escogidos ya esta en uso. Intente de nuevo","Creacion de empleado");
         }
 
-        if(check){
+        if (check) {
             launchError("Creado correctamente","Creacion de empleado");
-        }
-        else{
+        } else {
             launchError("Error. El empleado no pudo ser agregado","Creacion de empleado");
         }
         aVerSiEstoFunciona.initUsersDB();
@@ -510,9 +506,9 @@ public class EmergentWindowsGUI implements Initializable {
      * @param cb The string value to be translated. @NotNull. Must belong to the <b>VehicleType</b> enum. <br><br>
      * */
     public int translateVehicleType(String cb){
-        switch (cb){
+        switch (cb) {
             case "AUTOMOVIL":
-                return  0;
+                return 0;
             case "MOTO":
                 return 1;
             case "CAMION":
@@ -533,9 +529,9 @@ public class EmergentWindowsGUI implements Initializable {
      * @param cb The string value to be translated. @NotNull. Must belong to the <b>StayTime</b> enum. <br><br>
      * */
     public int translateVehicleStay(String cb){
-        switch (cb){
+        switch (cb) {
             case "HORA":
-                return  0;
+                return 0;
             case "DIA":
                 return 1;
             case "MES":
@@ -547,6 +543,8 @@ public class EmergentWindowsGUI implements Initializable {
         }
     }
 
+    /**
+     * @return The boolean state of the login credentials. <br>*/
     public boolean getSuccessful(){
         return successful;
     }
@@ -599,7 +597,7 @@ public class EmergentWindowsGUI implements Initializable {
      * */
     @FXML
     void confirmEditVehicle(ActionEvent event) {
-    	
+
         ((Stage) editVehiclePlatesTF.getScene().getWindow()).close();
         String plate = aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate();
         if(!editVehiclePlatesTF.getText().equals("")){
@@ -612,19 +610,19 @@ public class EmergentWindowsGUI implements Initializable {
                 launchError("No se pudo actualizar el modelo","Actualizacion de datos");
             }
         }
-        if(!editVehicleColorCHB.getSelectionModel().getSelectedItem().equals("")){
+        if(!editVehicleColorCHB.getSelectionModel().getSelectedItem().isEmpty()){
             if(!laCeiba.updateVehicleColor(plate, editVehicleColorCHB.getSelectionModel().getSelectedItem())){
                 launchError("No se pudo actualizar el color","Actualizacion de datos");
             }
         }
         if(!editVehicleSeatCHB.getSelectionModel().getSelectedItem().equals("")){
             if(!laCeiba.updateSpot(plate,Integer.parseInt(editVehicleSeatCHB.getSelectionModel().getSelectedItem()))){
-                launchError("No se pudo actualizar la posición","Actualizacion de datos");
+                launchError("No se pudo actualizar la posicion","Actualizacion de datos");
             }
         }
         aVerSiEstoFunciona.initVehiclesDB();
-        
-        
+
+
     }
 
     /**
@@ -634,21 +632,20 @@ public class EmergentWindowsGUI implements Initializable {
     void cancelCancelVehicle(ActionEvent event) {
         ((Stage) editVehiclePlatesTF.getScene().getWindow()).close();
     }
-    
-    
 
     /*Map*/
 
     /**
      * Loads a parking slot. <br>
      * @param slotNumber The number of the slot. Negative numbers represent bike slots. <br>
-     * @param slotId The css id this slot will have. Must be either <b>upper</b>, <b>mid</b> or <b>bottom</b>.
-     * @param busy The state of the slot. Whether there is or isn't a vehicle in it. */
-    public void loadSlot(int slotNumber, String slotId, boolean busy) {
-        slotNumberLBL.setText(String.valueOf(slotNumber));
+     * @param slotId The css id this slot will have. Must be either <b>upper</b>, <b>mid</b> or <b>bottom</b>. */
+    public void loadSlot(int slotNumber, String slotId) {
         slotBDP.setId(slotId);
-        if (busy) {
-            slotNumberLBL.setText("");
+        slotNumberLBL.setText(String.valueOf(slotNumber));
+        if (laCeiba.verifySpot(slotNumber)) {
+            slotNumberLBL.setPrefHeight(28);
+            vehicleRCT.setHeight(0);
+        } else {
             slotNumberLBL.setPrefHeight(0);
             vehicleRCT.setHeight(50);
         }
@@ -661,7 +658,7 @@ public class EmergentWindowsGUI implements Initializable {
     void showSlotInformation(ContextMenuEvent event) {
         int LABEL = 0;
         int slotNumber = Integer.parseInt(((Label) ((VBox) event.getSource()).getChildren().get(LABEL)).getText()); //And all it took were two casts and a parse :D -z
-        launchFXML("context-map.fxml", "Puesto " + slotNumber);
+        launchFXML("Puesto " + slotNumber);
         contextSlotLBL.setText("Puesto NÂ°" + slotNumber);
         System.out.println(slotNumber);
         contextColorLBL.setText(laCeiba.getPlMap().spotAt(slotNumber).getInformation());

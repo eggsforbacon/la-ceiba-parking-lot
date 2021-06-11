@@ -9,8 +9,8 @@
    <center>
       <VBox fx:id="slotBDP" alignment="CENTER" onContextMenuRequested="#showSlotInformation" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="slotNumberLBL" styleClass="slot" text="N" />
-            <Rectangle fx:id="vehicleRCT" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="slotNumberLBL" alignment="CENTER" prefHeight="28.0" prefWidth="28.0" styleClass="slot" text="N" textAlignment="CENTER" />
+            <Rectangle fx:id="vehicleRCT" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" width="25.0" />
          </children>
       </VBox>
    </center>

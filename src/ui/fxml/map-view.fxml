@@ -21,7 +21,7 @@
          <left>
             <VBox fx:id="sideVBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="120.0" styleClass="slot-zone" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets bottom="55.0" top="55.0" />
+                  <Insets bottom="50.0" top="50.0" />
                </BorderPane.margin>
             </VBox>
          </left>

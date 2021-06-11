@@ -221,6 +221,7 @@ public class ParkingLotMap implements Serializable {
         System.out.println(leftColumn.getActualPosition());
         return spotAt(index,leftColumn);
     }
+
     /**
      Look for a spot that has the number entered <br>
      <b> pre: </b><br>
