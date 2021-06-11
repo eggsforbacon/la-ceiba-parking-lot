@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="100.0" styleClass="parking-slot">
+         <center>
+            <HBox fx:id="bikeTopHBOX" alignment="CENTER" onContextMenuRequested="#showSlotInformation" spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="bikeTopNumberLBL" alignment="CENTER" prefHeight="28.0" styleClass="slot" text="N1" textAlignment="CENTER" />
+                  <Circle fx:id="bikeTopCRC" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="100.0" styleClass="parking-slot">
+         <center>
+            <HBox fx:id="bikeBottomHBOX" alignment="CENTER" onContextMenuRequested="#showSlotInformation" spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="bikeBottomNumberLBL" alignment="CENTER" prefHeight="28.0" styleClass="slot" text="N2" textAlignment="CENTER" />
+                  <Circle fx:id="bikeBottomCRC" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</VBox>

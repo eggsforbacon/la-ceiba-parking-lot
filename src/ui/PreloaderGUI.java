@@ -65,7 +65,6 @@ public class PreloaderGUI implements Initializable {
         DecimalFormat format = new DecimalFormat("#.00");
         progressLBL.setText("Cargando... (" + format.format(percentage) + "% )");
         if (percentage >= 65.0 && !isLoaded) {
-            //Thread.sleep(1200);
             load(); // <- Might have a loading exception here
             isLoaded = true;
         }

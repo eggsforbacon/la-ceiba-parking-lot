@@ -565,14 +565,22 @@ public class CurrentSceneGUI implements Initializable {
      * */
     void initMap() {
         for (int i = 10; i > -11; i--) {
-            if (i == 1) i -= 2;
-            System.out.println("top");
-            emergentWindowsController.loadSlot(i, "upper");
-            Parent slot = loadFxml("parking-slot.fxml");
-            if (i == 2) {
-                Separator sep = new Separator(Orientation.HORIZONTAL);
-                sep.setOpacity(1);
-                topHBOX.getChildren().add(sep);
+            Parent slot;
+            if (i >= 0) {
+                if (i == 1) i -= 2;
+                System.out.println("top");
+                emergentWindowsController.loadSlot(i, "upper");
+                slot = loadFxml("parking-slot.fxml");
+                if (i == 2) {
+                    Separator sep = new Separator(Orientation.HORIZONTAL);
+                    sep.setOpacity(1);
+                    topHBOX.getChildren().add(sep);
+                }
+            } else {
+                System.out.println("topneg");
+                emergentWindowsController.loadMotorSlot(i, i + 1);
+                i++;
+                slot = loadFxml("bike-slot.fxml");
             }
             topHBOX.getChildren().add(slot);
         }
