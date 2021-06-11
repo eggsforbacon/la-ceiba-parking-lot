@@ -25,7 +25,7 @@ public class ChoiceBoxThread extends Thread{
             switch (e.getVehicleType()){
                 case "AUTOMOVIL":
                     if(choice != "AUTOMOVIL"){
-                        dummy = FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+                        dummy = FXCollections.observableArrayList(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
                         e.getNewVehicleSeatCHB().setItems(dummy);
                         choice = "AUTOMOVIL";
                     }

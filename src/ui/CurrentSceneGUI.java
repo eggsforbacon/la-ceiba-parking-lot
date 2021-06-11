@@ -229,6 +229,7 @@ public class CurrentSceneGUI implements Initializable {
     String currentScene;
     ArrayList<Thread> threads = new ArrayList<>();
     int iLoveThisNumber = 1;
+    MainGUI m;
 
     /*---------------------------- METHODS -----------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -239,10 +240,11 @@ public class CurrentSceneGUI implements Initializable {
      * Principal constructor of the class. <br>
      * @param laCeiba The object in which the apps info will be stored. <br>
      * */
-    public CurrentSceneGUI(ParkingLot laCeiba) {
+    public CurrentSceneGUI(ParkingLot laCeiba,MainGUI m) {
         this.laCeiba = laCeiba;
-        emergentWindowsController = new EmergentWindowsGUI(laCeiba,this);
+        emergentWindowsController = new EmergentWindowsGUI(laCeiba,this,m);
         currentScene = "none";
+        this.m = m;
     }
 
     /**
@@ -495,7 +497,7 @@ public class CurrentSceneGUI implements Initializable {
      * Initializes the vehicles database. <br>
      * */
     void initVehiclesDB() {
-    	
+
         vehicleSlotCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
         vehicleStayCOL.setCellValueFactory(new PropertyValueFactory<>("stay"));
         vehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -537,7 +539,8 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void editVehicle(ActionEvent event) {
-        launchFXML("edit-vehicle.fxml", "Editar VehÃ­culo");
+        launchFXML("edit-vehicle.fxml", "Editar Vehiculo");
+        emergentWindowsController.verifyEditSpotVehicle(vehiclesTBV.getSelectionModel().getSelectedItem());
     }
 
     /**
