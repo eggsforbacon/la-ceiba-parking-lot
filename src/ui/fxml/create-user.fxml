@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="622.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="552.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -21,28 +21,27 @@
                <children>
                   <Label styleClass="subtitle-2" text="Nuevo Usuario:" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="48.0" prefWidth="561.0" spacing="10.0">
                      <children>
                         <Label text="Nombre Completo:" />
                         <TextField fx:id="newUserFullNameTF" prefHeight="37.0" prefWidth="183.0" promptText="(Nombres, Apellidos)" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="561.0" spacing="10.0">
                      <children>
                         <Label text="Username:" />
                         <TextField fx:id="newUsernameTF" prefHeight="37.0" prefWidth="162.0" promptText="awesome_name1" />
-                        <Separator opacity="0.0" prefHeight="19.0" prefWidth="20.0" />
                         <Label text="Contraseña:" />
                         <PasswordField fx:id="newPasswordPWF" prefHeight="37.0" prefWidth="161.0" promptText="(8 dígitos mínimo)" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="47.0" prefWidth="561.0" spacing="10.0">
                      <children>
                         <Label text="Número de Identificación" />
                         <TextField fx:id="newUserIDTF" prefHeight="37.0" prefWidth="152.0" promptText="1234567890" />
                      </children>
                   </HBox>
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="66.0" prefWidth="6.0" />
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="39.0" prefWidth="7.0" />
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="564.0" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#createNewUser" text="Crear" />

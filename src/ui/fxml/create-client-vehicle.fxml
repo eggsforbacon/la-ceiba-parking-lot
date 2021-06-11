@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="584.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="469.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -20,20 +20,20 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="564.0" styleClass="foreground" VBox.vgrow="ALWAYS">
                <children>
                   <Label styleClass="subtitle-2" text="Nuevo Cliente:" />
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="16.0" prefWidth="38.0" />
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="6.0" prefWidth="38.0" />
+                  <HBox alignment="CENTER" prefHeight="46.0" prefWidth="490.0" spacing="10.0">
                      <children>
                         <Label text="Nombre Completo:" />
                         <TextField fx:id="newClientFullnameTF" prefHeight="37.0" prefWidth="198.0" promptText="(Nombres, Apellidos)" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="48.0" prefWidth="490.0" spacing="10.0">
                      <children>
                         <Label text="Número Telefónico:" />
                         <TextField fx:id="newClientPhoneTF" prefHeight="37.0" prefWidth="152.0" promptText="312 4567890" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="47.0" prefWidth="490.0" spacing="10.0">
                      <children>
                         <Label text="Número de Identificación" />
                         <TextField fx:id="newClientIDTF" prefHeight="37.0" prefWidth="152.0" promptText="1234567890" />
@@ -45,21 +45,21 @@
                      </VBox.margin>
                   </Separator>
                   <Label styleClass="subtitle-2" text="Nuevo Vehículo:" />
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="16.0" prefWidth="38.0" />
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="5.0" prefWidth="38.0" />
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="490.0" spacing="10.0">
                      <children>
                         <Label text="Tipo de Vehículo:" />
                         <ChoiceBox fx:id="newVehicleTypeCHB" prefWidth="150.0" stylesheets="@../css/choicebox-dark.css" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="490.0" spacing="10.0">
                      <children>
                         <Label text="Tiempo de Estadía:" />
                         <TextField fx:id="newVehicleNumberDaysTF" prefHeight="37.0" prefWidth="41.0" promptText="#" />
                         <ChoiceBox fx:id="newVehicleStayTypeCHB" prefHeight="37.0" prefWidth="118.0" stylesheets="@../css/choicebox-dark.css" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="490.0" spacing="10.0">
                      <children>
                         <Label text="Placa:" />
                         <TextField fx:id="newVehiclePlatesTF" prefHeight="37.0" prefWidth="100.0" promptText="AAA000" />
@@ -68,7 +68,7 @@
                         <TextField fx:id="newVehicleModelTF" prefHeight="37.0" prefWidth="150.0" promptText="(Marca, Modelo)" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="490.0" spacing="10.0">
                      <children>
                         <Label text="Color:" />
                         <ChoiceBox fx:id="newVehicleColorCHB" prefHeight="37.0" prefWidth="132.0" stylesheets="@../css/choicebox-dark.css" />
@@ -77,7 +77,7 @@
                         <ChoiceBox fx:id="newVehicleSeatCHB" prefHeight="37.0" prefWidth="76.0" stylesheets="@../css/choicebox-dark.css" />
                      </children>
                   </HBox>
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="91.0" prefWidth="6.0" />
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="23.0" prefWidth="0.0" />
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="564.0" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#createNewClient" text="Crear" />

@@ -678,20 +678,20 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
             if (slotNumber >= 0) {
                 slotNumberLBL.setPrefHeight(0);
                 if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("AUTOMOVIL")) {
-                    vehicleRCT.setHeight(50);
-                    vehicleRCT.setWidth(25);
+                    vehicleRCT.setHeight(30);
+                    vehicleRCT.setWidth(15);
                 } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAMION")) {
-                    vehicleRCT.setHeight(50);
-                    vehicleRCT.setWidth(35);
+                    vehicleRCT.setHeight(30);
+                    vehicleRCT.setWidth(10);
                 } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("BUS")) {
-                    vehicleRCT.setHeight(60);
-                    vehicleRCT.setWidth(25);
-                } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("FURGON")) {
                     vehicleRCT.setHeight(40);
-                    vehicleRCT.setWidth(25);
+                    vehicleRCT.setWidth(15);
+                } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("FURGON")) {
+                    vehicleRCT.setHeight(35);
+                    vehicleRCT.setWidth(15);
                 } else if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("CAMIONETA")) {
-                    vehicleRCT.setHeight(55);
-                    vehicleRCT.setWidth(30);
+                    vehicleRCT.setHeight(45);
+                    vehicleRCT.setWidth(20);
                 }
 
                 if (laCeiba.getPlMap().spotAt(slotNumber).getInformation().contains("NEGRO"))

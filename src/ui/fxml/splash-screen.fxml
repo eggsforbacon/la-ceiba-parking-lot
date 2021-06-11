@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane fx:id="splashPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="720.0" styleClass="preloader" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="splashPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="620.0" styleClass="preloader" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <Label id="preloader-lbl" fx:id="progressLBL" text="Cargando..." BorderPane.alignment="BOTTOM_CENTER">
          <BorderPane.margin>
@@ -16,7 +16,7 @@
    <bottom>
       <Pane prefHeight="20.0" prefWidth="720.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="10.0" layoutX="3.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" styleClass="p-bar" width="697.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="10.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" styleClass="p-bar" width="604.0" />
             <Rectangle fx:id="pBarRCT" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="3.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" styleClass="p-bar-track" />
          </children>
       </Pane>

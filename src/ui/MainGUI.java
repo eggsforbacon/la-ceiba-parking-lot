@@ -187,7 +187,7 @@ public class MainGUI implements Initializable {
      * */
     @FXML
     void mapClicked(ActionEvent event) {
-        ((Stage) mainPane.getScene().getWindow()).setResizable(false);
+        ((Stage) mainPane.getScene().getWindow()).setResizable(true);
         ((Stage) mainPane.getScene().getWindow()).setMaximized(true);
         launchPane("map-view.fxml","Mapa", 1500);
     }

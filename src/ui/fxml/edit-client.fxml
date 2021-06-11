@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="584.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="448.0" style="-fx-background-radius: 0;" styleClass="background" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -20,25 +20,24 @@
                <children>
                   <Label styleClass="subtitle-2" text="Editar Cliente:" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="16.0" prefWidth="38.0" />
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="510.0" spacing="10.0">
                      <children>
                         <Label text="Editar nombre completo:" />
                         <TextField fx:id="editClientFullnameTF" prefHeight="37.0" prefWidth="186.0" promptText="(Nombres, Apellidos)" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="43.0" prefWidth="510.0" spacing="10.0">
                      <children>
                         <Label text="Editar número telefónico:" />
                         <TextField fx:id="editClientPhoneTF" prefHeight="37.0" prefWidth="152.0" promptText="312 4567890" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="62.0" prefWidth="564.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="510.0" spacing="10.0">
                      <children>
                         <Label text="Editar número de identificación:" />
                         <TextField fx:id="editClientIDTF" prefHeight="37.0" prefWidth="152.0" promptText="1234567890" />
                      </children>
                   </HBox>
-                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="16.0" prefWidth="38.0" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="62.0" prefWidth="6.0" />
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="564.0" spacing="10.0">
                      <children>

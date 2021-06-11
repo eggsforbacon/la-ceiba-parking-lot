@@ -15,7 +15,7 @@
 
 .root {
 	-fx-font-family: "Helvetica";
-	-fx-font-size: 16px;
+	-fx-font-size: 14px;
 	-fx-font-weight: bold;
 }
 
@@ -24,7 +24,7 @@
 	-fx-border-width: 8px;
 	-fx-background-image: url("../resources/splash.png");
 	-fx-border-radius: 15;
-	-fx-background-size: 712, 414;
+	-fx-background-size: 612, 314;
 	-fx-background-radius: 18;
   	-fx-background-repeat: no-repeat;
   	-fx-background-position: center;
@@ -44,14 +44,14 @@
 }
 
 #preloader-lbl {
-	-fx-font-size: 18px;
+	-fx-font-size: 16px;
 	-fx-text-fill: -TEXT-ICONS;
 	-fx-font-weight: bold;
 }
 
 .button {
-	-fx-pref-width: 128px;
-	-fx-pref-height: 8px;
+	-fx-pref-width: 112px;
+	-fx-pref-height: 6px;
 	-fx-background-color: -ACCENT-COLOR;
 	-fx-text-fill: -TEXT-ICONS;
 	-fx-background-radius: 15px;
@@ -69,7 +69,7 @@
 }
 
 .app-title {
-	-fx-font-size: 25px;
+	-fx-font-size: 21px;
 }
 
 .dial-lbl {
@@ -78,12 +78,12 @@
 }
 
 .subtitle {
-	-fx-font-size: 19px;
+	-fx-font-size: 18px;
 	-fx-font-style: italic;
 }
 
 .subtitle-2 {
-	-fx-font-size: 19px;
+	-fx-font-size: 17px;
 }
 
 .vbox {
@@ -91,7 +91,7 @@
 }
 
 .current-scene {
-	-fx-background-color: #BDE1F2;
+	-fx-background-color: -SECONDARY-ACCENT-COLOR;
 }
 
 .text-field {
