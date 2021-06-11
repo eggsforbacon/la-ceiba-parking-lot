@@ -180,7 +180,7 @@ public class MainGUI implements Initializable {
     void vehiclesClicked(ActionEvent event) {
         ((Stage) mainPane.getScene().getWindow()).setResizable(true);
         launchPane("vehicles-view.fxml","Vehiculos", 1500);
-        //currentSceneController.initVehiclesDB();
+       //currentSceneController.initVehiclesDB();
     }
 
     /**

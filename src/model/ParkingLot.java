@@ -1388,7 +1388,7 @@ public class ParkingLot implements Serializable {
 	 @param toAdd A Client that is what was found
 	 */
 	public void singleElementToSearchClient(Client toAdd){
-		searchClientResults = null;
+		searchClientResults = new ArrayList<>();
 		searchClientResults.add(toAdd);
 	}
 
@@ -1399,7 +1399,7 @@ public class ParkingLot implements Serializable {
 	 @param toAdd A Vehicle that is what was found
 	 */
 	public void singleElementToSearchVehicle(Vehicle toAdd){
-		searchVehicleResults = null;
+		searchVehicleResults = new ArrayList<>();
 		searchVehicleResults.add(toAdd);
 	}
 
@@ -1410,7 +1410,7 @@ public class ParkingLot implements Serializable {
 	 @param toAdd An employee that is what was found
 	 */
 	public void singleElementToSearchEmployee(Employee toAdd){
-		searchEmployeeResults = null;
+		searchEmployeeResults = new ArrayList<>();
 		searchEmployeeResults.add(toAdd);
 	}
 

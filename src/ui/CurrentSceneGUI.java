@@ -98,8 +98,12 @@ public class CurrentSceneGUI implements Initializable {
 
     @FXML
     private Button vehicleDeleteBTN = new Button();
-    
-   
+
+    @FXML
+    private TextField searchVehicleTXT=new TextField();
+
+    @FXML
+    private Button vehicleSearchBTN= new Button();
     
     
     /*Map view*/
@@ -690,6 +694,31 @@ public class CurrentSceneGUI implements Initializable {
         userEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
         ObservableList<Employee> usersList = FXCollections.observableArrayList(laCeiba.getSearchEmployeeResults());//puto error
         usersTBV.setItems(usersList);
+    }
+
+    /**
+     * Shows a list of matching entries from the query introduced in the userSearchTXT box on action.<br>
+     * */
+    @FXML
+    void SearchVehicle(ActionEvent event) {
+       int user = laCeiba.binarySearchVehicle(laCeiba.getVehiclesPL(),searchVehicleTXT.getText());
+        if(user != -1){
+            laCeiba.singleElementToSearchVehicle(laCeiba.getVehiclesPL().get(user));
+        }
+        else{
+            laCeiba.setSearchVehicleResults(searchVehicleTXT.getText());
+        }
+        ObservableList<Vehicle> vehicleEmpty = FXCollections.emptyObservableList();
+        vehiclesTBV.setItems(vehicleEmpty);
+        vehicleTypeCOL.setCellValueFactory(new PropertyValueFactory<>("type"));
+        vehicleStayCOL.setCellValueFactory(new PropertyValueFactory<>("stay"));
+        vehiclePlateCOL.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
+        vehicleSlotCOL.setCellValueFactory(new PropertyValueFactory<>("spot"));
+        vehicleEnabledCOL.setCellValueFactory(new PropertyValueFactory<>("status"));
+        vehicleColorCOL.setCellValueFactory(new PropertyValueFactory<>("color"));
+        vehicleModelCol.setCellValueFactory(new PropertyValueFactory<>("model"));
+        ObservableList<Vehicle> vehiclesList = FXCollections.observableArrayList(laCeiba.getSearchVehicleResults());//puto error
+        vehiclesTBV.setItems(vehiclesList);
     }
 
     /*Receipt Generation*/
