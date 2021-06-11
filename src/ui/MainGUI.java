@@ -70,7 +70,7 @@ public class MainGUI implements Initializable {
      * */
     public MainGUI(ParkingLot laCeiba) {
         this.laCeiba = laCeiba;
-        currentSceneController = new CurrentSceneGUI(laCeiba);
+        currentSceneController = new CurrentSceneGUI(laCeiba,this);
     }
 
     /**

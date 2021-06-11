@@ -225,6 +225,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
     ParkingLot laCeiba;
     boolean successful = false;
     CurrentSceneGUI aVerSiEstoFunciona;
+    MainGUI m;
 
     /*------------------------ METHODS ------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -235,9 +236,10 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
      * Principal constructor of the class. <br>
      *
      * @param laCeiba The object in which the apps info will be stored. <br>*/
-    public EmergentWindowsGUI(ParkingLot laCeiba,CurrentSceneGUI aVerSiEstoFunciona) {
+    public EmergentWindowsGUI(ParkingLot laCeiba,CurrentSceneGUI aVerSiEstoFunciona,MainGUI m) {
         this.laCeiba = laCeiba;
         this.aVerSiEstoFunciona = aVerSiEstoFunciona;
+        this.m = m;
     }
 
     /**
@@ -415,7 +417,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
         } else {
             launchError("Error. El empleado no pudo ser agregado","Creacion de empleado");
         }
-        aVerSiEstoFunciona.initUsersDB();
+
     }
 
 
@@ -461,8 +463,6 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
         else{
             launchError("Nombre de usuario o contraseña incorrectos","Error");
         }
-
-        aVerSiEstoFunciona.initUsersDB();
     }
 
     /**
@@ -615,9 +615,8 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
     void confirmEditVehicle(ActionEvent event) {
     	
         ((Stage) editVehicleModelTF.getScene().getWindow()).close();
-        
         String plate = aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate();
-        verifyEditSpotVehicle(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem());
+
         
         
         if(!editVehicleModelTF.getText().equals("")){
@@ -626,42 +625,25 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
             }
         }
   
-        if(!editVehicleColorCHB.getSelectionModel().getSelectedItem().isEmpty()){
+        if(editVehicleColorCHB.getSelectionModel().getSelectedItem() != null){
             if(!laCeiba.updateVehicleColor(plate, editVehicleColorCHB.getSelectionModel().getSelectedItem())){
                 launchError("No se pudo actualizar el color","Actualizacion de datos");
             }
         }
-        
+        if(editVehicleSeatCHB.getSelectionModel().getSelectedItem() != null){
+            if(!laCeiba.updateSpot(plate,Integer.parseInt(editVehicleSeatCHB.getSelectionModel().getSelectedItem()))){
+
+                launchError("No se pudo actualizar la posicion","Actualizacion de datos");
+            }
+        }
         if(!editVehiclePlatesTF.getText().equals("")){
-        	 System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO1111111111111111111111111111111");
             if(!laCeiba.updateVehiclePlate(plate, editVehiclePlatesTF.getText())){
                 launchError("No se pudo actualizar la placa","Actualizacion de datos");
             }
         }
         //aaaaaaaaaaa
-        if(!editVehicleSeatCHB.getSelectionModel().getSelectedItem().isEmpty()){
-            if(!laCeiba.updateSpot(plate,Integer.parseInt(editVehicleSeatCHB.getSelectionModel().getSelectedItem()))){
-            	
-                launchError("No se pudo actualizar la posicion","Actualizacion de datos");
-            }
-        }
-      
-        
-        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        System.out.println("PUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
-        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
-        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
-        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
-        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
-        System.out.println(aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate());
-        aVerSiEstoFunciona.initVehiclesDB();
 
+        m.vehiclesClicked(event);
     }
    
     public void verifyEditSpotVehicle(Vehicle a) {
