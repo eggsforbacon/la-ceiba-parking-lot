@@ -97,7 +97,12 @@
 .text-field {
 	-fx-background-radius: 12;
 	-fx-prompt-text-fill: -ALTERNATE-ACCENT-COLOR;
+	-fx-text-fill: -TEXT-ICONS;
 	-fx-background-color: -ACCENT-COLOR;
+}
+
+.text-field:focused {
+	-fx-effect: dropshadow(two-pass-box, -TEXT-ICONS, 25, 0.5, 0, 0);
 }
 
 .background {

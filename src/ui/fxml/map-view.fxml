@@ -5,28 +5,28 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="container" alignment="CENTER" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="container" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="724.0" prefWidth="1160.0" styleClass="parking-lot" stylesheets="@../css/map.css">
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="724.0" prefWidth="1160.0" styleClass="parking-lot" stylesheets="@../css/map.css" HBox.hgrow="ALWAYS">
          <top>
-            <HBox fx:id="topHBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" styleClass="slot-zone" BorderPane.alignment="CENTER">
+            <HBox fx:id="topHBOX" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" styleClass="slot-zone" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets right="95.0" />
                </BorderPane.margin>
             </HBox>
          </top>
          <bottom>
-            <HBox fx:id="bottomHBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" styleClass="slot-zone" BorderPane.alignment="CENTER" />
+            <HBox fx:id="bottomHBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" styleClass="slot-zone" BorderPane.alignment="CENTER" />
          </bottom>
          <left>
-            <VBox fx:id="sideVBOX" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="120.0" styleClass="slot-zone" BorderPane.alignment="CENTER">
+            <VBox fx:id="sideVBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="120.0" styleClass="slot-zone" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="50.0" top="50.0" />
                </BorderPane.margin>
             </VBox>
          </left>
          <HBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </HBox.margin>
       </BorderPane>
    </children>
