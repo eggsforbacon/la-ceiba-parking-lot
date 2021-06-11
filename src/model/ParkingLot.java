@@ -1235,17 +1235,17 @@ public class ParkingLot implements Serializable {
 		 }
 		pw.close();
 	  }
-   
+
+	  //So deep
    
    /**
    Generate a csv about the vehicle's monthly information <br>
    <b> pre: </b>Needs a file in which write the information<br>
    <b> post: </b>Generate the csv<br>
-   @param monthlyVehicles the node of the binary tree
    @param startDate LocalDateTime with the begin date 
    @param endDate LocalDateTime with the end date 
    */
-   public void reportInfoMonthly(BTMonthly monthlyVehicles,LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException {
+   public void reportInfoMonthly(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException {
 	   columnsVeryfier=false;
 	   reportInfoMonthly(monthlyVehicles, startDate, endDate, columnsVeryfier);
    }
@@ -1269,18 +1269,20 @@ public class ParkingLot implements Serializable {
 						columnsVeryfier=true;
 			   }
 	   String temp="";
-				if (monthlyVehicles != null) {
-					reportInfoMonthly((BTMonthly) monthlyVehicles.getLeft(), startDate, endDate, columnsVeryfier);
-					LocalDateTime dateOfClient=monthlyVehicles.getBtVehicle().getEntryDate();
-							if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
-									temp=monthlyVehicles.getBtVehicle().getLicensePlate()+";"+monthlyVehicles.getBtVehicle().getModel()+";"
-										+monthlyVehicles.getBtVehicle().getOwner().getName()
-										+";"+monthlyVehicles.getBtVehicle().getOwner().getCellNumber()+";"+monthlyVehicles.getBtVehicle().getValueToPay()
-										+"\n";
-									pw.println(temp);
-									reportInfoMonthly((BTMonthly)monthlyVehicles.getRight(), startDate, endDate, columnsVeryfier);
-							}
+			   if (monthlyVehicles != null) {
+					if(monthlyVehicles.getBtVehicle() != null){
+						reportInfoMonthly((BTMonthly) monthlyVehicles.getLeft(), startDate, endDate, columnsVeryfier);
+						LocalDateTime dateOfClient=monthlyVehicles.getBtVehicle().getEntryDate();
+						if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
+							temp=monthlyVehicles.getBtVehicle().getType().toString()+";"+monthlyVehicles.getBtVehicle().getModel()+";"
+									+monthlyVehicles.getBtVehicle().getLicensePlate()+";"+monthlyVehicles.getBtVehicle()+";"+monthlyVehicles.getBtVehicle().getOwner().getName()
+									+";"+monthlyVehicles.getBtVehicle().getOwner().getId()+";"+monthlyVehicles.getBtVehicle().getValueToPay()
+									+"\n";
+							pw.println(temp);
+						}
+						reportInfoMonthly((BTMonthly)monthlyVehicles.getRight(), startDate, endDate,columnsVeryfier);
 					}
+				}
 		pw.close();
 		
 	}
@@ -1290,11 +1292,10 @@ public class ParkingLot implements Serializable {
    Generate a csv about the vehicle's per hour or daily information <br>
    <b> pre: </b>Needs a file in which write the information<br>
    <b> post: </b>Generate the csv<br>
-   @param perHourOrDailyVehicles the node of the binary tree
    @param startDate LocalDateTime with the begin date 
    @param endDate LocalDateTime with the end date 
    */
-   public void reportInfoDaily(BTPerHourOrDaily perHourOrDailyVehicles,LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException {
+   public void reportInfoDaily(LocalDateTime startDate,LocalDateTime endDate) throws FileNotFoundException {
 	   columnsVeryfier=false;
 	   reportInfoDaily(perHourOrDailyVehicles, startDate, endDate, columnsVeryfier);
    }
@@ -1319,16 +1320,18 @@ public class ParkingLot implements Serializable {
 		   }
 	   String temp="";
 		if (perHourOrDailyVehicles != null) {
+			if(perHourOrDailyVehicles.getBtVehicle() != null){
 				reportInfoDaily((BTPerHourOrDaily) perHourOrDailyVehicles.getLeft(), startDate, endDate, columnsVeryfier);
 				LocalDateTime dateOfClient=perHourOrDailyVehicles.getBtVehicle().getEntryDate();
 				if(dateOfClient.isAfter(startDate) && dateOfClient.isBefore(endDate)) {
-							temp=perHourOrDailyVehicles.getBtVehicle().getLicensePlate()+";"
-							+perHourOrDailyVehicles.getBtVehicle().getModel()+";"+perHourOrDailyVehicles.getBtVehicle().getOwner().getName()
-							+";"+perHourOrDailyVehicles.getBtVehicle().getOwner().getCellNumber()+";"+perHourOrDailyVehicles.getBtVehicle().getValueToPay()
+					temp=perHourOrDailyVehicles.getBtVehicle().getType().toString()+";"+perHourOrDailyVehicles.getBtVehicle().getModel()+";"
+							+perHourOrDailyVehicles.getBtVehicle().getLicensePlate()+";"+perHourOrDailyVehicles.getBtVehicle()+";"+perHourOrDailyVehicles.getBtVehicle().getOwner().getName()
+							+";"+perHourOrDailyVehicles.getBtVehicle().getOwner().getId()+";"+perHourOrDailyVehicles.getBtVehicle().getValueToPay()
 							+"\n";
-						pw.println(temp);
-						reportInfoDaily((BTPerHourOrDaily)perHourOrDailyVehicles.getRight(), startDate, endDate,columnsVeryfier);
+					pw.println(temp);
 				}
+				reportInfoDaily((BTPerHourOrDaily)perHourOrDailyVehicles.getRight(), startDate, endDate,columnsVeryfier);
+			}
 		}
 		pw.close();
 	}

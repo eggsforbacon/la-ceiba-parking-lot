@@ -24,7 +24,12 @@ import model.Employee;
 import model.ParkingLot;
 import model.Vehicle;
 import threads.ChoiceBoxThread;
+
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -81,10 +86,10 @@ public class CurrentSceneGUI implements Initializable {
 
     @FXML
     private TableColumn<Vehicle, String> vehicleEnabledCOL = new TableColumn<>();
-    
+
     @FXML
     private TableColumn<Vehicle, String> vehicleColorCOL=new TableColumn<>();
-    
+
     @FXML
     private TableColumn<Vehicle, String> vehicleModelCol=new TableColumn<>();
 
@@ -245,7 +250,7 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> dummy = FXCollections.observableArrayList("1", "2", "3", "4", "5");
+        ObservableList<String> dummy = FXCollections.observableArrayList("Clientes", "Vehiculos (En general)", "Vehiculos por hora/diarios", "Vehiculos mensuales");
         receiptVehicleTypeCHB.setItems(dummy);
         reportTypeCHB.setItems(dummy);
         currentInit();
@@ -719,8 +724,83 @@ public class CurrentSceneGUI implements Initializable {
      * */
     @FXML
     void generateReport(ActionEvent event) {
-        emergentWindowsController.setDialMessageLBL("Mensaje de la ventana de dialogo.");
-        launchFXML("dialogue.fxml", "Ventana de dialogo");
+        String title;
+        String message;
+        if(reportFromDTP.getValue() != null && reportToDTP != null && reportTypeCHB.getSelectionModel() != null) {
+            String[] stParts = reportFromDTP.getValue().toString().split("-");
+            String[] endParts = reportToDTP.getValue().toString().split("-");
+            String starto = stParts[2] + "/" + stParts[1] + "/" + stParts[0] + " " + reportFromHourTF.getText();
+            String endo = endParts[2] + "/" + endParts[1] + "/" + endParts[0] + " " + reportToHourTF.getText();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            LocalDateTime startingDate = LocalDateTime.now();
+            LocalDateTime endingDate = LocalDateTime.now();
+            try {
+                startingDate = LocalDateTime.parse(starto, formatter);
+                endingDate = LocalDateTime.parse(endo, formatter);
+            } catch (DateTimeParseException e) {
+                launchError("Por favor ingrese la hora en el formato especificado", "Error");
+            }
+            switch(reportTypeCHB.getSelectionModel().getSelectedItem()){
+                case "Clientes":
+                    try {
+                        laCeiba.generateClientsReport(startingDate,endingDate);
+                        title = "Reporte generado";
+                        message = "El reporte fue generado con exito (Guardado en:\n" + "data/reports/clientReport.csv";
+                        launchError(message,title);
+                    } catch (FileNotFoundException | NullPointerException fnf) {
+                        fnf.fillInStackTrace();
+                        title = "Error";
+                        message = "No se pudo generar el reporte";
+                        launchError(message, title);
+                    }
+                    break;
+                case "Vehiculos (En general)":
+                    try {
+                        laCeiba.generateVehiclesReport(startingDate,endingDate);
+                        title = "Reporte generado";
+                        message = "El reporte fue generado con exito (Guardado en:\n" + "data/reports/vehicleReport.csv";
+                        launchError(message,title);
+                    } catch (FileNotFoundException | NullPointerException fnf) {
+                        fnf.fillInStackTrace();
+                        title = "Error";
+                        message = "No se pudo generar el reporte";
+                        launchError(message, title);
+                    }
+                    break;
+                case "Vehiculos por hora/diarios":
+                    try {
+                        laCeiba.reportInfoDaily(startingDate,endingDate);
+                        title = "Reporte generado";
+                        message = "El reporte fue generado con exito (Guardado en:\n" + "data/reports/vehiclePerHourOrDailyReport.csv";
+                        launchError(message,title);
+                    } catch (FileNotFoundException | NullPointerException fnf) {
+                        fnf.fillInStackTrace();
+                        title = "Error";
+                        message = "No se pudo generar el reporte";
+                        launchError(message, title);
+                    }
+                    break;
+                case "Vehiculos mensuales":
+                    try {
+                        laCeiba.reportInfoMonthly(startingDate,endingDate);
+                        title = "Reporte generado";
+                        message = "El reporte fue generado con exito (Guardado en:\n" + "data/reports/vehicleMonthlyReport.csv";
+                        launchError(message,title);
+                    } catch (FileNotFoundException | NullPointerException fnf) {
+                        fnf.fillInStackTrace();
+                        title = "Error";
+                        message = "No se pudo generar el reporte";
+                        launchError(message, title);
+                    }
+                    break;
+                default:
+                    launchError("Debe seleccionar un tipo de reporte","Reportes");
+                    break;
+            }
+        }
+        else{
+            launchError("Por favor llene todos los campos","Evidente error");
+        }
     }
 
     /**
