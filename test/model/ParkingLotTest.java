@@ -80,7 +80,7 @@ class ParkingLotTest {
 	void clientVeryfierTest() throws NameAlreadyInUseException, IDAlreadyInUseException {
 		parkingLotScenary1();
 		String nameVeryfier="name";
-		assertEquals(parkingLotTest.ClientVeryfier("a","2","3"),nameVeryfier);
+		assertEquals(parkingLotTest.ClientVerifier("a","2","3"),nameVeryfier);
 	}
 	
 	@Test
@@ -110,13 +110,13 @@ class ParkingLotTest {
 	@Test
 	void disableEmployeeByIDTest() throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
 		parkingLotScenary2();
-		assertTrue(parkingLotTest.disableemployeeByID("1"));
+		assertTrue(parkingLotTest.disableEmployeeByID("1"));
 	}
 	
 	@Test
 	void disableEmployeeByNameTest() throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
 		parkingLotScenary2();
-		assertTrue(parkingLotTest.disableemployeeByName("a"));
+		assertTrue(parkingLotTest.disableEmployeeByName("a"));
 	}
 	
 	@Test
@@ -146,13 +146,13 @@ class ParkingLotTest {
 	@Test
 	void employeeVeryfierTest() throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
 		parkingLotScenary2();
-		assertEquals(parkingLotTest.employeeVeryfier("a", "","", ""),"name");
+		assertEquals(parkingLotTest.employeeVerifier("a", "","", ""),"name");
 	}
 	
 	@Test
 	void employeeVeryfierLoginTest() throws NameAlreadyInUseException, IDAlreadyInUseException, UsernameAlreadyInUseException, PasswordAlreadyInUseException {
 		parkingLotScenary2();
-		assertTrue(parkingLotTest.employeeVeryfierLogin("user", "pass"));
+		assertTrue(parkingLotTest.employeeVerifierLogin("user", "pass"));
 	}
 	
 	@Test
@@ -274,7 +274,7 @@ class ParkingLotTest {
 		parkingLotScenary2();
 		Employee aux=parkingLotTest.getEmployeesPL().get(0);
 		parkingLotTest.addEmployee("b", "2", "tame","word");
-		parkingLotTest.employeeselectionSortByUsername();
+		parkingLotTest.employeeSelectionSortByUsername();
 		assertTrue(parkingLotTest.getEmployeesPL().get(0)==aux);
 	}
 	
@@ -283,7 +283,7 @@ class ParkingLotTest {
 		parkingLotScenary2();
 		Employee aux=parkingLotTest.getEmployeesPL().get(0);
 		parkingLotTest.addEmployee("b", "2", "tame","word");
-		parkingLotTest.employeeselectionSortById();
+		parkingLotTest.employeeSelectionSortById();
 		assertTrue(parkingLotTest.getEmployeesPL().get(0)==aux);
 	}
 	

@@ -35,7 +35,7 @@
             <Button fx:id="vehicleEditBTN" minWidth="0.0" mnemonicParsing="false" onAction="#editVehicle" text="Editar" />
             <Button fx:id="vehicleDeleteBTN" minWidth="0.0" mnemonicParsing="false" onAction="#deleteVehicle" text="Deshabilitar" />
             <Separator layoutX="117.0" layoutY="339.0" opacity="0.0" orientation="VERTICAL" prefHeight="39.0" prefWidth="4.0" />
-            <TextField fx:id="searchVehicleTXT" maxWidth="-Infinity" prefHeight="37.0" prefWidth="181.0" />
+            <TextField fx:id="searchVehicleTXT" maxWidth="-Infinity" onAction="#SearchVehicle" prefHeight="37.0" prefWidth="181.0" />
             <Button fx:id="vehicleSearchBTN" layoutX="56.0" layoutY="244.0" minWidth="0.0" mnemonicParsing="false" onAction="#SearchVehicle" text="Buscar" />
             <Separator opacity="0.0" orientation="VERTICAL" prefHeight="39.0" prefWidth="4.0" />
             <Label text="Vehiculos especificos" textFill="#fcfcfc" />

@@ -21,7 +21,7 @@ public class VehicleGenericChildren extends Vehicle{
 	}
 
 	@Override
-	public int[] getAvailablespots() {
+	public int[] getAvailableSpots() {
 		
 		return null;
 	}

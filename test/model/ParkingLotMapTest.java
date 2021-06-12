@@ -53,13 +53,13 @@ class ParkingLotMapTest {
     void uniteLeftAndRightTest1() {
         parkingLotMapTestSetupScenary1();
         plMap.uniteLeftAndRight();
-        assertEquals(plMap.spotAt(4).getRigth().getActualPosition(),"21");
+        assertEquals(plMap.spotAt(4).getRight().getActualPosition(),"21");
     }
 
     @Test
     void uniteLeftAndRightTest2() {
         parkingLotMapTestSetupScenary1();
         plMap.uniteLeftAndRight();
-        assertEquals(plMap.spotAt(-2).getRigth().getActualPosition(),"24");
+        assertEquals(plMap.spotAt(-2).getRight().getActualPosition(),"24");
     }
 }

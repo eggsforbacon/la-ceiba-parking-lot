@@ -32,7 +32,7 @@
             <Button fx:id="userDeleteBTN" minWidth="0.0" mnemonicParsing="false" onAction="#deleteUser" text="Borrar" />
             <Button fx:id="userEditBTN" minWidth="0.0" mnemonicParsing="false" onAction="#editUser" text="Editar" />
             <Separator opacity="0.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
-            <TextField fx:id="searchUserTXT" maxWidth="-Infinity" prefHeight="37.0" prefWidth="179.0" />
+            <TextField fx:id="searchUserTXT" maxWidth="-Infinity" onAction="#SearchUser" prefHeight="37.0" prefWidth="179.0" />
             <Button fx:id="userSearchBTN" minWidth="0.0" mnemonicParsing="false" onAction="#SearchUser" text="Buscar" />
          </children>
          <BorderPane.margin>
