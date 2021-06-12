@@ -208,8 +208,8 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
 
     ParkingLot laCeiba;
     boolean successful = false;
-    CurrentSceneGUI aVerSiEstoFunciona;
-    MainGUI m;
+    CurrentSceneGUI currentController;
+    MainGUI mainController;
 
     /*------------------------ METHODS ------------------------*/
     //Methods will be written in order according to the intended flow of the program
@@ -220,10 +220,10 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
      * Principal constructor of the class. <br>
      *
      * @param laCeiba The object in which the apps info will be stored. <br>*/
-    public EmergentWindowsGUI(ParkingLot laCeiba,CurrentSceneGUI aVerSiEstoFunciona,MainGUI m) {
+    public EmergentWindowsGUI(ParkingLot laCeiba, CurrentSceneGUI currentController, MainGUI mainController) {
         this.laCeiba = laCeiba;
-        this.aVerSiEstoFunciona = aVerSiEstoFunciona;
-        this.m = m;
+        this.currentController = currentController;
+        this.mainController = mainController;
     }
 
     /**
@@ -419,10 +419,10 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
      * */
     @FXML
     void confirmEditUser(ActionEvent event) {
-        int loginxd = laCeiba.login(oldUsernameTF.getText(),oldPasswordPWF.getText());
-        if(loginxd != -1 && loginxd != -2){
+        int login = laCeiba.login(oldUsernameTF.getText(),oldPasswordPWF.getText());
+        if(login != -1 && login != -2){
             ((Stage) editUserFullNameTF.getScene().getWindow()).close();
-            String user = aVerSiEstoFunciona.getUsersTBV().getSelectionModel().getSelectedItem().getId();
+            String user = currentController.getUsersTBV().getSelectionModel().getSelectedItem().getId();
             if(!editUsernameTF.getText().equals("")){
                 if(!laCeiba.updateEmployeeUsername(user,editUsernameTF.getText())){
                     launchError("No se pudo actualizar el Nombre de usuario","Actualizacion de datos");
@@ -447,6 +447,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
         else{
             launchError("Nombre de usuario o contraseña incorrectos","Error");
         }
+        currentController.initClientsDB();
     }
 
     /**
@@ -483,7 +484,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
                         ,Integer.parseInt(newVehicleNumberDaysTF.getText()));
                 if(check2){
                     launchError("Cliente y vehiculo creados correctamente","Creacion de vehiculo y cliente");
-                    aVerSiEstoFunciona.initClientsDB();
+                    currentController.initClientsDB();
                 }
                 else{
                     laCeiba.removeLastClient();
@@ -562,7 +563,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
     void confirmEditClient(ActionEvent event) {
 
         ((Stage) editClientFullnameTF.getScene().getWindow()).close();
-        String user = aVerSiEstoFunciona.getClientsTBV().getSelectionModel().getSelectedItem().getId();
+        String user = currentController.getClientsTBV().getSelectionModel().getSelectedItem().getId();
         if(!editClientFullnameTF.getText().equals("")){
             if(!laCeiba.updateClientName(user,editClientFullnameTF.getText())){
                 launchError("No se pudo actualizar el nombre","Actualizacion de datos");
@@ -580,7 +581,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
                 launchError("No se pudo actualizar el ID","Actualizacion de datos");
             }
         }
-        aVerSiEstoFunciona.initClientsDB();
+        currentController.initClientsDB();
 
     }
 
@@ -599,7 +600,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
     void confirmEditVehicle(ActionEvent event) {
     	
         ((Stage) editVehicleModelTF.getScene().getWindow()).close();
-        String plate = aVerSiEstoFunciona.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate();
+        String plate = currentController.getVehiclesTBV().getSelectionModel().getSelectedItem().getLicensePlate();
 
         
         
@@ -627,7 +628,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
         }
         //aaaaaaaaaaa
 
-        m.vehiclesClicked(event);
+        mainController.vehiclesClicked(event);
     }
    
     public void verifyEditSpotVehicle(Vehicle a) {

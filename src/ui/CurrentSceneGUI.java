@@ -380,8 +380,8 @@ public class CurrentSceneGUI implements Initializable {
                 loginSuccessful = true;
                 break;
             default:
-                laCeiba.setActualEmployee(laCeiba.getEmployeesPL().get(user));
-                launchError("Bienvenido " + laCeiba.getActualEmployee().getName(), "Mensaje de Inicio de Sesion");
+                laCeiba.setCurrentEmployee(laCeiba.getEmployeesPL().get(user));
+                launchError("Bienvenido " + laCeiba.getCurrentEmployee().getName(), "Mensaje de Inicio de Sesion");
                 loginSuccessful = true;
                 break;
         }
@@ -667,7 +667,7 @@ public class CurrentSceneGUI implements Initializable {
         int selectedItems = usersTBV.getSelectionModel().getSelectedItems().size();
         for (int i = 0; i < selectedItems; i++) {
             Employee removed = usersTBV.getSelectionModel().getSelectedItems().get(i);
-            canDelete = laCeiba.disableemployeeByID(removed.getId());
+            canDelete = laCeiba.disableEmployeeByID(removed.getId());
             if (!canDelete) launchError("No se pudo deshabilitar","Error");
         }
         initUsersDB();

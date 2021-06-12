@@ -1,7 +1,12 @@
 package model;
 
+/**
+ * Abstract methods to be used by the vehicle classes. <br>
+ */
 public interface ChildrenVehicleMethods {
-    public StayTime changeStayTime();
-    public double calculateValueAdditionalTime();
-    public double calculateMinimunValue(long months,long days,long hours);
+    StayTime changeStayTime();
+
+    double calculateValueAdditionalTime();
+
+    double calculateMinimumValue(long months, long days, long hours);
 }
