@@ -84,7 +84,8 @@ public class Main extends Application {
             }
             BufferedReader br = new BufferedReader(new FileReader("data/Serializable/plain_text/Employees.txt"));
             String line = br.readLine();
-            while(line!=null){
+            while(line!=null&&line!=""){
+
                 String[] parts = line.split(";");
                 Employee a = new Employee(parts[0],parts[1],parts[2],parts[3]);
                 d.add(a);
