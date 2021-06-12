@@ -4,4 +4,6 @@ out
 .classpath
 .project
 .settings
+.bin
+
 

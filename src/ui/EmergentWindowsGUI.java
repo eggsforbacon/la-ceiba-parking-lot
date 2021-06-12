@@ -498,6 +498,7 @@ public class EmergentWindowsGUI implements Initializable, ColorsOrWhatever {
         else{
             launchError("Datos del cliente incorrectos o invalidos","Creacion de cliente");
         }
+
     }
 
     /**

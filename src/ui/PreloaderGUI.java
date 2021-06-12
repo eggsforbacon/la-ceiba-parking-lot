@@ -28,7 +28,7 @@ public class PreloaderGUI implements Initializable {
     MainGUI controller;
     ParkingLot laCeiba;
 
-    private static final String SAVE_PATH = "data/Serializable/plain_text/data.1jz";
+    private static final String SAVE_PATH = "data/Serializable/objects/data.1jz";
 
     @FXML
     private BorderPane splashPane = new BorderPane();

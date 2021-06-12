@@ -15,7 +15,7 @@ public abstract class BinaryTree implements Serializable {
     protected String licensePlate;
     protected int number;
     private double valueToPay;
-
+//
     /**
      * This is the main constructor of the class. <br>
      */
