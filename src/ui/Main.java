@@ -62,7 +62,7 @@ public class Main extends Application {
                 pw.println(employee.getName()+";"+employee.getId()+";"+employee.getUsername()+";"+employee.getPassword());
             }
             pw.close();
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/Serializable/objects/data.1jz"));
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/Serializable/object/data.1jz"));
             oos.writeObject(laCeiba);
             oos.close();
         } catch (FileNotFoundException e) {
