@@ -27,6 +27,7 @@ Intellij IDEA and Eclipse IDE
 ### [Class Diagram](docs/ClassDiagram.pdf)
 ### [Functional Requirements](docs/RequerimientosFuncionalesTI3.pdf)
 ### [Non Functional Requirements](docs/RequerimientosNoFuncionales.pdf)
+### [ZIP](docs/A00368421-A00369582-A00368069.zip)
 
 ---
 
