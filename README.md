@@ -29,25 +29,30 @@ Intellij IDEA and Eclipse IDE
 
 ---
 
-## Wireframes 
+## Screenshots 
 
-![Main menu](docs/mocks/main.png "Main menu")
+![Main menu](docs/screenshots/main-menu.png "Main menu")
 
-![Login menu](docs/mocks/login.png "Login menu")
+![Login menu](docs/screenshots/login.png "Login menu")
 
-![Clients](docs/mocks/clients.png "Clients view")
+![Clients](docs/screenshots/client-tbv.png "Clients view")
 
-![Vehicles](docs/mocks/vehicles.png "Vehicles view")
+![New Client](docs/screenshots/new-client-emerg.png "New Client")
 
-![Map](docs/mocks/map.png "Map of the parking lot")
+![Vehicles](docs/screenshots/vehicle-tbv.png "Vehicles view")
 
-![Users](docs/mocks/users.png "Users view")
+![Daily/Hourly Vehicles](docs/screenshots/vehicle-hod.png "Hourly/Daily Vehicles view")
 
-![Receipt for members](docs/mocks/receipt1.png "Membership receipt")
+![Monthly Vehicles](docs/screenshots/vehicle-monthly.png "Monthly Vehicles")
 
-![Daily/Hourly receipt](docs/mocks/receipt2.png "Daily/Hourly receipt")
+![Map](docs/screenshots/map.png "Map of the parking lot")
 
-![Reports](docs/mocks/reports.png "Reports menu")
+![Users](docs/screenshots/user-tbv.png "Users view")
+
+![Reports](docs/screenshots/reports.png "Reports menu")
 
 ---
 
+## Showcase of the program (Spanish)
+
+//YouTube video link here//
