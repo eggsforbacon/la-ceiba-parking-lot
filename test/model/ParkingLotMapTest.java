@@ -21,7 +21,7 @@ class ParkingLotMapTest {
 
     //Comentario para arreglar commits como cosa rara
 
-    //a
+    //ax2
 
     @Test
     void setBottomRowTest1() {
