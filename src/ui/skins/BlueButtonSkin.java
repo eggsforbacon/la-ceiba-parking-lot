@@ -12,7 +12,7 @@ public class BlueButtonSkin extends ButtonSkin {
         super(button);
         Color buttonColor = new Color(0.32549,0.42745,0.996078,1);
         Color onHoverColor = new Color(1,1,1,1);
-        button.setOnMouseEntered(e -> {
+        button.setOnMouseEntered(se -> {
             JFXFillTransition colorEaseIn = new JFXFillTransition();
             colorEaseIn.setDuration(Duration.millis(200));
             colorEaseIn.setRegion(button);
