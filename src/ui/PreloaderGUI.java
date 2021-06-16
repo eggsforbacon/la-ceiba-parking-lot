@@ -69,42 +69,12 @@ public class PreloaderGUI implements Initializable {
         DecimalFormat format = new DecimalFormat("#.00");
         progressLBL.setText("Cargando... (" + format.format(percentage) + "% )");
         if (percentage >= 65.0 && !isLoaded) {
-            load(); // <- Might have a loading exception here
             isLoaded = true;
         }
     }
 
-    /**
-     * Loads everything to be loaded into the model object. <br>
-     * @throws IOException 
-     * @throws ClassNotFoundException 
-     * @throws UsernameAlreadyInUseException 
-     * @throws IDAlreadyInUseException 
-     * */
-    private void load() {
-        ArrayList<Employee> d = new ArrayList<>();
-    	try {
-    		File parkingLotData = new File(SAVE_PATH);
-    		if(parkingLotData.exists()){
-    			ObjectInputStream OIS = new ObjectInputStream(new FileInputStream(parkingLotData));
-    			laCeiba= (ParkingLot)OIS.readObject();
-    			OIS.close();		
-    		}	
-    		BufferedReader br = new BufferedReader(new FileReader("data/Serializable/plain_text/Employees.txt"));
-    		String line = br.readLine();
-    		while(line!=null){
-    			String[] parts = line.split(";");
-    			Employee a = new Employee(parts[0],parts[1],parts[2],parts[3]);
-    	        d.add(a);
-    			line = br.readLine();
-    		}
-    		br.close();
-            laCeiba.setEmployeesPL(d);
-    	}
-    	catch(IOException|ClassNotFoundException e){
-    		e.printStackTrace();
-    	}
-    }
+
+
 
     /**
      * Stops the bar loading and launches the app. <br>

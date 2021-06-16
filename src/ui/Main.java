@@ -76,7 +76,7 @@ public class Main extends Application {
     private void load() {
         ArrayList<Employee> d = new ArrayList<>();
         try {
-            File parkingLotData = new File("data/Serializable/plain_text/data.1jz");
+            File parkingLotData = new File("data/Serializable/object/data.1jz");
             if(parkingLotData.exists()){
                 ObjectInputStream OIS = new ObjectInputStream(new FileInputStream(parkingLotData));
                 laCeiba= (ParkingLot)OIS.readObject();
@@ -85,7 +85,6 @@ public class Main extends Application {
             BufferedReader br = new BufferedReader(new FileReader("data/Serializable/plain_text/Employees.txt"));
             String line = br.readLine();
             while(line!=null&&line!=""){
-
                 String[] parts = line.split(";");
                 Employee a = new Employee(parts[0],parts[1],parts[2],parts[3]);
                 d.add(a);
